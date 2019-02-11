@@ -1,0 +1,24 @@
+# Deployment Target
+platform :ios, '8.0'
+
+# Add pods as frameworks so we could add obj-c and swift 3.0 pods
+
+
+target 'LogsManager_Example' do
+    pod 'LogsManager', :path => '../'
+
+    target 'LogsManager_Tests' do
+        inherit! :search_paths
+
+        pod 'Quick'
+        pod 'Nimble'
+    end
+end
+
+
+post_install do |installer|
+    # Add podInstall.command and podUpdate.command shell scripts to Pods project
+    pods_project = installer.pods_project
+    pods_project.new_file "../Scripts/Cocoapods/podInstall.command"
+    pods_project.new_file "../Scripts/Cocoapods/podUpdate.command"
+end

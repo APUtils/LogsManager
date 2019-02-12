@@ -17,10 +17,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let allLogComponent = LogComponent(name: "All", isLogForThisComponent: { _, _ in true })
-        LoggersManager.shared.registerLogComponent(allLogComponent)
+        let vcComponent = LogComponent(name: "ViewController", logName: "VC") { file, _ in
+            let fileName = StaticString.getFileName(from: file)
+            return fileName == "ViewController"
+        }
+        LoggersManager.shared.registerLogComponent(vcComponent)
         
-        let logger = ConsoleLogger(logComponents: [allLogComponent], logLevel: .verbose, newLinesSeparation: false)
+        let didAppearComponent = LogComponent(name: "Did Appear", logName: "viewDidAppear") { _, function in
+            return String(function).hasPrefix("viewDidAppear")
+        }
+        LoggersManager.shared.registerLogComponent(didAppearComponent)
+        
+        let logger = ConsoleLogger(logComponents: [vcComponent], logLevel: .verbose, newLinesSeparation: false)
         LoggersManager.shared.addTextLogger(logger)
         logDebug(message: "Test1")
         
@@ -30,7 +38,7 @@ class ViewController: UIViewController {
         LoggersManager.shared.addTextLogger(logger)
         logDebug(message: "Test3")
         
-        LoggersManager.shared.unregisterLogComponent(allLogComponent)
+        LoggersManager.shared.unregisterLogComponent(vcComponent)
         logDebug(message: "Test4")
         
         let allLogger = ConsoleLogger(logComponents: nil, logLevel: .verbose, newLinesSeparation: false)
@@ -75,5 +83,11 @@ class ViewController: UIViewController {
                 g_sharedApplication.startBackgroundTaskIfNeeded()
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        logDebug(message: "viewDidAppear called")
     }
 }

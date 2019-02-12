@@ -6,17 +6,11 @@
 [![Platform](https://img.shields.io/cocoapods/p/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
 [![CI Status](http://img.shields.io/travis/APUtils/LogsManager.svg?style=flat)](https://travis-ci.org/APUtils/LogsManager)
 
-TODO
+Logs manager on top of CocoaLumberjack. Allows to easily configure log components depending on your app infrastucture. Have several convenience loggers: ConsoleLogger, AlertLogger, NotificationLogger.
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## GIF animation
-
-TODO
-
-<img src="Example/LogsManager/<#NAME#>.gif"/>
 
 ## Installation
 
@@ -27,7 +21,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/{REPO_NAME}"
+github "APUtils/LogsManager"
 ```
 
 #### CocoaPods
@@ -41,7 +35,38 @@ pod 'LogsManager'
 
 ## Usage
 
-TODO
+You have to add logs component first if you want your logs to be separated by components:
+```swift
+let vcComponent = LogComponent(name: "ViewController", logName: "VC") { file, _ in
+    let fileName = StaticString.getFileName(from: file)
+    return fileName == "ViewController"
+}
+LoggersManager.shared.registerLogComponent(vcComponent)
+
+let didAppearComponent = LogComponent(name: "Did Appear", logName: "viewDidAppear") { _, function in
+    return String(function).hasPrefix("viewDidAppear")
+}
+LoggersManager.shared.registerLogComponent(didAppearComponent)
+```
+
+Then you need to add loggers and specify their components and log levels:
+```swift
+// Log all ViewController debug messages
+let logger = ConsoleLogger(logComponents: [vcComponent], logLevel: .debug, newLinesSeparation: false)
+LoggersManager.shared.addTextLogger(logger)
+
+// Present alert for any error log
+let allAlertLogger = AlertLogger(logComponents: nil, logLevel: .error)
+LoggersManager.shared.addTextLogger(allAlertLogger)
+```
+
+You can use convenience global function to leave logs:
+```swift
+logInfo(message: "Staring network request to: \(request.url)")
+logDebug(message: "Received data")
+logVerbose(message: "Data payload: \(data)")
+logError(reason: "Got error response", error: error, data: ["request": request])
+```
 
 See example and test projects for more details.
 

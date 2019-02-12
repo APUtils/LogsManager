@@ -8,8 +8,11 @@
 
 import Foundation
 
+#if COCOAPODS
 import CocoaLumberjack
-
+#else
+import CocoaLumberjackSwift
+#endif
 
 /// Central point for all application logs.
 /// You can easily change how logs will be displayed or processed here.

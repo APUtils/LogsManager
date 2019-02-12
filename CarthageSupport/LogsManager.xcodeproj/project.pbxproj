@@ -28,6 +28,8 @@
 		E29A7C1322133171002E9E66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFF22133171002E9E66 /* Utils.swift */; };
 		E29A7C1422133171002E9E66 /* LogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7C0022133171002E9E66 /* LogComponent.swift */; };
 		E29A7C1522133171002E9E66 /* LoggersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7C0122133171002E9E66 /* LoggersManager.swift */; };
+		E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
+		E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		E29A7BFF22133171002E9E66 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../LogsManager/Classes/Utils.swift; sourceTree = "<group>"; };
 		E29A7C0022133171002E9E66 /* LogComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogComponent.swift; path = ../../../LogComponent.swift; sourceTree = "<group>"; };
 		E29A7C0122133171002E9E66 /* LoggersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggersManager.swift; path = ../../../LogsManager/Classes/LoggersManager.swift; sourceTree = "<group>"; };
+		E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
+		E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */,
+				E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				1834AC72A69DC91E1F3B8EDA /* _Carthage */,
+				E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */,
+				E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -432,7 +440,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LogsManager_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LogsManager/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -462,7 +470,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LogsManager_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LogsManager/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

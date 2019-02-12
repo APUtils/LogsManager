@@ -2,11 +2,13 @@
 platform :ios, '8.0'
 
 # Add pods as frameworks so we could add obj-c and swift 3.0 pods
-
+use_frameworks!
 
 target 'LogsManager_Example' do
     pod 'LogsManager', :path => '../'
 
+    pod 'APExtensions'
+    
     target 'LogsManager_Tests' do
         inherit! :search_paths
 

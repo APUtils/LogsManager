@@ -8,6 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		E202681822117D03004CC28A /* LogsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E202681622117D03004CC28A /* LogsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E29A7C0222133171002E9E66 /* StaticString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEA22133171002E9E66 /* StaticString+Utils.swift */; };
+		E29A7C0322133171002E9E66 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEB22133171002E9E66 /* Data+Utils.swift */; };
+		E29A7C0422133171002E9E66 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEC22133171002E9E66 /* Array+Utils.swift */; };
+		E29A7C0522133171002E9E66 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BED22133171002E9E66 /* String+Utils.swift */; };
+		E29A7C0622133171002E9E66 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEF22133171002E9E66 /* ErrorLogger.swift */; };
+		E29A7C0722133171002E9E66 /* CrashlyticsBaseErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF022133171002E9E66 /* CrashlyticsBaseErrorLogger.swift */; };
+		E29A7C0822133171002E9E66 /* AppearanceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF322133171002E9E66 /* AppearanceCaptureViewController.swift */; };
+		E29A7C0922133171002E9E66 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF422133171002E9E66 /* AlertController.swift */; };
+		E29A7C0A22133171002E9E66 /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF522133171002E9E66 /* AlertLogger.swift */; };
+		E29A7C0B22133171002E9E66 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF622133171002E9E66 /* NotificationLogger.swift */; };
+		E29A7C0C22133171002E9E66 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF722133171002E9E66 /* ConsoleLogger.swift */; };
+		E29A7C0D22133171002E9E66 /* BaseTextLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF922133171002E9E66 /* BaseTextLogger.swift */; };
+		E29A7C0E22133171002E9E66 /* BaseLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFA22133171002E9E66 /* BaseLogFormatter.swift */; };
+		E29A7C0F22133171002E9E66 /* BaseAbstractLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFB22133171002E9E66 /* BaseAbstractLogger.swift */; };
+		E29A7C1022133171002E9E66 /* DDLogFlag+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFC22133171002E9E66 /* DDLogFlag+Utils.swift */; };
+		E29A7C1122133171002E9E66 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFD22133171002E9E66 /* Log.swift */; };
+		E29A7C1222133171002E9E66 /* DDLogMessage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFE22133171002E9E66 /* DDLogMessage+Utils.swift */; };
+		E29A7C1322133171002E9E66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFF22133171002E9E66 /* Utils.swift */; };
+		E29A7C1422133171002E9E66 /* LogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7C0022133171002E9E66 /* LogComponent.swift */; };
+		E29A7C1522133171002E9E66 /* LoggersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7C0122133171002E9E66 /* LoggersManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +37,26 @@
 		E202681322117D03004CC28A /* LogsManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogsManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202681622117D03004CC28A /* LogsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogsManager.h; sourceTree = "<group>"; };
 		E202681722117D03004CC28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E29A7BEA22133171002E9E66 /* StaticString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StaticString+Utils.swift"; sourceTree = "<group>"; };
+		E29A7BEB22133171002E9E66 /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
+		E29A7BEC22133171002E9E66 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
+		E29A7BED22133171002E9E66 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		E29A7BEF22133171002E9E66 /* ErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
+		E29A7BF022133171002E9E66 /* CrashlyticsBaseErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashlyticsBaseErrorLogger.swift; sourceTree = "<group>"; };
+		E29A7BF322133171002E9E66 /* AppearanceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceCaptureViewController.swift; sourceTree = "<group>"; };
+		E29A7BF422133171002E9E66 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		E29A7BF522133171002E9E66 /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLogger.swift; sourceTree = "<group>"; };
+		E29A7BF622133171002E9E66 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLogger.swift; sourceTree = "<group>"; };
+		E29A7BF722133171002E9E66 /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		E29A7BF922133171002E9E66 /* BaseTextLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextLogger.swift; sourceTree = "<group>"; };
+		E29A7BFA22133171002E9E66 /* BaseLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogFormatter.swift; sourceTree = "<group>"; };
+		E29A7BFB22133171002E9E66 /* BaseAbstractLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAbstractLogger.swift; sourceTree = "<group>"; };
+		E29A7BFC22133171002E9E66 /* DDLogFlag+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogFlag+Utils.swift"; path = "../../../LogsManager/Classes/DDLogFlag+Utils.swift"; sourceTree = "<group>"; };
+		E29A7BFD22133171002E9E66 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = ../../../LogsManager/Classes/Log.swift; sourceTree = "<group>"; };
+		E29A7BFE22133171002E9E66 /* DDLogMessage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogMessage+Utils.swift"; path = "../../../LogsManager/Classes/DDLogMessage+Utils.swift"; sourceTree = "<group>"; };
+		E29A7BFF22133171002E9E66 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../LogsManager/Classes/Utils.swift; sourceTree = "<group>"; };
+		E29A7C0022133171002E9E66 /* LogComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogComponent.swift; path = ../../../LogComponent.swift; sourceTree = "<group>"; };
+		E29A7C0122133171002E9E66 /* LoggersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggersManager.swift; path = ../../../LogsManager/Classes/LoggersManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +100,89 @@
 		E202681522117D03004CC28A /* LogsManager */ = {
 			isa = PBXGroup;
 			children = (
+				E29A7BE82213315E002E9E66 /* Source */,
+				E29A7BE522133136002E9E66 /* _ */,
+			);
+			path = LogsManager;
+			sourceTree = "<group>";
+		};
+		E29A7BE522133136002E9E66 /* _ */ = {
+			isa = PBXGroup;
+			children = (
 				E202681622117D03004CC28A /* LogsManager.h */,
 				E202681722117D03004CC28A /* Info.plist */,
 			);
-			path = LogsManager;
+			name = _;
+			sourceTree = "<group>";
+		};
+		E29A7BE82213315E002E9E66 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7BEE22133171002E9E66 /* _Error Loggers */,
+				E29A7BE922133171002E9E66 /* _Extensions */,
+				E29A7BF122133171002E9E66 /* _Message Loggers */,
+				E29A7BFC22133171002E9E66 /* DDLogFlag+Utils.swift */,
+				E29A7BFE22133171002E9E66 /* DDLogMessage+Utils.swift */,
+				E29A7BFD22133171002E9E66 /* Log.swift */,
+				E29A7C0022133171002E9E66 /* LogComponent.swift */,
+				E29A7C0122133171002E9E66 /* LoggersManager.swift */,
+				E29A7BFF22133171002E9E66 /* Utils.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		E29A7BE922133171002E9E66 /* _Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7BEA22133171002E9E66 /* StaticString+Utils.swift */,
+				E29A7BEB22133171002E9E66 /* Data+Utils.swift */,
+				E29A7BEC22133171002E9E66 /* Array+Utils.swift */,
+				E29A7BED22133171002E9E66 /* String+Utils.swift */,
+			);
+			name = _Extensions;
+			path = ../../../_Extensions;
+			sourceTree = "<group>";
+		};
+		E29A7BEE22133171002E9E66 /* _Error Loggers */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7BEF22133171002E9E66 /* ErrorLogger.swift */,
+				E29A7BF022133171002E9E66 /* CrashlyticsBaseErrorLogger.swift */,
+			);
+			name = "_Error Loggers";
+			path = "../../../_Error Loggers";
+			sourceTree = "<group>";
+		};
+		E29A7BF122133171002E9E66 /* _Message Loggers */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7BF222133171002E9E66 /* _Alert */,
+				E29A7BF622133171002E9E66 /* NotificationLogger.swift */,
+				E29A7BF722133171002E9E66 /* ConsoleLogger.swift */,
+				E29A7BF822133171002E9E66 /* _Base */,
+			);
+			name = "_Message Loggers";
+			path = "../../../LogsManager/Classes/_Message Loggers";
+			sourceTree = "<group>";
+		};
+		E29A7BF222133171002E9E66 /* _Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7BF322133171002E9E66 /* AppearanceCaptureViewController.swift */,
+				E29A7BF422133171002E9E66 /* AlertController.swift */,
+				E29A7BF522133171002E9E66 /* AlertLogger.swift */,
+			);
+			path = _Alert;
+			sourceTree = "<group>";
+		};
+		E29A7BF822133171002E9E66 /* _Base */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7BF922133171002E9E66 /* BaseTextLogger.swift */,
+				E29A7BFA22133171002E9E66 /* BaseLogFormatter.swift */,
+				E29A7BFB22133171002E9E66 /* BaseAbstractLogger.swift */,
+			);
+			path = _Base;
 			sourceTree = "<group>";
 		};
 		F1BD9B4AF93178888C20C526 /* Frameworks */ = {
@@ -117,6 +236,7 @@
 				TargetAttributes = {
 					E202681222117D03004CC28A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -152,6 +272,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29A7C1222133171002E9E66 /* DDLogMessage+Utils.swift in Sources */,
+				E29A7C0622133171002E9E66 /* ErrorLogger.swift in Sources */,
+				E29A7C0522133171002E9E66 /* String+Utils.swift in Sources */,
+				E29A7C0822133171002E9E66 /* AppearanceCaptureViewController.swift in Sources */,
+				E29A7C0222133171002E9E66 /* StaticString+Utils.swift in Sources */,
+				E29A7C0922133171002E9E66 /* AlertController.swift in Sources */,
+				E29A7C1422133171002E9E66 /* LogComponent.swift in Sources */,
+				E29A7C0E22133171002E9E66 /* BaseLogFormatter.swift in Sources */,
+				E29A7C1122133171002E9E66 /* Log.swift in Sources */,
+				E29A7C1522133171002E9E66 /* LoggersManager.swift in Sources */,
+				E29A7C0422133171002E9E66 /* Array+Utils.swift in Sources */,
+				E29A7C0722133171002E9E66 /* CrashlyticsBaseErrorLogger.swift in Sources */,
+				E29A7C0F22133171002E9E66 /* BaseAbstractLogger.swift in Sources */,
+				E29A7C1322133171002E9E66 /* Utils.swift in Sources */,
+				E29A7C0A22133171002E9E66 /* AlertLogger.swift in Sources */,
+				E29A7C1022133171002E9E66 /* DDLogFlag+Utils.swift in Sources */,
+				E29A7C0C22133171002E9E66 /* ConsoleLogger.swift in Sources */,
+				E29A7C0B22133171002E9E66 /* NotificationLogger.swift in Sources */,
+				E29A7C0322133171002E9E66 /* Data+Utils.swift in Sources */,
+				E29A7C0D22133171002E9E66 /* BaseTextLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +423,7 @@
 		E202681C22117D03004CC28A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -303,6 +444,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.convene.Elevate.LogsManager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -311,6 +453,7 @@
 		E202681D22117D03004CC28A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

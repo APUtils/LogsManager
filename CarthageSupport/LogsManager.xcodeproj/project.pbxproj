@@ -7,27 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E201A85A2214200500258902 /* StaticString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8422214200500258902 /* StaticString+Utils.swift */; };
+		E201A85B2214200500258902 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8432214200500258902 /* Data+Utils.swift */; };
+		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
+		E201A85D2214200500258902 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8452214200500258902 /* String+Utils.swift */; };
+		E201A85E2214200500258902 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8462214200500258902 /* Utils.swift */; };
+		E201A85F2214200500258902 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8472214200500258902 /* Log.swift */; };
+		E201A8602214200500258902 /* AppearanceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84A2214200500258902 /* AppearanceCaptureViewController.swift */; };
+		E201A8612214200500258902 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84B2214200500258902 /* AlertController.swift */; };
+		E201A8622214200500258902 /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84C2214200500258902 /* AlertLogger.swift */; };
+		E201A8632214200500258902 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84D2214200500258902 /* NotificationLogger.swift */; };
+		E201A8642214200500258902 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84E2214200500258902 /* ConsoleLogger.swift */; };
+		E201A8652214200500258902 /* BaseTextLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8502214200500258902 /* BaseTextLogger.swift */; };
+		E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8512214200500258902 /* BaseLogFormatter.swift */; };
+		E201A8672214200500258902 /* BaseAbstractLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8522214200500258902 /* BaseAbstractLogger.swift */; };
+		E201A8682214200500258902 /* DDLogFlag+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8532214200500258902 /* DDLogFlag+Utils.swift */; };
+		E201A8692214200500258902 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8552214200500258902 /* ErrorLogger.swift */; };
+		E201A86A2214200500258902 /* LoggersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8562214200500258902 /* LoggersManager.swift */; };
+		E201A86C2214200500258902 /* DDLogMessage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8592214200500258902 /* DDLogMessage+Utils.swift */; };
+		E201A86E2214203C00258902 /* LogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A86D2214203C00258902 /* LogComponent.swift */; };
 		E202681822117D03004CC28A /* LogsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E202681622117D03004CC28A /* LogsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E29A7C0222133171002E9E66 /* StaticString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEA22133171002E9E66 /* StaticString+Utils.swift */; };
-		E29A7C0322133171002E9E66 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEB22133171002E9E66 /* Data+Utils.swift */; };
-		E29A7C0422133171002E9E66 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEC22133171002E9E66 /* Array+Utils.swift */; };
-		E29A7C0522133171002E9E66 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BED22133171002E9E66 /* String+Utils.swift */; };
-		E29A7C0622133171002E9E66 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BEF22133171002E9E66 /* ErrorLogger.swift */; };
-		E29A7C0722133171002E9E66 /* CrashlyticsBaseErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF022133171002E9E66 /* CrashlyticsBaseErrorLogger.swift */; };
-		E29A7C0822133171002E9E66 /* AppearanceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF322133171002E9E66 /* AppearanceCaptureViewController.swift */; };
-		E29A7C0922133171002E9E66 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF422133171002E9E66 /* AlertController.swift */; };
-		E29A7C0A22133171002E9E66 /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF522133171002E9E66 /* AlertLogger.swift */; };
-		E29A7C0B22133171002E9E66 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF622133171002E9E66 /* NotificationLogger.swift */; };
-		E29A7C0C22133171002E9E66 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF722133171002E9E66 /* ConsoleLogger.swift */; };
-		E29A7C0D22133171002E9E66 /* BaseTextLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BF922133171002E9E66 /* BaseTextLogger.swift */; };
-		E29A7C0E22133171002E9E66 /* BaseLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFA22133171002E9E66 /* BaseLogFormatter.swift */; };
-		E29A7C0F22133171002E9E66 /* BaseAbstractLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFB22133171002E9E66 /* BaseAbstractLogger.swift */; };
-		E29A7C1022133171002E9E66 /* DDLogFlag+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFC22133171002E9E66 /* DDLogFlag+Utils.swift */; };
-		E29A7C1122133171002E9E66 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFD22133171002E9E66 /* Log.swift */; };
-		E29A7C1222133171002E9E66 /* DDLogMessage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFE22133171002E9E66 /* DDLogMessage+Utils.swift */; };
-		E29A7C1322133171002E9E66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7BFF22133171002E9E66 /* Utils.swift */; };
-		E29A7C1422133171002E9E66 /* LogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7C0022133171002E9E66 /* LogComponent.swift */; };
-		E29A7C1522133171002E9E66 /* LoggersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29A7C0122133171002E9E66 /* LoggersManager.swift */; };
 		E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
 		E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 /* End PBXBuildFile section */
@@ -36,29 +35,28 @@
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		722BFDE9DE58393B9D916719 /* carthageRemove.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageRemove.command; path = Scripts/Carthage/carthageRemove.command; sourceTree = "<group>"; };
 		75997ED1E9FAC56B9BEC3F0E /* carthageAdd.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageAdd.command; path = Scripts/Carthage/carthageAdd.command; sourceTree = "<group>"; };
+		E201A8422214200500258902 /* StaticString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StaticString+Utils.swift"; sourceTree = "<group>"; };
+		E201A8432214200500258902 /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
+		E201A8442214200500258902 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
+		E201A8452214200500258902 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		E201A8462214200500258902 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../LogsManager/Classes/Utils.swift; sourceTree = "<group>"; };
+		E201A8472214200500258902 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = ../../LogsManager/Classes/Log.swift; sourceTree = "<group>"; };
+		E201A84A2214200500258902 /* AppearanceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceCaptureViewController.swift; sourceTree = "<group>"; };
+		E201A84B2214200500258902 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		E201A84C2214200500258902 /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLogger.swift; sourceTree = "<group>"; };
+		E201A84D2214200500258902 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLogger.swift; sourceTree = "<group>"; };
+		E201A84E2214200500258902 /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		E201A8502214200500258902 /* BaseTextLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextLogger.swift; sourceTree = "<group>"; };
+		E201A8512214200500258902 /* BaseLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogFormatter.swift; sourceTree = "<group>"; };
+		E201A8522214200500258902 /* BaseAbstractLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAbstractLogger.swift; sourceTree = "<group>"; };
+		E201A8532214200500258902 /* DDLogFlag+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogFlag+Utils.swift"; path = "../../LogsManager/Classes/DDLogFlag+Utils.swift"; sourceTree = "<group>"; };
+		E201A8552214200500258902 /* ErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
+		E201A8562214200500258902 /* LoggersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggersManager.swift; path = ../../LogsManager/Classes/LoggersManager.swift; sourceTree = "<group>"; };
+		E201A8592214200500258902 /* DDLogMessage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogMessage+Utils.swift"; path = "../../LogsManager/Classes/DDLogMessage+Utils.swift"; sourceTree = "<group>"; };
+		E201A86D2214203C00258902 /* LogComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogComponent.swift; sourceTree = "<group>"; };
 		E202681322117D03004CC28A /* LogsManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogsManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202681622117D03004CC28A /* LogsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogsManager.h; sourceTree = "<group>"; };
 		E202681722117D03004CC28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E29A7BEA22133171002E9E66 /* StaticString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StaticString+Utils.swift"; sourceTree = "<group>"; };
-		E29A7BEB22133171002E9E66 /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
-		E29A7BEC22133171002E9E66 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
-		E29A7BED22133171002E9E66 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
-		E29A7BEF22133171002E9E66 /* ErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
-		E29A7BF022133171002E9E66 /* CrashlyticsBaseErrorLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashlyticsBaseErrorLogger.swift; sourceTree = "<group>"; };
-		E29A7BF322133171002E9E66 /* AppearanceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceCaptureViewController.swift; sourceTree = "<group>"; };
-		E29A7BF422133171002E9E66 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		E29A7BF522133171002E9E66 /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLogger.swift; sourceTree = "<group>"; };
-		E29A7BF622133171002E9E66 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLogger.swift; sourceTree = "<group>"; };
-		E29A7BF722133171002E9E66 /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
-		E29A7BF922133171002E9E66 /* BaseTextLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextLogger.swift; sourceTree = "<group>"; };
-		E29A7BFA22133171002E9E66 /* BaseLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogFormatter.swift; sourceTree = "<group>"; };
-		E29A7BFB22133171002E9E66 /* BaseAbstractLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAbstractLogger.swift; sourceTree = "<group>"; };
-		E29A7BFC22133171002E9E66 /* DDLogFlag+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogFlag+Utils.swift"; path = "../../../LogsManager/Classes/DDLogFlag+Utils.swift"; sourceTree = "<group>"; };
-		E29A7BFD22133171002E9E66 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = ../../../LogsManager/Classes/Log.swift; sourceTree = "<group>"; };
-		E29A7BFE22133171002E9E66 /* DDLogMessage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogMessage+Utils.swift"; path = "../../../LogsManager/Classes/DDLogMessage+Utils.swift"; sourceTree = "<group>"; };
-		E29A7BFF22133171002E9E66 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../LogsManager/Classes/Utils.swift; sourceTree = "<group>"; };
-		E29A7C0022133171002E9E66 /* LogComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogComponent.swift; path = ../../../LogComponent.swift; sourceTree = "<group>"; };
-		E29A7C0122133171002E9E66 /* LoggersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggersManager.swift; path = ../../../LogsManager/Classes/LoggersManager.swift; sourceTree = "<group>"; };
 		E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
 		E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +84,84 @@
 			name = _Carthage;
 			sourceTree = "<group>";
 		};
+		E201A84022141FF200258902 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E201A8542214200500258902 /* _Error Loggers */,
+				E201A8412214200500258902 /* _Extensions */,
+				E201A8572214200500258902 /* _LogComponent */,
+				E201A8482214200500258902 /* _Message Loggers */,
+				E201A8532214200500258902 /* DDLogFlag+Utils.swift */,
+				E201A8592214200500258902 /* DDLogMessage+Utils.swift */,
+				E201A8472214200500258902 /* Log.swift */,
+				E201A8562214200500258902 /* LoggersManager.swift */,
+				E201A8462214200500258902 /* Utils.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		E201A8412214200500258902 /* _Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E201A8422214200500258902 /* StaticString+Utils.swift */,
+				E201A8432214200500258902 /* Data+Utils.swift */,
+				E201A8442214200500258902 /* Array+Utils.swift */,
+				E201A8452214200500258902 /* String+Utils.swift */,
+			);
+			name = _Extensions;
+			path = ../../LogsManager/Classes/_Extensions;
+			sourceTree = "<group>";
+		};
+		E201A8482214200500258902 /* _Message Loggers */ = {
+			isa = PBXGroup;
+			children = (
+				E201A8492214200500258902 /* _Alert */,
+				E201A84F2214200500258902 /* _Base */,
+				E201A84E2214200500258902 /* ConsoleLogger.swift */,
+				E201A84D2214200500258902 /* NotificationLogger.swift */,
+			);
+			name = "_Message Loggers";
+			path = "../../LogsManager/Classes/_Message Loggers";
+			sourceTree = "<group>";
+		};
+		E201A8492214200500258902 /* _Alert */ = {
+			isa = PBXGroup;
+			children = (
+				E201A84A2214200500258902 /* AppearanceCaptureViewController.swift */,
+				E201A84B2214200500258902 /* AlertController.swift */,
+				E201A84C2214200500258902 /* AlertLogger.swift */,
+			);
+			path = _Alert;
+			sourceTree = "<group>";
+		};
+		E201A84F2214200500258902 /* _Base */ = {
+			isa = PBXGroup;
+			children = (
+				E201A8502214200500258902 /* BaseTextLogger.swift */,
+				E201A8512214200500258902 /* BaseLogFormatter.swift */,
+				E201A8522214200500258902 /* BaseAbstractLogger.swift */,
+			);
+			path = _Base;
+			sourceTree = "<group>";
+		};
+		E201A8542214200500258902 /* _Error Loggers */ = {
+			isa = PBXGroup;
+			children = (
+				E201A8552214200500258902 /* ErrorLogger.swift */,
+			);
+			name = "_Error Loggers";
+			path = "../../LogsManager/Classes/_Error Loggers";
+			sourceTree = "<group>";
+		};
+		E201A8572214200500258902 /* _LogComponent */ = {
+			isa = PBXGroup;
+			children = (
+				E201A86D2214203C00258902 /* LogComponent.swift */,
+			);
+			name = _LogComponent;
+			path = ../../LogsManager/Classes/_LogComponent;
+			sourceTree = "<group>";
+		};
 		E202680922117D03004CC28A = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +182,7 @@
 		E202681522117D03004CC28A /* LogsManager */ = {
 			isa = PBXGroup;
 			children = (
-				E29A7BE82213315E002E9E66 /* Source */,
+				E201A84022141FF200258902 /* Source */,
 				E29A7BE522133136002E9E66 /* _ */,
 			);
 			path = LogsManager;
@@ -119,76 +195,6 @@
 				E202681722117D03004CC28A /* Info.plist */,
 			);
 			name = _;
-			sourceTree = "<group>";
-		};
-		E29A7BE82213315E002E9E66 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				E29A7BEE22133171002E9E66 /* _Error Loggers */,
-				E29A7BE922133171002E9E66 /* _Extensions */,
-				E29A7BF122133171002E9E66 /* _Message Loggers */,
-				E29A7BFC22133171002E9E66 /* DDLogFlag+Utils.swift */,
-				E29A7BFE22133171002E9E66 /* DDLogMessage+Utils.swift */,
-				E29A7BFD22133171002E9E66 /* Log.swift */,
-				E29A7C0022133171002E9E66 /* LogComponent.swift */,
-				E29A7C0122133171002E9E66 /* LoggersManager.swift */,
-				E29A7BFF22133171002E9E66 /* Utils.swift */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		E29A7BE922133171002E9E66 /* _Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E29A7BEA22133171002E9E66 /* StaticString+Utils.swift */,
-				E29A7BEB22133171002E9E66 /* Data+Utils.swift */,
-				E29A7BEC22133171002E9E66 /* Array+Utils.swift */,
-				E29A7BED22133171002E9E66 /* String+Utils.swift */,
-			);
-			name = _Extensions;
-			path = ../../../_Extensions;
-			sourceTree = "<group>";
-		};
-		E29A7BEE22133171002E9E66 /* _Error Loggers */ = {
-			isa = PBXGroup;
-			children = (
-				E29A7BEF22133171002E9E66 /* ErrorLogger.swift */,
-				E29A7BF022133171002E9E66 /* CrashlyticsBaseErrorLogger.swift */,
-			);
-			name = "_Error Loggers";
-			path = "../../../_Error Loggers";
-			sourceTree = "<group>";
-		};
-		E29A7BF122133171002E9E66 /* _Message Loggers */ = {
-			isa = PBXGroup;
-			children = (
-				E29A7BF222133171002E9E66 /* _Alert */,
-				E29A7BF622133171002E9E66 /* NotificationLogger.swift */,
-				E29A7BF722133171002E9E66 /* ConsoleLogger.swift */,
-				E29A7BF822133171002E9E66 /* _Base */,
-			);
-			name = "_Message Loggers";
-			path = "../../../LogsManager/Classes/_Message Loggers";
-			sourceTree = "<group>";
-		};
-		E29A7BF222133171002E9E66 /* _Alert */ = {
-			isa = PBXGroup;
-			children = (
-				E29A7BF322133171002E9E66 /* AppearanceCaptureViewController.swift */,
-				E29A7BF422133171002E9E66 /* AlertController.swift */,
-				E29A7BF522133171002E9E66 /* AlertLogger.swift */,
-			);
-			path = _Alert;
-			sourceTree = "<group>";
-		};
-		E29A7BF822133171002E9E66 /* _Base */ = {
-			isa = PBXGroup;
-			children = (
-				E29A7BF922133171002E9E66 /* BaseTextLogger.swift */,
-				E29A7BFA22133171002E9E66 /* BaseLogFormatter.swift */,
-				E29A7BFB22133171002E9E66 /* BaseAbstractLogger.swift */,
-			);
-			path = _Base;
 			sourceTree = "<group>";
 		};
 		F1BD9B4AF93178888C20C526 /* Frameworks */ = {
@@ -280,26 +286,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E29A7C1222133171002E9E66 /* DDLogMessage+Utils.swift in Sources */,
-				E29A7C0622133171002E9E66 /* ErrorLogger.swift in Sources */,
-				E29A7C0522133171002E9E66 /* String+Utils.swift in Sources */,
-				E29A7C0822133171002E9E66 /* AppearanceCaptureViewController.swift in Sources */,
-				E29A7C0222133171002E9E66 /* StaticString+Utils.swift in Sources */,
-				E29A7C0922133171002E9E66 /* AlertController.swift in Sources */,
-				E29A7C1422133171002E9E66 /* LogComponent.swift in Sources */,
-				E29A7C0E22133171002E9E66 /* BaseLogFormatter.swift in Sources */,
-				E29A7C1122133171002E9E66 /* Log.swift in Sources */,
-				E29A7C1522133171002E9E66 /* LoggersManager.swift in Sources */,
-				E29A7C0422133171002E9E66 /* Array+Utils.swift in Sources */,
-				E29A7C0722133171002E9E66 /* CrashlyticsBaseErrorLogger.swift in Sources */,
-				E29A7C0F22133171002E9E66 /* BaseAbstractLogger.swift in Sources */,
-				E29A7C1322133171002E9E66 /* Utils.swift in Sources */,
-				E29A7C0A22133171002E9E66 /* AlertLogger.swift in Sources */,
-				E29A7C1022133171002E9E66 /* DDLogFlag+Utils.swift in Sources */,
-				E29A7C0C22133171002E9E66 /* ConsoleLogger.swift in Sources */,
-				E29A7C0B22133171002E9E66 /* NotificationLogger.swift in Sources */,
-				E29A7C0322133171002E9E66 /* Data+Utils.swift in Sources */,
-				E29A7C0D22133171002E9E66 /* BaseTextLogger.swift in Sources */,
+				E201A86C2214200500258902 /* DDLogMessage+Utils.swift in Sources */,
+				E201A85E2214200500258902 /* Utils.swift in Sources */,
+				E201A85D2214200500258902 /* String+Utils.swift in Sources */,
+				E201A8602214200500258902 /* AppearanceCaptureViewController.swift in Sources */,
+				E201A85F2214200500258902 /* Log.swift in Sources */,
+				E201A8612214200500258902 /* AlertController.swift in Sources */,
+				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
+				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,
+				E201A8692214200500258902 /* ErrorLogger.swift in Sources */,
+				E201A85A2214200500258902 /* StaticString+Utils.swift in Sources */,
+				E201A85C2214200500258902 /* Array+Utils.swift in Sources */,
+				E201A8672214200500258902 /* BaseAbstractLogger.swift in Sources */,
+				E201A86A2214200500258902 /* LoggersManager.swift in Sources */,
+				E201A8622214200500258902 /* AlertLogger.swift in Sources */,
+				E201A8682214200500258902 /* DDLogFlag+Utils.swift in Sources */,
+				E201A8642214200500258902 /* ConsoleLogger.swift in Sources */,
+				E201A8632214200500258902 /* NotificationLogger.swift in Sources */,
+				E201A85B2214200500258902 /* Data+Utils.swift in Sources */,
+				E201A8652214200500258902 /* BaseTextLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

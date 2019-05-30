@@ -32,6 +32,21 @@ cd "$base_dir"
 cd ..
 cd ..
 
+# Try one level up if didn't find Cartfile.
+if [ ! -f "Cartfile" ]; then
+    cd ..
+
+    if [ ! -f "Cartfile" ]; then
+        printf >&2 "\n${red_color}Unable to locate 'Cartfile'${no_color}\n\n"
+        exit 1
+    fi
+
+    scripts_dir="${PWD##*/}/Scripts/Carthage/"
+
+else
+    scripts_dir="Scripts/Carthage/"
+fi
+
 github_framework=$1
 git_mark=$2
 
@@ -98,10 +113,10 @@ else
 fi
 
 # Clone and build
-bash Scripts/Carthage/carthageUpdate.command $framework_name
+bash "$scripts_dir/carthageUpdate.command" $framework_name
 
 # Update project
-ruby "Scripts/Carthage/carthageAdd.rb" $framework_name
+ruby "$scripts_dir/carthageAdd.rb" $framework_name
 
 # Commit all changes
 echo "Commiting..."

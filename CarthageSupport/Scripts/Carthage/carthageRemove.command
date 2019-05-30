@@ -18,6 +18,21 @@ cd "$base_dir"
 cd ..
 cd ..
 
+# Try one level up if didn't find Cartfile.
+if [ ! -f "Cartfile" ]; then
+    cd ..
+
+    if [ ! -f "Cartfile" ]; then
+        printf >&2 "\n${red_color}Unable to locate 'Cartfile'${no_color}\n\n"
+        exit 1
+    fi
+
+    scripts_dir="${PWD##*/}/Scripts/Carthage/"
+
+else
+    scripts_dir="Scripts/Carthage/"
+fi
+
 # Requires `xcodeproj` installed - https://github.com/CocoaPods/Xcodeproj
 # sudo gem install xcodeproj
 hash xcodeproj 2>/dev/null || { printf >&2 "\n${red_color}Requires xcodeproj installed - 'sudo gem install xcodeproj'${no_color}\n\n"; exit 1; }
@@ -56,7 +71,7 @@ elif [[ $frameworks_list = *$framework_name* ]]; then
     echo ""
     echo "Removing $framework_name from project..."
 
-    ruby Scripts/Carthage/carthageRemove.rb $framework_name
+    ruby "$scripts_dir/carthageRemove.rb" $framework_name
 else
     printf >&2 "\n${red_color}Invalid framework name${no_color}\n\n"
     exit 1

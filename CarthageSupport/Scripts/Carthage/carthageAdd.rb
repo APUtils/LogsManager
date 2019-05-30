@@ -1,3 +1,4 @@
+require 'pathname'
 require_relative 'utils.rb'
 
 def addFrameworkToProject(project, framework_name)
@@ -5,7 +6,7 @@ def addFrameworkToProject(project, framework_name)
     framework_path = "Carthage/Build/iOS/" + framework_full_name
     
     if !File.exist?(framework_path)
-        abort("\nFramework doesn't exist.\n".red)
+        abort("\nFramework '#{framework_name}' doesnot exist at path '#{framework_path}'.\n".red)
     end
     
     # Adding to Frameworks folder and sorting
@@ -50,8 +51,17 @@ def addFrameworkWithDependenciesToProject(project, framework_name)
     end
     
     all_framework_names = getSharediOSFrameworkNames(framework_name)
-    if all_framework_names.empty?
-        abort("\nFramework wasn't found\n".red)
+    
+    if all_framework_names.to_s.empty?
+        print "\n"
+        framework_names_string = prompt "Unable to automatically locate frameworks. Please specify frameworks you want to add separating by space: "
+        
+        if framework_names_string.to_s.empty?
+            abort "Framework names are required".red
+        end
+        
+        framework_names = framework_names_string.split(" ")
+        framework_names.each { |framework_name| addFrameworkToProject(project, framework_name) }
         
     elsif all_framework_names.count == 1
         addFrameworkToProject(project, all_framework_names.first)
@@ -74,8 +84,19 @@ def addFrameworkWithDependenciesToProject(project, framework_name)
     end
     
     framework_project_path = getCarthageProjectPath(framework_name)
+    
+    if framework_project_path.to_s.empty?
+        return
+    end
+    
     project_dir = File.dirname(framework_project_path)
     framework_cartfile = Dir[project_dir + '/Cartfile'].first
+    
+    # Handle symlink case
+    if !framework_names_string.to_s.empty? && File.exist?(framework_cartfile) && File.symlink?(framework_cartfile)
+        framework_cartfile = Pathname.new(framework_cartfile).realpath
+    end
+    
     if !framework_cartfile.to_s.empty?
         data = File.read(framework_cartfile)
         unless data.nil?
@@ -96,7 +117,11 @@ project = Xcodeproj::Project.open(project_path)
 
 framework_name = ARGV[0]
 
-addFrameworkWithDependenciesToProject(project, framework_name)
+if framework_name.end_with?('.framework')
+    addFrameworkToProject(project, framework_name.gsub('.framework', ''))
+else
+    addFrameworkWithDependenciesToProject(project, framework_name)
+end
 
 # Save
 project.save

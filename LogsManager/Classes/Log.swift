@@ -14,7 +14,7 @@ import CocoaLumberjack
 /// Error log function. Also send error to crash tracking systems.
 /// - parameter reason: Error reason.
 public func logError(reason: @autoclosure () -> String, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-    logError(logComponents: nil, reason: reason, error: nil, data: nil, file: file, function: function, line: line)
+    logError(logComponents: nil, reason: reason(), error: nil, data: nil, file: file, function: function, line: line)
 }
 
 /// Error log function. Also send error to crash tracking systems.
@@ -25,14 +25,14 @@ public func logError(reason: @autoclosure () -> String,
               file: StaticString = #file,
               function: StaticString = #function,
               line: UInt = #line) {
-    logError(logComponents: nil, reason: reason, error: nil, data: data, file: file, function: function, line: line)
+    logError(logComponents: nil, reason: reason(), error: nil, data: data, file: file, function: function, line: line)
 }
 
 /// Error log function. Also send error to crash tracking systems.
 /// - parameter reason: Error reason.
 /// - parameter error: Error that happened.
 public func logError(reason: @autoclosure () -> String, error: Any?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-    logError(logComponents: nil, reason: reason, error: error, data: nil, file: file, function: function, line: line)
+    logError(logComponents: nil, reason: reason(), error: error, data: nil, file: file, function: function, line: line)
 }
 
 /// Error log function. Also send error to crash tracking systems.
@@ -48,7 +48,7 @@ public func logError(logComponents: [LogComponent]? = nil,
               function: StaticString = #function,
               line: UInt = #line) {
     
-    logError(logComponents: logComponents, reason: reason, error: error, data: data, flag: .error, file: file, function: function, line: line)
+    logError(logComponents: logComponents, reason: reason(), error: error, data: data, flag: .error, file: file, function: function, line: line)
 }
 
 /// Error log function.
@@ -65,7 +65,7 @@ public func logError(logComponents: [LogComponent]? = nil,
               function: StaticString = #function,
               line: UInt = #line) {
     
-    LoggersManager.shared.logError(logComponents: logComponents, reason: reason, error: error, data: data, flag: flag, file: file, function: function, line: line)
+    LoggersManager.shared.logError(logComponents: logComponents, reason: reason(), error: error, data: data, flag: flag, file: file, function: function, line: line)
 }
 
 /// Warning log function.
@@ -77,7 +77,7 @@ public func logWarning(logComponents: [LogComponent]? = nil,
                 function: StaticString = #function,
                 line: UInt = #line) {
     
-    logMessage(logComponents: logComponents, message: message, flag: .warning, file: file, function: function, line: line)
+    logMessage(logComponents: logComponents, message: message(), flag: .warning, file: file, function: function, line: line)
 }
 
 /// Info log function.
@@ -89,7 +89,7 @@ public func logInfo(logComponents: [LogComponent]? = nil,
              function: StaticString = #function,
              line: UInt = #line) {
     
-    logMessage(logComponents: logComponents, message: message, flag: .info, file: file, function: function, line: line)
+    logMessage(logComponents: logComponents, message: message(), flag: .info, file: file, function: function, line: line)
 }
 
 /// Debug log function.
@@ -101,7 +101,7 @@ public func logDebug(logComponents: [LogComponent]? = nil,
               function: StaticString = #function,
               line: UInt = #line) {
     
-    logMessage(logComponents: logComponents, message: message, flag: .debug, file: file, function: function, line: line)
+    logMessage(logComponents: logComponents, message: message(), flag: .debug, file: file, function: function, line: line)
 }
 
 /// Verbose log function. This level of logs usually is excessive but may be helpful in some cases.
@@ -113,7 +113,7 @@ public func logVerbose(logComponents: [LogComponent]? = nil,
                 function: StaticString = #function,
                 line: UInt = #line) {
     
-    logMessage(logComponents: logComponents, message: message, flag: .verbose, file: file, function: function, line: line)
+    logMessage(logComponents: logComponents, message: message(), flag: .verbose, file: file, function: function, line: line)
 }
 
 /// Message log function.
@@ -127,5 +127,5 @@ public func logMessage(logComponents: [LogComponent]? = nil,
                 function: StaticString = #function,
                 line: UInt = #line) {
     
-    LoggersManager.shared.logMessage(logComponents: logComponents, message: message, flag: flag, file: file, function: function, line: line)
+    LoggersManager.shared.logMessage(logComponents: logComponents, message: message(), flag: flag, file: file, function: function, line: line)
 }

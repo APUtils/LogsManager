@@ -10,7 +10,7 @@ import Foundation
 
 
 public extension String {
-    public init(_ staticString: StaticString) {
+    init(_ staticString: StaticString) {
         self = staticString.withUTF8Buffer {
             String(decoding: $0, as: UTF8.self)
         }

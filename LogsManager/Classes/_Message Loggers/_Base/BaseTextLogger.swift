@@ -23,7 +23,7 @@ public protocol BaseTextLogger: DDLogger {
 // ******************************* MARK: - Default Implementation
 
 public extension BaseTextLogger {
-    public func shouldLog(message: DDLogMessage) -> Bool {
+    func shouldLog(message: DDLogMessage) -> Bool {
         if let messageLogComponents = message.logComponents, let logComponents = logComponents {
             return logComponents.hasIntersection(with: messageLogComponents)
         } else {

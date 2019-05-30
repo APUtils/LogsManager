@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [2.0.0](https://github.com/APUtils/LogsManager/releases/tag/2.0.0)
+Released on 05/30/2019.
+
+#### Added
+- Swift 5 support
+  
+
 ## [1.0.0](https://github.com/APUtils/LogsManager/releases/tag/1.0.0)
 Released on 02/11/2019.
 

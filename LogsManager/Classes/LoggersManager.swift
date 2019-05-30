@@ -87,7 +87,7 @@ public final class LoggersManager {
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logMessage(logComponents: [LogComponent]? = nil, message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let logComponents = logComponents ?? detectLogComponent(file: file, function: function)
-        _DDLogMessage(message,
+        _DDLogMessage(message(),
                       level: dynamicLogLevel,
                       flag: flag,
                       context: 0,
@@ -107,7 +107,7 @@ public final class LoggersManager {
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logError(logComponents: [LogComponent]? = nil, reason: @autoclosure () -> String, error: Any?, data: [String: Any?]?, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let normalizedData = normalizeData(data)
-        errorLoggers.forEach { $0.log(reason: reason, error: error, data: normalizedData, file: file, function: function, line: line) }
+        errorLoggers.forEach { $0.log(reason: reason(), error: error, data: normalizedData, file: file, function: function, line: line) }
         
         let errorMessage: String
         let reason = reason()

@@ -57,11 +57,11 @@ extension LogComponent: Equatable {
 
 public extension LogComponent {
     /// Log component that is returned in a case when log component wasn't detected.
-    public static var unspecified: LogComponent {
+    static var unspecified: LogComponent {
         return LogComponent(name: "Unspecified", logName: "", isLogForThisComponent: { _, _ in false })
     }
     
-    public static var deinitialize: LogComponent {
+    static var deinitialize: LogComponent {
         return LogComponent(name: "Deinitialize", logName: "", isLogForThisComponent: { _, function in
             return String(function) == "deinit"
         })

@@ -11,11 +11,11 @@ import CocoaLumberjack
 
 
 public extension DDLogMessage {
-    public var logComponents: [LogComponent]? {
+    var logComponents: [LogComponent]? {
         return tag as? [LogComponent]
     }
     
-    public var flagLogString: String {
+    var flagLogString: String {
         return "\(flag) Log"
     }
 }

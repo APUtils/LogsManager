@@ -76,11 +76,11 @@ class ViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: nil) { _ in
-            g_sharedApplication.startBackgroundTaskIfNeeded()
+            g.sharedApplication.startBackgroundTaskIfNeeded()
             
-            g_asyncMain(2) {
+            g.asyncMain(2) {
                 logError(reason: "BG test", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]), data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])
-                g_sharedApplication.startBackgroundTaskIfNeeded()
+                g.sharedApplication.startBackgroundTaskIfNeeded()
             }
         }
     }

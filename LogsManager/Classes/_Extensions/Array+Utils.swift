@@ -17,7 +17,7 @@ extension Array where Element: Equatable {
     
     /// Helper method to remove all objects that are equal to passed one.
     public mutating func remove(_ element: Element) {
-        while let index = index(of: element) {
+        while let index = firstIndex(of: element) {
             remove(at: index)
         }
     }

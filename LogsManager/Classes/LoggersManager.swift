@@ -81,12 +81,11 @@ public final class LoggersManager {
     }
     
     /// Log message function.
-    /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter data: Data to attach to log message.
     /// - parameter message: Message to log.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logMessage(logComponents: [LogComponent]? = nil, message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let logComponents = logComponents ?? detectLogComponent(file: file, function: function)
+    public func logMessage(message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+        let logComponents = detectLogComponent(file: file, function: function)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
                       flag: flag,
@@ -100,12 +99,11 @@ public final class LoggersManager {
     }
     
     /// Log error function.
-    /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter reason: Reason of error.
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logError(logComponents: [LogComponent]? = nil, reason: @autoclosure () -> String, error: Any?, data: [String: Any?]?, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func logError(reason: @autoclosure () -> String, error: Any?, data: [String: Any?]?, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let normalizedData = normalizeData(data)
         errorLoggers.forEach { $0.log(reason: reason(), error: error, data: normalizedData, file: file, function: function, line: line) }
         
@@ -121,7 +119,7 @@ public final class LoggersManager {
             errorMessage = reason
         }
         
-        logMessage(logComponents: logComponents, message: errorMessage, flag: .error, file: file, function: function, line: line)
+        logMessage(message: errorMessage, flag: .error, file: file, function: function, line: line)
     }
     
     // ******************************* MARK: - Private Methods

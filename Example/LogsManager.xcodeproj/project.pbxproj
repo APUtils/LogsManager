@@ -53,6 +53,7 @@
 		C3630443A25D23FEB10C7D1E /* Pods-LogsManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LogsManager_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LogsManager_Tests/Pods-LogsManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E275E06C229FDFB600E9900C /* checkBuild.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = checkBuild.command; path = ../checkBuild.command; sourceTree = "<group>"; };
 		E275E06D229FDFEE00E9900C /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
+		E29BA92822A58B4500CC2532 /* carthageUpdate.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = ../CarthageSupport/Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		F4234A51A593A05ABCC020D3 /* Pods_LogsManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LogsManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B624E6F0D7F26EB275C54F /* .travis.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +159,7 @@
 				8D79263E443798F0207E29FE /* LICENSE */,
 				E275E06D229FDFEE00E9900C /* DEPLOY PROCESS.md */,
 				AFFCE5BC133D6A0CF02B7A73 /* LogsManager.podspec */,
+				E29BA92822A58B4500CC2532 /* carthageUpdate.command */,
 				E275E06C229FDFB600E9900C /* checkBuild.command */,
 				74C613CCACCE85F3000A7B61 /* podCheck.command */,
 				0547507C77930DC89305EB84 /* podPush.command */,

@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [3.0.1](https://github.com/APUtils/LogsManager/releases/tag/3.0.1)
+Released on 06/03/2019.
+
+#### Added
+- Log components simple cache
+
+
 ## [3.0.0](https://github.com/APUtils/LogsManager/releases/tag/3.0.0)
 Released on 06/03/2019.
 

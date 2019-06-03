@@ -83,11 +83,18 @@ class ViewController: UIViewController {
                 g.sharedApplication.startBackgroundTaskIfNeeded()
             }
         }
+        
+        testSameLine()
+        testSameLine()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         logDebug(message: "viewDidAppear called")
+    }
+    
+    private func testSameLine() {
+        logDebug(message: "Test same line")
     }
 }

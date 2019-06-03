@@ -21,3 +21,21 @@ public extension StaticString {
         return fileName
     }
 }
+
+extension StaticString: Equatable {
+    public static func == (lhs: StaticString, rhs: StaticString) -> Bool {
+        if lhs.hasPointerRepresentation, rhs.hasPointerRepresentation, lhs.utf8Start == rhs.utf8Start {
+            return true
+        } else if lhs.utf8CodeUnitCount != rhs.utf8CodeUnitCount {
+            return false
+        } else {
+            return String(lhs) == String(rhs)
+        }
+    }
+}
+
+extension StaticString: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(String(self))
+    }
+}

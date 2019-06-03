@@ -27,6 +27,7 @@ public final class LoggersManager {
     private var logComponents: [LogComponent] = []
     private var messageLoggers: [BaseTextLogger] = []
     private var errorLoggers: [ErrorLogger] = []
+    private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     
     // ******************************* MARK: - Initialization and Setup
     
@@ -53,6 +54,7 @@ public final class LoggersManager {
         }
         
         logComponents.append(logComponent)
+        cachedComponents = [:]
     }
     
     /// Uregisters log component from detection
@@ -63,6 +65,7 @@ public final class LoggersManager {
         }
         
         logComponents.remove(logComponent)
+        cachedComponents = [:]
     }
     
     /// Adds text logger
@@ -85,7 +88,7 @@ public final class LoggersManager {
     /// - parameter message: Message to log.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logMessage(message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let logComponents = detectLogComponent(file: file, function: function)
+        let logComponents = detectLogComponent(file: file, function: function, line: line)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
                       flag: flag,
@@ -124,13 +127,21 @@ public final class LoggersManager {
     
     // ******************************* MARK: - Private Methods
     
-    private func detectLogComponent(file: StaticString, function: StaticString) -> [LogComponent] {
+    private func detectLogComponent(file: StaticString, function: StaticString, line: UInt) -> [LogComponent] {
+        // Return hash if we have
+        let key = ComponentsKey(file: file, function: function, line: line)
+        if let cachedComponents = cachedComponents[key] {
+            return cachedComponents
+        }
+        
         var components: [LogComponent] = logComponents
             .filter { $0.isLogForThisComponent(file, function) }
         
         if components.isEmpty {
             components.append(.unspecified)
         }
+        
+        cachedComponents[key] = components
         
         return components
     }
@@ -154,4 +165,10 @@ public final class LoggersManager {
         
         return normalizedData
     }
+}
+
+private struct ComponentsKey: Equatable, Hashable {
+    let file: StaticString
+    let function: StaticString
+    let line: UInt
 }

@@ -135,7 +135,7 @@ public final class LoggersManager {
         }
         
         var components: [LogComponent] = logComponents
-            .filter { $0.isLogForThisComponent(file, function) }
+            .filter { $0.isLogForThisComponent(String(file), String(function)) }
         
         if components.isEmpty {
             components.append(.unspecified)

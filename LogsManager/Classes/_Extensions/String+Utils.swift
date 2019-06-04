@@ -16,3 +16,18 @@ public extension String {
         }
     }
 }
+
+public extension String {
+    /// Helper method to get filename from `file` parameter that is a file path.
+    /// - parameters:
+    ///   - filePath: File path that is passed through `#file` compile directrive as default parameter.
+    static func getFileName(filePath: String) -> String {
+        var fileName = URL(fileURLWithPath: filePath).lastPathComponent
+        fileName = fileName
+            .replacingOccurrences(of: ".swift", with: "")
+            .replacingOccurrences(of: ".m", with: "")
+            .replacingOccurrences(of: ".mm", with: "")
+        
+        return fileName
+    }
+}

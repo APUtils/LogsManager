@@ -17,14 +17,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vcComponent = LogComponent(name: "ViewController", logName: "VC") { file, _ in
-            let fileName = StaticString.getFileName(from: file)
+        let vcComponent = LogComponent(name: "ViewController", logName: "VC") { filePath, _ in
+            let fileName = String.getFileName(filePath: filePath)
             return fileName == "ViewController"
         }
         LoggersManager.shared.registerLogComponent(vcComponent)
         
         let didAppearComponent = LogComponent(name: "Did Appear", logName: "viewDidAppear") { _, function in
-            return String(function).hasPrefix("viewDidAppear")
+            return function.hasPrefix("viewDidAppear")
         }
         LoggersManager.shared.registerLogComponent(didAppearComponent)
         

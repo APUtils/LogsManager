@@ -13,7 +13,7 @@ public struct LogComponent {
     
     // ******************************* MARK: - Types
     
-    public typealias LogComponentDetection = (_ file: StaticString, _ function: StaticString) -> Bool
+    public typealias LogComponentDetection = (_ file: String, _ function: String) -> Bool
     
     // ******************************* MARK: - Public Properties
     

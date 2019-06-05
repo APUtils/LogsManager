@@ -31,6 +31,7 @@
 		E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 		E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791022A8069800DECBD8 /* Collection+Utils.swift */; };
 		E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791222A812B500DECBD8 /* FileLogger.swift */; };
+		E2E0791B22A825E000DECBD8 /* BaseFileLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		E2E0791022A8069800DECBD8 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
 		E2E0791222A812B500DECBD8 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
+		E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFileLogFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,9 +145,10 @@
 		E201A84F2214200500258902 /* _Base */ = {
 			isa = PBXGroup;
 			children = (
-				E201A8502214200500258902 /* BaseTextLogger.swift */,
-				E201A8512214200500258902 /* BaseLogFormatter.swift */,
 				E201A8522214200500258902 /* BaseAbstractLogger.swift */,
+				E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */,
+				E201A8512214200500258902 /* BaseLogFormatter.swift */,
+				E201A8502214200500258902 /* BaseTextLogger.swift */,
 			);
 			path = _Base;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				E201A85E2214200500258902 /* Utils.swift in Sources */,
 				E201A85D2214200500258902 /* String+Utils.swift in Sources */,
 				E201A8602214200500258902 /* AppearanceCaptureViewController.swift in Sources */,
+				E2E0791B22A825E000DECBD8 /* BaseFileLogFormatter.swift in Sources */,
 				E201A85F2214200500258902 /* Log.swift in Sources */,
 				E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */,
 				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,

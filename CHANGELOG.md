@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [4.1.0](https://github.com/APUtils/LogsManager/releases/tag/4.1.0)
+Released on 06/05/2019.
+
+#### Changed
+- Different message format for file logs to simplify working with them using stream processing
+
+#### Removed
+- Removed newLinesSeparation for file logger
+
+
 ## [4.0.1](https://github.com/APUtils/LogsManager/releases/tag/4.0.1)
 Released on 06/05/2019.
 

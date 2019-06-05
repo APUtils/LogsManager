@@ -15,12 +15,10 @@ public final class FileLogger: DDFileLogger, BaseTextLogger {
     
     public let logLevel: DDLogLevel
     public var mode: LoggerMode
-    public let newLinesSeparation: Bool
     
-    public required init(mode: LoggerMode, logLevel: DDLogLevel, newLinesSeparation: Bool, logsDirectory: String? = nil) {
+    public required init(mode: LoggerMode, logLevel: DDLogLevel, logsDirectory: String? = nil) {
         self.logLevel = logLevel
         self.mode = mode
-        self.newLinesSeparation = newLinesSeparation
         
         let fileManager: DDLogFileManagerDefault
         if let logsDirectory = logsDirectory {
@@ -50,16 +48,13 @@ public final class FileLogger: DDFileLogger, BaseTextLogger {
     }
     
     private func setup() {
-        logFormatter = BaseLogFormatter(mode: mode)
+        logFormatter = BaseFileLogFormatter(mode: mode)
     }
     
     // ******************************* MARK: - DDFileLogger Overrides
     
     override public func log(message logMessage: DDLogMessage) {
         guard shouldLog(message: logMessage) else { return }
-        
-        if newLinesSeparation { super.log(message: BaseLogFormatter.emptyLineMessage) }
         super.log(message: logMessage)
-        if newLinesSeparation { super.log(message: BaseLogFormatter.emptyLineMessage) }
     }
 }

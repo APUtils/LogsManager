@@ -44,6 +44,19 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
         self.mode = mode
     }
     
+    // ******************************* MARK: - Open Functions
+    
+    /// Prefix to append to message depending on `flag`.
+    open func messagePrefix(flag: DDLogFlag) -> String {
+        if flag == .error {
+            return "[ ** ERROR ** ]> "
+        } else if flag == .warning {
+            return "[ * WARNING * ]> "
+        } else {
+            return ""
+        }
+    }
+    
     // ******************************* MARK: - DDLogFormatter
     
     open func format(message logMessage: DDLogMessage) -> String? {
@@ -79,15 +92,7 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
             componentsString = " | \(logComponentLogTexts.joined(separator: " | "))"
         }
         
-        let prefixString: String
-        if logMessage.flag == .error {
-            prefixString = "[ ** ERROR ** ] "
-        } else if logMessage.flag == .warning {
-            prefixString = "[ * WARNING * ] "
-        } else {
-            prefixString = ""
-        }
-        
+        let prefixString = messagePrefix(flag: logMessage.flag)
         let timeString = BaseLogFormatter.dateFormatter?.string(from: logMessage.timestamp) ?? ""
         let logString = "\(timeString)\(componentsString) | \(prefixString)\(logMessage.message)"
         

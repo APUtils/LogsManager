@@ -38,8 +38,8 @@ public final class ConsoleLogger: DDTTYLogger, BaseTextLogger {
     override public func log(message logMessage: DDLogMessage) {
         guard shouldLog(message: logMessage) else { return }
         
-        if newLinesSeparation { print() }
+        if newLinesSeparation { super.log(message: BaseLogFormatter.emptyLineMessage) }
         super.log(message: logMessage)
-        if newLinesSeparation { print() }
+        if newLinesSeparation { super.log(message: BaseLogFormatter.emptyLineMessage) }
     }
 }

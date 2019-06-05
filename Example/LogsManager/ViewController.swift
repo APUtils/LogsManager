@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Logs directory: \(c.documentsDirectoryUrl.path)/LogsManager/")
+        
         let vcComponent = LogComponent(name: "ViewController", logName: "VC") { filePath, _ in
             let fileName = String.getFileName(filePath: filePath)
             return fileName == "ViewController"
@@ -28,10 +30,10 @@ class ViewController: UIViewController {
         }
         LoggersManager.shared.registerLogComponent(didAppearComponent)
         
-        let fileLogger = FileLogger(mode: .all, logLevel: .verbose, newLinesSeparation: true)
+        let fileLogger = FileLogger(mode: .all, logLevel: .verbose)
         LoggersManager.shared.addTextLogger(fileLogger)
         
-        let logger = ConsoleLogger(mode: .specificComponents([vcComponent]), logLevel: .verbose, newLinesSeparation: false)
+        let logger = ConsoleLogger(mode: .specificComponents([vcComponent]), logLevel: .verbose, newLinesSeparation: true)
         LoggersManager.shared.addTextLogger(logger)
         logDebug(message: "Test1")
         

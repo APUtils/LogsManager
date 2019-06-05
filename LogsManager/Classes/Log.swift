@@ -35,21 +35,6 @@ public func logError(reason: @autoclosure () -> String, error: Any?, file: Stati
     logError(reason: reason(), error: error, data: nil, file: file, function: function, line: line)
 }
 
-/// Error log function. Also send error to crash tracking systems.
-/// - parameter logComponent: Component this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter reason: Error reason.
-/// - parameter error: Error that happened.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
-public func logError(reason: @autoclosure () -> String,
-              error: Any?,
-              data: [String: Any?]?,
-              file: StaticString = #file,
-              function: StaticString = #function,
-              line: UInt = #line) {
-    
-    logError(reason: reason(), error: error, data: data, flag: .error, file: file, function: function, line: line)
-}
-
 /// Error log function.
 /// - parameter logComponent: Component this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 /// - parameter reason: Message to log.
@@ -58,12 +43,11 @@ public func logError(reason: @autoclosure () -> String,
 public func logError(reason: @autoclosure () -> String,
               error: Any?,
               data: [String: Any?]?,
-              flag: DDLogFlag,
               file: StaticString = #file,
               function: StaticString = #function,
               line: UInt = #line) {
     
-    LoggersManager.shared.logError(reason: reason(), error: error, data: data, flag: flag, file: file, function: function, line: line)
+    LoggersManager.shared.logError(reason: reason(), error: error, data: data, file: file, function: function, line: line)
 }
 
 /// Warning log function.

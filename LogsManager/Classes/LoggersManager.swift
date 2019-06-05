@@ -106,7 +106,7 @@ public final class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logError(reason: @autoclosure () -> String, error: Any?, data: [String: Any?]?, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func logError(reason: @autoclosure () -> String, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let normalizedData = normalizeData(data)
         errorLoggers.forEach { $0.log(reason: reason(), error: error, data: normalizedData, file: file, function: function, line: line) }
         

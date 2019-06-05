@@ -30,6 +30,7 @@
 		E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
 		E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 		E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791022A8069800DECBD8 /* Collection+Utils.swift */; };
+		E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791222A812B500DECBD8 /* FileLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
 		E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		E2E0791022A8069800DECBD8 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
+		E2E0791222A812B500DECBD8 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				E201A8492214200500258902 /* _Alert */,
 				E201A84F2214200500258902 /* _Base */,
 				E201A84E2214200500258902 /* ConsoleLogger.swift */,
+				E2E0791222A812B500DECBD8 /* FileLogger.swift */,
 				E201A84D2214200500258902 /* NotificationLogger.swift */,
 			);
 			name = "_Message Loggers";
@@ -296,6 +299,7 @@
 				E201A8602214200500258902 /* AppearanceCaptureViewController.swift in Sources */,
 				E201A85F2214200500258902 /* Log.swift in Sources */,
 				E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */,
+				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,
 				E201A8612214200500258902 /* AlertController.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
 				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,

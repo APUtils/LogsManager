@@ -22,6 +22,18 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
         return dateFormatter
     }()
     
+    /// Message that if passed won't be formatted and will be add to logs as an empty line
+    public static let emptyLineMessage: DDLogMessage = DDLogMessage(message: "",
+                                                                    level: .all,
+                                                                    flag: .verbose,
+                                                                    context: 0,
+                                                                    file: "",
+                                                                    function: nil,
+                                                                    line: 0,
+                                                                    tag: nil,
+                                                                    options: [],
+                                                                    timestamp: nil)
+    
     // ******************************* MARK: - Private Properties
     
     private let mode: LoggerMode
@@ -35,6 +47,10 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     // ******************************* MARK: - DDLogFormatter
     
     open func format(message logMessage: DDLogMessage) -> String? {
+        if logMessage === BaseLogFormatter.emptyLineMessage {
+            return " "
+        }
+        
         let logComponents: [LogComponent]
         if let messageLogComponents = logMessage.logComponents {
             switch mode {

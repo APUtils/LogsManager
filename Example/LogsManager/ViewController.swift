@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         }
         LoggersManager.shared.registerLogComponent(didAppearComponent)
         
+        let fileLogger = FileLogger(mode: .all, logLevel: .verbose, newLinesSeparation: true)
+        LoggersManager.shared.addTextLogger(fileLogger)
+        
         let logger = ConsoleLogger(mode: .specificComponents([vcComponent]), logLevel: .verbose, newLinesSeparation: false)
         LoggersManager.shared.addTextLogger(logger)
         logDebug(message: "Test1")

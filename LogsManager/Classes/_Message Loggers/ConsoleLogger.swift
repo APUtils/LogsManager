@@ -16,12 +16,12 @@ public final class ConsoleLogger: DDTTYLogger, BaseTextLogger {
     // ******************************* MARK: - BaseTextLogger
     
     public let logLevel: DDLogLevel
-    public var logComponents: [LogComponent]?
+    public var mode: LoggerMode
     public let newLinesSeparation: Bool
     
-    public required init(logComponents: [LogComponent]?, logLevel: DDLogLevel, newLinesSeparation: Bool) {
+    public required init(mode: LoggerMode, logLevel: DDLogLevel, newLinesSeparation: Bool) {
         self.logLevel = logLevel
-        self.logComponents = logComponents
+        self.mode = mode
         self.newLinesSeparation = newLinesSeparation
         
         super.init()
@@ -30,7 +30,7 @@ public final class ConsoleLogger: DDTTYLogger, BaseTextLogger {
     }
     
     private func setup() {
-        logFormatter = BaseLogFormatter(logComponents: logComponents)
+        logFormatter = BaseLogFormatter(mode: mode)
     }
     
     // ******************************* MARK: - DDLogger Overrides

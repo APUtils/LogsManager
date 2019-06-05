@@ -18,11 +18,11 @@ open class BaseAbstractLogger: DDAbstractLogger, BaseTextLogger {
     // ******************************* MARK: - BaseTextLogger
     
     public let logLevel: DDLogLevel
-    public let logComponents: [LogComponent]?
+    public let mode: LoggerMode
     
-    required public init(logComponents: [LogComponent]?, logLevel: DDLogLevel) {
+    required public init(mode: LoggerMode, logLevel: DDLogLevel) {
+        self.mode = mode
         self.logLevel = logLevel
-        self.logComponents = logComponents
         
         super.init()
         
@@ -30,7 +30,7 @@ open class BaseAbstractLogger: DDAbstractLogger, BaseTextLogger {
     }
     
     private func setup() {
-        logFormatter = BaseLogFormatter(logComponents: logComponents)
+        logFormatter = BaseLogFormatter(mode: mode)
     }
     
     // ******************************* MARK: - DDLogger Overrides

@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         }
         LoggersManager.shared.registerLogComponent(didAppearComponent)
         
-        let logger = ConsoleLogger(logComponents: [vcComponent], logLevel: .verbose, newLinesSeparation: false)
+        let logger = ConsoleLogger(mode: .specificComponents([vcComponent]), logLevel: .verbose, newLinesSeparation: false)
         LoggersManager.shared.addTextLogger(logger)
         logDebug(message: "Test1")
         
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         LoggersManager.shared.unregisterLogComponent(vcComponent)
         logDebug(message: "Test4")
         
-        let allLogger = ConsoleLogger(logComponents: nil, logLevel: .verbose, newLinesSeparation: false)
+        let allLogger = ConsoleLogger(mode: .all, logLevel: .verbose, newLinesSeparation: false)
         LoggersManager.shared.addTextLogger(allLogger)
         logDebug(message: "Test5")
         
@@ -55,17 +55,17 @@ class ViewController: UIViewController {
         LoggersManager.shared.registerLogComponent(allLogComponent4)
         logDebug(message: "Test7")
         
-        let all3Logger = ConsoleLogger(logComponents: [allLogComponent3], logLevel: .warning, newLinesSeparation: false)
+        let all3Logger = ConsoleLogger(mode: .specificComponents([allLogComponent3]), logLevel: .warning, newLinesSeparation: false)
         LoggersManager.shared.addTextLogger(all3Logger)
         logInfo(message: "Test 8")
         logWarning(message: "Test 9")
         logError(reason: "Test 10", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]), data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])
         
-        let allAlertLogger = AlertLogger(logComponents: nil, logLevel: .error)
+        let allAlertLogger = AlertLogger(mode: .all, logLevel: .error)
         LoggersManager.shared.addTextLogger(allAlertLogger)
         
         if #available(iOS 10.0, *) {
-            let allNotificationsLogger = NotificationLogger(logComponents: nil, logLevel: .error)
+            let allNotificationsLogger = NotificationLogger(mode: .all, logLevel: .error)
             LoggersManager.shared.addTextLogger(allNotificationsLogger)
         }
         

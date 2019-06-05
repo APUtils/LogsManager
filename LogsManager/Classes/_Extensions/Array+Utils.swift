@@ -15,15 +15,27 @@ extension Array where Element: Equatable {
         return contains { array.contains($0) }
     }
     
+    /// Returns intersection array.
+    func intersection(with array: [Element]) -> [Element] {
+        return filter { !array.contains($0) }
+    }
+    
     /// Helper method to remove all objects that are equal to passed one.
-    public mutating func remove(_ element: Element) {
+    mutating func remove(_ element: Element) {
         while let index = firstIndex(of: element) {
             remove(at: index)
         }
     }
     
     /// Helper method to remove all objects that are equal to those contained in `contentsOf` array.
-    public mutating func remove(contentsOf: [Element]) {
+    mutating func remove(contentsOf: [Element]) {
         contentsOf.forEach { remove($0) }
+    }
+    
+    /// Helper method to remove all objects that are equal to those contained in `contentsOf` array.
+    func removing(contentsOf: [Element]) -> [Element] {
+        var filtered = self
+        contentsOf.forEach { filtered.remove($0) }
+        return filtered
     }
 }

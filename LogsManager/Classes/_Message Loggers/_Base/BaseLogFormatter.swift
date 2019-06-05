@@ -24,28 +24,32 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     
     // ******************************* MARK: - Private Properties
     
-    private let logComponents: [LogComponent]?
+    private let mode: LoggerMode
     
     // ******************************* MARK: - Initialization and Setup
     
-    public required init(logComponents: [LogComponent]?) {
-        self.logComponents = logComponents
+    public required init(mode: LoggerMode) {
+        self.mode = mode
     }
     
     // ******************************* MARK: - DDLogFormatter
     
     open func format(message logMessage: DDLogMessage) -> String? {
         let logComponents: [LogComponent]
-        if let _logComponents = self.logComponents {
-            // Search for intersections for clearer logs
-            logComponents = logMessage.logComponents?
-                .filter { messageLogComponent in
-                    _logComponents.contains { $0.name == messageLogComponent.name }
-                } ?? []
-            
-        } else {
+        if let messageLogComponents = logMessage.logComponents {
+            switch mode {
             // Use all components from message
-            logComponents = logMessage.logComponents ?? []
+            case .all: logComponents = messageLogComponents
+                
+            // Search for intersections for clearer logs
+            case .specificComponents(let _logComponents): logComponents = messageLogComponents.intersection(with: _logComponents)
+                
+            // Filter ignored components from message components
+            case .ignoreComponents(let _logComponents): logComponents = messageLogComponents.removing(contentsOf: _logComponents)
+            }
+        } else {
+            // Message doesn't have any components.
+            logComponents = []
         }
         
         let logComponentLogTexts: [String] = logComponents

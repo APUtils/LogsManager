@@ -49,9 +49,9 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     /// Prefix to append to message depending on `flag`.
     open func messagePrefix(flag: DDLogFlag) -> String {
         if flag == .error {
-            return "[ ** ERROR ** ]> "
+            return "[ ** ERROR ** ] "
         } else if flag == .warning {
-            return "[ * WARNING * ]> "
+            return "[ * WARNING * ] "
         } else {
             return ""
         }

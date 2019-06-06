@@ -64,6 +64,9 @@ class ViewController: UIViewController {
         LoggersManager.shared.addTextLogger(all3Logger)
         logInfo(message: "Test 8")
         logWarning(message: "Test 9")
+        
+        logError(reason: "Test 9.1", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]))
+        logError(reason: "Test 9.2", data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])
         logError(reason: "Test 10", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]), data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])
         
         let allAlertLogger = AlertLogger(mode: .all, logLevel: .error)

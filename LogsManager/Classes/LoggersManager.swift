@@ -110,18 +110,20 @@ public final class LoggersManager {
         let normalizedData = normalizeData(data)
         errorLoggers.forEach { $0.log(reason: reason(), error: error, data: normalizedData, file: file, function: function, line: line) }
         
-        let errorMessage: String
         let reason = reason()
-        if let normalizedData = normalizedData {
-            if let error = error {
-                errorMessage = "\(reason)\n\(error)\n\(normalizedData)"
-            } else {
-                errorMessage = "\(reason)\n\(normalizedData)"
-            }
-        } else {
-            errorMessage = reason
+        
+        var errorMessageComponents: [String] = []
+        errorMessageComponents.append(reason)
+        
+        if let error = error {
+            errorMessageComponents.append("\(error)")
         }
         
+        if let normalizedData = normalizedData {
+            errorMessageComponents.append("\(normalizedData)")
+        }
+        
+        let errorMessage = errorMessageComponents.joined(separator: "\n")
         logMessage(message: errorMessage, flag: .error, file: file, function: function, line: line)
     }
     

@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [4.1.3](https://github.com/APUtils/LogsManager/releases/tag/4.1.3)
+Released on 06/26/2019.
+
+#### Fixed
+- Concurrency crash fix
+
+
 ## [4.1.2](https://github.com/APUtils/LogsManager/releases/tag/4.1.2)
 Released on 06/24/2019.
 

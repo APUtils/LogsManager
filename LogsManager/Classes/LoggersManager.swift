@@ -28,6 +28,7 @@ public final class LoggersManager {
     private var messageLoggers: [BaseTextLogger] = []
     private var errorLoggers: [ErrorLogger] = []
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
+    private var cachedComponentsLock = NSLock()
     
     // ******************************* MARK: - Initialization and Setup
     
@@ -143,7 +144,9 @@ public final class LoggersManager {
             components.append(.unspecified)
         }
         
+        cachedComponentsLock.lock()
         cachedComponents[key] = components
+        cachedComponentsLock.unlock()
         
         return components
     }

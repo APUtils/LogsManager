@@ -28,7 +28,7 @@ public final class LoggersManager {
     private var messageLoggers: [BaseTextLogger] = []
     private var errorLoggers: [ErrorLogger] = []
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
-    private var cachedComponentsLock = NSLock()
+    private let queue = DispatchQueue(label: "LoggersManager", attributes: .concurrent)
     
     // ******************************* MARK: - Initialization and Setup
     
@@ -133,8 +133,16 @@ public final class LoggersManager {
     private func detectLogComponent(file: StaticString, function: StaticString, line: UInt) -> [LogComponent] {
         // Return hash if we have
         let key = ComponentsKey(file: file, function: function, line: line)
-        if let cachedComponents = cachedComponents[key] {
-            return cachedComponents
+        let existingCachedComponents: [LogComponent]? = queue.sync {
+            if let cachedComponents = cachedComponents[key] {
+                return cachedComponents
+            } else {
+                return nil
+            }
+        }
+        
+        if let existingCachedComponents = existingCachedComponents {
+            return existingCachedComponents
         }
         
         var components: [LogComponent] = logComponents
@@ -144,9 +152,9 @@ public final class LoggersManager {
             components.append(.unspecified)
         }
         
-        cachedComponentsLock.lock()
-        cachedComponents[key] = components
-        cachedComponentsLock.unlock()
+        queue.async(flags: .barrier) {
+            self.cachedComponents[key] = components
+        }
         
         return components
     }

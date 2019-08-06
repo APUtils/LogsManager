@@ -6,24 +6,27 @@
 //  Copyright © 2018 Anton Plebanovich. All rights reserved.
 //
 
+import CocoaLumberjack
 import Foundation
 
-import CocoaLumberjack
-
-
+/// Logger mode.
 public enum LoggerMode {
+    /// Log everything
     case all
+    
+    /// Log specific components only
     case specificComponents([LogComponent])
+    
+    /// Log everything except ignored components
     case ignoreComponents([LogComponent])
 }
-
 
 /// Minimal requirements for logger
 public protocol BaseTextLogger: DDLogger {
     /// Level of logs that logger logs
     var logLevel: DDLogLevel { get }
     
-    /// Components that logger logs. If `nil` logger will log all logs.
+    /// Mode in which logger works.
     var mode: LoggerMode { get }
 }
 

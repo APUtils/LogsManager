@@ -63,7 +63,7 @@ public extension LogComponent {
     
     /// Log component for logs in `deinit` method.
     static var deinitialize: LogComponent {
-        return LogComponent(name: "Deinitialize", logName: "", isLogForThisComponent: { _, function in
+        return LogComponent(name: "Deinitialize", logName: "D", isLogForThisComponent: { _, function in
             return String(function) == "deinit"
         })
     }

@@ -88,7 +88,7 @@ public final class LoggersManager {
     /// - parameter data: Data to attach to log message.
     /// - parameter message: Message to log.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logMessage(message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func logMessage(_ message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let logComponents = detectLogComponent(file: file, function: function, line: line)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
@@ -103,18 +103,18 @@ public final class LoggersManager {
     }
     
     /// Log error function.
-    /// - parameter reason: Reason of error.
+    /// - parameter message: Message to log.
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logError(reason: @autoclosure () -> String, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func logError(_ message: @autoclosure () -> String, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let normalizedData = normalizeData(data)
-        errorLoggers.forEach { $0.log(reason: reason(), error: error, data: normalizedData, file: file, function: function, line: line) }
+        errorLoggers.forEach { $0.log(reason: message(), error: error, data: normalizedData, file: file, function: function, line: line) }
         
-        let reason = reason()
+        let message = message()
         
         var errorMessageComponents: [String] = []
-        errorMessageComponents.append(reason)
+        errorMessageComponents.append(message)
         
         if let error = error {
             errorMessageComponents.append("\(error)")
@@ -125,7 +125,7 @@ public final class LoggersManager {
         }
         
         let errorMessage = errorMessageComponents.joined(separator: "\n")
-        logMessage(message: errorMessage, flag: .error, file: file, function: function, line: line)
+        logMessage(errorMessage, flag: .error, file: file, function: function, line: line)
     }
     
     // ******************************* MARK: - Private Methods

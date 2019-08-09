@@ -21,7 +21,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/LogsManager" ~> 4.0
+github "APUtils/LogsManager" ~> 5.0
 ```
 
 #### CocoaPods
@@ -30,7 +30,7 @@ LogsManager is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'LogsManager', '~> 4.0'
+pod 'LogsManager', '~> 5.0'
 ```
 
 ## Usage
@@ -62,10 +62,10 @@ LoggersManager.shared.addTextLogger(allAlertLogger)
 
 You can use convenience global function to leave logs:
 ```swift
-logInfo(message: "Staring network request to: \(request.url)")
-logDebug(message: "Received data")
-logVerbose(message: "Data payload: \(data)")
-logError(reason: "Got error response", error: error, data: ["request": request])
+logInfo("Staring network request to: \(request.url)")
+logDebug("Received data")
+logVerbose("Data payload: \(data)")
+logError("Got error response", error: error, data: ["request": request])
 ```
 
 See example and test projects for more details.

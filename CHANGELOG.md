@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [5.0.0](https://github.com/APUtils/LogsManager/releases/tag/5.0.0)
+Released on 08/09/2019.
+
+#### Added
+- Logger mode documentation
+- Deinitialize component doc
+
+#### Changed
+- Log name for deinit component
+- Removed first parameter name for all global log functions
+
+
 ## [4.1.4](https://github.com/APUtils/LogsManager/releases/tag/4.1.4)
 Released on 07/02/2019.
 

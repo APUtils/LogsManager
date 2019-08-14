@@ -50,7 +50,7 @@ open class BaseAbstractLogger: DDAbstractLogger, BaseTextLogger {
     
     // ******************************* MARK: - Public Methods
     
-    /// Override point. Message validation already done.
+    /// Abstract method that should be overridden. Message validation already done. You shouldn't call super in your implementation.
     open func process(message logMessage: DDLogMessage, formattedMessage: String) {
         assertionFailure("Should be overrided in child class")
     }

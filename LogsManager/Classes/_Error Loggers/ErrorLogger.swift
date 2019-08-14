@@ -11,5 +11,5 @@ import Foundation
 
 /// Error logger protocol
 public protocol ErrorLogger {
-    func log(reason: @autoclosure () -> String, error: Any?, data: [String: String]?, file: StaticString, function: StaticString, line: UInt)
+    func log(_ message: @autoclosure () -> String, error: Any?, data: [String: String]?, file: StaticString, function: StaticString, line: UInt)
 }

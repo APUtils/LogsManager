@@ -36,7 +36,7 @@ public func logError(_ message: @autoclosure () -> String, error: Any?, file: St
 }
 
 /// Error log function.
-/// - parameter reason: Message to log.
+/// - parameter message: Message to log.
 /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
 /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logError(_ message: @autoclosure () -> String,

@@ -108,7 +108,7 @@ public final class LoggersManager {
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logError(_ message: @autoclosure () -> String, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let normalizedData = normalizeData(data)
-        errorLoggers.forEach { $0.log(reason: message(), error: error, data: normalizedData, file: file, function: function, line: line) }
+        errorLoggers.forEach { $0.log(message(), error: error, data: normalizedData, file: file, function: function, line: line) }
         
         let message = message()
         

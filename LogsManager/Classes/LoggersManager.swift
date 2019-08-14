@@ -85,7 +85,6 @@ public final class LoggersManager {
     }
     
     /// Log message function.
-    /// - parameter data: Data to attach to log message.
     /// - parameter message: Message to log.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logMessage(_ message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {

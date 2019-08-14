@@ -41,7 +41,7 @@ public extension DDLogMessage {
     }
 }
 
-extension DDLogMessage.Parameters {
+public extension DDLogMessage.Parameters {
     
     /// Stringified data
     var normalizedData: [String: String]? {

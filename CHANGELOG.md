@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [6.0.1](https://github.com/APUtils/LogsManager/releases/tag/6.0.1)
+Released on 08/14/2019.
+
+#### Fixed
+- Public `normalizedData` and `normalizedError` in `DDLogMessage.Parameters`
+
+
 ## [6.0.0](https://github.com/APUtils/LogsManager/releases/tag/6.0.0)
 Released on 08/14/2019.
 

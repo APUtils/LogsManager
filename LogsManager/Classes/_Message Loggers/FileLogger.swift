@@ -9,9 +9,9 @@
 import Foundation
 import CocoaLumberjack
 
-public final class FileLogger: DDFileLogger, BaseTextLogger {
+public final class FileLogger: DDFileLogger, BaseLogger {
     
-    // ******************************* MARK: - BaseTextLogger
+    // ******************************* MARK: - BaseLogger
     
     public let logLevel: DDLogLevel
     public var mode: LoggerMode

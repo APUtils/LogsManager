@@ -13,7 +13,7 @@ PODS:
   - CocoaLumberjack/Core (3.5.3)
   - CocoaLumberjack/Swift (3.5.3):
     - CocoaLumberjack/Core
-  - LogsManager (5.0.0):
+  - LogsManager (6.0.0):
     - CocoaLumberjack/Swift
   - Nimble (8.0.2)
   - Quick (2.1.0)
@@ -38,7 +38,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   APExtensions: 9a7a7b6ff5b9785b245962de89fbbdaf4c10f10e
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
-  LogsManager: d37a7545caad0f8618719960f926ab2c622f79fb
+  LogsManager: 488808731a5326684a5b8ae44d0fba26b94e7f9b
   Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
   Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
 

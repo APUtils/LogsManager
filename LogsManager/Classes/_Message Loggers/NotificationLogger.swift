@@ -14,9 +14,9 @@ import CocoaLumberjack
 
 /// Logger that fires local notifications. Assure that notification permissions were granted for alert presentation.
 @available(iOS 10.0, *)
-public final class NotificationLogger: BaseAbstractLogger {
+public final class NotificationLogger: BaseAbstractTextLogger {
     
-    // ******************************* MARK: - BaseAbstractLogger Overrides
+    // ******************************* MARK: - BaseAbstractTextLogger Overrides
     
     override public func process(message logMessage: DDLogMessage, formattedMessage: String) {
         let content = UNMutableNotificationContent()

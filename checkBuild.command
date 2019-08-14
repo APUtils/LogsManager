@@ -23,16 +23,3 @@ echo ""
 echo "SUCCESS!"
 echo ""
 echo ""
-
-
-echo ""
-
-set -o pipefail && xcodebuild -workspace "Example/LogsManager.xcworkspace" -scheme "LogsManager" -configuration "Release"  -sdk iphonesimulator | xcpretty
-
-echo
-
-xcodebuild -project "CarthageSupport/LogsManager.xcodeproj" -alltargets  -sdk iphonesimulator | xcpretty
-
-echo ""
-echo "SUCCESS!"
-echo ""

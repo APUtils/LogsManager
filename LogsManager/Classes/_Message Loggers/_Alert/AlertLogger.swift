@@ -11,9 +11,9 @@ import CocoaLumberjack
 
 
 /// Logger that logs with alerts.
-public final class AlertLogger: BaseAbstractLogger {
+public final class AlertLogger: BaseAbstractTextLogger {
     
-    // ******************************* MARK: - BaseAbstractLogger Overrides
+    // ******************************* MARK: - BaseAbstractTextLogger Overrides
     
     override public func process(message logMessage: DDLogMessage, formattedMessage: String) {
         g.showErrorAlert(title: logMessage.flagLogString, message: formattedMessage)

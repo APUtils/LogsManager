@@ -11,9 +11,9 @@ import CocoaLumberjack
 
 
 /// Logger that logs to console.
-public final class ConsoleLogger: DDTTYLogger, BaseTextLogger {
+public final class ConsoleLogger: DDTTYLogger, BaseLogger {
     
-    // ******************************* MARK: - BaseTextLogger
+    // ******************************* MARK: - BaseLogger
     
     public let logLevel: DDLogLevel
     public var mode: LoggerMode

@@ -25,8 +25,7 @@ public final class LoggersManager {
     // ******************************* MARK: - Private Properties
     
     private var logComponents: [LogComponent] = []
-    private var messageLoggers: [BaseTextLogger] = []
-    private var errorLoggers: [ErrorLogger] = []
+    private var loggers: [BaseLogger] = []
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager", attributes: .concurrent)
     
@@ -42,7 +41,7 @@ public final class LoggersManager {
     
     deinit {
         // Remove loggers
-        messageLoggers.forEach { DDLog.remove($0) }
+        loggers.forEach { DDLog.remove($0) }
     }
     
     // ******************************* MARK: - Public Methods
@@ -70,18 +69,13 @@ public final class LoggersManager {
     }
     
     /// Adds text logger
-    public func addTextLogger(_ logger: BaseTextLogger) {
+    public func addLogger(_ logger: BaseLogger) {
         DDLog.add(logger, with: logger.logLevel)
     }
     
     /// Removes text logger
-    public func removeTextLogger(_ logger: BaseTextLogger) {
+    public func removeLogger(_ logger: BaseLogger) {
         DDLog.remove(logger)
-    }
-    
-    /// Adds error logger
-    public func addErrorLogger(_ logger: ErrorLogger) {
-        errorLoggers.append(logger)
     }
     
     /// Log message function.
@@ -89,6 +83,7 @@ public final class LoggersManager {
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logMessage(_ message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
         let logComponents = detectLogComponent(file: file, function: function, line: line)
+        let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
                       flag: flag,
@@ -96,7 +91,7 @@ public final class LoggersManager {
                       file: file,
                       function: function,
                       line: line,
-                      tag: logComponents,
+                      tag: parameters,
                       asynchronous: false,
                       ddlog: DDLog.sharedInstance)
     }
@@ -107,24 +102,18 @@ public final class LoggersManager {
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logError(_ message: @autoclosure () -> String, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let normalizedData = normalizeData(data)
-        errorLoggers.forEach { $0.log(message(), error: error, data: normalizedData, file: file, function: function, line: line) }
-        
-        let message = message()
-        
-        var errorMessageComponents: [String] = []
-        errorMessageComponents.append(message)
-        
-        if let error = error {
-            errorMessageComponents.append("\(error)")
-        }
-        
-        if let normalizedData = normalizedData {
-            errorMessageComponents.append("\(normalizedData)")
-        }
-        
-        let errorMessage = errorMessageComponents.joined(separator: "\n")
-        logMessage(errorMessage, flag: .error, file: file, function: function, line: line)
+        let logComponents = detectLogComponent(file: file, function: function, line: line)
+        let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
+        _DDLogMessage(message(),
+                      level: dynamicLogLevel,
+                      flag: .error,
+                      context: 0,
+                      file: file,
+                      function: function,
+                      line: line,
+                      tag: parameters,
+                      asynchronous: false,
+                      ddlog: DDLog.sharedInstance)
     }
     
     // ******************************* MARK: - Private Methods
@@ -156,26 +145,6 @@ public final class LoggersManager {
         }
         
         return components
-    }
-    
-    private func normalizeData(_ data: [String: Any?]?) -> [String: String]? {
-        guard let data = data else { return nil }
-        
-        var normalizedData = [String: String]()
-        for (key, value) in data {
-            let description: String
-            if let value = value as? Data {
-                description = value.asString
-            } else if let value = value {
-                description = String(describing: value)
-            } else {
-                description = "nil"
-            }
-            
-            normalizedData[key] = description
-        }
-        
-        return normalizedData
     }
 }
 

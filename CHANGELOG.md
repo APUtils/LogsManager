@@ -3,6 +3,21 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [6.0.0](https://github.com/APUtils/LogsManager/releases/tag/6.0.0)
+Released on 08/14/2019.
+
+#### Changed
+- `DDLogMessage` `tag` property holds `Parameters` instead of array of log components
+- BaseAbstractTextLogger now also adds error description and data description to a formatted message
+
+#### Removed
+- Removed ErrorLogger protocol. You can instead inherit from `DDAbstractLogger`, conform to `BaseLogger` and override `log(message:)`. You can access needed parameters using `message.parameters`.
+
+#### Renamed
+- BaseTextLogger -> BaseLogger
+- BaseAbstractLogger -> BaseAbstractTextLogger
+
+
 ## [5.0.0](https://github.com/APUtils/LogsManager/releases/tag/5.0.0)
 Released on 08/09/2019.
 

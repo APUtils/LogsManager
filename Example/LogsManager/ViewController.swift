@@ -31,23 +31,23 @@ class ViewController: UIViewController {
         LoggersManager.shared.registerLogComponent(didAppearComponent)
         
         let fileLogger = FileLogger(mode: .all, logLevel: .verbose)
-        LoggersManager.shared.addTextLogger(fileLogger)
+        LoggersManager.shared.addLogger(fileLogger)
         
         let logger = ConsoleLogger(mode: .specificComponents([vcComponent]), logLevel: .verbose, newLinesSeparation: true)
-        LoggersManager.shared.addTextLogger(logger)
+        LoggersManager.shared.addLogger(logger)
         logDebug("Test1")
         
-        LoggersManager.shared.removeTextLogger(logger)
+        LoggersManager.shared.removeLogger(logger)
         logDebug("Test2")
         
-        LoggersManager.shared.addTextLogger(logger)
+        LoggersManager.shared.addLogger(logger)
         logDebug("Test3")
         
         LoggersManager.shared.unregisterLogComponent(vcComponent)
         logDebug("Test4")
         
         let allLogger = ConsoleLogger(mode: .all, logLevel: .verbose, newLinesSeparation: false)
-        LoggersManager.shared.addTextLogger(allLogger)
+        LoggersManager.shared.addLogger(allLogger)
         logDebug("Test5")
         
         let allLogComponent2 = LogComponent(name: "All2", logName: "", isLogForThisComponent: { _, _ in true })
@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         logDebug("Test7")
         
         let all3Logger = ConsoleLogger(mode: .specificComponents([allLogComponent3]), logLevel: .warning, newLinesSeparation: false)
-        LoggersManager.shared.addTextLogger(all3Logger)
+        LoggersManager.shared.addLogger(all3Logger)
         logInfo("Test 8")
         logWarning("Test 9")
         
@@ -70,11 +70,11 @@ class ViewController: UIViewController {
         logError("Test 10", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]), data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])
         
         let allAlertLogger = AlertLogger(mode: .all, logLevel: .error)
-        LoggersManager.shared.addTextLogger(allAlertLogger)
+        LoggersManager.shared.addLogger(allAlertLogger)
         
         if #available(iOS 10.0, *) {
             let allNotificationsLogger = NotificationLogger(mode: .all, logLevel: .error)
-            LoggersManager.shared.addTextLogger(allNotificationsLogger)
+            LoggersManager.shared.addLogger(allNotificationsLogger)
         }
         
         logError("Test 11", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]), data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])

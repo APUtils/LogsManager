@@ -1,5 +1,5 @@
 //
-//  BaseTextLogger.swift
+//  BaseLogger.swift
 //  LogsManager
 //
 //  Created by Anton Plebanovich on 3/2/18.
@@ -21,8 +21,8 @@ public enum LoggerMode {
     case ignoreComponents([LogComponent])
 }
 
-/// Minimal requirements for logger
-public protocol BaseTextLogger: DDLogger {
+/// Minimal requirements for a logger
+public protocol BaseLogger: DDLogger {
     /// Level of logs that logger logs
     var logLevel: DDLogLevel { get }
     
@@ -32,7 +32,7 @@ public protocol BaseTextLogger: DDLogger {
 
 // ******************************* MARK: - Default Implementation
 
-public extension BaseTextLogger {
+public extension BaseLogger {
     func shouldLog(message: DDLogMessage) -> Bool {
         if let messageLogComponents = message.logComponents {
             switch mode {

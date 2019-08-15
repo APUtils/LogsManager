@@ -92,9 +92,23 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
             componentsString = " | \(logComponentLogTexts.joined(separator: " | "))"
         }
         
+        let errorString: String
+        if let normalizedError = logMessage.parameters?.normalizedError {
+            errorString = "\n\(normalizedError)"
+        } else {
+            errorString = ""
+        }
+        
+        let dataString: String
+        if let normalizedData = logMessage.parameters?.normalizedData {
+            dataString = "\n\(normalizedData)"
+        } else {
+            dataString = ""
+        }
+        
         let prefixString = messagePrefix(flag: logMessage.flag)
         let timeString = BaseLogFormatter.dateFormatter?.string(from: logMessage.timestamp) ?? ""
-        let logString = "\(timeString)\(componentsString) | \(prefixString)\(logMessage.message)"
+        let logString = "\(timeString)\(componentsString) | \(prefixString)\(logMessage.message)\(errorString)\(dataString)"
         
         return logString
     }

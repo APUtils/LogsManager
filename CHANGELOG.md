@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [6.0.3](https://github.com/APUtils/LogsManager/releases/tag/6.0.3)
+Released on 08/15/2019.
+
+#### Fixed
+- Fixed console logger missed data and error texts
+
+
 ## [6.0.2](https://github.com/APUtils/LogsManager/releases/tag/6.0.2)
 Released on 08/15/2019.
 

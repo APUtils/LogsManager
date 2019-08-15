@@ -38,15 +38,12 @@ open class BaseAbstractTextLogger: DDAbstractLogger, BaseLogger {
     override open func log(message logMessage: DDLogMessage) {
         guard shouldLog(message: logMessage) else { return }
         
-        var formattedMessage: String
+        let formattedMessage: String
         if let logFormatter = value(forKey: "_logFormatter") as? DDLogFormatter {
             formattedMessage = logFormatter.format(message: logMessage) ?? logMessage.message
         } else {
             formattedMessage = logMessage.message
         }
-        
-        if let normalizedError = logMessage.parameters?.normalizedError { formattedMessage.append("\n\(normalizedError)") }
-        if let normalizedData = logMessage.parameters?.normalizedData { formattedMessage.append("\n\(normalizedData)") }
         
         process(message: logMessage, formattedMessage: formattedMessage)
     }

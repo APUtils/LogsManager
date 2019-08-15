@@ -35,9 +35,9 @@ public extension DDLogMessage {
 
 public extension DDLogMessage {
     struct Parameters {
-        var data: [String: Any?]?
-        var error: Any?
-        var logComponents: [LogComponent]?
+        public var data: [String: Any?]?
+        public var error: Any?
+        public var logComponents: [LogComponent]?
     }
 }
 

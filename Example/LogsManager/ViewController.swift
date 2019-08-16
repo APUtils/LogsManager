@@ -19,13 +19,12 @@ class ViewController: UIViewController {
         
         print("Logs directory: \(c.documentsDirectoryUrl.path)/LogsManager/")
         
-        let vcComponent = LogComponent(name: "ViewController", logName: "VC") { filePath, _ in
-            let fileName = String.getFileName(filePath: filePath)
+        let vcComponent = LogComponent(name: "ViewController", logName: "VC") { _, fileName, _ in
             return fileName == "ViewController"
         }
         LoggersManager.shared.registerLogComponent(vcComponent)
         
-        let didAppearComponent = LogComponent(name: "Did Appear", logName: "viewDidAppear") { _, function in
+        let didAppearComponent = LogComponent(name: "Did Appear", logName: "viewDidAppear") { _, _, function in
             return function.hasPrefix("viewDidAppear")
         }
         LoggersManager.shared.registerLogComponent(didAppearComponent)
@@ -50,12 +49,12 @@ class ViewController: UIViewController {
         LoggersManager.shared.addLogger(allLogger)
         logDebug("Test5")
         
-        let allLogComponent2 = LogComponent(name: "All2", logName: "", isLogForThisComponent: { _, _ in true })
+        let allLogComponent2 = LogComponent(name: "All2", logName: "", isLogForThisComponent: { _, _, _ in true })
         LoggersManager.shared.registerLogComponent(allLogComponent2)
         logDebug("Test6")
         
-        let allLogComponent3 = LogComponent(name: "All3", logName: "3", isLogForThisComponent: { _, _ in true })
-        let allLogComponent4 = LogComponent(name: "All4", logName: "4", isLogForThisComponent: { _, _ in true })
+        let allLogComponent3 = LogComponent(name: "All3", logName: "3", isLogForThisComponent: { _, _, _ in true })
+        let allLogComponent4 = LogComponent(name: "All4", logName: "4", isLogForThisComponent: { _, _, _ in true })
         LoggersManager.shared.registerLogComponent(allLogComponent3)
         LoggersManager.shared.registerLogComponent(allLogComponent4)
         logDebug("Test7")

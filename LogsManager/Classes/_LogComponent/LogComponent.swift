@@ -13,7 +13,10 @@ public struct LogComponent {
     
     // ******************************* MARK: - Types
     
-    public typealias LogComponentDetection = (_ file: String, _ function: String) -> Bool
+    /// - parameter path: Path to source file
+    /// - parameter file: File name without extension
+    /// - parameter function: Function name, e.g. `deinit`, `init()`, ...
+    public typealias LogComponentDetection = (_ path: String, _ file: String, _ function: String) -> Bool
     
     // ******************************* MARK: - Public Properties
     
@@ -58,13 +61,13 @@ extension LogComponent: Equatable {
 public extension LogComponent {
     /// Log component that is returned in a case when log component wasn't detected.
     static var unspecified: LogComponent {
-        return LogComponent(name: "Unspecified", logName: "", isLogForThisComponent: { _, _ in false })
+        return LogComponent(name: "Unspecified", logName: "", isLogForThisComponent: { _, _, _ in false })
     }
     
     /// Log component for logs in `deinit` method.
     static var deinitialize: LogComponent {
-        return LogComponent(name: "Deinitialize", logName: "D", isLogForThisComponent: { _, function in
-            return String(function) == "deinit"
+        return LogComponent(name: "Deinitialize", logName: "D", isLogForThisComponent: { _, _, function in
+            return function == "deinit"
         })
     }
 }

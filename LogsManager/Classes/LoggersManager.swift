@@ -83,7 +83,7 @@ public final class LoggersManager {
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logMessage(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let logComponents = logComponents ?? detectLogComponent(file: file, function: function, line: line)
+        let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
@@ -104,7 +104,7 @@ public final class LoggersManager {
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logError(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let logComponents = logComponents ?? detectLogComponent(file: file, function: function, line: line)
+        let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
@@ -120,9 +120,9 @@ public final class LoggersManager {
     
     // ******************************* MARK: - Private Methods
     
-    private func detectLogComponent(file: StaticString, function: StaticString, line: UInt) -> [LogComponent] {
+    private func detectLogComponent(filePath: StaticString, function: StaticString, line: UInt) -> [LogComponent] {
         // Return hash if we have
-        let key = ComponentsKey(file: file, function: function, line: line)
+        let key = ComponentsKey(filePath: filePath, function: function, line: line)
         let existingCachedComponents: [LogComponent]? = queue.sync {
             if let cachedComponents = cachedComponents[key] {
                 return cachedComponents
@@ -136,7 +136,12 @@ public final class LoggersManager {
         }
         
         var components: [LogComponent] = logComponents
-            .filter { $0.isLogForThisComponent(String(file), String(function)) }
+            .filter { logComponent in
+                let path = String(filePath)
+                let file = String.getFileName(filePath: path)
+                let function = String(function)
+                return logComponent.isLogForThisComponent(path, file, function)
+        }
         
         if components.isEmpty {
             components.append(.unspecified)
@@ -151,7 +156,7 @@ public final class LoggersManager {
 }
 
 private struct ComponentsKey: Equatable, Hashable {
-    let file: StaticString
+    let filePath: StaticString
     let function: StaticString
     let line: UInt
 }

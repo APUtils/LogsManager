@@ -73,6 +73,9 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
             // Search for intersections for clearer logs
             case .specificComponents(let _logComponents): logComponents = messageLogComponents.intersection(with: _logComponents)
                 
+            // Search for intersection and filter out components with not enough log level
+            case .specificComponentsAndLevels(let logComponentsAndLevels): logComponents = LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: logMessage)
+                
             // Filter ignored components from message components
             case .ignoreComponents(let _logComponents): logComponents = messageLogComponents.removing(contentsOf: _logComponents)
             }

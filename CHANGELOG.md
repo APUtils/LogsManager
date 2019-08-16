@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [7.1.0](https://github.com/APUtils/LogsManager/releases/tag/7.1.0)
+Released on 08/16/2019.
+
+#### Added
+- Added ability to specify specific components with specific log levels for them
+
+
 ## [7.0.0](https://github.com/APUtils/LogsManager/releases/tag/7.0.0)
 Released on 08/16/2019.
 

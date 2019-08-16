@@ -21,7 +21,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/LogsManager" ~> 6.0
+github "APUtils/LogsManager" ~> 7.0
 ```
 
 #### CocoaPods
@@ -30,7 +30,7 @@ LogsManager is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'LogsManager', '~> 6.0'
+pod 'LogsManager', '~> 7.0'
 ```
 
 ## Usage

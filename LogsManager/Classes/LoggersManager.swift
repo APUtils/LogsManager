@@ -80,9 +80,10 @@ public final class LoggersManager {
     
     /// Log message function.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logMessage(_ message: @autoclosure () -> String, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let logComponents = detectLogComponent(file: file, function: function, line: line)
+    public func logMessage(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+        let logComponents = logComponents ?? detectLogComponent(file: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,
@@ -98,11 +99,12 @@ public final class LoggersManager {
     
     /// Log error function.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logError(_ message: @autoclosure () -> String, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
-        let logComponents = detectLogComponent(file: file, function: function, line: line)
+    public func logError(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+        let logComponents = logComponents ?? detectLogComponent(file: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
         _DDLogMessage(message(),
                       level: dynamicLogLevel,

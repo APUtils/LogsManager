@@ -62,17 +62,18 @@ class ViewController: UIViewController {
         let allAlertLogger = AlertLogger(mode: .all, logLevel: .error)
         LoggersManager.shared.addLogger(allAlertLogger)
         
-        let buttonTapLogger = AlertLogger(mode: .specificComponentsAndLevels([(.buttonTap, .info)]), logLevel: .debug)
+        let buttonTapLogger = AlertLogger(mode: .specificComponentsAndLevels([(.buttonTap, .info)]), logLevel: .info)
         LoggersManager.shared.addLogger(buttonTapLogger)
         
         if #available(iOS 10.0, *) {
-            let allNotificationsLogger = NotificationLogger(mode: .all, logLevel: .error)
+            let allNotificationsLogger = NotificationLogger(mode: .muteComponents([.didAppear]), logLevel: .debug)
             LoggersManager.shared.addLogger(allNotificationsLogger)
         }
         
         logError("Test 11", error: NSError(domain: "Test Domain", code: -1, userInfo: ["hm": "hm", "hm2": "hm2"]), data: ["one": "one", "two": "two", "dic": ["one": "one", "two": "two"]])
         
         if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert], completionHandler: { _, _ in })
         }
         
@@ -102,7 +103,7 @@ class ViewController: UIViewController {
     // ******************************* MARK: - Action
     
     @IBAction private func onTap(_ sender: Any) {
-        logDebug("Button tap")
+        logInfo("Button tap")
     }
 }
 
@@ -122,4 +123,13 @@ extension LogComponent {
     static let allLog2 = LogComponent(name: "All2", logName: "", isLogForThisComponent: { _, _, _ in true })
     static let allLog3 = LogComponent(name: "All3", logName: "3", isLogForThisComponent: { _, _, _ in true })
     static let allLog4 = LogComponent(name: "All4", logName: "4", isLogForThisComponent: { _, _, _ in true })
+}
+
+// ******************************* MARK: - UNUserNotificationCenterDelegate
+
+@available(iOS 10.0, *)
+extension ViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
 }

@@ -86,7 +86,7 @@ public final class LoggersManager {
         let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
         _DDLogMessage(message(),
-                      level: dynamicLogLevel,
+                      level: DDLogLevel(flag: flag),
                       flag: flag,
                       context: 0,
                       file: file,
@@ -107,7 +107,7 @@ public final class LoggersManager {
         let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
         _DDLogMessage(message(),
-                      level: dynamicLogLevel,
+                      level: .error,
                       flag: .error,
                       context: 0,
                       file: file,

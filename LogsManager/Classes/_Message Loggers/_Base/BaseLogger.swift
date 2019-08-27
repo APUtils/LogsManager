@@ -23,8 +23,13 @@ public enum LoggerMode {
     /// Log specific components with specific log levels only
     case specificComponentsAndLevels([LogComponentAndLevel])
     
-    /// Log everything except ignored components
+    /// Log everything except ignored components.
+    /// If message has several log components and not all of them are ignored - message will be logged with left components.
     case ignoreComponents([LogComponent])
+    
+    /// Log everything that doesn't have listed components.
+    /// Even if log message have any other log components it won't be logged.
+    case muteComponents([LogComponent])
     
     static func getIntersection(forLogComponentsAndLevels logComponentsAndLevels: [LogComponentAndLevel], with message: DDLogMessage) -> [LogComponent] {
         guard let messageLogComponents = message.logComponents else { return logComponentsAndLevels.map { $0.0 } }
@@ -32,7 +37,7 @@ public enum LoggerMode {
         // Get intersection pairs and check if their log level is enough to log this message.
         // Off = 0, Error = 1, ... Verbose.rawValue > Debug.rawValue
         return logComponentsAndLevels
-            .filter { messageLogComponents.contains($0.0) && $0.1.rawValue >= message.level.rawValue }
+            .filter { logComponent, level in messageLogComponents.contains(logComponent) && level.rawValue >= message.level.rawValue }
             .map { $0.0 }
     }
 }
@@ -63,6 +68,9 @@ public extension BaseLogger {
                 
             case .ignoreComponents(let logComponents):
                 return messageLogComponents.removing(contentsOf: logComponents).hasElements
+                
+            case .muteComponents(let logComponents):
+                return !logComponents.hasIntersection(with: messageLogComponents)
             }
         } else {
             // Log do not belong to any component or logger doesn't have components filter. Pass it.

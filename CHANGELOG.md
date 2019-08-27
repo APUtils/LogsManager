@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [7.2.0](https://github.com/APUtils/LogsManager/releases/tag/7.2.0)
+Released on 08/27/2019.
+
+#### Added
+- Mute logger mode
+
+#### Fixed
+- Message log level corresponds to its flag
+
+
 ## [7.1.0](https://github.com/APUtils/LogsManager/releases/tag/7.1.0)
 Released on 08/16/2019.
 

@@ -78,6 +78,9 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
                 
             // Filter ignored components from message components
             case .ignoreComponents(let _logComponents): logComponents = messageLogComponents.removing(contentsOf: _logComponents)
+                
+            // Just return the same components because we have no intersection
+            case .muteComponents: logComponents = messageLogComponents
             }
         } else {
             // Message doesn't have any components.

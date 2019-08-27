@@ -26,6 +26,7 @@
 		E201A86C2214200500258902 /* DDLogMessage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8592214200500258902 /* DDLogMessage+Utils.swift */; };
 		E201A86E2214203C00258902 /* LogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A86D2214203C00258902 /* LogComponent.swift */; };
 		E202681822117D03004CC28A /* LogsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E202681622117D03004CC28A /* LogsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E28100BA2315753B00F4A24A /* DDLogLevel+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */; };
 		E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
 		E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 		E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791022A8069800DECBD8 /* Collection+Utils.swift */; };
@@ -58,6 +59,7 @@
 		E202681322117D03004CC28A /* LogsManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogsManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202681622117D03004CC28A /* LogsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogsManager.h; sourceTree = "<group>"; };
 		E202681722117D03004CC28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DDLogLevel+Utils.swift"; sourceTree = "<group>"; };
 		E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
 		E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		E2E0791022A8069800DECBD8 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				E201A8442214200500258902 /* Array+Utils.swift */,
 				E2E0791022A8069800DECBD8 /* Collection+Utils.swift */,
 				E201A8432214200500258902 /* Data+Utils.swift */,
+				E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */,
 				E201A8422214200500258902 /* StaticString+Utils.swift */,
 				E201A8452214200500258902 /* String+Utils.swift */,
 			);
@@ -291,6 +294,7 @@
 				E2E0791B22A825E000DECBD8 /* BaseFileLogFormatter.swift in Sources */,
 				E201A85F2214200500258902 /* Log.swift in Sources */,
 				E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */,
+				E28100BA2315753B00F4A24A /* DDLogLevel+Utils.swift in Sources */,
 				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,
 				E201A8612214200500258902 /* AlertController.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,

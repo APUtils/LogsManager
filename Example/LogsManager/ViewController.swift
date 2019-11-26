@@ -22,6 +22,8 @@ class ViewController: UIViewController {
         LoggersManager.shared.registerLogComponent(.vc)
         LoggersManager.shared.registerLogComponent(.didAppear)
         LoggersManager.shared.registerLogComponent(.buttonTap)
+        LoggersManager.shared.registerLogComponent(.deinitialize)
+        LoggersManager.shared.registerLogComponent(.initialize)
         
         let fileLogger = FileLogger(mode: .all, logLevel: .verbose)
         LoggersManager.shared.addLogger(fileLogger)
@@ -42,6 +44,9 @@ class ViewController: UIViewController {
         let allLogger = ConsoleLogger(mode: .all, logLevel: .verbose, newLinesSeparation: false)
         LoggersManager.shared.addLogger(allLogger)
         logDebug("Test5")
+        
+        _ = InitTester()
+        _ = InitTester(with: 2)
         
         LoggersManager.shared.registerLogComponent(.allLog2)
         logDebug("Test6")
@@ -131,5 +136,15 @@ extension LogComponent {
 extension ViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(.alert)
+    }
+}
+
+private struct InitTester {
+    init() {
+        logInfo("Initialized InitTester")
+    }
+    
+    init(with param: Int) {
+        logInfo("Initialized InitTester with param: \(param)")
     }
 }

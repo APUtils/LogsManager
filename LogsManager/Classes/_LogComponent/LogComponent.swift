@@ -59,15 +59,18 @@ extension LogComponent: Equatable {
 // ******************************* MARK: - Predefined Log Components
 
 public extension LogComponent {
-    /// Log component that is returned in a case when log component wasn't detected.
-    static var unspecified: LogComponent {
-        return LogComponent(name: "Unspecified", logName: "", isLogForThisComponent: { _, _, _ in false })
-    }
+    
+
     
     /// Log component for logs in `deinit` method.
-    static var deinitialize: LogComponent {
-        return LogComponent(name: "Deinitialize", logName: "D", isLogForThisComponent: { _, _, function in
-            return function == "deinit"
-        })
-    }
+    static var deinitialize: LogComponent = LogComponent(name: "Deinitialize", logName: "D", isLogForThisComponent: { _, _, function in
+        return function == "deinit"
+    })
+    
+    static var initialize: LogComponent = LogComponent(name: "Initialize", logName: "I", isLogForThisComponent: { _, _, function in
+        return function.hasPrefix("init(")
+    })
+    
+    /// Log component that is returned in a case when log component wasn't detected.
+    static var unspecified: LogComponent = LogComponent(name: "Unspecified", logName: "", isLogForThisComponent: { _, _, _ in false })
 }

@@ -8,15 +8,6 @@
 
 import Foundation
 
-
-public extension String {
-    init(_ staticString: StaticString) {
-        self = staticString.withUTF8Buffer {
-            String(decoding: $0, as: UTF8.self)
-        }
-    }
-}
-
 public extension String {
     /// Helper method to get filename from `file` parameter that is a file path.
     /// - parameters:

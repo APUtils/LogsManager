@@ -16,8 +16,8 @@ import CocoaLumberjack
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logError(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
-                     file: StaticString = #file,
-                     function: StaticString = #function,
+                     file: String = #file,
+                     function: String = #function,
                      line: UInt = #line) {
     
     logError(message(),
@@ -36,8 +36,8 @@ public func logError(_ message: @autoclosure () -> String,
 public func logError(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
                      data: [String: Any?]?,
-                     file: StaticString = #file,
-                     function: StaticString = #function,
+                     file: String = #file,
+                     function: String = #function,
                      line: UInt = #line) {
     
     logError(message(),
@@ -56,8 +56,8 @@ public func logError(_ message: @autoclosure () -> String,
 public func logError(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
                      error: Any?,
-                     file: StaticString = #file,
-                     function: StaticString = #function,
+                     file: String = #file,
+                     function: String = #function,
                      line: UInt = #line) {
     
     logError(message(),
@@ -78,8 +78,8 @@ public func logError(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
                      error: Any?,
                      data: [String: Any?]?,
-                     file: StaticString = #file,
-                     function: StaticString = #function,
+                     file: String = #file,
+                     function: String = #function,
                      line: UInt = #line) {
     
     LoggersManager.shared.logError(message(),
@@ -96,8 +96,8 @@ public func logError(_ message: @autoclosure () -> String,
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logWarning(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
-                       file: StaticString = #file,
-                       function: StaticString = #function,
+                       file: String = #file,
+                       function: String = #function,
                        line: UInt = #line) {
     
     logMessage(message(),
@@ -113,8 +113,8 @@ public func logWarning(_ message: @autoclosure () -> String,
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logInfo(_ message: @autoclosure () -> String,
                     logComponents: [LogComponent]? = nil,
-                    file: StaticString = #file,
-                    function: StaticString = #function,
+                    file: String = #file,
+                    function: String = #function,
                     line: UInt = #line) {
     
     logMessage(message(),
@@ -130,8 +130,8 @@ public func logInfo(_ message: @autoclosure () -> String,
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logDebug(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
-                     file: StaticString = #file,
-                     function: StaticString = #function,
+                     file: String = #file,
+                     function: String = #function,
                      line: UInt = #line) {
     
     logMessage(message(),
@@ -147,8 +147,8 @@ public func logDebug(_ message: @autoclosure () -> String,
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logVerbose(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
-                       file: StaticString = #file,
-                       function: StaticString = #function,
+                       file: String = #file,
+                       function: String = #function,
                        line: UInt = #line) {
     
     logMessage(message(),
@@ -166,8 +166,8 @@ public func logVerbose(_ message: @autoclosure () -> String,
 public func logMessage(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
                        flag: DDLogFlag,
-                       file: StaticString = #file,
-                       function: StaticString = #function,
+                       file: String = #file,
+                       function: String = #function,
                        line: UInt = #line) {
     
     LoggersManager.shared.logMessage(message(),

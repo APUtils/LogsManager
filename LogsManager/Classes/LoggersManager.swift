@@ -82,19 +82,29 @@ public final class LoggersManager {
     /// - parameter message: Message to log.
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logMessage(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, flag: DDLogFlag, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func logMessage(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, flag: DDLogFlag, file: String = #file, function: String = #function, line: UInt = #line) {
         let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
-        _DDLogMessage(message(),
-                      level: DDLogLevel(flag: flag),
-                      flag: flag,
-                      context: 0,
-                      file: file,
-                      function: function,
-                      line: line,
-                      tag: parameters,
-                      asynchronous: false,
-                      ddlog: DDLog.sharedInstance)
+        
+        // -------- Copied from `CocoaLumberjack.swift`
+        // The `dynamicLogLevel` will always be checked here (instead of being passed in).
+        // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
+        if dynamicLogLevel.rawValue & flag.rawValue != 0 {
+            // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
+            let logMessage = DDLogMessage(message: message(),
+                                          level: DDLogLevel(flag: flag),
+                                          flag: flag,
+                                          context: 0,
+                                          file: file,
+                                          function: function,
+                                          line: line,
+                                          tag: parameters,
+                                          options: [.copyFile, .copyFunction],
+                                          timestamp: nil)
+            
+            DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
+        }
+        // --------
     }
     
     /// Log error function.
@@ -103,24 +113,34 @@ public final class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logError(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) {
+    public func logError(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: String = #file, function: String = #function, line: UInt = #line) {
         let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
-        _DDLogMessage(message(),
-                      level: .error,
-                      flag: .error,
-                      context: 0,
-                      file: file,
-                      function: function,
-                      line: line,
-                      tag: parameters,
-                      asynchronous: false,
-                      ddlog: DDLog.sharedInstance)
+        
+        // -------- Copied from `CocoaLumberjack.swift`
+        // The `dynamicLogLevel` will always be checked here (instead of being passed in).
+        // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
+        if dynamicLogLevel.rawValue & DDLogFlag.error.rawValue != 0 {
+            // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
+            let logMessage = DDLogMessage(message: message(),
+                                          level: .error,
+                                          flag: .error,
+                                          context: 0,
+                                          file: file,
+                                          function: function,
+                                          line: line,
+                                          tag: parameters,
+                                          options: [.copyFile, .copyFunction],
+                                          timestamp: nil)
+            
+            DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
+        }
+        // -------- 
     }
     
     // ******************************* MARK: - Private Methods
     
-    private func detectLogComponent(filePath: StaticString, function: StaticString, line: UInt) -> [LogComponent] {
+    private func detectLogComponent(filePath: String, function: String, line: UInt) -> [LogComponent] {
         // Return hash if we have
         let key = ComponentsKey(filePath: filePath, function: function, line: line)
         let existingCachedComponents: [LogComponent]? = queue.sync {
@@ -156,7 +176,7 @@ public final class LoggersManager {
 }
 
 private struct ComponentsKey: Equatable, Hashable {
-    let filePath: StaticString
-    let function: StaticString
+    let filePath: String
+    let function: String
     let line: UInt
 }

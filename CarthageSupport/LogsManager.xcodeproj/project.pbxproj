@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E201A85A2214200500258902 /* StaticString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8422214200500258902 /* StaticString+Utils.swift */; };
 		E201A85B2214200500258902 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8432214200500258902 /* Data+Utils.swift */; };
 		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
 		E201A85D2214200500258902 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8452214200500258902 /* String+Utils.swift */; };
@@ -38,7 +37,6 @@
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		722BFDE9DE58393B9D916719 /* carthageRemove.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageRemove.command; path = Scripts/Carthage/carthageRemove.command; sourceTree = "<group>"; };
 		75997ED1E9FAC56B9BEC3F0E /* carthageAdd.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageAdd.command; path = Scripts/Carthage/carthageAdd.command; sourceTree = "<group>"; };
-		E201A8422214200500258902 /* StaticString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StaticString+Utils.swift"; sourceTree = "<group>"; };
 		E201A8432214200500258902 /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
 		E201A8442214200500258902 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		E201A8452214200500258902 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 				E2E0791022A8069800DECBD8 /* Collection+Utils.swift */,
 				E201A8432214200500258902 /* Data+Utils.swift */,
 				E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */,
-				E201A8422214200500258902 /* StaticString+Utils.swift */,
 				E201A8452214200500258902 /* String+Utils.swift */,
 			);
 			name = _Extensions;
@@ -299,7 +296,6 @@
 				E201A8612214200500258902 /* AlertController.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
 				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,
-				E201A85A2214200500258902 /* StaticString+Utils.swift in Sources */,
 				E201A85C2214200500258902 /* Array+Utils.swift in Sources */,
 				E201A8672214200500258902 /* BaseAbstractTextLogger.swift in Sources */,
 				E201A86A2214200500258902 /* LoggersManager.swift in Sources */,

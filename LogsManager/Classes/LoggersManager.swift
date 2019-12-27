@@ -29,6 +29,29 @@ public final class LoggersManager {
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager", attributes: .concurrent)
     
+    /// Default file logger. You can adjust its parameters if needed.
+    /// By default, each app session corresponds to individual file, max logs size is 300 MB
+    /// and all logs are saved.
+    public private(set) lazy var fileLogger: FileLogger = {
+        
+        // Record all `verbose` level logs into file
+        let fileLogger = FileLogger(mode: .all, logLevel: .verbose)
+        
+        // Each app session should correspond to one log file
+        fileLogger.maximumFileSize = .max
+        fileLogger.doNotReuseLogFiles = true
+        fileLogger.rollingFrequency = .greatestFiniteMagnitude
+        fileLogger.logFileManager.logFilesDiskQuota = 300 * 1024 * 1024 // 300 MB
+        fileLogger.logFileManager.maximumNumberOfLogFiles = .max
+        
+        // Log logs file destination on simulators for ease access during debug sessions.
+        if TARGET_OS_SIMULATOR != 0 {
+            logInfo("Log file path: \"\(fileLogger.currentLogFileInfo.filePath)\"")
+        }
+        
+        return fileLogger
+    }()
+    
     // ******************************* MARK: - Initialization and Setup
     
     public init() {
@@ -76,6 +99,18 @@ public final class LoggersManager {
     /// Removes text logger
     public func removeLogger(_ logger: BaseLogger) {
         DDLog.remove(logger)
+    }
+    
+    /// Adds default file logger. Check `fileLogger` property for more details.
+    public func addFileLogger() {
+        guard !DDLog.allLoggers.contains(where: { $0 === fileLogger }) else { return }
+        addLogger(fileLogger)
+    }
+    
+    /// Removes previously added `fileLogger`.
+    public func removeFileLogger() {
+        guard DDLog.allLoggers.contains(where: { $0 === fileLogger }) else { return }
+        removeLogger(fileLogger)
     }
     
     /// Log message function.

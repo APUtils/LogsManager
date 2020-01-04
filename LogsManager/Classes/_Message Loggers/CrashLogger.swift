@@ -15,6 +15,6 @@ open class CrashLogger: BaseAbstractTextLogger {
     // ******************************* MARK: - BaseAbstractTextLogger Overrides
     
     override public func process(message logMessage: DDLogMessage, formattedMessage: String) {
-        fatalError(logMessage.message)
+        fatalError(formattedMessage)
     }
 }

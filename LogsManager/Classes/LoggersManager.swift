@@ -16,7 +16,7 @@ import CocoaLumberjackSwift
 
 /// Central point for all application logs.
 /// You can easily change how logs will be displayed or processed here.
-public final class LoggersManager {
+open class LoggersManager {
     
     // ******************************* MARK: - Singleton
     

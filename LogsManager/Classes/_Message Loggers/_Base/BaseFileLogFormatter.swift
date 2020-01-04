@@ -6,8 +6,8 @@
 //  Copyright © 2019 Anton Plebanovich. All rights reserved.
 //
 
-import Foundation
 import CocoaLumberjack
+import Foundation
 
 open class BaseFileLogFormatter: BaseLogFormatter {
     open override func messagePrefix(flag: DDLogFlag) -> String {

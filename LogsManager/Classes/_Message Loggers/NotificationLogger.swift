@@ -14,7 +14,7 @@ import CocoaLumberjack
 
 /// Logger that fires local notifications. Assure that notification permissions were granted for alert presentation.
 @available(iOS 10.0, *)
-public final class NotificationLogger: BaseAbstractTextLogger {
+open class NotificationLogger: BaseAbstractTextLogger {
     
     // ******************************* MARK: - BaseAbstractTextLogger Overrides
     

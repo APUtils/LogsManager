@@ -6,12 +6,12 @@
 //  Copyright © 2018 Anton Plebanovich. All rights reserved.
 //
 
-import Foundation
 import CocoaLumberjack
+import Foundation
 
 
 /// Logger that logs to console.
-public final class ConsoleLogger: DDTTYLogger, BaseLogger {
+open class ConsoleLogger: DDTTYLogger, BaseLogger {
     
     // ******************************* MARK: - BaseLogger
     

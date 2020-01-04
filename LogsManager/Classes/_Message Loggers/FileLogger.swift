@@ -6,10 +6,10 @@
 //  Copyright © 2019 Anton Plebanovich. All rights reserved.
 //
 
-import Foundation
 import CocoaLumberjack
+import Foundation
 
-public final class FileLogger: DDFileLogger, BaseLogger {
+open class FileLogger: DDFileLogger, BaseLogger {
     
     // ******************************* MARK: - BaseLogger
     

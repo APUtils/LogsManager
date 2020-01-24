@@ -25,7 +25,6 @@ open class LoggersManager {
     // ******************************* MARK: - Private Properties
     
     private var logComponents: [LogComponent] = []
-    private var loggers: [BaseLogger] = []
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager", attributes: .concurrent)
     
@@ -60,11 +59,6 @@ open class LoggersManager {
     
     private func setup() {
         
-    }
-    
-    deinit {
-        // Remove loggers
-        loggers.forEach { DDLog.remove($0) }
     }
     
     // ******************************* MARK: - Public Methods

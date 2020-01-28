@@ -11,11 +11,7 @@
 		E201A85B2214200500258902 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8432214200500258902 /* Data+Utils.swift */; };
 		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
 		E201A85D2214200500258902 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8452214200500258902 /* String+Utils.swift */; };
-		E201A85E2214200500258902 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8462214200500258902 /* Utils.swift */; };
 		E201A85F2214200500258902 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8472214200500258902 /* Log.swift */; };
-		E201A8602214200500258902 /* AppearanceCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84A2214200500258902 /* AppearanceCaptureViewController.swift */; };
-		E201A8612214200500258902 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84B2214200500258902 /* AlertController.swift */; };
-		E201A8622214200500258902 /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84C2214200500258902 /* AlertLogger.swift */; };
 		E201A8632214200500258902 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84D2214200500258902 /* NotificationLogger.swift */; };
 		E201A8642214200500258902 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84E2214200500258902 /* ConsoleLogger.swift */; };
 		E201A8652214200500258902 /* BaseLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8502214200500258902 /* BaseLogger.swift */; };
@@ -32,7 +28,22 @@
 		E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791022A8069800DECBD8 /* Collection+Utils.swift */; };
 		E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791222A812B500DECBD8 /* FileLogger.swift */; };
 		E2E0791B22A825E000DECBD8 /* BaseFileLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */; };
+		E2F9F8E523E03F88009E328F /* LogsManagerExtensionUnsafe.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2F9F8EC23E0408F009E328F /* LogsManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* LogsManager.framework */; };
+		E2F9F8F123E040A9009E328F /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
+		E2F9F8F323E040A9009E328F /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
+		E2F9F8F823E0422F009E328F /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9F8F723E0422F009E328F /* AlertLogger.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E2F9F8EE23E0408F009E328F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E202680A22117D03004CC28A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E202681222117D03004CC28A;
+			remoteInfo = LogsManager;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
@@ -42,11 +53,7 @@
 		E201A8432214200500258902 /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
 		E201A8442214200500258902 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		E201A8452214200500258902 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
-		E201A8462214200500258902 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../LogsManager/Classes/Utils.swift; sourceTree = "<group>"; };
 		E201A8472214200500258902 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = ../../LogsManager/Classes/Log.swift; sourceTree = "<group>"; };
-		E201A84A2214200500258902 /* AppearanceCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceCaptureViewController.swift; sourceTree = "<group>"; };
-		E201A84B2214200500258902 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		E201A84C2214200500258902 /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLogger.swift; sourceTree = "<group>"; };
 		E201A84D2214200500258902 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLogger.swift; sourceTree = "<group>"; };
 		E201A84E2214200500258902 /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		E201A8502214200500258902 /* BaseLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogger.swift; sourceTree = "<group>"; };
@@ -65,6 +72,10 @@
 		E2E0791022A8069800DECBD8 /* Collection+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Utils.swift"; sourceTree = "<group>"; };
 		E2E0791222A812B500DECBD8 /* FileLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLogger.swift; sourceTree = "<group>"; };
 		E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFileLogFormatter.swift; sourceTree = "<group>"; };
+		E2F9F8E123E03F88009E328F /* LogsManagerExtensionUnsafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogsManagerExtensionUnsafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogsManagerExtensionUnsafe.h; sourceTree = "<group>"; };
+		E2F9F8E423E03F88009E328F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2F9F8F723E0422F009E328F /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +85,16 @@
 			files = (
 				E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */,
 				E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2F9F8DE23E03F88009E328F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2F9F8F123E040A9009E328F /* CocoaLumberjack.framework in Frameworks */,
+				E2F9F8EC23E0408F009E328F /* LogsManager.framework in Frameworks */,
+				E2F9F8F323E040A9009E328F /* CocoaLumberjackSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +121,6 @@
 				E201A8592214200500258902 /* DDLogMessage+Utils.swift */,
 				E201A8472214200500258902 /* Log.swift */,
 				E201A8562214200500258902 /* LoggersManager.swift */,
-				E201A8462214200500258902 /* Utils.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -121,7 +141,6 @@
 		E201A8482214200500258902 /* _Message Loggers */ = {
 			isa = PBXGroup;
 			children = (
-				E201A8492214200500258902 /* _Alert */,
 				E201A84F2214200500258902 /* _Base */,
 				E201A84E2214200500258902 /* ConsoleLogger.swift */,
 				0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */,
@@ -130,16 +149,6 @@
 			);
 			name = "_Message Loggers";
 			path = "../../LogsManager/Classes/_Message Loggers";
-			sourceTree = "<group>";
-		};
-		E201A8492214200500258902 /* _Alert */ = {
-			isa = PBXGroup;
-			children = (
-				E201A84A2214200500258902 /* AppearanceCaptureViewController.swift */,
-				E201A84B2214200500258902 /* AlertController.swift */,
-				E201A84C2214200500258902 /* AlertLogger.swift */,
-			);
-			path = _Alert;
 			sourceTree = "<group>";
 		};
 		E201A84F2214200500258902 /* _Base */ = {
@@ -165,9 +174,10 @@
 		E202680922117D03004CC28A = {
 			isa = PBXGroup;
 			children = (
-				E202681522117D03004CC28A /* LogsManager */,
-				E202681422117D03004CC28A /* Products */,
 				F1BD9B4AF93178888C20C526 /* Frameworks */,
+				E202681522117D03004CC28A /* LogsManager */,
+				E2F9F8E223E03F88009E328F /* LogsManagerExtensionUnsafe */,
+				E202681422117D03004CC28A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				E202681322117D03004CC28A /* LogsManager.framework */,
+				E2F9F8E123E03F88009E328F /* LogsManagerExtensionUnsafe.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +208,25 @@
 			name = _;
 			sourceTree = "<group>";
 		};
+		E2F9F8E223E03F88009E328F /* LogsManagerExtensionUnsafe */ = {
+			isa = PBXGroup;
+			children = (
+				E2F9F8F623E0422F009E328F /* _Alert Logger */,
+				E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */,
+				E2F9F8E423E03F88009E328F /* Info.plist */,
+			);
+			path = LogsManagerExtensionUnsafe;
+			sourceTree = "<group>";
+		};
+		E2F9F8F623E0422F009E328F /* _Alert Logger */ = {
+			isa = PBXGroup;
+			children = (
+				E2F9F8F723E0422F009E328F /* AlertLogger.swift */,
+			);
+			name = "_Alert Logger";
+			path = "../../LogsManager/ExtensionUnsafeClasses/_Alert Logger";
+			sourceTree = "<group>";
+		};
 		F1BD9B4AF93178888C20C526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +245,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E202681822117D03004CC28A /* LogsManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2F9F8DC23E03F88009E328F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2F9F8E523E03F88009E328F /* LogsManagerExtensionUnsafe.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +277,25 @@
 			productReference = E202681322117D03004CC28A /* LogsManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E2F9F8E023E03F88009E328F /* LogsManagerExtensionUnsafe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2F9F8E623E03F88009E328F /* Build configuration list for PBXNativeTarget "LogsManagerExtensionUnsafe" */;
+			buildPhases = (
+				E2F9F8DC23E03F88009E328F /* Headers */,
+				E2F9F8DD23E03F88009E328F /* Sources */,
+				E2F9F8DE23E03F88009E328F /* Frameworks */,
+				E2F9F8DF23E03F88009E328F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2F9F8EF23E0408F009E328F /* PBXTargetDependency */,
+			);
+			name = LogsManagerExtensionUnsafe;
+			productName = LogsManagerExtensionUnsafe;
+			productReference = E2F9F8E123E03F88009E328F /* LogsManagerExtensionUnsafe.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -251,6 +308,9 @@
 					E202681222117D03004CC28A = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+					};
+					E2F9F8E023E03F88009E328F = {
+						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
@@ -268,12 +328,20 @@
 			projectRoot = "";
 			targets = (
 				E202681222117D03004CC28A /* LogsManager */,
+				E2F9F8E023E03F88009E328F /* LogsManagerExtensionUnsafe */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E202681122117D03004CC28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2F9F8DF23E03F88009E328F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,21 +356,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E201A86C2214200500258902 /* DDLogMessage+Utils.swift in Sources */,
-				E201A85E2214200500258902 /* Utils.swift in Sources */,
 				E201A85D2214200500258902 /* String+Utils.swift in Sources */,
-				E201A8602214200500258902 /* AppearanceCaptureViewController.swift in Sources */,
 				E2E0791B22A825E000DECBD8 /* BaseFileLogFormatter.swift in Sources */,
 				E201A85F2214200500258902 /* Log.swift in Sources */,
 				E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */,
 				E28100BA2315753B00F4A24A /* DDLogLevel+Utils.swift in Sources */,
 				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,
-				E201A8612214200500258902 /* AlertController.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
 				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,
 				E201A85C2214200500258902 /* Array+Utils.swift in Sources */,
 				E201A8672214200500258902 /* BaseAbstractTextLogger.swift in Sources */,
 				E201A86A2214200500258902 /* LoggersManager.swift in Sources */,
-				E201A8622214200500258902 /* AlertLogger.swift in Sources */,
 				E201A8682214200500258902 /* DDLogFlag+Utils.swift in Sources */,
 				E201A8642214200500258902 /* ConsoleLogger.swift in Sources */,
 				E201A8632214200500258902 /* NotificationLogger.swift in Sources */,
@@ -312,7 +376,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2F9F8DD23E03F88009E328F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2F9F8F823E0422F009E328F /* AlertLogger.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E2F9F8EF23E0408F009E328F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E202681222117D03004CC28A /* LogsManager */;
+			targetProxy = E2F9F8EE23E0408F009E328F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E202681922117D03004CC28A /* Debug */ = {
@@ -442,10 +522,12 @@
 		E202681C22117D03004CC28A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -463,6 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManager";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -471,10 +554,12 @@
 		E202681D22117D03004CC28A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -492,6 +577,63 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManager";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E2F9F8E723E03F88009E328F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = LogsManagerExtensionUnsafe/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManagerExtensionUnsafe";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E2F9F8E823E03F88009E328F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = LogsManagerExtensionUnsafe/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManagerExtensionUnsafe";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -513,6 +655,15 @@
 			buildConfigurations = (
 				E202681C22117D03004CC28A /* Debug */,
 				E202681D22117D03004CC28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2F9F8E623E03F88009E328F /* Build configuration list for PBXNativeTarget "LogsManagerExtensionUnsafe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2F9F8E723E03F88009E328F /* Debug */,
+				E2F9F8E823E03F88009E328F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

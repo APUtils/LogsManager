@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [8.0.0](https://github.com/APUtils/LogsManager/releases/tag/8.0.0)
+Released on 01/28/2020.
+
+#### Added
+- CrashLogger
+- LogsManager .fileLogger
+- LogsManager .addFileLogger()
+- LogsManager .removeFileLogger()
+
+#### Changed
+- Moved to String from StaticString type
+- Separated extension safe and unsafe parts
+
+
 ## [7.2.1](https://github.com/APUtils/LogsManager/releases/tag/7.2.1)
 Released on 11/26/2019.
 

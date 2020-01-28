@@ -24,11 +24,14 @@ Cartfile:
 github "APUtils/LogsManager" ~> 8.0
 ```
 
+Add `LogsManager` framework. Add `LogsManagerExtensionUnsafe` framework for the main app only.
+
 #### CocoaPods
 
 LogsManager is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+Default:
 ```ruby
 pod 'LogsManager', '~> 8.0'
 ```

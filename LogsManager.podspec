@@ -43,6 +43,7 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   
   s.subspec 'ExtensionUnsafe' do |subspec|
       subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
+      subspec.dependency 'LogsManager/Core'
   end
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

@@ -17,16 +17,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Logs directory: \(c.documentsDirectoryUrl.path)/LogsManager/")
-        
         LoggersManager.shared.registerLogComponent(.vc)
         LoggersManager.shared.registerLogComponent(.didAppear)
         LoggersManager.shared.registerLogComponent(.buttonTap)
         LoggersManager.shared.registerLogComponent(.deinitialize)
         LoggersManager.shared.registerLogComponent(.initialize)
         
-        let fileLogger = FileLogger(mode: .all, logLevel: .verbose)
-        LoggersManager.shared.addLogger(fileLogger)
+        let allLogger = ConsoleLogger(mode: .all, logLevel: .verbose, newLinesSeparation: false)
+        LoggersManager.shared.addLogger(allLogger)
+        
+        LoggersManager.shared.addFileLogger()
         
         let logger = ConsoleLogger(mode: .specificComponents([.vc]), logLevel: .verbose, newLinesSeparation: true)
         LoggersManager.shared.addLogger(logger)
@@ -41,9 +41,35 @@ class ViewController: UIViewController {
         LoggersManager.shared.unregisterLogComponent(.vc)
         logDebug("Test4")
         
-        let allLogger = ConsoleLogger(mode: .all, logLevel: .verbose, newLinesSeparation: false)
-        LoggersManager.shared.addLogger(allLogger)
         logDebug("Test5")
+        
+        logData("""
+{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": "SGML",
+          "SortAs": "SGML",
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": [
+              "GML",
+              "XML"
+            ]
+          },
+          "GlossSee": "markup"
+        }
+      }
+    }
+  }
+}
+""")
         
         _ = InitTester()
         _ = InitTester(with: 2)

@@ -10,6 +10,7 @@
 
 @implementation DDTTYLogger (Workaround)
 - (instancetype)initWithWorkaround:(NSInteger)nothing {
+    NSLog(@"Please ignore the following warning for now");
     return self = [self init];
 }
 @end

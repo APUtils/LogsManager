@@ -12,7 +12,7 @@ import CocoaLumberjack
 
 // ******************************* MARK: - Data Log
 
-extension DDLogFlag {
+public extension DDLogFlag {
     /// Data log level.
     static let data = DDLogFlag(rawValue: 1 << 5)
 }

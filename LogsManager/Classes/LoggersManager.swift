@@ -45,7 +45,7 @@ open class LoggersManager {
         
         // Log logs file destination on simulators for ease access during debug sessions.
         if TARGET_OS_SIMULATOR != 0 {
-            logInfo("Log file path: \"\(fileLogger.currentLogFileInfo?.filePath ?? "nil")\"")
+            logInfo("Log file path: '\(fileLogger.currentLogFileInfo?.filePath ?? "nil")'")
         }
         
         return fileLogger

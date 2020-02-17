@@ -24,7 +24,7 @@ open class ConsoleLogger: DDTTYLogger, BaseLogger {
         self.mode = mode
         self.newLinesSeparation = newLinesSeparation
         
-        super.init()
+        super.init(workaround: 0)
         
         setup()
     }

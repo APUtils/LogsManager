@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3942C823FB33C2000B9C8C /* DDTTYLogger+Workaround.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
 		E201A85B2214200500258902 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8432214200500258902 /* Data+Utils.swift */; };
 		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDTTYLogger+Workaround.h"; sourceTree = "<group>"; };
+		0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDTTYLogger+Workaround.m"; sourceTree = "<group>"; };
 		0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		722BFDE9DE58393B9D916719 /* carthageRemove.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageRemove.command; path = Scripts/Carthage/carthageRemove.command; sourceTree = "<group>"; };
@@ -59,9 +63,9 @@
 		E201A8502214200500258902 /* BaseLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogger.swift; sourceTree = "<group>"; };
 		E201A8512214200500258902 /* BaseLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogFormatter.swift; sourceTree = "<group>"; };
 		E201A8522214200500258902 /* BaseAbstractTextLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAbstractTextLogger.swift; sourceTree = "<group>"; };
-		E201A8532214200500258902 /* DDLogFlag+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogFlag+Utils.swift"; path = "../../LogsManager/Classes/DDLogFlag+Utils.swift"; sourceTree = "<group>"; };
+		E201A8532214200500258902 /* DDLogFlag+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DDLogFlag+Utils.swift"; sourceTree = "<group>"; };
 		E201A8562214200500258902 /* LoggersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggersManager.swift; path = ../../LogsManager/Classes/LoggersManager.swift; sourceTree = "<group>"; };
-		E201A8592214200500258902 /* DDLogMessage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DDLogMessage+Utils.swift"; path = "../../LogsManager/Classes/DDLogMessage+Utils.swift"; sourceTree = "<group>"; };
+		E201A8592214200500258902 /* DDLogMessage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DDLogMessage+Utils.swift"; sourceTree = "<group>"; };
 		E201A86D2214203C00258902 /* LogComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogComponent.swift; sourceTree = "<group>"; };
 		E202681322117D03004CC28A /* LogsManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogsManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202681622117D03004CC28A /* LogsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogsManager.h; sourceTree = "<group>"; };
@@ -117,8 +121,6 @@
 				E201A8412214200500258902 /* _Extensions */,
 				E201A8572214200500258902 /* _LogComponent */,
 				E201A8482214200500258902 /* _Message Loggers */,
-				E201A8532214200500258902 /* DDLogFlag+Utils.swift */,
-				E201A8592214200500258902 /* DDLogMessage+Utils.swift */,
 				E201A8472214200500258902 /* Log.swift */,
 				E201A8562214200500258902 /* LoggersManager.swift */,
 			);
@@ -131,7 +133,9 @@
 				E201A8442214200500258902 /* Array+Utils.swift */,
 				E2E0791022A8069800DECBD8 /* Collection+Utils.swift */,
 				E201A8432214200500258902 /* Data+Utils.swift */,
+				E201A8532214200500258902 /* DDLogFlag+Utils.swift */,
 				E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */,
+				E201A8592214200500258902 /* DDLogMessage+Utils.swift */,
 				E201A8452214200500258902 /* String+Utils.swift */,
 			);
 			name = _Extensions;
@@ -154,6 +158,8 @@
 		E201A84F2214200500258902 /* _Base */ = {
 			isa = PBXGroup;
 			children = (
+				0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */,
+				0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */,
 				E201A8522214200500258902 /* BaseAbstractTextLogger.swift */,
 				E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */,
 				E201A8512214200500258902 /* BaseLogFormatter.swift */,
@@ -244,6 +250,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3942C823FB33C2000B9C8C /* DDTTYLogger+Workaround.h in Headers */,
 				E202681822117D03004CC28A /* LogsManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +314,7 @@
 				TargetAttributes = {
 					E202681222117D03004CC28A = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1130;
 					};
 					E2F9F8E023E03F88009E328F = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -363,6 +370,7 @@
 				E28100BA2315753B00F4A24A /* DDLogLevel+Utils.swift in Sources */,
 				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
+				0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */,
 				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,
 				E201A85C2214200500258902 /* Array+Utils.swift in Sources */,
 				E201A8672214200500258902 /* BaseAbstractTextLogger.swift in Sources */,
@@ -523,6 +531,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -541,6 +550,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManager";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -549,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -567,6 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManager";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

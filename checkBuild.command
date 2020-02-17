@@ -7,11 +7,12 @@ cd "$base_dir"
 
 echo ""
 echo -e "\nChecking Carthage integrity..."
+pbxproj_path='CarthageSupport/LogsManager.xcodeproj/project.pbxproj'
 swift_files=$(find 'LogsManager/Classes' -type f -name "*.swift" | grep -o "[0-9a-zA-Z+ ]*.swift" | sort -fu)
 swift_files_count=$(echo "${swift_files}" | wc -l | tr -d ' ')
-swift_files_in_project=$(sed -n '/Begin PBXBuildFile/,/End PBXBuildFile section/p;/End PBXBuildFile/q' 'CarthageSupport/LogsManager.xcodeproj/project.pbxproj' | sed '1d;$d' | grep -o "[A-Z].[0-9a-zA-Z+ ]*\.[a-z]*" | sort -fu)
 
-# swift_files_in_project=$(sed -n '/Begin PBXSourcesBuildPhase/,/End PBXSourcesBuildPhase section/p;/End PBXSourcesBuildPhase/q' 'CarthageSupport/LogsManager.xcodeproj/project.pbxproj' | sed -n '/files =/,/);/p' | sed '1d;$d' | grep -o "[a-zA-Z+]*.swift" | sort -fu)
+build_section_id=$(sed -n -e '/\/\* LogsManager \*\/ = {/,/};/p' "${pbxproj_path}" | sed -n '/PBXNativeTarget/,/Sources/p' | tail -1 | tr -d "\t" | cut -d ' ' -f 1)
+swift_files_in_project=$(sed -n "/${build_section_id}.* = {/,/};/p" "${pbxproj_path}" | grep -o "[A-Z].[0-9a-zA-Z+ ]*\.swift" | sort -fu)
 swift_files_in_project_count=$(echo "${swift_files_in_project}" | wc -l | tr -d ' ')
 if [ "${swift_files_count}" -ne "${swift_files_in_project_count}" ]; then
     echo  >&2 "error: Carthage project missing dependencies."
@@ -20,7 +21,7 @@ if [ "${swift_files_count}" -ne "${swift_files_in_project_count}" ]; then
     echo -e "\nMissing dependencies:"
     comm -23 <(echo "${swift_files}") <(echo "${swift_files_in_project}")
     echo " "
-	exit 1
+    exit 1
 fi
 
 echo -e "\nBuilding Pods project..."

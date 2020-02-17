@@ -23,6 +23,8 @@ open class BaseFileLogFormatter: BaseLogFormatter {
             return "D> "
         } else if flag == .verbose {
             return "V> "
+        } else if flag == .data {
+            return "Data> "
         } else {
             return ""
         }

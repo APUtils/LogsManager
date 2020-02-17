@@ -143,6 +143,7 @@ public func logDebug(_ message: @autoclosure () -> String,
 }
 
 /// Verbose log function. This level of logs usually is excessive but may be helpful in some cases.
+/// Use it for repeated logs or logs that are usually not needed to understand what's going on.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logVerbose(_ message: @autoclosure () -> String,
@@ -154,6 +155,23 @@ public func logVerbose(_ message: @autoclosure () -> String,
     logMessage(message(),
                logComponents: logComponents,
                flag: .verbose,
+               file: file,
+               function: function,
+               line: line)
+}
+
+/// Data log function. This one is to log big chunks of data like network responses.
+/// - parameter message: Message to log.
+/// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+public func logData(_ message: @autoclosure () -> String,
+                       logComponents: [LogComponent]? = nil,
+                       file: String = #file,
+                       function: String = #function,
+                       line: UInt = #line) {
+    
+    logMessage(message(),
+               logComponents: logComponents,
+               flag: .data,
                file: file,
                function: function,
                line: line)

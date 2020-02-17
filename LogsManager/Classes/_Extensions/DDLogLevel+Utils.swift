@@ -11,7 +11,9 @@ import Foundation
 
 extension DDLogLevel {
     init(flag: DDLogFlag) {
-        if flag.contains(.verbose) {
+        if flag.contains(.data) {
+            self = .data
+        } else if flag.contains(.verbose) {
             self = .verbose
         } else if flag.contains(.debug) {
             self = .debug
@@ -25,4 +27,10 @@ extension DDLogLevel {
             self = .off
         }
     }
+}
+
+// ******************************* MARK: - Data Log
+
+extension DDLogLevel {
+    static let data: DDLogLevel = DDLogLevel(rawValue: 1 << 5)!
 }

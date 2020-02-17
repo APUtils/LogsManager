@@ -22,10 +22,10 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
         return dateFormatter
     }()
     
-    /// Message that if passed won't be formatted and will be add to logs as an empty line
+    /// Message that if passed won't be formatted and will be added to logs as an empty line
     public static let emptyLineMessage: DDLogMessage = DDLogMessage(message: "",
                                                                     level: .all,
-                                                                    flag: .verbose,
+                                                                    flag: .data,
                                                                     context: 0,
                                                                     file: "",
                                                                     function: nil,

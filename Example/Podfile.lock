@@ -10,8 +10,8 @@ PODS:
   - APExtensions/Storyboard (7.0.1)
   - APExtensions/ViewConfiguration (7.0.1)
   - APExtensions/ViewState (7.0.1)
-  - CocoaLumberjack/Core (3.6.0)
-  - CocoaLumberjack/Swift (3.6.0):
+  - CocoaLumberjack/Core (3.6.1)
+  - CocoaLumberjack/Swift (3.6.1):
     - CocoaLumberjack/Core
   - LogsManager (8.0.0):
     - CocoaLumberjack/Swift
@@ -44,11 +44,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   APExtensions: 9a7a7b6ff5b9785b245962de89fbbdaf4c10f10e
-  CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
+  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
   LogsManager: 89276fab53d35f18663e4bfd37eef4a54c30cfef
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
   Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
 
-PODFILE CHECKSUM: 4950237753b1ee8462be4382192c329c97a73f8a
+PODFILE CHECKSUM: f31a1bed155d2e3dd819259d77eec8aa80aaf6fe
 
 COCOAPODS: 1.8.4

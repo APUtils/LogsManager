@@ -32,5 +32,5 @@ extension DDLogLevel {
 // ******************************* MARK: - Data Log
 
 public extension DDLogLevel {
-    static let data: DDLogLevel = DDLogLevel(rawValue: 1 << 5)!
+    static let data: DDLogLevel = DDLogLevel(rawValue: DDLogLevel.verbose.rawValue | DDLogFlag.data.rawValue)!
 }

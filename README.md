@@ -21,7 +21,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/LogsManager" ~> 8.0
+github "APUtils/LogsManager" ~> 9.0
 ```
 
 Add `LogsManager` framework. Add `LogsManagerExtensionUnsafe` framework for the main app only.
@@ -33,12 +33,12 @@ it, simply add the following line to your Podfile:
 
 Default:
 ```ruby
-pod 'LogsManager', '~> 8.0'
+pod 'LogsManager', '~> 9.0'
 ```
 
 App extension safe version:
 ```ruby
-pod 'LogsManager/Core', '~> 8.0'
+pod 'LogsManager/Core', '~> 9.0'
 ```
 
 ## Usage

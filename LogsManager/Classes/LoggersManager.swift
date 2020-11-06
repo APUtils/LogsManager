@@ -85,7 +85,7 @@ open class LoggersManager {
         cachedComponents = [:]
     }
     
-    /// Adds text logger
+    /// Adds text logger. Do nothing if logger with the same log level is already added.
     public func addLogger(_ logger: BaseLogger) {
         DDLog.add(logger, with: logger.logLevel)
     }

@@ -1,54 +1,58 @@
 PODS:
-  - APExtensions (7.0.1):
-    - APExtensions/Abstractions (= 7.0.1)
-    - APExtensions/Core (= 7.0.1)
-    - APExtensions/Storyboard (= 7.0.1)
-    - APExtensions/ViewConfiguration (= 7.0.1)
-    - APExtensions/ViewState (= 7.0.1)
-  - APExtensions/Abstractions (7.0.1)
-  - APExtensions/Core (7.0.1)
-  - APExtensions/Storyboard (7.0.1)
-  - APExtensions/ViewConfiguration (7.0.1)
-  - APExtensions/ViewState (7.0.1)
-  - CocoaLumberjack/Core (3.6.1)
-  - CocoaLumberjack/Swift (3.6.1):
+  - APExtensions (8.0.0):
+    - APExtensions/Abstractions (= 8.0.0)
+    - APExtensions/Core (= 8.0.0)
+    - APExtensions/Storyboard (= 8.0.0)
+    - APExtensions/ViewConfiguration (= 8.0.0)
+  - APExtensions/Abstractions (8.0.0)
+  - APExtensions/Core (8.0.0)
+  - APExtensions/Storyboard (8.0.0)
+  - APExtensions/ViewConfiguration (8.0.0)
+  - CocoaLumberjack/Core (3.7.0)
+  - CocoaLumberjack/Swift (3.7.0):
     - CocoaLumberjack/Core
-  - LogsManager (8.0.0):
+  - LogsManager (9.0.0):
     - CocoaLumberjack/Swift
-    - LogsManager/Core (= 8.0.0)
-    - LogsManager/ExtensionUnsafe (= 8.0.0)
-  - LogsManager/Core (8.0.0):
+    - LogsManager/Core (= 9.0.0)
+    - LogsManager/ExtensionUnsafe (= 9.0.0)
+  - LogsManager/Core (9.0.0):
     - CocoaLumberjack/Swift
-  - LogsManager/ExtensionUnsafe (8.0.0):
+  - LogsManager/ExtensionUnsafe (9.0.0):
     - CocoaLumberjack/Swift
     - LogsManager/Core
-  - Nimble (8.0.5)
-  - Quick (2.2.0)
+  - Nimble (9.0.0)
+  - Quick (3.0.0)
 
 DEPENDENCIES:
-  - APExtensions
+  - APExtensions (from `https://github.com/APUtils/APExtensions.git`)
   - LogsManager (from `../`)
   - Nimble
   - Quick
 
 SPEC REPOS:
-  trunk:
-    - APExtensions
+  https://github.com/CocoaPods/Specs.git:
     - CocoaLumberjack
     - Nimble
     - Quick
 
 EXTERNAL SOURCES:
+  APExtensions:
+    :git: https://github.com/APUtils/APExtensions.git
   LogsManager:
     :path: "../"
 
+CHECKOUT OPTIONS:
+  APExtensions:
+    :commit: 2c1ea7c5afe405993b70df1753f3463f27cf156e
+    :git: https://github.com/APUtils/APExtensions.git
+
 SPEC CHECKSUMS:
-  APExtensions: 9a7a7b6ff5b9785b245962de89fbbdaf4c10f10e
-  CocoaLumberjack: b17ae15142558d08bbacf69775fa10c4abbebcc9
-  LogsManager: 89276fab53d35f18663e4bfd37eef4a54c30cfef
-  Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
-  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  APExtensions: b5c4b22b103a9f93d7c608148b2e381f5fcd7483
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
+  LogsManager: f82c773fdd9e3541a48ebdc7ba3c569bbc7e1ac9
+  Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
+  Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
 
-PODFILE CHECKSUM: f31a1bed155d2e3dd819259d77eec8aa80aaf6fe
+PODFILE CHECKSUM: 3e3e46892d60ef2f6b83ba5c15b3141a005e7668
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

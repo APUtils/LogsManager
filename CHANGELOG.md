@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.0.0](https://github.com/APUtils/LogsManager/releases/tag/9.0.0)
+Released on 11/06/2020.
+
+#### Changed
+- Dropped iOS 8.0 support
+- Latest Lumberjack support
+
+
 ## [8.0.0](https://github.com/APUtils/LogsManager/releases/tag/8.0.0)
 Released on 01/28/2020.
 

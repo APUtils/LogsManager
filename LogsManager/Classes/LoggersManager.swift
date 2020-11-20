@@ -24,7 +24,9 @@ open class LoggersManager {
     
     // ******************************* MARK: - Private Properties
     
+    private var loggers: [BaseLogger] = []
     private var logComponents: [LogComponent] = []
+    private var combinedLogLevel: DDLogLevel = .off
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager", attributes: .concurrent)
     
@@ -87,23 +89,35 @@ open class LoggersManager {
     
     /// Adds text logger. Do nothing if logger with the same log level is already added.
     public func addLogger(_ logger: BaseLogger) {
+        guard !loggers.contains(where: { $0 === logger }) else { return }
+        
+        loggers.append(logger)
         DDLog.add(logger, with: logger.logLevel)
+        
+        combinedLogLevel = DDLogLevel(rawValue: combinedLogLevel.rawValue | logger.logLevel.rawValue)!
     }
     
     /// Removes text logger
     public func removeLogger(_ logger: BaseLogger) {
+        guard loggers.contains(where: { $0 === logger }) else { return }
+        
+        loggers.removeAll(where: { $0 === logger })
         DDLog.remove(logger)
+        
+        let rawCombinedLogLevel = loggers
+            .map { $0.logLevel.rawValue }
+            .reduce(0) { $0 | $1 }
+        
+        combinedLogLevel = DDLogLevel(rawValue: rawCombinedLogLevel)!
     }
     
     /// Adds default file logger. Check `fileLogger` property for more details.
     public func addFileLogger() {
-        guard !DDLog.allLoggers.contains(where: { $0 === fileLogger }) else { return }
         addLogger(fileLogger)
     }
     
     /// Removes previously added `fileLogger`.
     public func removeFileLogger() {
-        guard DDLog.allLoggers.contains(where: { $0 === fileLogger }) else { return }
         removeLogger(fileLogger)
     }
     
@@ -112,6 +126,12 @@ open class LoggersManager {
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
     public func logMessage(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, flag: DDLogFlag, file: String = #file, function: String = #function, line: UInt = #line) {
+        
+        // Check if combined log level allows this message to pass
+        guard combinedLogLevel.rawValue & flag.rawValue > 0 else { return }
+        
+        // TODO: Add log components check
+        
         let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
         let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
         

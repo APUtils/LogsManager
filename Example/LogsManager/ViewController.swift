@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        logDebug("Test00")
+        
         LoggersManager.shared.registerLogComponent(.vc)
         LoggersManager.shared.registerLogComponent(.didAppear)
         LoggersManager.shared.registerLogComponent(.buttonTap)
@@ -26,6 +28,8 @@ class ViewController: UIViewController {
         let allLogger = ConsoleLogger(mode: .all, logLevel: .verbose, newLinesSeparation: false)
         LoggersManager.shared.addLogger(allLogger)
         
+        LoggersManager.shared.addFileLogger()
+        LoggersManager.shared.removeFileLogger()
         LoggersManager.shared.addFileLogger()
         
         let logger = ConsoleLogger(mode: .specificComponents([.vc]), logLevel: .verbose, newLinesSeparation: true)

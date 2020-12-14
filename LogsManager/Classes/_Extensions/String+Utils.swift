@@ -13,12 +13,14 @@ public extension String {
     /// - parameters:
     ///   - filePath: File path that is passed through `#file` compile directrive as default parameter.
     static func getFileName(filePath: String) -> String {
-        var fileName = URL(fileURLWithPath: filePath).lastPathComponent
-        fileName = fileName
-            .replacingOccurrences(of: ".swift", with: "")
-            .replacingOccurrences(of: ".m", with: "")
-            .replacingOccurrences(of: ".mm", with: "")
+        guard let lastPathComponent = filePath.components(separatedBy: "/").last else { return "" }
         
-        return fileName
+        var components = lastPathComponent.components(separatedBy: ".")
+        if components.count == 1 {
+            return lastPathComponent
+        } else {
+            components.removeLast()
+            return components.joined(separator: ".")
+        }
     }
 }

@@ -148,7 +148,7 @@ open class LoggersManager {
                                           function: function,
                                           line: line,
                                           tag: parameters,
-                                          options: [.copyFile, .copyFunction],
+                                          options: [.dontCopyMessage],
                                           timestamp: nil)
             
             DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
@@ -179,7 +179,7 @@ open class LoggersManager {
                                           function: function,
                                           line: line,
                                           tag: parameters,
-                                          options: [.copyFile, .copyFunction],
+                                          options: [.dontCopyMessage],
                                           timestamp: nil)
             
             DDLog.sharedInstance.log(asynchronous: false, message: logMessage)

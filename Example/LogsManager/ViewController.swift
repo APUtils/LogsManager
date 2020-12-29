@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        logDebug("Test00")
+        logDebug("Message filter check")
+        logError("Error filter check")
         
         LoggersManager.shared.registerLogComponent(.vc)
         LoggersManager.shared.registerLogComponent(.didAppear)

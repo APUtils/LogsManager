@@ -38,19 +38,19 @@ public extension DDLogMessage {
         public var data: [String: Any?]?
         public var error: Any?
         public var logComponents: [LogComponent]?
+        public var normalizedData: [String: String]?
+        public var normalizedError: String?
     }
 }
 
 public extension DDLogMessage.Parameters {
     
-    /// Stringified data
-    var normalizedData: [String: String]? {
-        return normalizeData(data)
-    }
-    
-    /// Stringified error
-    var normalizedError: String? {
-        return normalizeError(error)
+    init(data: [String: Any?]?, error: Any?, logComponents: [LogComponent]?) {
+        self.data = data
+        self.error = error
+        self.logComponents = logComponents
+        normalizedData = normalizeData(data)
+        normalizedError = normalizeError(error)
     }
     
     /// Method to normalize error.

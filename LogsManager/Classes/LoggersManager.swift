@@ -141,13 +141,13 @@ open class LoggersManager {
         
         // TODO: Add log components check
         
-        let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
-        let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
-        
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
         if dynamicLogLevel.rawValue & flag.rawValue != 0 {
+            let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
+            let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
+            
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
             let logMessage = DDLogMessage(message: message(),
                                           level: DDLogLevel(flag: flag),
@@ -179,13 +179,13 @@ open class LoggersManager {
         
         // TODO: Add log components check
         
-        let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
-        let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
-        
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
         if dynamicLogLevel.rawValue & DDLogFlag.error.rawValue != 0 {
+            let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
+            let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
+            
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
             let logMessage = DDLogMessage(message: message(),
                                           level: .error,

@@ -30,8 +30,6 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
 
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.1']
-
-  s.source_files = 'LogsManager/Classes/**/*'
   
   # s.resource_bundles = {
   #   'LogsManager' => ['LogsManager/Assets/*.png']

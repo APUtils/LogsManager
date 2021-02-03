@@ -18,6 +18,12 @@ import CocoaLumberjackSwift
 /// You can easily change how logs will be displayed or processed here.
 open class LoggersManager {
     
+    private struct OnceLogRecord: Hashable {
+        let file: String
+        let function: String
+        let line: UInt
+    }
+    
     // ******************************* MARK: - Singleton
     
     public static var shared: LoggersManager = LoggersManager()
@@ -29,6 +35,7 @@ open class LoggersManager {
     private var combinedLogLevel: DDLogLevel = .off
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager")
+    private var onceLoggedErrors: [OnceLogRecord] = []
     
     /// Default file logger. You can adjust its parameters if needed.
     /// By default, each app session corresponds to individual file, max logs size is 300 MB
@@ -152,6 +159,51 @@ open class LoggersManager {
             let logMessage = DDLogMessage(message: message(),
                                           level: DDLogLevel(flag: flag),
                                           flag: flag,
+                                          context: 0,
+                                          file: file,
+                                          function: function,
+                                          line: line,
+                                          tag: parameters,
+                                          options: [.dontCopyMessage],
+                                          timestamp: nil)
+            
+            DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
+        }
+        // --------
+    }
+    
+    /// Log error function. Logs error only once.
+    /// - parameter message: Message to log.
+    /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+    /// - parameter error: Error that occured.
+    /// - parameter data: Data to attach to error.
+    /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
+    public func logErrorOnce(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: String = #file, function: String = #function, line: UInt = #line) {
+        
+        let record = OnceLogRecord(file: file, function: function, line: line)
+        if onceLoggedErrors.contains(record) {
+            return
+        } else {
+            onceLoggedErrors.append(record)
+        }
+        
+        // Check if combined log level allows this error to pass
+        let combinedLogLevel = self.combinedLogLevel
+        guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
+        
+        // TODO: Add log components check
+        
+        // -------- Copied from `CocoaLumberjack.swift`
+        // The `dynamicLogLevel` will always be checked here (instead of being passed in).
+        // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
+        if dynamicLogLevel.rawValue & DDLogFlag.error.rawValue != 0 {
+            let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
+            let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
+            
+            // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
+            let logMessage = DDLogMessage(message: message(),
+                                          level: .error,
+                                          flag: .error,
                                           context: 0,
                                           file: file,
                                           function: function,

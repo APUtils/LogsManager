@@ -69,6 +69,28 @@ public func logError(_ message: @autoclosure () -> String,
              line: line)
 }
 
+/// Error log function. Logs error only once.
+/// - parameter message: Message to log.
+/// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+public func logErrorOnce(_ message: @autoclosure () -> String,
+                         logComponents: [LogComponent]? = nil,
+                         error: Any?,
+                         data: [String: Any?]?,
+                         file: String = #file,
+                         function: String = #function,
+                         line: UInt = #line) {
+    
+    LoggersManager.shared.logErrorOnce(message(),
+                                       logComponents: logComponents,
+                                       error: error,
+                                       data: data,
+                                       file: file,
+                                       function: function,
+                                       line: line)
+}
+
 /// Error log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
@@ -164,10 +186,10 @@ public func logVerbose(_ message: @autoclosure () -> String,
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
 public func logData(_ message: @autoclosure () -> String,
-                       logComponents: [LogComponent]? = nil,
-                       file: String = #file,
-                       function: String = #function,
-                       line: UInt = #line) {
+                    logComponents: [LogComponent]? = nil,
+                    file: String = #file,
+                    function: String = #function,
+                    line: UInt = #line) {
     
     logMessage(message(),
                logComponents: logComponents,

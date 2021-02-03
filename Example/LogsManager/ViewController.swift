@@ -48,6 +48,9 @@ class ViewController: UIViewController {
         
         logDebug("Test5")
         
+        logImportantErrorOnce()
+        logImportantErrorOnce()
+        
         logData("""
 {
   "glossary": {
@@ -140,6 +143,12 @@ class ViewController: UIViewController {
     
     @IBAction private func onTap(_ sender: Any) {
         logInfo("Button tap")
+    }
+    
+    // ******************************* MARK: - Private Methods
+    
+    private func logImportantErrorOnce() {
+        logErrorOnce("logImportantErrorOnce")
     }
 }
 

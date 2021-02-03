@@ -172,7 +172,7 @@ open class LoggersManager {
         // --------
     }
     
-    /// Log error function. Logs error only once.
+    /// Logs error only once for each file-function-line combination.
     /// - parameter message: Message to log.
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter error: Error that occured.

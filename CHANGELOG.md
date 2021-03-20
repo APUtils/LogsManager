@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.5](https://github.com/APUtils/LogsManager/releases/tag/9.1.5)
+Released on 03/20/2021.
+
+#### Fixed
+- Excessive CocoaLumberjack dependency for RoutableLogger subspec
+
+
 ## [9.1.4](https://github.com/APUtils/LogsManager/releases/tag/9.1.4)
 Released on 03/20/2021.
 

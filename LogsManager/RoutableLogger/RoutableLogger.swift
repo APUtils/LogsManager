@@ -17,42 +17,42 @@ public enum RoutableLogger {
     /// - parameter message: Message to log.
     /// - parameter error: Error to report.
     /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
-    public static var logError: (_ message: () -> (String),
-                                 _ error: Any?,
-                                 _ data: [String : Any?]?,
-                                 _ file: String,
-                                 _ function: String,
-                                 _ line: UInt) -> Void = _logError
+    public static var logErrorHandler: (_ message: () -> (String),
+                                        _ error: Any?,
+                                        _ data: [String : Any?]?,
+                                        _ file: String,
+                                        _ function: String,
+                                        _ line: UInt) -> Void = _logError
     
     /// Info log handler.
-    public static var logInfo: (_ message: () -> (String),
-                                _ file: String,
-                                _ function: String,
-                                _ line: UInt) -> Void = logMessage
+    public static var logInfoHandler: (_ message: () -> (String),
+                                       _ file: String,
+                                       _ function: String,
+                                       _ line: UInt) -> Void = logMessageHandler
     
     /// Debug log handler.
-    public static var logDebug: (_ message: () -> (String),
-                                 _ file: String,
-                                 _ function: String,
-                                 _ line: UInt) -> Void = logMessage
+    public static var logDebugHandler: (_ message: () -> (String),
+                                        _ file: String,
+                                        _ function: String,
+                                        _ line: UInt) -> Void = logMessageHandler
     
     /// Verbose log handler.
-    public static var logVerbose: (_ message: () -> (String),
-                                   _ file: String,
-                                   _ function: String,
-                                   _ line: UInt) -> Void = logMessage
+    public static var logVerboseHandler: (_ message: () -> (String),
+                                          _ file: String,
+                                          _ function: String,
+                                          _ line: UInt) -> Void = logMessageHandler
     
     /// Data log handler.
-    public static var logData: (_ message: () -> (String),
-                                _ file: String,
-                                _ function: String,
-                                _ line: UInt) -> Void = logMessage
+    public static var logDataHandler: (_ message: () -> (String),
+                                       _ file: String,
+                                       _ function: String,
+                                       _ line: UInt) -> Void = logMessageHandler
     
     /// Info, debug, verbose and data message logs go here if not redirected.
-    public static var logMessage: (_ message: () -> (String),
-                                   _ file: String,
-                                   _ function: String,
-                                   _ line: UInt) -> Void = _consoleLog
+    public static var logMessageHandler: (_ message: () -> (String),
+                                          _ file: String,
+                                          _ function: String,
+                                          _ line: UInt) -> Void = _consoleLog
     
     private static func _logError(_ message: @autoclosure () -> String,
                                   error: Any?,
@@ -93,77 +93,80 @@ public enum RoutableLogger {
         
         print(logString)
     }
-}
-
-/// Error log function.
-/// - parameter message: Message to log.
-/// - parameter error: Error to report.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
-public func logError(_ message: @autoclosure () -> String,
-                     error: Any? = nil,
-                     data: [String: Any?]? = nil,
-                     file: String = #file,
-                     function: String = #function,
-                     line: UInt = #line) {
     
-    RoutableLogger.logError(message,
-                            error,
-                            data,
-                            file,
-                            function,
-                            line)
-}
-
-/// Info log function.
-/// - parameter message: Message to log.
-public func logInfo(_ message: @autoclosure () -> String,
-                    file: String = #file,
-                    function: String = #function,
-                    line: UInt = #line) {
+    // ******************************* MARK: - Convenient Methods
     
-    RoutableLogger.logInfo(message,
-                           file,
-                           function,
-                           line)
-}
-
-
-/// Debug log function.
-/// - parameter message: Message to log.
-public func logDebug(_ message: @autoclosure () -> String,
-                     file: String = #file,
-                     function: String = #function,
-                     line: UInt = #line) {
+    /// Error log function.
+    /// - parameter message: Message to log.
+    /// - parameter error: Error to report.
+    /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+    public static func logError(_ message: @autoclosure () -> String,
+                                error: Any? = nil,
+                                data: [String: Any?]? = nil,
+                                file: String = #file,
+                                function: String = #function,
+                                line: UInt = #line) {
+        
+        logErrorHandler(message,
+                        error,
+                        data,
+                        file,
+                        function,
+                        line)
+    }
     
-    RoutableLogger.logDebug(message,
-                            file,
-                            function,
-                            line)
-}
-
-/// Verbose log function. This level of logs usually is excessive but may be helpful in some cases.
-/// Use it for repeated logs or logs that are usually not needed to understand what's going on.
-/// - parameter message: Message to log.
-public func logVerbose(_ message: @autoclosure () -> String,
-                       file: String = #file,
-                       function: String = #function,
-                       line: UInt = #line) {
+    /// Info log function.
+    /// - parameter message: Message to log.
+    public static func logInfo(_ message: @autoclosure () -> String,
+                               file: String = #file,
+                               function: String = #function,
+                               line: UInt = #line) {
+        
+        logInfoHandler(message,
+                       file,
+                       function,
+                       line)
+    }
     
-    RoutableLogger.logVerbose(message,
-                              file,
-                              function,
-                              line)
-}
-
-/// Data log function. This one is to log big chunks of data like network responses.
-/// - parameter message: Message to log.
-public func logData(_ message: @autoclosure () -> String,
-                    file: String = #file,
-                    function: String = #function,
-                    line: UInt = #line) {
     
-    RoutableLogger.logData(message,
-                           file,
-                           function,
-                           line)
+    /// Debug log function.
+    /// - parameter message: Message to log.
+    public static func logDebug(_ message: @autoclosure () -> String,
+                                file: String = #file,
+                                function: String = #function,
+                                line: UInt = #line) {
+        
+        logDebugHandler(message,
+                        file,
+                        function,
+                        line)
+    }
+    
+    /// Verbose log function. This level of logs usually is excessive but may be helpful in some cases.
+    /// Use it for repeated logs or logs that are usually not needed to understand what's going on.
+    /// - parameter message: Message to log.
+    public static func logVerbose(_ message: @autoclosure () -> String,
+                                  file: String = #file,
+                                  function: String = #function,
+                                  line: UInt = #line) {
+        
+        logVerboseHandler(message,
+                          file,
+                          function,
+                          line)
+    }
+    
+    /// Data log function. This one is to log big chunks of data like network responses.
+    /// - parameter message: Message to log.
+    public static func logData(_ message: @autoclosure () -> String,
+                               file: String = #file,
+                               function: String = #function,
+                               line: UInt = #line) {
+        
+        logDataHandler(message,
+                       file,
+                       function,
+                       line)
+    }
+    
 }

@@ -16,7 +16,7 @@ before_install:
 - pod repo update
 - pod install --project-directory='Example'
 - brew install carthage
-- carthage bootstrap --platform iOS --cache-builds
+- CarthageSupport/Scripts/Carthage/carthageInstallTests.command
 
 script:
 - bash checkBuild.command

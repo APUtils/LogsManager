@@ -10,10 +10,14 @@
 		0D3942C823FB33C2000B9C8C /* DDTTYLogger+Workaround.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
-		0DE150E3260640E40067545C /* RoutableLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150DF260640E40067545C /* RoutableLogger.swift */; };
 		0DE150E5260640E40067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
 		0DE150EC260641410067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
 		0DE150F32606417C0067545C /* DateFormatter+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150F22606417C0067545C /* DateFormatter+Utils.swift */; };
+		0DE1511E26064AEB0067545C /* RoutableLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DE1511C26064AEB0067545C /* RoutableLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DE1512826064AF00067545C /* RoutableLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150DF260640E40067545C /* RoutableLogger.swift */; };
+		0DE1512C26064AF50067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
+		0DE1512D26064AF50067545C /* DateFormatter+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150F22606417C0067545C /* DateFormatter+Utils.swift */; };
+		0DE1513126064AF80067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
 		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
 		E201A85D2214200500258902 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8452214200500258902 /* String+Utils.swift */; };
 		E201A85F2214200500258902 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8472214200500258902 /* Log.swift */; };
@@ -58,6 +62,9 @@
 		0DE150E2260640E40067545C /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
 		0DE150EB260641410067545C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		0DE150F22606417C0067545C /* DateFormatter+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Utils.swift"; sourceTree = "<group>"; };
+		0DE1511A26064AEB0067545C /* RoutableLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RoutableLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DE1511C26064AEB0067545C /* RoutableLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoutableLogger.h; sourceTree = "<group>"; };
+		0DE1511D26064AEB0067545C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		722BFDE9DE58393B9D916719 /* carthageRemove.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageRemove.command; path = Scripts/Carthage/carthageRemove.command; sourceTree = "<group>"; };
 		75997ED1E9FAC56B9BEC3F0E /* carthageAdd.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageAdd.command; path = Scripts/Carthage/carthageAdd.command; sourceTree = "<group>"; };
@@ -89,6 +96,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0DE1511726064AEB0067545C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E202681022117D03004CC28A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,6 +151,15 @@
 				0DE150F22606417C0067545C /* DateFormatter+Utils.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0DE1511B26064AEB0067545C /* RoutableLogger */ = {
+			isa = PBXGroup;
+			children = (
+				0DE1511C26064AEB0067545C /* RoutableLogger.h */,
+				0DE1511D26064AEB0067545C /* Info.plist */,
+			);
+			path = RoutableLogger;
 			sourceTree = "<group>";
 		};
 		1834AC72A69DC91E1F3B8EDA /* _Carthage */ = {
@@ -215,9 +238,10 @@
 		E202680922117D03004CC28A = {
 			isa = PBXGroup;
 			children = (
-				F1BD9B4AF93178888C20C526 /* Frameworks */,
 				E202681522117D03004CC28A /* LogsManager */,
 				E2F9F8E223E03F88009E328F /* LogsManagerExtensionUnsafe */,
+				0DE1511B26064AEB0067545C /* RoutableLogger */,
+				F1BD9B4AF93178888C20C526 /* Frameworks */,
 				E202681422117D03004CC28A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -227,6 +251,7 @@
 			children = (
 				E202681322117D03004CC28A /* LogsManager.framework */,
 				E2F9F8E123E03F88009E328F /* LogsManagerExtensionUnsafe.framework */,
+				0DE1511A26064AEB0067545C /* RoutableLogger.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +306,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0DE1511526064AEB0067545C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DE1511E26064AEB0067545C /* RoutableLogger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E202680E22117D03004CC28A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,6 +334,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0DE1511926064AEB0067545C /* RoutableLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DE1512126064AEB0067545C /* Build configuration list for PBXNativeTarget "RoutableLogger" */;
+			buildPhases = (
+				0DE1511526064AEB0067545C /* Headers */,
+				0DE1511626064AEB0067545C /* Sources */,
+				0DE1511726064AEB0067545C /* Frameworks */,
+				0DE1511826064AEB0067545C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoutableLogger;
+			productName = RoutableLogger;
+			productReference = 0DE1511A26064AEB0067545C /* RoutableLogger.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		E202681222117D03004CC28A /* LogsManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E202681B22117D03004CC28A /* Build configuration list for PBXNativeTarget "LogsManager" */;
@@ -347,6 +398,9 @@
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Anton Plebanovich";
 				TargetAttributes = {
+					0DE1511926064AEB0067545C = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					E202681222117D03004CC28A = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1130;
@@ -371,11 +425,19 @@
 			targets = (
 				E202681222117D03004CC28A /* LogsManager */,
 				E2F9F8E023E03F88009E328F /* LogsManagerExtensionUnsafe */,
+				0DE1511926064AEB0067545C /* RoutableLogger */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0DE1511826064AEB0067545C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E202681122117D03004CC28A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +455,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0DE1511626064AEB0067545C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DE1512826064AF00067545C /* RoutableLogger.swift in Sources */,
+				0DE1512C26064AF50067545C /* Data+Utils.swift in Sources */,
+				0DE1512D26064AF50067545C /* DateFormatter+Utils.swift in Sources */,
+				0DE1513126064AF80067545C /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E202680F22117D03004CC28A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,7 +485,6 @@
 				E201A8672214200500258902 /* BaseAbstractTextLogger.swift in Sources */,
 				E201A86A2214200500258902 /* LoggersManager.swift in Sources */,
 				E201A8682214200500258902 /* DDLogFlag+Utils.swift in Sources */,
-				0DE150E3260640E40067545C /* RoutableLogger.swift in Sources */,
 				E201A8642214200500258902 /* ConsoleLogger.swift in Sources */,
 				0DE150EC260641410067545C /* Utils.swift in Sources */,
 				0DE150F32606417C0067545C /* DateFormatter+Utils.swift in Sources */,
@@ -441,6 +513,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0DE1511F26064AEB0067545C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UW54N2U6G5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoutableLogger/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.RoutableLogger";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0DE1512026064AEB0067545C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UW54N2U6G5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RoutableLogger/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.RoutableLogger";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E202681922117D03004CC28A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -675,6 +799,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0DE1512126064AEB0067545C /* Build configuration list for PBXNativeTarget "RoutableLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DE1511F26064AEB0067545C /* Debug */,
+				0DE1512026064AEB0067545C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E202680D22117D03004CC28A /* Build configuration list for PBXProject "LogsManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -32,7 +32,7 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation', 'UIKit'
   s.dependency 'CocoaLumberjack/Swift'
-  s.source_files = 'LogsManager/**/*'
+  s.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*', 'LogsManager/ExtensionUnsafeClasses/**/*'
   
   s.subspec 'Core' do |subspec|
       subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'

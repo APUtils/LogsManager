@@ -99,71 +99,71 @@ public enum RoutableLogger {
 /// - parameter message: Message to log.
 /// - parameter error: Error to report.
 /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
-func logError(_ message: @autoclosure () -> String,
-              error: Any? = nil,
-              data: [String: Any?]? = nil,
-              file: String = #file,
-              function: String = #function,
-              line: UInt = #line) {
+public func logError(_ message: @autoclosure () -> String,
+                     error: Any? = nil,
+                     data: [String: Any?]? = nil,
+                     file: String = #file,
+                     function: String = #function,
+                     line: UInt = #line) {
     
     RoutableLogger.logError(message,
-                    error,
-                    data,
-                    file,
-                    function,
-                    line)
+                            error,
+                            data,
+                            file,
+                            function,
+                            line)
 }
 
 /// Info log function.
 /// - parameter message: Message to log.
-func logInfo(_ message: @autoclosure () -> String,
-             file: String = #file,
-             function: String = #function,
-             line: UInt = #line) {
+public func logInfo(_ message: @autoclosure () -> String,
+                    file: String = #file,
+                    function: String = #function,
+                    line: UInt = #line) {
     
     RoutableLogger.logInfo(message,
-                   file,
-                   function,
-                   line)
+                           file,
+                           function,
+                           line)
 }
 
 
 /// Debug log function.
 /// - parameter message: Message to log.
-func logDebug(_ message: @autoclosure () -> String,
-              file: String = #file,
-              function: String = #function,
-              line: UInt = #line) {
+public func logDebug(_ message: @autoclosure () -> String,
+                     file: String = #file,
+                     function: String = #function,
+                     line: UInt = #line) {
     
     RoutableLogger.logDebug(message,
-                    file,
-                    function,
-                    line)
+                            file,
+                            function,
+                            line)
 }
 
 /// Verbose log function. This level of logs usually is excessive but may be helpful in some cases.
 /// Use it for repeated logs or logs that are usually not needed to understand what's going on.
 /// - parameter message: Message to log.
-func logVerbose(_ message: @autoclosure () -> String,
-                file: String = #file,
-                function: String = #function,
-                line: UInt = #line) {
+public func logVerbose(_ message: @autoclosure () -> String,
+                       file: String = #file,
+                       function: String = #function,
+                       line: UInt = #line) {
     
     RoutableLogger.logVerbose(message,
-                      file,
-                      function,
-                      line)
+                              file,
+                              function,
+                              line)
 }
 
 /// Data log function. This one is to log big chunks of data like network responses.
 /// - parameter message: Message to log.
-func logData(_ message: @autoclosure () -> String,
-             file: String = #file,
-             function: String = #function,
-             line: UInt = #line) {
+public func logData(_ message: @autoclosure () -> String,
+                    file: String = #file,
+                    function: String = #function,
+                    line: UInt = #line) {
     
     RoutableLogger.logData(message,
-                   file,
-                   function,
-                   line)
+                           file,
+                           function,
+                           line)
 }

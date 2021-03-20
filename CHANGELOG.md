@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.0](https://github.com/APUtils/LogsManager/releases/tag/9.1.0)
+Released on 03/20/2021.
+
+#### Added
+- Log level check for logError
+- Log level message filter to prevent performance impact
+- logErrorOnce method and function
+
+#### Fixed
+- Logger remove
+
+#### Improved
+- Concurrency safety
+- Generate normalized data and error during log message creation
+- Prevent excessive copy
+- String.getFileName(filePath:) speed up
+
+
 ## [9.0.0](https://github.com/APUtils/LogsManager/releases/tag/9.0.0)
 Released on 11/06/2020.
 

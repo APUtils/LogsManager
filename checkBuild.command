@@ -8,7 +8,7 @@ cd "$base_dir"
 echo ""
 echo -e "\nChecking Carthage integrity..."
 pbxproj_path='CarthageSupport/LogsManager.xcodeproj/project.pbxproj'
-swift_files=$(find 'LogsManager/Classes' -type f -name "*.swift" | grep -o "[0-9a-zA-Z+ ]*.swift" | sort -fu)
+swift_files=$(find 'LogsManager' -type f -name "*.swift" | grep -o "[0-9a-zA-Z+ ]*.swift" | sort -fu | grep -v "AlertLogger.swift")
 swift_files_count=$(echo "${swift_files}" | wc -l | tr -d ' ')
 
 build_section_id=$(sed -n -e '/\/\* LogsManager \*\/ = {/,/};/p' "${pbxproj_path}" | sed -n '/PBXNativeTarget/,/Sources/p' | tail -1 | tr -d "\t" | cut -d ' ' -f 1)
@@ -28,6 +28,8 @@ echo -e "\nBuilding Pods project..."
 set -o pipefail && xcodebuild -workspace "Example/LogsManager.xcworkspace" -scheme "LogsManager-Example" -configuration "Release" -sdk iphonesimulator | xcpretty
 
 echo -e "\nBuilding Carthage project..."
+. "./CarthageSupport/Scripts/Carthage/utils.sh"
+applyXcode12Workaround
 set -o pipefail && xcodebuild -project "CarthageSupport/LogsManager.xcodeproj" -sdk iphonesimulator -target "LogsManager" | xcpretty
 
 echo -e "\nBuilding with Carthage..."

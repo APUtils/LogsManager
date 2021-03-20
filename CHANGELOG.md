@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.3](https://github.com/APUtils/LogsManager/releases/tag/9.1.3)
+Released on 03/20/2021.
+
+#### Fixed
+- Public access
+- Carthage
+
+
 ## [9.1.0](https://github.com/APUtils/LogsManager/releases/tag/9.1.0)
 Released on 03/20/2021.
 

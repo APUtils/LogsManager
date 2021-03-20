@@ -49,34 +49,7 @@ public extension DDLogMessage.Parameters {
         self.data = data
         self.error = error
         self.logComponents = logComponents
-        normalizedData = normalizeData(data)
-        normalizedError = normalizeError(error)
-    }
-    
-    /// Method to normalize error.
-    private func normalizeError(_ error: Any?) -> String? {
-        guard let error = error else { return nil }
-        return String(describing: error)
-    }
-    
-    /// Method to normalize data.
-    private func normalizeData(_ data: [String: Any?]?) -> [String: String]? {
-        guard let data = data else { return nil }
-        
-        var normalizedData = [String: String]()
-        for (key, value) in data {
-            let description: String
-            if let value = value as? Data {
-                description = value.asString
-            } else if let value = value {
-                description = String(describing: value)
-            } else {
-                description = "nil"
-            }
-            
-            normalizedData[key] = description
-        }
-        
-        return normalizedData
+        normalizedData = Utils.normalizeData(data)
+        normalizedError = Utils.normalizeError(error)
     }
 }

@@ -15,12 +15,8 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     
     // ******************************* MARK: - Class Properties
     
-    public static var dateFormatter: DateFormatter? = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd HH:mm:ss.SSS"
-        
-        return dateFormatter
-    }()
+    /// You may set it to `nil` to remove time component from logs or assign your custom formatter.
+    public static var dateFormatter: DateFormatter? = .default
     
     /// Message that if passed won't be formatted and will be added to logs as an empty line
     public static let emptyLineMessage: DDLogMessage = DDLogMessage(message: "",

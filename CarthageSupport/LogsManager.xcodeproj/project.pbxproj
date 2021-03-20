@@ -10,7 +10,10 @@
 		0D3942C823FB33C2000B9C8C /* DDTTYLogger+Workaround.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
-		E201A85B2214200500258902 /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8432214200500258902 /* Data+Utils.swift */; };
+		0DE150E3260640E40067545C /* RoutableLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150DF260640E40067545C /* RoutableLogger.swift */; };
+		0DE150E5260640E40067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
+		0DE150EC260641410067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
+		0DE150F32606417C0067545C /* DateFormatter+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150F22606417C0067545C /* DateFormatter+Utils.swift */; };
 		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
 		E201A85D2214200500258902 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8452214200500258902 /* String+Utils.swift */; };
 		E201A85F2214200500258902 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8472214200500258902 /* Log.swift */; };
@@ -51,10 +54,13 @@
 		0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDTTYLogger+Workaround.h"; sourceTree = "<group>"; };
 		0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDTTYLogger+Workaround.m"; sourceTree = "<group>"; };
 		0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
+		0DE150DF260640E40067545C /* RoutableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutableLogger.swift; sourceTree = "<group>"; };
+		0DE150E2260640E40067545C /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
+		0DE150EB260641410067545C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0DE150F22606417C0067545C /* DateFormatter+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Utils.swift"; sourceTree = "<group>"; };
 		27A65933230C2FF4F758F562 /* carthageUpdate.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageUpdate.command; path = Scripts/Carthage/carthageUpdate.command; sourceTree = "<group>"; };
 		722BFDE9DE58393B9D916719 /* carthageRemove.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageRemove.command; path = Scripts/Carthage/carthageRemove.command; sourceTree = "<group>"; };
 		75997ED1E9FAC56B9BEC3F0E /* carthageAdd.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = carthageAdd.command; path = Scripts/Carthage/carthageAdd.command; sourceTree = "<group>"; };
-		E201A8432214200500258902 /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
 		E201A8442214200500258902 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		E201A8452214200500258902 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		E201A8472214200500258902 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = ../../LogsManager/Classes/Log.swift; sourceTree = "<group>"; };
@@ -105,6 +111,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DE150DE260640E40067545C /* RoutableLogger */ = {
+			isa = PBXGroup;
+			children = (
+				0DE150DF260640E40067545C /* RoutableLogger.swift */,
+			);
+			name = RoutableLogger;
+			path = ../../LogsManager/RoutableLogger;
+			sourceTree = "<group>";
+		};
+		0DE150E0260640E40067545C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0DE150E1260640E40067545C /* Extensions */,
+				0DE150EB260641410067545C /* Utils.swift */,
+			);
+			name = Shared;
+			path = ../../LogsManager/Shared;
+			sourceTree = "<group>";
+		};
+		0DE150E1260640E40067545C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0DE150E2260640E40067545C /* Data+Utils.swift */,
+				0DE150F22606417C0067545C /* DateFormatter+Utils.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1834AC72A69DC91E1F3B8EDA /* _Carthage */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +152,8 @@
 		E201A84022141FF200258902 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0DE150DE260640E40067545C /* RoutableLogger */,
+				0DE150E0260640E40067545C /* Shared */,
 				E201A8412214200500258902 /* _Extensions */,
 				E201A8572214200500258902 /* _LogComponent */,
 				E201A8482214200500258902 /* _Message Loggers */,
@@ -132,7 +168,6 @@
 			children = (
 				E201A8442214200500258902 /* Array+Utils.swift */,
 				E2E0791022A8069800DECBD8 /* Collection+Utils.swift */,
-				E201A8432214200500258902 /* Data+Utils.swift */,
 				E201A8532214200500258902 /* DDLogFlag+Utils.swift */,
 				E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */,
 				E201A8592214200500258902 /* DDLogMessage+Utils.swift */,
@@ -309,7 +344,7 @@
 		E202680A22117D03004CC28A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Anton Plebanovich";
 				TargetAttributes = {
 					E202681222117D03004CC28A = {
@@ -371,15 +406,18 @@
 				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
 				0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */,
+				0DE150E5260640E40067545C /* Data+Utils.swift in Sources */,
 				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,
 				E201A85C2214200500258902 /* Array+Utils.swift in Sources */,
 				E201A8672214200500258902 /* BaseAbstractTextLogger.swift in Sources */,
 				E201A86A2214200500258902 /* LoggersManager.swift in Sources */,
 				E201A8682214200500258902 /* DDLogFlag+Utils.swift in Sources */,
+				0DE150E3260640E40067545C /* RoutableLogger.swift in Sources */,
 				E201A8642214200500258902 /* ConsoleLogger.swift in Sources */,
+				0DE150EC260641410067545C /* Utils.swift in Sources */,
+				0DE150F32606417C0067545C /* DateFormatter+Utils.swift in Sources */,
 				E201A8632214200500258902 /* NotificationLogger.swift in Sources */,
 				0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */,
-				E201A85B2214200500258902 /* Data+Utils.swift in Sources */,
 				E201A8652214200500258902 /* BaseLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

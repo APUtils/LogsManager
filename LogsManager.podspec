@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LogsManager'
-  s.version          = '9.0.0'
+  s.version          = '9.1.0'
   s.summary          = 'Logs manager on top of CocoaLumberjack.'
 
 # This description is used to generate tags and improve search results.
@@ -30,21 +30,21 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
 
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.1']
-  
-  # s.resource_bundles = {
-  #   'LogsManager' => ['LogsManager/Assets/*.png']
-  # }
+  s.frameworks = 'Foundation', 'UIKit'
+  s.dependency 'CocoaLumberjack/Swift'
+  s.source_files = 'LogsManager/**/*'
   
   s.subspec 'Core' do |subspec|
-      subspec.source_files = 'LogsManager/Classes/**/*'
+      subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
   end
   
   s.subspec 'ExtensionUnsafe' do |subspec|
       subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
       subspec.dependency 'LogsManager/Core'
   end
+  
+  s.subspec 'RoutableLogger' do |subspec|
+      subspec.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
+  end
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'Foundation', 'UIKit'
-  s.dependency 'CocoaLumberjack/Swift'
 end

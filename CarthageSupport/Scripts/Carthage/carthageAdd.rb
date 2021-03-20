@@ -101,7 +101,7 @@ def addFrameworkWithDependenciesToProject(project, framework_name)
         data = File.read(framework_cartfile)
         unless data.nil?
             print "\nFramework dependencies:\n"
-            cmd = "grep -o -E '^git.*|^binary.*' #{framework_cartfile} | sed -E 's/(github \"|git \"|binary \")//' | sed -e 's/\".*//' | sed -e 's/^.*\\\///' -e 's/\".*//' -e 's/.json//' | sort -f"
+            cmd = "grep -o -E '^git.*|^binary.*' #{framework_cartfile} | sed -E 's/(github \"|git \"|binary \")//' | sed -e 's/\".*//' | sed -e 's/^.*\\\///' -e 's/\".*//' -e 's/.json//' | sort -fu"
             print (%x[ #{cmd} ]).blue
             print "\n"
             framework_names_string = prompt "Please specify dependencies you want to add separating by space (press enter to skip): "

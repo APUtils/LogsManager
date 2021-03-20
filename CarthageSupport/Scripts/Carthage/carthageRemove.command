@@ -2,36 +2,31 @@
 
 ### Script to remove framework ###
 
-# Colors Constants
-red_color='\033[0;31m'
-green_color='\033[0;32m'
-blue_color='\033[0;34m'
-no_color='\033[0m'
+# Assume scripts are placed in /Scripts/Carthage dir
+base_dir=$(dirname "$0")
+cd "$base_dir"
+
+. "utils.sh"
 
 # Font Constants
 bold_text=$(tput bold)
 normal_text=$(tput sgr0)
 
-# Assume scripts are placed in /Scripts/Carthage dir
-base_dir=$(dirname "$0")
-cd "$base_dir"
 cd ..
 cd ..
 
 # Try one level up if didn't find Cartfile.
 if [ ! -f "Cartfile" ]; then
+    project_dir="${PWD##*/}"
     cd ..
 
     if [ ! -f "Cartfile" ]; then
         printf >&2 "\n${red_color}Unable to locate 'Cartfile'${no_color}\n\n"
         exit 1
     fi
-
-    scripts_dir="${PWD##*/}/Scripts/Carthage/"
-
-else
-    scripts_dir="Scripts/Carthage/"
 fi
+
+scripts_dir="Scripts/Carthage"
 
 # Requires `xcodeproj` installed - https://github.com/CocoaPods/Xcodeproj
 # sudo gem install xcodeproj
@@ -46,22 +41,15 @@ framework_name=$1
 
 if [ -z $framework_name ]; then
     # Listing available frameworks
-    echo ""
-    echo "Frameworks list:"
-
-    # Blue color
-    printf '\033[0;34m'
-
-    # Frameworks list
-    frameworks_list=$(grep -o -E "^git.*|^binary.*" Cartfile | sed -E "s/(github \"|git \"|binary \")//" | sed -e "s/\".*//" | sed -e "s/^.*\///" -e "s/\".*//" -e "s/.json//" | sort -f)
-    printf "$frameworks_list\n"
-
-    # No color
-    printf '\033[0m'
-    echo ""
+	getAllFrameworks
 
     # Asking which one to update
     read -p "Which framework to remove? " framework_name
+fi
+
+# Restore working directory
+if [ ! -z "${project_dir}" ]; then
+    cd "${project_dir}"
 fi
 
 if [ -z $framework_name ]; then

@@ -26,6 +26,7 @@ def removeFramework(project, framework_name)
     end
     
     # Removing from Frameworks folder and sorting
+    framework_reference.build_files.each { |file| file.remove_from_project }
     framework_reference&.remove_from_project
     frameworks_reference.sort
 end
@@ -74,7 +75,7 @@ if !framework_cartfile.to_s.empty?
     data = File.read(framework_cartfile)
     unless data.nil?
         print "\nFramework dependencies:\n"
-        cmd = "grep -o -E '^git.*|^binary.*' #{framework_cartfile} | sed -E 's/(github \"|git \"|binary \")//' | sed -e 's/\".*//' | sed -e 's/^.*\\\///' -e 's/\".*//' -e 's/.json//' | sort -f"
+        cmd = "grep -o -E '^git.*|^binary.*' #{framework_cartfile} | sed -E 's/(github \"|git \"|binary \")//' | sed -e 's/\".*//' | sed -e 's/^.*\\\///' -e 's/\".*//' -e 's/.json//' | sort -fu"
         print (%x[ #{cmd} ]).blue
         print "\n"
         framework_names_string = prompt "Please specify dependencies you want to remove separating by space (press enter to skip): "

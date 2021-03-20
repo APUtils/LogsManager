@@ -3,8 +3,8 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 osx_image: xcode12.4
-
-language: objective-c
+language: swift
+podfile: Example/Podfile
 
 cache:
     directories:
@@ -12,9 +12,6 @@ cache:
      - Example/Pods
 
 before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod repo update
-- pod install --project-directory='Example'
 - brew install carthage
 - CarthageSupport/Scripts/Carthage/carthageInstallTests.command
 

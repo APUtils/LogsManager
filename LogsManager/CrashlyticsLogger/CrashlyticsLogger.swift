@@ -11,11 +11,11 @@ import Foundation
 import FirebaseCrashlytics
 
 /// Crashlytics logger.
-final class CrashlyticsLogger: BaseAbstractTextLogger {
+open class CrashlyticsLogger: BaseAbstractTextLogger {
     
     // ******************************* MARK: - BaseAbstractTextLogger
     
-    override func process(message logMessage: DDLogMessage, formattedMessage: String) {
+    open override func process(message logMessage: DDLogMessage, formattedMessage: String) {
         if logMessage.flag == .error {
             // Record errors
             let parameters = logMessage.parameters
@@ -45,11 +45,11 @@ final class CrashlyticsLogger: BaseAbstractTextLogger {
     
     // ******************************* MARK: - Private Methods
     
-    fileprivate func recordError(_ message: String,
-                                 errorDescription: String?,
-                                 data: [String: String]?,
-                                 file: String,
-                                 line: UInt) {
+    open func recordError(_ message: String,
+                          errorDescription: String?,
+                          data: [String: String]?,
+                          file: String,
+                          line: UInt) {
         
         // Values to always attach to report
         var userInfo = data ?? [:]

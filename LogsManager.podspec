@@ -31,20 +31,40 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation', 'UIKit'
-  s.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*', 'LogsManager/ExtensionUnsafeClasses/**/*'
+  s.source_files = [
+      'LogsManager/Classes/**/*',
+      'LogsManager/Shared/**/*',
+      'LogsManager/ExtensionUnsafeClasses/**/*',
+  ]
   
-  s.subspec 'Core' do |subspec|
-      subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
-      subspec.dependency 'CocoaLumberjack/Swift'
+  s.subspec 'Core' do |ss|
+      ss.source_files = [
+          'LogsManager/Classes/**/*',
+          'LogsManager/Shared/**/*',
+      ]
+      ss.dependency 'CocoaLumberjack/Swift'
   end
   
-  s.subspec 'ExtensionUnsafe' do |subspec|
-      subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
-      subspec.dependency 'LogsManager/Core'
+  s.subspec 'ExtensionUnsafe' do |ss|
+      ss.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
+      ss.dependency 'LogsManager/Core'
   end
   
-  s.subspec 'RoutableLogger' do |subspec|
-      subspec.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
+  # Used to wire logs from frameworks to the actual logging system.
+  s.subspec 'RoutableLogger' do |ss|
+      ss.source_files = [
+          'LogsManager/RoutableLogger/**/*',
+          'LogsManager/Shared/**/*',
+      ]
+  end
+  
+  s.subspec 'CrashlyticsLogger' do |ss|
+      ss.source_files = [
+          'LogsManager/CrashlyticsLogger/**/*',
+      ]
+      ss.dependency 'LogsManager/Core'
+      
+      ss.dependency 'Firebase/Crashlytics'
   end
 
 end

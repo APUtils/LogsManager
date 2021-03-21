@@ -44,18 +44,22 @@ PODS:
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
   - LogsManager (9.1.5):
+    - Firebase/Crashlytics
     - LogsManager/Core (= 9.1.5)
     - LogsManager/CrashlyticsLogger (= 9.1.5)
     - LogsManager/ExtensionUnsafe (= 9.1.5)
     - LogsManager/RoutableLogger (= 9.1.5)
   - LogsManager/Core (9.1.5):
     - CocoaLumberjack/Swift
+    - Firebase/Crashlytics
   - LogsManager/CrashlyticsLogger (9.1.5):
     - Firebase/Crashlytics
     - LogsManager/Core
   - LogsManager/ExtensionUnsafe (9.1.5):
+    - Firebase/Crashlytics
     - LogsManager/Core
-  - LogsManager/RoutableLogger (9.1.5)
+  - LogsManager/RoutableLogger (9.1.5):
+    - Firebase/Crashlytics
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -109,7 +113,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  LogsManager: 4ff2d89ebaf9193715226e69e5202d8f3e694232
+  LogsManager: 68ae5dd2ba0828fa0b6febe4cd8c896d83611765
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97

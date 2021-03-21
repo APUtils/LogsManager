@@ -31,7 +31,12 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation', 'UIKit'
+  
+  # The overall issue is that I must use `use_frameworks! :linkage => :static` in Podfile which is inconvenient.
+  # And also make whole framework static.
   s.static_framework = true
+  
+  s.dependency 'Firebase/Crashlytics'
   
   s.source_files = [
       'LogsManager/Classes/**/*',
@@ -65,9 +70,6 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
           'LogsManager/CrashlyticsLogger/**/*',
       ]
       ss.dependency 'LogsManager/Core'
-      
-      ss.dependency 'Firebase/Crashlytics'
-      ss.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
   end
 
 end

@@ -67,6 +67,7 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
       ss.dependency 'LogsManager/Core'
       
       ss.dependency 'Firebase/Crashlytics'
+      ss.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
   end
 
 end

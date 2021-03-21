@@ -31,6 +31,8 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation', 'UIKit'
+  s.static_framework = true
+  
   s.source_files = [
       'LogsManager/Classes/**/*',
       'LogsManager/Shared/**/*',

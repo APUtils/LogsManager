@@ -109,7 +109,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  LogsManager: ec9493d2a0a7692d5fa14f1489a6eb3ab7414df1
+  LogsManager: 4ff2d89ebaf9193715226e69e5202d8f3e694232
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   Nimble: 3b4ec3fd40f1dc178058e0981107721c615643d8
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97

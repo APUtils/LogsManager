@@ -30,6 +30,9 @@ open class LoggersManager {
     
     // ******************************* MARK: - Private Properties
     
+    private var isPaused: Bool = false
+    private var pausedLogs: [() -> Void] = []
+    
     private var loggers: [BaseLogger] = []
     private var logComponents: [LogComponent] = []
     private var combinedLogLevel: DDLogLevel = .off
@@ -71,6 +74,48 @@ open class LoggersManager {
     }
     
     // ******************************* MARK: - Public Methods
+    
+    /// Pauses delivery of logs to loggers. All received logs are preserved and delivered on the `resume()` call.
+    /// This is convenient to use to prevent logs lose for example on the app start when some loggers
+    /// might not yet be possible to initialize or launch.
+    public func pause() {
+        queue.sync {
+            guard isPaused == false else {
+                LogsManager.logError("Unable to pause logs delivery. It's already paused.")
+                return
+            }
+            
+            isPaused = true
+        }
+    }
+    
+    /// Triggers delivery of all delayed logs due to `pause()` call and resumes logs delivery to loggers.
+    public func resume() {
+        queue.sync { [self] in
+            guard isPaused else {
+                LogsManager.logError("Unable to resume logs delivery. It's already working.")
+                return
+            }
+            
+            isPaused = false
+        }
+        
+        // Send paused logs outside on queue to prevent deadlock.
+        // We shouldn't access our public methods from the queue and that's what paused logs do.
+        pausedLogs.forEach { $0() }
+        pausedLogs = []
+    }
+    
+    private func addPausedLog(sendLogAction: @escaping (() -> Void)) {
+        queue.async { [self] in
+            if isPaused {
+                pausedLogs.append(sendLogAction)
+                
+            } else {
+                sendLogAction()
+            }
+        }
+    }
     
     /// Registers log component for detection
     public func registerLogComponent(_ logComponent: LogComponent) {
@@ -140,8 +185,34 @@ open class LoggersManager {
     /// - parameter message: Message to log.
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logMessage(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, flag: DDLogFlag, file: String = #file, function: String = #function, line: UInt = #line) {
+    public func logMessage(_ message: @autoclosure () -> String,
+                           logComponents: [LogComponent]? = nil,
+                           flag: DDLogFlag,
+                           timestamp: Date? = nil,
+                           file: String = #file,
+                           function: String = #function,
+                           line: UInt = #line) {
         
+        // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
+        let isPaused = self.isPaused
+        if isPaused {
+            // We don't know if this log should be processed or not so we just process everything until we resume.
+            // Usually this shouldn't take much time and we shouldn't have much logs during that period.
+            let message = message()
+            let timestamp = Date()
+            addPausedLog { [self] in
+                logMessage(message,
+                           logComponents: logComponents,
+                           flag: flag,
+                           timestamp: timestamp,
+                           file: file,
+                           function: function,
+                           line: line)
+            }
+            return
+        }
+        
+        // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         // Check if combined log level allows this message to pass
         let combinedLogLevel = self.combinedLogLevel
         guard combinedLogLevel.rawValue & flag.rawValue > 0 else { return }
@@ -165,7 +236,7 @@ open class LoggersManager {
                                           line: line,
                                           tag: parameters,
                                           options: [.dontCopyMessage],
-                                          timestamp: nil)
+                                          timestamp: timestamp)
             
             DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
         }
@@ -178,7 +249,34 @@ open class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logErrorOnce(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: String = #file, function: String = #function, line: UInt = #line) {
+    public func logErrorOnce(_ message: @autoclosure () -> String,
+                             logComponents: [LogComponent]? = nil,
+                             error: Any?,
+                             data: [String: Any?]?,
+                             timestamp: Date? = nil,
+                             file: String = #file,
+                             function: String = #function,
+                             line: UInt = #line) {
+        
+        // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
+        let isPaused = self.isPaused
+        if isPaused {
+            // We don't know if this log should be processed or not so we just process everything until we resume.
+            // Usually this shouldn't take much time and we shouldn't have much logs during that period.
+            let message = message()
+            let timestamp = Date()
+            addPausedLog { [self] in
+                logErrorOnce(message,
+                           logComponents: logComponents,
+                           error: error,
+                           data: data,
+                           timestamp: timestamp,
+                           file: file,
+                           function: function,
+                           line: line)
+            }
+            return
+        }
         
         let record = OnceLogRecord(file: file, function: function, line: line)
         if onceLoggedErrors.contains(record) {
@@ -187,6 +285,7 @@ open class LoggersManager {
             onceLoggedErrors.append(record)
         }
         
+        // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         // Check if combined log level allows this error to pass
         let combinedLogLevel = self.combinedLogLevel
         guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
@@ -210,7 +309,7 @@ open class LoggersManager {
                                           line: line,
                                           tag: parameters,
                                           options: [.dontCopyMessage],
-                                          timestamp: nil)
+                                          timestamp: timestamp)
             
             DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
         }
@@ -223,8 +322,36 @@ open class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    public func logError(_ message: @autoclosure () -> String, logComponents: [LogComponent]? = nil, error: Any?, data: [String: Any?]?, file: String = #file, function: String = #function, line: UInt = #line) {
+    public func logError(_ message: @autoclosure () -> String,
+                         logComponents: [LogComponent]? = nil,
+                         error: Any?,
+                         data: [String: Any?]?,
+                         timestamp: Date? = nil,
+                         file: String = #file,
+                         function: String = #function,
+                         line: UInt = #line) {
         
+        // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
+        let isPaused = self.isPaused
+        if isPaused {
+            // We don't know if this log should be processed or not so we just process everything until we resume.
+            // Usually this shouldn't take much time and we shouldn't have much logs during that period.
+            let message = message()
+            let timestamp = Date()
+            addPausedLog { [self] in
+                logError(message,
+                         logComponents: logComponents,
+                         error: error,
+                         data: data,
+                         timestamp: timestamp,
+                         file: file,
+                         function: function,
+                         line: line)
+            }
+            return
+        }
+        
+        // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         // Check if combined log level allows this error to pass
         let combinedLogLevel = self.combinedLogLevel
         guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
@@ -248,7 +375,7 @@ open class LoggersManager {
                                           line: line,
                                           tag: parameters,
                                           options: [.dontCopyMessage],
-                                          timestamp: nil)
+                                          timestamp: timestamp)
             
             DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
         }

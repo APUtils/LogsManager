@@ -127,6 +127,12 @@ class ViewController: UIViewController {
         
         testSameLine()
         testSameLine()
+        
+        LoggersManager.shared.pause()
+        logWarning("This one should be paused")
+        LoggersManager.shared.resume()
+        logWarning("And this one should not")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

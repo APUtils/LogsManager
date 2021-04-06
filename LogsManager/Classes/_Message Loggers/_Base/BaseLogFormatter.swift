@@ -16,6 +16,7 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     // ******************************* MARK: - Class Properties
     
     /// You may set it to `nil` to remove time component from logs or assign your custom formatter.
+    /// This will affect all loggers that use default date formatter.
     public static var dateFormatter: DateFormatter? = .default
     
     /// Message that if passed won't be formatted and will be added to logs as an empty line
@@ -33,11 +34,13 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     // ******************************* MARK: - Private Properties
     
     private let mode: LoggerMode
+    private let dateFormatter: DateFormatter?
     
     // ******************************* MARK: - Initialization and Setup
     
-    public required init(mode: LoggerMode) {
+    public required init(mode: LoggerMode, dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
         self.mode = mode
+        self.dateFormatter = dateFormatter
     }
     
     // ******************************* MARK: - Open Functions
@@ -109,7 +112,7 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
         }
         
         let prefixString = messagePrefix(flag: logMessage.flag)
-        let timeString = BaseLogFormatter.dateFormatter?.string(from: logMessage.timestamp) ?? ""
+        let timeString = dateFormatter?.string(from: logMessage.timestamp) ?? ""
         let logString = "\(timeString)\(componentsString) | \(prefixString)\(logMessage.message)\(errorString)\(dataString)"
         
         return logString

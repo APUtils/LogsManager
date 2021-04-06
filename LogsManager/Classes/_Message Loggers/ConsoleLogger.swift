@@ -9,28 +9,36 @@
 import CocoaLumberjack
 import Foundation
 
-
 /// Logger that logs to console.
-open class ConsoleLogger: DDTTYLogger, BaseLogger {
+///
+/// - note: There won't be migration to `DDOSLogger` since it produces too verbose output like
+/// `2021-04-06 15:37:46.099278+0300 LogsManager_Example[29318:2294160] ...`. That's just pollutes console.
+open class ConsoleLogger: _DDTTYLogger, BaseLogger {
     
     // ******************************* MARK: - BaseLogger
     
     public let logLevel: DDLogLevel
     public var mode: LoggerMode
     public let newLinesSeparation: Bool
+    public let dateFormatter: DateFormatter?
     
-    public required init(mode: LoggerMode, logLevel: DDLogLevel, newLinesSeparation: Bool) {
+    public required init(mode: LoggerMode,
+                         logLevel: DDLogLevel,
+                         newLinesSeparation: Bool,
+                         dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
+        
         self.logLevel = logLevel
         self.mode = mode
         self.newLinesSeparation = newLinesSeparation
+        self.dateFormatter = dateFormatter
         
-        super.init(workaround: 0)
+        super.init()
         
         setup()
     }
     
     private func setup() {
-        logFormatter = BaseLogFormatter(mode: mode)
+        logFormatter = BaseLogFormatter(mode: mode, dateFormatter: dateFormatter)
     }
     
     // ******************************* MARK: - DDLogger Overrides

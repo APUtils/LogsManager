@@ -15,5 +15,5 @@ FOUNDATION_EXPORT double LogsManagerVersionNumber;
 FOUNDATION_EXPORT const unsigned char LogsManagerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <LogsManager/PublicHeader.h>
-#import <LogsManager/DDTTYLogger+Workaround.h>
+#import <LogsManager/_DDTTYLogger.h>
 

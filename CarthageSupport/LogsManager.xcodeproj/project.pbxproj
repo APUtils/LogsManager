@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D3942C823FB33C2000B9C8C /* DDTTYLogger+Workaround.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */; };
+		0D54D90B261C903C00F6814C /* _DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D54D909261C903C00F6814C /* _DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D54D90C261C903C00F6814C /* _DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54D90A261C903C00F6814C /* _DDTTYLogger.m */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
 		0DE150E5260640E40067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
 		0DE150EC260641410067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
@@ -55,8 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDTTYLogger+Workaround.h"; sourceTree = "<group>"; };
-		0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDTTYLogger+Workaround.m"; sourceTree = "<group>"; };
+		0D54D909261C903C00F6814C /* _DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DDTTYLogger.h; sourceTree = "<group>"; };
+		0D54D90A261C903C00F6814C /* _DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DDTTYLogger.m; sourceTree = "<group>"; };
 		0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
 		0DE150DF260640E40067545C /* RoutableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutableLogger.swift; sourceTree = "<group>"; };
 		0DE150E2260640E40067545C /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
@@ -216,12 +216,12 @@
 		E201A84F2214200500258902 /* _Base */ = {
 			isa = PBXGroup;
 			children = (
-				0D3942C623FB33C2000B9C8C /* DDTTYLogger+Workaround.h */,
-				0D3942C723FB33C2000B9C8C /* DDTTYLogger+Workaround.m */,
 				E201A8522214200500258902 /* BaseAbstractTextLogger.swift */,
 				E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */,
 				E201A8512214200500258902 /* BaseLogFormatter.swift */,
 				E201A8502214200500258902 /* BaseLogger.swift */,
+				0D54D909261C903C00F6814C /* _DDTTYLogger.h */,
+				0D54D90A261C903C00F6814C /* _DDTTYLogger.m */,
 			);
 			path = _Base;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D3942C823FB33C2000B9C8C /* DDTTYLogger+Workaround.h in Headers */,
+				0D54D90B261C903C00F6814C /* _DDTTYLogger.h in Headers */,
 				E202681822117D03004CC28A /* LogsManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,13 +478,13 @@
 				E28100BA2315753B00F4A24A /* DDLogLevel+Utils.swift in Sources */,
 				E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */,
 				E201A86E2214203C00258902 /* LogComponent.swift in Sources */,
-				0D3942C923FB33C2000B9C8C /* DDTTYLogger+Workaround.m in Sources */,
 				0DE150E5260640E40067545C /* Data+Utils.swift in Sources */,
 				E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */,
 				E201A85C2214200500258902 /* Array+Utils.swift in Sources */,
 				E201A8672214200500258902 /* BaseAbstractTextLogger.swift in Sources */,
 				E201A86A2214200500258902 /* LoggersManager.swift in Sources */,
 				E201A8682214200500258902 /* DDLogFlag+Utils.swift in Sources */,
+				0D54D90C261C903C00F6814C /* _DDTTYLogger.m in Sources */,
 				E201A8642214200500258902 /* ConsoleLogger.swift in Sources */,
 				0DE150EC260641410067545C /* Utils.swift in Sources */,
 				0DE150F32606417C0067545C /* DateFormatter+Utils.swift in Sources */,

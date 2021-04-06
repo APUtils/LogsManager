@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         logDebug("Message filter check")
         logError("Error filter check")
         
+        LoggersManager.shared.registerLogComponent(.timeFormat)
         LoggersManager.shared.registerLogComponent(.vc)
         LoggersManager.shared.registerLogComponent(.didAppear)
         LoggersManager.shared.registerLogComponent(.buttonTap)
@@ -133,6 +134,18 @@ class ViewController: UIViewController {
         LoggersManager.shared.resume()
         logWarning("And this one should not")
         
+        let customDateFormatter = DateFormatter()
+        customDateFormatter.timeStyle = .full
+        customDateFormatter.dateStyle = .full
+        
+        LoggersManager.shared.addLogger(
+            ConsoleLogger(mode: .specificComponents([.timeFormat]),
+                          logLevel: .all,
+                          newLinesSeparation: true,
+                          dateFormatter: customDateFormatter)
+        )
+        logData("This one should have different time format", logComponents: [.timeFormat])
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -174,6 +187,7 @@ extension LogComponent {
     static let allLog2 = LogComponent(name: "All2", logName: "", isLogForThisComponent: { _, _, _ in true })
     static let allLog3 = LogComponent(name: "All3", logName: "3", isLogForThisComponent: { _, _, _ in true })
     static let allLog4 = LogComponent(name: "All4", logName: "4", isLogForThisComponent: { _, _, _ in true })
+    static let timeFormat = LogComponent(name: "Time Format", logName: "TF", isLogForThisComponent: { _, _, _ in false })
 }
 
 // ******************************* MARK: - UNUserNotificationCenterDelegate

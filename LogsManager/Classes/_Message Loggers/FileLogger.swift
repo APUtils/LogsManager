@@ -15,10 +15,16 @@ open class FileLogger: DDFileLogger, BaseLogger {
     
     public let logLevel: DDLogLevel
     public var mode: LoggerMode
+    public let dateFormatter: DateFormatter?
     
-    public required init(mode: LoggerMode, logLevel: DDLogLevel, logsDirectory: String? = nil) {
+    public required init(mode: LoggerMode,
+                         logLevel: DDLogLevel,
+                         dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter,
+                         logsDirectory: String? = nil) {
+        
         self.logLevel = logLevel
         self.mode = mode
+        self.dateFormatter = dateFormatter
         
         let fileManager: DDLogFileManagerDefault
         if let logsDirectory = logsDirectory {
@@ -48,7 +54,7 @@ open class FileLogger: DDFileLogger, BaseLogger {
     }
     
     private func setup() {
-        logFormatter = BaseFileLogFormatter(mode: mode)
+        logFormatter = BaseFileLogFormatter(mode: mode, dateFormatter: dateFormatter)
     }
     
     // ******************************* MARK: - DDFileLogger Overrides

@@ -28,7 +28,10 @@ open class LoggersManager {
     
     public static var shared: LoggersManager = LoggersManager()
     
-    // ******************************* MARK: - Private Properties
+    // ******************************* MARK: - Properties
+    
+    /// Global messages async/sync log flag. Default is `true`.
+    public static var logMessagesAsync: Bool = true
     
     private var isPaused: Bool = false
     private var pausedLogs: [() -> Void] = []
@@ -185,15 +188,17 @@ open class LoggersManager {
     /// - parameter message: Message to log.
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    /// - parameter asynchronous: Async logs. Default is `true`.
+    /// - parameter asynchronous: Async or sync logs. Default is `nil` and global flag is used.
     public func logMessage(_ message: @autoclosure () -> String,
                            logComponents: [LogComponent]? = nil,
                            flag: DDLogFlag,
-                           asynchronous: Bool = true,
+                           asynchronous: Bool? = nil,
                            timestamp: Date? = nil,
                            file: String = #file,
                            function: String = #function,
                            line: UInt = #line) {
+        
+        let asynchronous = asynchronous ?? Self.logMessagesAsync
         
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         let isPaused = self.isPaused
@@ -252,16 +257,18 @@ open class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
-    /// - parameter asynchronous: Async logs. Default is `false`.
+    /// - parameter asynchronous: Async or sync logs. Default is `nil` and global flag is used.
     public func logErrorOnce(_ message: @autoclosure () -> String,
                              logComponents: [LogComponent]? = nil,
                              error: Any?,
                              data: [String: Any?]?,
-                             asynchronous: Bool = false,
+                             asynchronous: Bool? = nil,
                              timestamp: Date? = nil,
                              file: String = #file,
                              function: String = #function,
                              line: UInt = #line) {
+        
+        let asynchronous = asynchronous ?? Self.logMessagesAsync
         
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         let isPaused = self.isPaused
@@ -333,11 +340,13 @@ open class LoggersManager {
                          logComponents: [LogComponent]? = nil,
                          error: Any?,
                          data: [String: Any?]?,
-                         asynchronous: Bool = false,
+                         asynchronous: Bool? = nil,
                          timestamp: Date? = nil,
                          file: String = #file,
                          function: String = #function,
                          line: UInt = #line) {
+        
+        let asynchronous = asynchronous ?? Self.logMessagesAsync
         
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         let isPaused = self.isPaused

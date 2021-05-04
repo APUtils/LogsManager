@@ -11,7 +11,7 @@ import Foundation
 
 public extension DDLogMessage {
     var parameters: Parameters? {
-        return tag as? Parameters
+        return representedObject as? Parameters
     }
     
     var data: [String: Any?]? {

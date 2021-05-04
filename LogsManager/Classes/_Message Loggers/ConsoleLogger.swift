@@ -11,8 +11,8 @@ import Foundation
 
 /// Logger that logs to console.
 ///
-/// - note: There won't be migration to `DDOSLogger` since it produces too verbose output like
-/// `2021-04-06 15:37:46.099278+0300 LogsManager_Example[29318:2294160] ...`. That's just pollutes console.
+/// - note: There won't be migration to the `DDOSLogger` since it produces too verbose output like
+/// `2021-04-06 15:37:46.099278+0300 LogsManager_Example[29318:2294160] ...`. That just pollutes the console.
 open class ConsoleLogger: _DDTTYLogger, BaseLogger {
     
     // ******************************* MARK: - BaseLogger

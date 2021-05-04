@@ -185,9 +185,11 @@ open class LoggersManager {
     /// - parameter message: Message to log.
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
+    /// - parameter asynchronous: Async logs. Default is `true`.
     public func logMessage(_ message: @autoclosure () -> String,
                            logComponents: [LogComponent]? = nil,
                            flag: DDLogFlag,
+                           asynchronous: Bool = true,
                            timestamp: Date? = nil,
                            file: String = #file,
                            function: String = #function,
@@ -204,6 +206,7 @@ open class LoggersManager {
                 logMessage(message,
                            logComponents: logComponents,
                            flag: flag,
+                           asynchronous: asynchronous,
                            timestamp: timestamp,
                            file: file,
                            function: function,
@@ -238,7 +241,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
+            DDLog.sharedInstance.log(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -249,10 +252,12 @@ open class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
+    /// - parameter asynchronous: Async logs. Default is `false`.
     public func logErrorOnce(_ message: @autoclosure () -> String,
                              logComponents: [LogComponent]? = nil,
                              error: Any?,
                              data: [String: Any?]?,
+                             asynchronous: Bool = false,
                              timestamp: Date? = nil,
                              file: String = #file,
                              function: String = #function,
@@ -270,6 +275,7 @@ open class LoggersManager {
                            logComponents: logComponents,
                            error: error,
                            data: data,
+                           asynchronous: asynchronous,
                            timestamp: timestamp,
                            file: file,
                            function: function,
@@ -311,7 +317,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
+            DDLog.sharedInstance.log(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -322,10 +328,12 @@ open class LoggersManager {
     /// - parameter error: Error that occured.
     /// - parameter data: Data to attach to error.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
+    /// - parameter asynchronous: Async logs. Default is `false`.
     public func logError(_ message: @autoclosure () -> String,
                          logComponents: [LogComponent]? = nil,
                          error: Any?,
                          data: [String: Any?]?,
+                         asynchronous: Bool = false,
                          timestamp: Date? = nil,
                          file: String = #file,
                          function: String = #function,
@@ -343,6 +351,7 @@ open class LoggersManager {
                          logComponents: logComponents,
                          error: error,
                          data: data,
+                         asynchronous: asynchronous,
                          timestamp: timestamp,
                          file: file,
                          function: function,
@@ -377,7 +386,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            DDLog.sharedInstance.log(asynchronous: false, message: logMessage)
+            DDLog.sharedInstance.log(asynchronous: asynchronous, message: logMessage)
         }
         // -------- 
     }

@@ -49,7 +49,17 @@ public extension DDLogMessage.Parameters {
         self.data = data
         self.error = error
         self.logComponents = logComponents
-        normalizedData = Utils.normalizeData(data)
+        
         normalizedError = Utils.normalizeError(error)
+        normalizedData = Utils.normalizeData(data)
+        
+        // Add localized description to data if it differs from the error
+        if let localizedDescription = Utils.localizedDescription(error),
+           localizedDescription.hasElements,
+           localizedDescription != normalizedError {
+            
+            normalizedData = normalizedData ?? [:]
+            normalizedData?["localizedDescription"] = localizedDescription
+        }
     }
 }

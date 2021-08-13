@@ -16,6 +16,11 @@ final class Utils {
         return String(describing: error)
     }
     
+    static func localizedDescription(_ error: Any?) -> String? {
+        guard let error = error as? Error else { return nil }
+        return error.localizedDescription
+    }
+    
     /// Method to normalize data.
     static func normalizeData(_ data: [String: Any?]?) -> [String: String]? {
         guard let data = data else { return nil }

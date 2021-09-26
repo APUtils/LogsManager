@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.7](https://github.com/APUtils/LogsManager/releases/tag/9.1.7)
+Released on 09/26/2021.
+
+#### Added
+- ExtensionSafe podspec
+- APPLICATION_EXTENSION_API_ONLY config for subspecs
+
+
 ## [9.1.6](https://github.com/APUtils/LogsManager/releases/tag/9.1.6)
 Released on 09/26/2021.
 

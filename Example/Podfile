@@ -5,7 +5,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'LogsManager_Example' do
-    pod 'LogsManager', :path => '../'
+    pod 'LogsManager/ExtensionUnsafe', :path => '../'
 
     pod 'APExtensions', :git => "https://github.com/APUtils/APExtensions.git"
     

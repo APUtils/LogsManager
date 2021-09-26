@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 Released on 09/26/2021.
 
 #### Added
+- Allow to use per logger custom date formatters
+- Global async/sync message log flag - LoggersManager.logMessagesAsync
+- Auto-add localized description parameter to error data if it differ from the error message
+- Log errors sync and allow to alter this behavior via parameter
+- Log messages async and allow to alter this behavior via parameter
+- Logs pause/resume logic
 - logWarning for RoutableLogger
 
 

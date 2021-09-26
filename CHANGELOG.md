@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.6](https://github.com/APUtils/LogsManager/releases/tag/9.1.6)
+Released on 09/26/2021.
+
+#### Added
+- logWarning for RoutableLogger
+
+
 ## [9.1.5](https://github.com/APUtils/LogsManager/releases/tag/9.1.5)
 Released on 03/20/2021.
 

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LogsManager'
-  s.version          = '9.1.5'
+  s.version          = '9.1.6'
   s.summary          = 'Logs manager on top of CocoaLumberjack.'
 
 # This description is used to generate tags and improve search results.

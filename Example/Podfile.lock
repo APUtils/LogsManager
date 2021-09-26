@@ -18,8 +18,8 @@ PODS:
   - LogsManager/ExtensionUnsafe (9.1.5):
     - LogsManager/Core
   - LogsManager/RoutableLogger (9.1.5)
-  - Nimble (9.0.1)
-  - Quick (3.1.2)
+  - Nimble (9.2.1)
+  - Quick (4.0.0)
 
 DEPENDENCIES:
   - APExtensions (from `https://github.com/APUtils/APExtensions.git`)
@@ -41,16 +41,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: ae784925e948a39dbc9d521e538a32bef9544936
+    :commit: fa5cbedb82db880d4dbbc7991eeb661b1f59f40e
     :git: https://github.com/APUtils/APExtensions.git
 
 SPEC CHECKSUMS:
   APExtensions: b46cab78fe5d291e1157838fd78962a886e627df
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   LogsManager: 9938562c83ff2b9a67716058f714e89dcd6e2345
-  Nimble: 7bed62ffabd6dbfe05f5925cbc43722533248990
-  Quick: 60f0ea3b8e0cfc0df3259a5c06a238ad8b3c46e0
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
 
 PODFILE CHECKSUM: 263494cdb9103fa0ac2cd52bc3873d5dbf3867e4
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

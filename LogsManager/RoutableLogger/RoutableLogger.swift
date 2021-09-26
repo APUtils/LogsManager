@@ -24,6 +24,12 @@ public enum RoutableLogger {
                                         _ function: String,
                                         _ line: UInt) -> Void = _logError
     
+    /// Warning log handler.
+    public static var logWarningHandler: (_ message: () -> (String),
+                                       _ file: String,
+                                       _ function: String,
+                                       _ line: UInt) -> Void = logMessageHandler
+    
     /// Info log handler.
     public static var logInfoHandler: (_ message: () -> (String),
                                        _ file: String,
@@ -113,6 +119,19 @@ public enum RoutableLogger {
                         file,
                         function,
                         line)
+    }
+    
+    /// Warning log function.
+    /// - parameter message: Message to log.
+    public static func logWarning(_ message: @autoclosure () -> String,
+                                  file: String = #file,
+                                  function: String = #function,
+                                  line: UInt = #line) {
+        
+        logWarningHandler(message,
+                          file,
+                          function,
+                          line)
     }
     
     /// Info log function.

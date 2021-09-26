@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LogsManager'
-  s.version          = '9.1.7'
+  s.version          = '9.1.8'
   s.summary          = 'Logs manager on top of CocoaLumberjack.'
 
 # This description is used to generate tags and improve search results.
@@ -39,20 +39,13 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
       subspec.dependency 'CocoaLumberjack/Swift', '>= 3.7.2'
   end
   
-  s.subspec 'ExtensionSafe' do |subspec|
-      subspec.dependency 'LogsManager/Core'
-      subspec.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
-  end
-  
   s.subspec 'ExtensionUnsafe' do |subspec|
       subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
       subspec.dependency 'LogsManager/Core'
-      subspec.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'NO' }
   end
   
   s.subspec 'RoutableLogger' do |subspec|
       subspec.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
-      subspec.pod_target_xcconfig = { 'APPLICATION_EXTENSION_API_ONLY' => 'YES' }
   end
 
 end

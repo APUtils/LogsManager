@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'LogsManager'
-  s.version          = '9.1.8'
-  s.summary          = 'Logs manager on top of CocoaLumberjack.'
+  s.name             = 'RoutableLogger'
+  s.version          = '9.1.9'
+  s.summary          = 'Logger that allows logs redirection.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Logs manager on top of CocoaLumberjack. Allows to easily configure log components depending on your app infrastucture. Have several convenience loggers: ConsoleLogger, AlertLogger, NotificationLogger.
+Just helper framework that allows logs redirection. It is used in various frameworks and then routed to LogsManager system in the main application.
                        DESC
 
   s.homepage         = 'https://github.com/APUtils/LogsManager'
@@ -42,6 +42,10 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.subspec 'ExtensionUnsafe' do |subspec|
       subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
       subspec.dependency 'LogsManager/Core'
+  end
+  
+  s.subspec 'RoutableLogger' do |subspec|
+      subspec.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
   end
 
 end

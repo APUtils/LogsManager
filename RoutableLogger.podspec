@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RoutableLogger'
-  s.version          = '9.1.9'
+  s.version          = '9.1.10'
   s.summary          = 'Logger that allows logs redirection.'
 
 # This description is used to generate tags and improve search results.
@@ -30,22 +30,7 @@ Just helper framework that allows logs redirection. It is used in various framew
 
   s.ios.deployment_target = '9.0'
   s.swift_versions = ['5.1']
-  s.frameworks = 'Foundation', 'UIKit'
-  
-  s.default_subspec = 'ExtensionUnsafe'
-  
-  s.subspec 'Core' do |subspec|
-      subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
-      subspec.dependency 'CocoaLumberjack/Swift', '>= 3.7.2'
-  end
-  
-  s.subspec 'ExtensionUnsafe' do |subspec|
-      subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
-      subspec.dependency 'LogsManager/Core'
-  end
-  
-  s.subspec 'RoutableLogger' do |subspec|
-      subspec.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
-  end
+  s.frameworks = 'Foundation'
+  s.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
 
 end

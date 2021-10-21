@@ -28,7 +28,7 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.source           = { :git => 'https://github.com/APUtils/LogsManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation', 'UIKit'
   
@@ -42,6 +42,10 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.subspec 'ExtensionUnsafe' do |subspec|
       subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
       subspec.dependency 'LogsManager/Core'
+  end
+  
+  s.subspec 'RoutableLogger' do |subspec|
+      subspec.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
   end
 
 end

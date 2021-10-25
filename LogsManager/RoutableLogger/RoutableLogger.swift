@@ -13,6 +13,17 @@ public enum RoutableLogger {
     
     private static var dateFormatter: DateFormatter = .default
     
+    /// Error once log handler.
+    /// - parameter message: Message to log.
+    /// - parameter error: Error to report.
+    /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+    public static var logErrorOnceHandler: (_ message: () -> (String),
+                                            _ error: Any?,
+                                            _ data: [String : Any?]?,
+                                            _ file: String,
+                                            _ function: String,
+                                            _ line: UInt) -> Void = _logErrorOnce
+    
     /// Error log hadnler.
     /// - parameter message: Message to log.
     /// - parameter error: Error to report.
@@ -59,6 +70,33 @@ public enum RoutableLogger {
                                           _ file: String,
                                           _ function: String,
                                           _ line: UInt) -> Void = _consoleLog
+    
+    // ******************************* MARK: - Default Implementations
+    
+    private struct OnceLogRecord: Hashable {
+        let file: String
+        let function: String
+        let line: UInt
+    }
+    
+    private static var onceLoggedErrors: [OnceLogRecord] = []
+    
+    private static func _logErrorOnce(_ message: @autoclosure () -> String,
+                                      error: Any?,
+                                      data: [String : Any?]?,
+                                      file: String = #file,
+                                      function: String = #function,
+                                      line: UInt = #line) {
+        
+        let record = OnceLogRecord(file: file, function: function, line: line)
+        if onceLoggedErrors.contains(record) {
+            return
+        } else {
+            onceLoggedErrors.append(record)
+        }
+        
+        _logError(message(), error: error, data: data, file: file, function: function, line: line)
+    }
     
     private static func _logError(_ message: @autoclosure () -> String,
                                   error: Any?,

@@ -140,6 +140,25 @@ public enum RoutableLogger {
     
     // ******************************* MARK: - Convenient Methods
     
+    /// Error log function. Logs error only once for each file-function-line combination.
+    /// - parameter message: Message to log.
+    /// - parameter error: Error to report.
+    /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+    public static func logErrorOnce(_ message: @autoclosure () -> String,
+                                    error: Any? = nil,
+                                    data: [String: Any?]? = nil,
+                                    file: String = #file,
+                                    function: String = #function,
+                                    line: UInt = #line) {
+        
+        logErrorOnceHandler(message,
+                            error,
+                            data,
+                            file,
+                            function,
+                            line)
+    }
+    
     /// Error log function.
     /// - parameter message: Message to log.
     /// - parameter error: Error to report.

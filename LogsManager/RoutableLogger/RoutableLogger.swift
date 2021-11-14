@@ -47,25 +47,33 @@ public enum RoutableLogger {
                                        _ function: String,
                                        _ line: UInt) -> Void = logMessageHandler
     
-    /// Debug log handler.
+    #if DEBUG
+    /// Debug log handler. Outputs in debug builds
     public static var logDebugHandler: (_ message: () -> (String),
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = logMessageHandler
+    #else
+    /// Debug log handler. No output in release builds.
+    public static var logDebugHandler: (_ message: () -> (String),
+                                        _ file: String,
+                                        _ function: String,
+                                        _ line: UInt) -> Void = { _, _, _, _ in }
+    #endif
     
-    /// Verbose log handler.
+    /// Verbose log handler. No output by default.
     public static var logVerboseHandler: (_ message: () -> (String),
                                           _ file: String,
                                           _ function: String,
-                                          _ line: UInt) -> Void = logMessageHandler
+                                          _ line: UInt) -> Void = { _, _, _, _ in }
     
-    /// Data log handler.
+    /// Data log handler. No output by default.
     public static var logDataHandler: (_ message: () -> (String),
                                        _ file: String,
                                        _ function: String,
-                                       _ line: UInt) -> Void = logMessageHandler
+                                       _ line: UInt) -> Void = { _, _, _, _ in }
     
-    /// Info, debug, verbose and data message logs go here if not redirected.
+    /// Warning, info and debug message logs go here if not redirected.
     public static var logMessageHandler: (_ message: () -> (String),
                                           _ file: String,
                                           _ function: String,

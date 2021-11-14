@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		0547507C77930DC89305EB84 /* podPush.command */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; name = podPush.command; path = ../podPush.command; sourceTree = "<group>"; };
-		0D0A018E2721E21800493197 /* RoutableLogger.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = RoutableLogger.podspec; path = ../RoutableLogger.podspec; sourceTree = "<group>"; };
+		0D0A018E2721E21800493197 /* RoutableLogger.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = RoutableLogger.podspec; path = ../RoutableLogger.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1188FF5040D1CB0E350A55DB /* Pods-LogsManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LogsManager_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LogsManager_Example/Pods-LogsManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		22C1A90A22BFB7C274AB6046 /* .cocoadocs.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .cocoadocs.yml; path = ../.cocoadocs.yml; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* LogsManager_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogsManager_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };

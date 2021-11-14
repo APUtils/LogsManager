@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RoutableLogger'
-  s.version          = '9.1.10'
+  s.version          = '9.1.11'
   s.summary          = 'Logger that allows logs redirection.'
 
 # This description is used to generate tags and improve search results.

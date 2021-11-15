@@ -84,7 +84,7 @@ open class LoggersManager {
     public func pause() {
         queue.sync {
             guard isPaused == false else {
-                LogsManager.logError("Unable to pause logs delivery. It's already paused.")
+                print("[ *** ERROR *** ] Unable to pause logs delivery. It's already paused.")
                 return
             }
             
@@ -96,7 +96,7 @@ open class LoggersManager {
     public func resume() {
         queue.sync { [self] in
             guard isPaused else {
-                LogsManager.logError("Unable to resume logs delivery. It's already working.")
+                print("[ *** ERROR *** ] Unable to resume logs delivery. It's already working.")
                 return
             }
             
@@ -124,7 +124,7 @@ open class LoggersManager {
     public func registerLogComponent(_ logComponent: LogComponent) {
         queue.sync {
             guard !logComponents.contains(logComponent) else {
-                print("Log component '\(logComponent)' was already added")
+                print("[ *** ERROR *** ] Log component '\(logComponent)' was already added")
                 return
             }
             
@@ -137,7 +137,7 @@ open class LoggersManager {
     public func unregisterLogComponent(_ logComponent: LogComponent) {
         queue.sync {
             guard logComponents.contains(logComponent) else {
-                print("Log component '\(logComponent)' is not added")
+                print("[ *** ERROR *** ] Log component '\(logComponent)' is not added")
                 return
             }
             

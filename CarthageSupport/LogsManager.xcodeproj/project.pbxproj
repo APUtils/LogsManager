@@ -11,6 +11,10 @@
 		0D54D90C261C903C00F6814C /* _DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54D90A261C903C00F6814C /* _DDTTYLogger.m */; };
 		0D93892D27445E8800529662 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93892B27445E8800529662 /* NotificationLogger.swift */; };
 		0D93892E27445E8800529662 /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93892C27445E8800529662 /* AlertLogger.swift */; };
+		0D93895127446D5900529662 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
+		0D93895227446D5900529662 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
+		0D93895327446D5900529662 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
+		0D93895427446D5900529662 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
 		0DE150E5260640E40067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
 		0DE150EC260641410067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
@@ -33,15 +37,11 @@
 		E201A86E2214203C00258902 /* LogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A86D2214203C00258902 /* LogComponent.swift */; };
 		E202681822117D03004CC28A /* LogsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E202681622117D03004CC28A /* LogsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E28100BA2315753B00F4A24A /* DDLogLevel+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28100B92315753B00F4A24A /* DDLogLevel+Utils.swift */; };
-		E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
-		E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 		E2E0791122A8069800DECBD8 /* Collection+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791022A8069800DECBD8 /* Collection+Utils.swift */; };
 		E2E0791322A812B500DECBD8 /* FileLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791222A812B500DECBD8 /* FileLogger.swift */; };
 		E2E0791B22A825E000DECBD8 /* BaseFileLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0791A22A825E000DECBD8 /* BaseFileLogFormatter.swift */; };
 		E2F9F8E523E03F88009E328F /* LogsManagerExtensionUnsafe.h in Headers */ = {isa = PBXBuildFile; fileRef = E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2F9F8EC23E0408F009E328F /* LogsManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* LogsManager.framework */; };
-		E2F9F8F123E040A9009E328F /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
-		E2F9F8F323E040A9009E328F /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +59,12 @@
 		0D54D90A261C903C00F6814C /* _DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DDTTYLogger.m; sourceTree = "<group>"; };
 		0D93892B27445E8800529662 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationLogger.swift; path = ../../LogsManager/ExtensionUnsafeClasses/NotificationLogger.swift; sourceTree = "<group>"; };
 		0D93892C27445E8800529662 /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertLogger.swift; path = ../../LogsManager/ExtensionUnsafeClasses/AlertLogger.swift; sourceTree = "<group>"; };
+		0D93893D27446C8300529662 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = ../Carthage/Build/watchOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
+		0D93893E27446C8300529662 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/watchOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		0D93894427446CBE00529662 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/Mac/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		0D93894527446CBE00529662 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = ../Carthage/Build/Mac/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
+		0D93894B27446CCE00529662 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/tvOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		0D93894C27446CCF00529662 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = ../Carthage/Build/tvOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
 		0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
 		0DE150DF260640E40067545C /* RoutableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutableLogger.swift; sourceTree = "<group>"; };
 		0DE150E2260640E40067545C /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
@@ -107,8 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E29A7C1822133499002E9E66 /* CocoaLumberjackSwift.framework in Frameworks */,
-				E29A7C1922133499002E9E66 /* CocoaLumberjack.framework in Frameworks */,
+				0D93895227446D5900529662 /* CocoaLumberjack.framework in Frameworks */,
+				0D93895127446D5900529662 /* CocoaLumberjackSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,15 +122,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2F9F8F123E040A9009E328F /* CocoaLumberjack.framework in Frameworks */,
+				0D93895427446D5900529662 /* CocoaLumberjack.framework in Frameworks */,
 				E2F9F8EC23E0408F009E328F /* LogsManager.framework in Frameworks */,
-				E2F9F8F323E040A9009E328F /* CocoaLumberjackSwift.framework in Frameworks */,
+				0D93895327446D5900529662 /* CocoaLumberjackSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D93893B27446C6300529662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */,
+				E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		0D93893C27446C7000529662 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				0D93893E27446C8300529662 /* CocoaLumberjack.framework */,
+				0D93893D27446C8300529662 /* CocoaLumberjackSwift.framework */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
+		0D93894327446CB000529662 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				0D93894427446CBE00529662 /* CocoaLumberjack.framework */,
+				0D93894527446CBE00529662 /* CocoaLumberjackSwift.framework */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
+		0D93894A27446CC700529662 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				0D93894B27446CCE00529662 /* CocoaLumberjack.framework */,
+				0D93894C27446CCF00529662 /* CocoaLumberjackSwift.framework */,
+			);
+			name = tvOS;
+			sourceTree = "<group>";
+		};
 		0DE150DE260640E40067545C /* RoutableLogger */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,8 +330,10 @@
 			isa = PBXGroup;
 			children = (
 				1834AC72A69DC91E1F3B8EDA /* _Carthage */,
-				E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */,
-				E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */,
+				0D93893B27446C6300529662 /* iOS */,
+				0D93894327446CB000529662 /* macOS */,
+				0D93894A27446CC700529662 /* tvOS */,
+				0D93893C27446C7000529662 /* watchOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -507,6 +551,7 @@
 		0DE1511F26064AEB0067545C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -525,6 +570,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.RoutableLogger";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -533,6 +580,7 @@
 		0DE1512026064AEB0067545C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -551,6 +599,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.RoutableLogger";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -683,6 +733,7 @@
 		E202681C22117D03004CC28A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -703,6 +754,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManager";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -712,6 +765,7 @@
 		E202681D22117D03004CC28A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -732,6 +786,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.anton-plebanovich.LogsManager";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

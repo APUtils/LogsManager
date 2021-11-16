@@ -1,5 +1,6 @@
 # LogsManager
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
 [![License](https://img.shields.io/cocoapods/l/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
 [![Platform](https://img.shields.io/cocoapods/p/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
@@ -12,6 +13,18 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
+
+#### Carthage
+
+Please check [official guide](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)
+
+Cartfile:
+
+```
+github "APUtils/LogsManager" ~> 9.1
+```
+
+Add `LogsManager` framework to the main app and app extensions if any. Add `LogsManagerExtensionUnsafe` framework for the main app only (excluding app extensions if any).
 
 #### CocoaPods
 

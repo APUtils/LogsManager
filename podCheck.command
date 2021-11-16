@@ -6,7 +6,7 @@ cd "$base_dir"
 set -e
 
 # Checking lib lint
-pod lib lint
+pod lib lint --no-clean
 
 # Checking spec lint
-pod spec lint
+pod spec lint --no-clean

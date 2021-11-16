@@ -73,9 +73,9 @@ public extension DDLogMessage.Parameters {
         
         if let error = error as? Error, let userInfo = error._userInfo {
             let options: JSONSerialization.WritingOptions
-            if #available(iOS 13.0, *) {
+            if #available(iOS 13.0, tvOS 13.0, macOS 10.15, watchOSApplicationExtension 6.0, *) {
                 options = [.sortedKeys, .fragmentsAllowed, .withoutEscapingSlashes]
-            } else if #available(iOS 11.0, *) {
+            } else if #available(iOS 11.0, tvOS 11.0, macOS 10.13, watchOSApplicationExtension 4.0, *) {
                 options = [.sortedKeys, .fragmentsAllowed]
             } else {
                 options = [.fragmentsAllowed]

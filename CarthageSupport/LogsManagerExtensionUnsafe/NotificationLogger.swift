@@ -8,12 +8,14 @@
 
 import Foundation
 import UserNotifications
-
+#if !COCOAPODS
+import LogsManager
+#endif
 import CocoaLumberjack
 
 
 /// Logger that fires local notifications. Assure that notification permissions were granted for alert presentation.
-@available(iOS 10.0, *)
+@available(iOS 10.0, macOS 10.14, *)
 open class NotificationLogger: BaseAbstractTextLogger {
     
     // ******************************* MARK: - BaseAbstractTextLogger Overrides

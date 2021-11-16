@@ -21,23 +21,27 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.source           = { :git => 'https://github.com/APUtils/LogsManager.git', :tag => s.version.to_s }
   
   s.swift_versions = ['5.1']
-  s.frameworks = 'Foundation', 'UIKit'
+  s.frameworks = 'Foundation'
   
   s.default_subspec = 'ExtensionUnsafe'
   s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.10'
+  s.watchos.deployment_target = '3.0'
+  s.tvos.deployment_target = '9.0'
   
   s.subspec 'Core' do |subspec|
-      subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
-      subspec.dependency 'CocoaLumberjack/Swift', '>= 3.7.2'
-      
+      subspec.ios.deployment_target = '9.0'
       subspec.osx.deployment_target = '10.10'
       subspec.watchos.deployment_target = '3.0'
       subspec.tvos.deployment_target = '9.0'
+      subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
+      subspec.dependency 'CocoaLumberjack/Swift', '>= 3.7.2'
   end
   
   s.subspec 'ExtensionUnsafe' do |subspec|
-      subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*'
-      subspec.dependency 'LogsManager/Core'
+      subspec.ios.deployment_target = '9.0'
+      subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*', 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
+      subspec.dependency 'CocoaLumberjack/Swift', '>= 3.7.2'
   end
 
 end

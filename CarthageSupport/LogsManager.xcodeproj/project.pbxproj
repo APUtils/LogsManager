@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D54D90B261C903C00F6814C /* _DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D54D909261C903C00F6814C /* _DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D54D90C261C903C00F6814C /* _DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54D90A261C903C00F6814C /* _DDTTYLogger.m */; };
+		0D93892A27445A4600529662 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84D2214200500258902 /* NotificationLogger.swift */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
 		0DE150E5260640E40067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
 		0DE150EC260641410067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
@@ -21,7 +22,6 @@
 		E201A85C2214200500258902 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8442214200500258902 /* Array+Utils.swift */; };
 		E201A85D2214200500258902 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8452214200500258902 /* String+Utils.swift */; };
 		E201A85F2214200500258902 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8472214200500258902 /* Log.swift */; };
-		E201A8632214200500258902 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84D2214200500258902 /* NotificationLogger.swift */; };
 		E201A8642214200500258902 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84E2214200500258902 /* ConsoleLogger.swift */; };
 		E201A8652214200500258902 /* BaseLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8502214200500258902 /* BaseLogger.swift */; };
 		E201A8662214200500258902 /* BaseLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A8512214200500258902 /* BaseLogFormatter.swift */; };
@@ -207,7 +207,6 @@
 				E201A84E2214200500258902 /* ConsoleLogger.swift */,
 				0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */,
 				E2E0791222A812B500DECBD8 /* FileLogger.swift */,
-				E201A84D2214200500258902 /* NotificationLogger.swift */,
 			);
 			name = "_Message Loggers";
 			path = "../../LogsManager/Classes/_Message Loggers";
@@ -277,20 +276,12 @@
 		E2F9F8E223E03F88009E328F /* LogsManagerExtensionUnsafe */ = {
 			isa = PBXGroup;
 			children = (
-				E2F9F8F623E0422F009E328F /* _Alert Logger */,
+				E2F9F8F723E0422F009E328F /* AlertLogger.swift */,
+				E201A84D2214200500258902 /* NotificationLogger.swift */,
 				E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */,
 				E2F9F8E423E03F88009E328F /* Info.plist */,
 			);
 			path = LogsManagerExtensionUnsafe;
-			sourceTree = "<group>";
-		};
-		E2F9F8F623E0422F009E328F /* _Alert Logger */ = {
-			isa = PBXGroup;
-			children = (
-				E2F9F8F723E0422F009E328F /* AlertLogger.swift */,
-			);
-			name = "_Alert Logger";
-			path = "../../LogsManager/ExtensionUnsafeClasses/_Alert Logger";
 			sourceTree = "<group>";
 		};
 		F1BD9B4AF93178888C20C526 /* Frameworks */ = {
@@ -488,7 +479,6 @@
 				E201A8642214200500258902 /* ConsoleLogger.swift in Sources */,
 				0DE150EC260641410067545C /* Utils.swift in Sources */,
 				0DE150F32606417C0067545C /* DateFormatter+Utils.swift in Sources */,
-				E201A8632214200500258902 /* NotificationLogger.swift in Sources */,
 				0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */,
 				E201A8652214200500258902 /* BaseLogger.swift in Sources */,
 			);
@@ -498,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D93892A27445A4600529662 /* NotificationLogger.swift in Sources */,
 				E2F9F8F823E0422F009E328F /* AlertLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

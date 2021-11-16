@@ -10,12 +10,10 @@ PODS:
   - CocoaLumberjack/Core (3.7.2)
   - CocoaLumberjack/Swift (3.7.2):
     - CocoaLumberjack/Core
-  - LogsManager (9.1.12):
-    - LogsManager/ExtensionUnsafe (= 9.1.12)
-  - LogsManager/Core (9.1.12):
+  - LogsManager (9.1.13):
+    - LogsManager/ExtensionUnsafe (= 9.1.13)
+  - LogsManager/ExtensionUnsafe (9.1.13):
     - CocoaLumberjack/Swift (>= 3.7.2)
-  - LogsManager/ExtensionUnsafe (9.1.12):
-    - LogsManager/Core
   - Nimble (9.2.1)
   - Quick (4.0.0)
   - RoutableLogger (9.1.12)
@@ -49,7 +47,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   APExtensions: 61ac6903670be0a2dba70dacbc4bd39f768e47af
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  LogsManager: 29cd86c03188eec0e74f8c4e3f549e17675204a7
+  LogsManager: 16a01d654f1a143b88cddcf0bc539d6fd3beb446
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   RoutableLogger: 9ad367e9a79df59c3cf5a1707ba9598ffbae8784

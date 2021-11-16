@@ -22,7 +22,7 @@ final class Utils {
     }
     
     static func debugDescription(_ error: Any?) -> String? {
-        guard let error = error as? CustomDebugStringConvertible else { return nil }
+        guard let error = error, let error = error as? CustomDebugStringConvertible else { return nil }
         return error.debugDescription
     }
     

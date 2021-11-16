@@ -146,6 +146,8 @@ class ViewController: UIViewController {
         )
         logData("This one should have different time format", logComponents: [.timeFormat])
         
+        logError("Non-error class error check", error: self)
+        logError("Non-JSON user info check", error: NSError(domain: "Non-JSON", code: -100, userInfo: ["vc": self]))
     }
     
     override func viewDidAppear(_ animated: Bool) {

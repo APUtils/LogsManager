@@ -82,8 +82,12 @@ public extension DDLogMessage.Parameters {
             }
             
             normalizedData = normalizedData ?? [:]
-            if let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: options) {
+            
+            if JSONSerialization.isValidJSONObject(userInfo),
+                let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: options) {
+                
                 normalizedData?["errorUserInfoJSON"] = jsonData.asString
+                
             } else {
                 normalizedData?["errorUserInfo"] = "\(userInfo)"
             }

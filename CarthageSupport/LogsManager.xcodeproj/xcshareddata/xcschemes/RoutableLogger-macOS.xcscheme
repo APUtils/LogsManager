@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D93895927446EE200529662"
-               BuildableName = "RoutableLogger_macOS.framework"
+               BuildableName = "RoutableLogger.framework"
                BlueprintName = "RoutableLogger-macOS"
                ReferencedContainer = "container:LogsManager.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D93895927446EE200529662"
-            BuildableName = "RoutableLogger_macOS.framework"
+            BuildableName = "RoutableLogger.framework"
             BlueprintName = "RoutableLogger-macOS"
             ReferencedContainer = "container:LogsManager.xcodeproj">
          </BuildableReference>

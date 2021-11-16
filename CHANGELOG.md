@@ -3,8 +3,15 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.13](https://github.com/APUtils/LogsManager/releases/tag/9.1.13)
+Released on 11/16/2021.
+
+#### Added
+- [RoutableLogger] SPM support
+
+
 ## [9.1.12](https://github.com/APUtils/LogsManager/releases/tag/9.1.12)
-Released on 09/26/2021.
+Released on 11/16/2021.
 
 #### Added
 - Add error debug description if it differs from default description under "debugDescription" key in data

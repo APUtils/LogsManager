@@ -6,16 +6,21 @@
 //  Copyright (c) 2019 Anton Plebanovich. All rights reserved.
 //
 
-import UIKit
-
 import APExtensions
 import LogsManager
+import RoutableLogger
+import UIKit
 import UserNotifications
 
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var routedLog: String?
+        RoutableLogger.logInfoHandler = { message, _, _, _ in routedLog = message() }
+        RoutableLogger.logInfo("Log routed")
+        print(routedLog!)
         
         logDebug("Message filter check")
         logError("Error filter check")

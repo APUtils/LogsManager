@@ -3,6 +3,25 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [9.1.12](https://github.com/APUtils/LogsManager/releases/tag/9.1.12)
+Released on 09/26/2021.
+
+#### Added
+- Add error debug description if it differs from default description under "debugDescription" key in data
+- Add error user info as "errorUserInfoJSON" or "errorUserInfo" if present
+- osX, tvOS and watchOS support
+- [RoutableLogger] logErrorOnceHandler and logErrorOnce
+
+#### Changed
+- Lowered iOS deployment target to 9.0
+- [RoutableLogger] No output by default for data and verbose logs
+- [RoutableLogger] Output debug logs during develop builds only
+- [RoutableLogger] separation from LogsManager
+
+### Fixed
+- [LogsManager] Deadlock fix on double resume call
+
+
 ## [9.1.8](https://github.com/APUtils/LogsManager/releases/tag/9.1.8)
 Released on 09/26/2021.
 

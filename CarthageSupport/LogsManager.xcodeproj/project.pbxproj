@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		0D54D90B261C903C00F6814C /* _DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D54D909261C903C00F6814C /* _DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D54D90C261C903C00F6814C /* _DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D54D90A261C903C00F6814C /* _DDTTYLogger.m */; };
-		0D93892A27445A4600529662 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E201A84D2214200500258902 /* NotificationLogger.swift */; };
+		0D93892D27445E8800529662 /* NotificationLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93892B27445E8800529662 /* NotificationLogger.swift */; };
+		0D93892E27445E8800529662 /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D93892C27445E8800529662 /* AlertLogger.swift */; };
 		0DD92F5A23C07F9C009F9A19 /* CrashLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */; };
 		0DE150E5260640E40067545C /* Data+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150E2260640E40067545C /* Data+Utils.swift */; };
 		0DE150EC260641410067545C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE150EB260641410067545C /* Utils.swift */; };
@@ -41,7 +42,6 @@
 		E2F9F8EC23E0408F009E328F /* LogsManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E202681322117D03004CC28A /* LogsManager.framework */; };
 		E2F9F8F123E040A9009E328F /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1722133499002E9E66 /* CocoaLumberjack.framework */; };
 		E2F9F8F323E040A9009E328F /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A7C1622133499002E9E66 /* CocoaLumberjackSwift.framework */; };
-		E2F9F8F823E0422F009E328F /* AlertLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9F8F723E0422F009E328F /* AlertLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +57,8 @@
 /* Begin PBXFileReference section */
 		0D54D909261C903C00F6814C /* _DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DDTTYLogger.h; sourceTree = "<group>"; };
 		0D54D90A261C903C00F6814C /* _DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DDTTYLogger.m; sourceTree = "<group>"; };
+		0D93892B27445E8800529662 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationLogger.swift; path = ../../LogsManager/ExtensionUnsafeClasses/NotificationLogger.swift; sourceTree = "<group>"; };
+		0D93892C27445E8800529662 /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertLogger.swift; path = ../../LogsManager/ExtensionUnsafeClasses/AlertLogger.swift; sourceTree = "<group>"; };
 		0DD92F5923C07F9C009F9A19 /* CrashLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashLogger.swift; sourceTree = "<group>"; };
 		0DE150DF260640E40067545C /* RoutableLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutableLogger.swift; sourceTree = "<group>"; };
 		0DE150E2260640E40067545C /* Data+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Utils.swift"; sourceTree = "<group>"; };
@@ -71,7 +73,6 @@
 		E201A8442214200500258902 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
 		E201A8452214200500258902 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		E201A8472214200500258902 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = ../../LogsManager/Classes/Log.swift; sourceTree = "<group>"; };
-		E201A84D2214200500258902 /* NotificationLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLogger.swift; sourceTree = "<group>"; };
 		E201A84E2214200500258902 /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		E201A8502214200500258902 /* BaseLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogger.swift; sourceTree = "<group>"; };
 		E201A8512214200500258902 /* BaseLogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLogFormatter.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		E2F9F8E123E03F88009E328F /* LogsManagerExtensionUnsafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LogsManagerExtensionUnsafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogsManagerExtensionUnsafe.h; sourceTree = "<group>"; };
 		E2F9F8E423E03F88009E328F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2F9F8F723E0422F009E328F /* AlertLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,8 +276,8 @@
 		E2F9F8E223E03F88009E328F /* LogsManagerExtensionUnsafe */ = {
 			isa = PBXGroup;
 			children = (
-				E2F9F8F723E0422F009E328F /* AlertLogger.swift */,
-				E201A84D2214200500258902 /* NotificationLogger.swift */,
+				0D93892C27445E8800529662 /* AlertLogger.swift */,
+				0D93892B27445E8800529662 /* NotificationLogger.swift */,
 				E2F9F8E323E03F88009E328F /* LogsManagerExtensionUnsafe.h */,
 				E2F9F8E423E03F88009E328F /* Info.plist */,
 			);
@@ -488,8 +488,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D93892A27445A4600529662 /* NotificationLogger.swift in Sources */,
-				E2F9F8F823E0422F009E328F /* AlertLogger.swift in Sources */,
+				0D93892E27445E8800529662 /* AlertLogger.swift in Sources */,
+				0D93892D27445E8800529662 /* NotificationLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

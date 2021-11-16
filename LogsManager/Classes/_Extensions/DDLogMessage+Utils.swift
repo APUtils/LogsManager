@@ -61,5 +61,32 @@ public extension DDLogMessage.Parameters {
             normalizedData = normalizedData ?? [:]
             normalizedData?["localizedDescription"] = localizedDescription
         }
+        
+        // Add debug description to data if it differs from the error
+        if let debugDescription = Utils.debugDescription(error),
+           debugDescription.hasElements,
+           debugDescription != normalizedError {
+            
+            normalizedData = normalizedData ?? [:]
+            normalizedData?["debugDescription"] = debugDescription
+        }
+        
+        if let error = error as? Error, let userInfo = error._userInfo {
+            let options: JSONSerialization.WritingOptions
+            if #available(iOS 13.0, *) {
+                options = [.sortedKeys, .fragmentsAllowed, .withoutEscapingSlashes]
+            } else if #available(iOS 11.0, *) {
+                options = [.sortedKeys, .fragmentsAllowed]
+            } else {
+                options = [.fragmentsAllowed]
+            }
+            
+            normalizedData = normalizedData ?? [:]
+            if let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: options) {
+                normalizedData?["errorUserInfoJSON"] = jsonData.asString
+            } else {
+                normalizedData?["errorUserInfo"] = "\(userInfo)"
+            }
+        }
     }
 }

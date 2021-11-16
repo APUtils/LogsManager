@@ -21,6 +21,11 @@ final class Utils {
         return error.localizedDescription
     }
     
+    static func debugDescription(_ error: Any?) -> String? {
+        guard let error = error as? CustomDebugStringConvertible else { return nil }
+        return error.debugDescription
+    }
+    
     /// Method to normalize data.
     static func normalizeData(_ data: [String: Any?]?) -> [String: String]? {
         guard let data = data else { return nil }

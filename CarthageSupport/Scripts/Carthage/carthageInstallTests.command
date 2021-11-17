@@ -45,7 +45,7 @@ if [ "$prevSum" != "$cartSum" ] || [ ! -d "Carthage/Build/iOS" ]; then
     rm "$cart_sum_file" || :
 
     # Install needed frameworks.
-    carthage bootstrap --platform iOS --cache-builds
+    carthage bootstrap --use-xcframeworks --platform iOS --cache-builds
 
     # Update checksum file
     cartSum=`{ cat Cartfile.resolved; xcrun swift -version; } | md5`

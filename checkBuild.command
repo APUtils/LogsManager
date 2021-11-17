@@ -41,7 +41,7 @@ applyXcode12Workaround
 set -o pipefail && xcodebuild -project "CarthageSupport/LogsManager.xcodeproj" -sdk iphonesimulator -target "LogsManager" | xcpretty
 
 echo -e "\nBuilding with Carthage..."
-carthage build --no-skip-current --cache-builds
+carthage build --use-xcframeworks --no-skip-current --cache-builds
 
 echo -e "\nPerforming tests..."
 simulator_id="$(xcrun simctl list devices available iPhone | grep " SE " | tail -1 | sed -e "s/.*(\([0-9A-Z-]*\)).*/\1/")"

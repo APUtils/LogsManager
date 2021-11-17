@@ -14,15 +14,31 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-#### Carthage
+#### Carthage **DEPRECATED**
 
 Please check [official guide](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)
 
 Cartfile:
 
 ```
-github "APUtils/LogsManager" ~> 9.1
+github "APUtils/LogsManager" = 9.1.19
 ```
+
+Install command: `carthage bootstrap`
+
+Add `LogsManager` framework to the main app and app extensions if any. Add `LogsManagerExtensionUnsafe` framework for the main app only (excluding app extensions if any).
+
+#### Carthage with XCFrameworks **DEPRECATED**
+
+Please check [official guide](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos)
+
+Cartfile:
+
+```
+github "APUtils/LogsManager" = 9.1.20
+```
+
+Install command: `carthage bootstrap --use-xcframeworks`
 
 Add `LogsManager` framework to the main app and app extensions if any. Add `LogsManagerExtensionUnsafe` framework for the main app only (excluding app extensions if any).
 

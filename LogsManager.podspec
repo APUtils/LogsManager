@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LogsManager'
-  s.version          = '9.1.14'
+  s.version          = '10.0.0'
   s.summary          = 'Logs manager on top of CocoaLumberjack.'
 
   s.description      = <<-DESC
@@ -22,6 +22,7 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation'
+  s.dependency 'APExtensions/Occupiable'
   
   s.default_subspec = 'ExtensionUnsafe'
   s.ios.deployment_target = '9.0'

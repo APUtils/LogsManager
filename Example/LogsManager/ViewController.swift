@@ -153,6 +153,7 @@ class ViewController: UIViewController {
         
         logError("Non-error class error check", error: self)
         logError("Non-JSON user info check", error: NSError(domain: "Non-JSON", code: -100, userInfo: ["vc": self]))
+        logError("Empty-JSON user info check 2", error: NSError(domain: "Non-JSON", code: -100, userInfo: [:]))
     }
     
     override func viewDidAppear(_ animated: Bool) {

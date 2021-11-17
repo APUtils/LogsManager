@@ -1,18 +1,21 @@
 PODS:
-  - APExtensions (10.0.0):
-    - APExtensions/Core (= 10.0.0)
-    - APExtensions/Storyboard (= 10.0.0)
-    - APExtensions/ViewConfiguration (= 10.0.0)
-  - APExtensions/Core (10.0.0):
+  - APExtensions (10.1.2):
+    - APExtensions/Core (= 10.1.2)
+    - APExtensions/Storyboard (= 10.1.2)
+    - APExtensions/ViewConfiguration (= 10.1.2)
+  - APExtensions/Core (10.1.2):
     - RoutableLogger
-  - APExtensions/Storyboard (10.0.0)
-  - APExtensions/ViewConfiguration (10.0.0)
+  - APExtensions/Occupiable (10.1.2)
+  - APExtensions/Storyboard (10.1.2)
+  - APExtensions/ViewConfiguration (10.1.2)
   - CocoaLumberjack/Core (3.7.2)
   - CocoaLumberjack/Swift (3.7.2):
     - CocoaLumberjack/Core
-  - LogsManager (9.1.13):
-    - LogsManager/ExtensionUnsafe (= 9.1.13)
-  - LogsManager/ExtensionUnsafe (9.1.13):
+  - LogsManager (10.0.0):
+    - APExtensions/Occupiable
+    - LogsManager/ExtensionUnsafe (= 10.0.0)
+  - LogsManager/ExtensionUnsafe (10.0.0):
+    - APExtensions/Occupiable
     - CocoaLumberjack/Swift (>= 3.7.2)
   - Nimble (9.2.1)
   - Quick (4.0.0)
@@ -41,13 +44,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: a35dbd86153c87ea10f7e88b757f49e2743e34e8
+    :commit: c120d3be9aa2844802b83861f7b103f7eb607b15
     :git: https://github.com/APUtils/APExtensions.git
 
 SPEC CHECKSUMS:
-  APExtensions: 61ac6903670be0a2dba70dacbc4bd39f768e47af
+  APExtensions: 96be5ac738ef26aa3fb8d9dca42742a81953042f
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  LogsManager: 16a01d654f1a143b88cddcf0bc539d6fd3beb446
+  LogsManager: 6e4cfcfebecf95b346ed66570029b6766dd1dea1
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   RoutableLogger: 9ad367e9a79df59c3cf5a1707ba9598ffbae8784

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Anton Plebanovich. All rights reserved.
 //
 
+import APExtensions
 import CocoaLumberjack
 import Foundation
 
@@ -71,7 +72,12 @@ public extension DDLogMessage.Parameters {
             normalizedData?["debugDescription"] = debugDescription
         }
         
+    userInfoIf:
         if let error = error as? Error, let userInfo = error._userInfo {
+            if let occupiable = userInfo as? Occupiable, occupiable.isEmpty {
+                break userInfoIf
+            }
+            
             let options: JSONSerialization.WritingOptions
             if #available(iOS 13.0, tvOS 13.0, macOS 10.15, watchOSApplicationExtension 6.0, watchOS 6.0, *) {
                 options = [.sortedKeys, .fragmentsAllowed, .withoutEscapingSlashes]
@@ -84,7 +90,7 @@ public extension DDLogMessage.Parameters {
             normalizedData = normalizedData ?? [:]
             
             if JSONSerialization.isValidJSONObject(userInfo),
-                let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: options) {
+               let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: options) {
                 
                 normalizedData?["errorUserInfoJSON"] = jsonData.asString
                 

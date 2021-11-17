@@ -3,6 +3,33 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [10.0.0](https://github.com/APUtils/LogsManager/releases/tag/10.0.0)
+Released on 11/17/2021.
+
+#### Changed
+- Do not add empty user info to error data
+
+#### Removed
+- Carthage support is removed
+
+
+## [9.1.20](https://github.com/APUtils/LogsManager/releases/tag/9.1.20)
+Released on 11/17/2021.
+
+#### Added
+- [Carthage] Use XCFrameworks
+
+#### Deprecation
+- Carthage is deprecated and will be removed in the `10.0.0` version
+
+
+## [9.1.19](https://github.com/APUtils/LogsManager/releases/tag/9.1.16)
+Released on 11/17/2021.
+
+#### Added
+- [RoutableLogger] Carthage support for all platforms
+
+
 ## [9.1.13](https://github.com/APUtils/LogsManager/releases/tag/9.1.13)
 Released on 11/16/2021.
 

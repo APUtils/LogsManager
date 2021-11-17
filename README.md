@@ -21,7 +21,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/LogsManager" = 9.1.19
+github "APUtils/LogsManager" "9.1.19"
 ```
 
 Install command: `carthage bootstrap`
@@ -35,7 +35,7 @@ Please check [official guide](https://github.com/Carthage/Carthage#if-youre-buil
 Cartfile:
 
 ```
-github "APUtils/LogsManager" = 9.1.20
+github "APUtils/LogsManager" "9.1.20"
 ```
 
 Install command: `carthage bootstrap --use-xcframeworks`

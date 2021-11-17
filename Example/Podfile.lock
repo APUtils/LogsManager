@@ -1,21 +1,21 @@
 PODS:
-  - APExtensions (10.1.2):
-    - APExtensions/Core (= 10.1.2)
-    - APExtensions/Storyboard (= 10.1.2)
-    - APExtensions/ViewConfiguration (= 10.1.2)
-  - APExtensions/Core (10.1.2):
+  - APExtensions (10.1.6):
+    - APExtensions/Core (= 10.1.6)
+    - APExtensions/Storyboard (= 10.1.6)
+    - APExtensions/ViewConfiguration (= 10.1.6)
+  - APExtensions/Core (10.1.6):
     - RoutableLogger
-  - APExtensions/Occupiable (10.1.2)
-  - APExtensions/Storyboard (10.1.2)
-  - APExtensions/ViewConfiguration (10.1.2)
+  - APExtensions/Occupiable (10.1.6)
+  - APExtensions/Storyboard (10.1.6)
+  - APExtensions/ViewConfiguration (10.1.6)
   - CocoaLumberjack/Core (3.7.2)
   - CocoaLumberjack/Swift (3.7.2):
     - CocoaLumberjack/Core
-  - LogsManager (10.0.0):
-    - APExtensions/Occupiable
-    - LogsManager/ExtensionUnsafe (= 10.0.0)
-  - LogsManager/ExtensionUnsafe (10.0.0):
-    - APExtensions/Occupiable
+  - LogsManager (10.0.1):
+    - APExtensions/Occupiable (>= 10.1.6)
+    - LogsManager/ExtensionUnsafe (= 10.0.1)
+  - LogsManager/ExtensionUnsafe (10.0.1):
+    - APExtensions/Occupiable (>= 10.1.6)
     - CocoaLumberjack/Swift (>= 3.7.2)
   - Nimble (9.2.1)
   - Quick (4.0.0)
@@ -44,13 +44,13 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: c120d3be9aa2844802b83861f7b103f7eb607b15
+    :commit: 085a41c04626378c75bc5d4887784121465adc9c
     :git: https://github.com/APUtils/APExtensions.git
 
 SPEC CHECKSUMS:
-  APExtensions: 96be5ac738ef26aa3fb8d9dca42742a81953042f
+  APExtensions: 63f9f31f09a8b43a52c2207774568756e3bd489f
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  LogsManager: 6e4cfcfebecf95b346ed66570029b6766dd1dea1
+  LogsManager: 9aecb0080d101a1096f1f56dcc2b023559961124
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
   RoutableLogger: 9ad367e9a79df59c3cf5a1707ba9598ffbae8784

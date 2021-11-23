@@ -8,6 +8,7 @@
 
 import CocoaLumberjack
 import Foundation
+import RoutableLogger
 
 open class FileLogger: DDFileLogger, BaseLogger {
     
@@ -41,7 +42,7 @@ open class FileLogger: DDFileLogger, BaseLogger {
                 do {
                     try FileManager.default.createDirectory(atPath: defaultLogsDirectory, withIntermediateDirectories: true, attributes: nil)
                 } catch {
-                    print("Unable to create default logs directory: \(error)")
+                    RoutableLogger.logError("Unable to create default logs directory", error: error, data: ["defaultLogsDirectory": defaultLogsDirectory])
                 }
             }
             

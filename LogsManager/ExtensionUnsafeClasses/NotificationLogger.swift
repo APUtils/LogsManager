@@ -12,6 +12,7 @@ import UserNotifications
 import LogsManager
 #endif
 import CocoaLumberjack
+import RoutableLogger
 
 
 /// Logger that fires local notifications. Assure that notification permissions were granted for alert presentation.
@@ -33,7 +34,7 @@ open class NotificationLogger: BaseAbstractTextLogger {
         
         UNUserNotificationCenter.current().add(request) { error in
             if let error = error {
-                print("Can't schedule local notification: \(error)")
+                RoutableLogger.logError("Can't schedule local notification", error: error)
             }
         }
     }

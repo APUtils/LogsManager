@@ -8,6 +8,7 @@
 
 import Foundation
 import RoutableLogger
+import Dispatch
 
 #if COCOAPODS
 import CocoaLumberjack
@@ -67,25 +68,15 @@ open class LoggersManager {
         return fileLogger
     }()
     
-    // ******************************* MARK: - Initialization and Setup
-    
-    public init() {
-        setup()
-    }
-    
-    private func setup() {
-        
-    }
-    
     // ******************************* MARK: - Public Methods
     
     /// Pauses delivery of logs to loggers. All received logs are preserved and delivered on the `resume()` call.
     /// This is convenient to use to prevent logs lose for example on the app start when some loggers
     /// might not yet be possible to initialize or launch.
     public func pause() {
-        queue.sync {
+        queue.performSync {
             guard isPaused == false else {
-                print("[ *** ERROR *** ] Unable to pause logs delivery. It's already paused.")
+                RoutableLogger.logError("Unable to pause logs delivery. It's already paused.")
                 return
             }
             
@@ -95,9 +86,9 @@ open class LoggersManager {
     
     /// Triggers delivery of all delayed logs due to `pause()` call and resumes logs delivery to loggers.
     public func resume() {
-        queue.sync { [self] in
+        queue.performSync { [self] in
             guard isPaused else {
-                print("[ *** ERROR *** ] Unable to resume logs delivery. It's already working.")
+                RoutableLogger.logError("Unable to resume logs delivery. It's already working.")
                 return
             }
             
@@ -123,9 +114,9 @@ open class LoggersManager {
     
     /// Registers log component for detection
     public func registerLogComponent(_ logComponent: LogComponent) {
-        queue.sync {
+        queue.performSync {
             guard !logComponents.contains(logComponent) else {
-                print("[ *** ERROR *** ] Log component '\(logComponent)' was already added")
+                RoutableLogger.logError("Log component '\(logComponent)' was already added")
                 return
             }
             
@@ -136,9 +127,9 @@ open class LoggersManager {
     
     /// Uregisters log component from detection
     public func unregisterLogComponent(_ logComponent: LogComponent) {
-        queue.sync {
+        queue.performSync {
             guard logComponents.contains(logComponent) else {
-                print("[ *** ERROR *** ] Log component '\(logComponent)' is not added")
+                RoutableLogger.logError("Log component '\(logComponent)' is not added")
                 return
             }
             
@@ -149,7 +140,7 @@ open class LoggersManager {
     
     /// Adds text logger. Do nothing if logger with the same log level is already added.
     public func addLogger(_ logger: BaseLogger) {
-        queue.sync {
+        queue.performSync {
             guard !loggers.contains(where: { $0 === logger }) else { return }
             
             loggers.append(logger)
@@ -161,7 +152,7 @@ open class LoggersManager {
     
     /// Removes text logger
     public func removeLogger(_ logger: BaseLogger) {
-        queue.sync {
+        queue.performSync {
             guard loggers.contains(where: { $0 === logger }) else { return }
             
             loggers.removeAll(where: { $0 === logger })
@@ -406,7 +397,7 @@ open class LoggersManager {
     private func detectLogComponent(filePath: String, function: String, line: UInt) -> [LogComponent] {
         // Return hash if we have
         let key = ComponentsKey(filePath: filePath, function: function, line: line)
-        let existingCachedComponents: [LogComponent]? = queue.sync {
+        let existingCachedComponents: [LogComponent]? = queue.performSync {
             if let cachedComponents = cachedComponents[key] {
                 return cachedComponents
             } else {
@@ -442,4 +433,36 @@ private struct ComponentsKey: Equatable, Hashable {
     let filePath: String
     let function: String
     let line: UInt
+}
+
+// ******************************* MARK: - Private Extensions
+
+private var c_keyAssociationKey = 0
+
+private extension DispatchQueue {
+    
+    private var key: DispatchSpecificKey<Void> {
+        get {
+            if let key = objc_getAssociatedObject(self, &c_keyAssociationKey) as? DispatchSpecificKey<Void> {
+                return key
+            } else {
+                let key = DispatchSpecificKey<Void>()
+                setSpecific(key: key, value: ())
+                objc_setAssociatedObject(self, &c_keyAssociationKey, key, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                return key
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, &c_keyAssociationKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    /// Performs `work` on `self` synchronously. Just performs `work` if already on a `self.`
+    func performSync<T>(execute work: () throws -> T) rethrows -> T {
+        if DispatchQueue.getSpecific(key: key) != nil {
+            return try work()
+        } else {
+            return try sync { try work() }
+        }
+    }
 }

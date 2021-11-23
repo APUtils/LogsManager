@@ -22,6 +22,30 @@ class ViewController: UIViewController {
         RoutableLogger.logInfo("Log routed")
         print(routedLog!)
         
+        RoutableLogger.logErrorHandler = { message, error, data, file, function, line in
+            logError(message(), error: error, data: data, file: file, function: function, line: line)
+        }
+        
+        RoutableLogger.logWarningHandler = { message, file, function, line in
+            logWarning(message(), file: file, function: function, line: line)
+        }
+        
+        RoutableLogger.logInfoHandler = { message, file, function, line in
+            logInfo(message(), file: file, function: function, line: line)
+        }
+        
+        RoutableLogger.logDebugHandler = { message, file, function, line in
+            logDebug(message(), file: file, function: function, line: line)
+        }
+        
+        RoutableLogger.logVerboseHandler = { message, file, function, line in
+            logVerbose(message(), file: file, function: function, line: line)
+        }
+        
+        RoutableLogger.logDataHandler = { message, file, function, line in
+            logData(message(), file: file, function: function, line: line)
+        }
+        
         logDebug("Message filter check")
         logError("Error filter check")
         
@@ -135,7 +159,9 @@ class ViewController: UIViewController {
         testSameLine()
         
         LoggersManager.shared.pause()
+        LoggersManager.shared.pause()
         logWarning("This one should be paused")
+        LoggersManager.shared.resume()
         LoggersManager.shared.resume()
         logWarning("And this one should not")
         

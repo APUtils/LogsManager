@@ -12,6 +12,7 @@ import Foundation
 import LogsManager
 #endif
 import UIKit
+import RoutableLogger
 
 /// Logger that logs with alerts.
 open class AlertLogger: BaseAbstractTextLogger {
@@ -115,7 +116,7 @@ private final class AlertController: UIAlertController {
                     popover.sourceView = view
                     popover.sourceRect = CGRect(x: view.bounds.size.width / 2, y: view.bounds.size.height, width: 0, height: 0)
                 } else {
-                    print("AlertController: can not get sourceView and sourceRect for presentation")
+                    RoutableLogger.logError("Can not get sourceView and sourceRect for presentation")
                     return
                 }
             }

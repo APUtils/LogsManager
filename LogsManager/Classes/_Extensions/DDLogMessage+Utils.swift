@@ -9,6 +9,7 @@
 import APExtensions
 import CocoaLumberjack
 import Foundation
+import RoutableLogger
 
 public extension DDLogMessage {
     var parameters: Parameters? {
@@ -97,6 +98,51 @@ public extension DDLogMessage.Parameters {
             } else {
                 normalizedData?["errorUserInfo"] = "\(userInfo)"
             }
+        }
+    }
+    
+    /// Returns normalized data with compressed values if they exceed `allowedCount` limit.
+    @available(iOS 13.0, *)
+    func compressedNormalizedData(allowedCount: Int) -> [String: String]? {
+        
+        // Compressing data as much as possible using LZMA. It has ~10x compression rate for JSONs.
+        normalizedData?
+            .mapValues { value in
+                // No need to compress values if they fit in the allowed count
+                if value.count > allowedCount {
+                    return value.data(using: .utf8)?
+                        .compressed(using: .lzma)
+                        .base64EncodedString()
+                    ?? value
+                } else {
+                    return value
+                }
+            }
+    }
+}
+
+
+// ******************************* MARK: - Compression
+
+@available(iOS 13.0, *)
+private extension Data {
+    
+    /// - note: In rare cases for some reason compression may fail. We just return data itself in that case.
+    func compressed(using algorithm: NSData.CompressionAlgorithm) -> Data {
+        do {
+            return try (self as NSData).compressed(using: algorithm) as Data
+        } catch {
+            RoutableLogger.logError("Unable to compress data", data: ["data": asString])
+            return self
+        }
+    }
+    
+    func decompressed(using algorithm: NSData.CompressionAlgorithm) -> Data {
+        do {
+            return try (self as NSData).decompressed(using: algorithm) as Data
+        } catch {
+            RoutableLogger.logError("Unable to decompress data", data: ["data": asString])
+            return self
         }
     }
 }

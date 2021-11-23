@@ -8,6 +8,7 @@
 
 import Foundation
 
+// ******************************* MARK: - As
 
 extension Data {
     /// Try to convert data to ASCII string

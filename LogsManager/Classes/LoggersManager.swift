@@ -185,7 +185,7 @@ open class LoggersManager {
                            logComponents: [LogComponent]? = nil,
                            flag: DDLogFlag,
                            asynchronous: Bool? = nil,
-                           timestamp: Date? = nil,
+                           timestamp: Date = Date(),
                            file: String = #file,
                            function: String = #function,
                            line: UInt = #line) {
@@ -198,7 +198,6 @@ open class LoggersManager {
             // We don't know if this log should be processed or not so we just process everything until we resume.
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
-            let timestamp = Date()
             addPausedLog { [self] in
                 logMessage(message,
                            logComponents: logComponents,
@@ -255,7 +254,7 @@ open class LoggersManager {
                              error: Any?,
                              data: [String: Any?]?,
                              asynchronous: Bool? = nil,
-                             timestamp: Date? = nil,
+                             timestamp: Date = Date(),
                              file: String = #file,
                              function: String = #function,
                              line: UInt = #line) {
@@ -268,7 +267,6 @@ open class LoggersManager {
             // We don't know if this log should be processed or not so we just process everything until we resume.
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
-            let timestamp = Date()
             addPausedLog { [self] in
                 logErrorOnce(message,
                            logComponents: logComponents,
@@ -333,7 +331,7 @@ open class LoggersManager {
                          error: Any?,
                          data: [String: Any?]?,
                          asynchronous: Bool? = nil,
-                         timestamp: Date? = nil,
+                         timestamp: Date = Date(),
                          file: String = #file,
                          function: String = #function,
                          line: UInt = #line) {
@@ -346,7 +344,6 @@ open class LoggersManager {
             // We don't know if this log should be processed or not so we just process everything until we resume.
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
-            let timestamp = Date()
             addPausedLog { [self] in
                 logError(message,
                          logComponents: logComponents,

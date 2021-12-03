@@ -23,6 +23,9 @@ public enum LoggerMode {
     /// Log specific components with specific log levels only
     case specificComponentsAndLevels([LogComponentAndLevel])
     
+    /// Log specific components only but but if a message also contains muted component.
+    case specificAndMutedComponents(specific: [LogComponent], muted: [LogComponent])
+    
     /// Log everything except ignored components.
     /// If message has several log components and not all of them are ignored - message will be logged with left components.
     case ignoreComponents([LogComponent])
@@ -70,6 +73,10 @@ public extension BaseLogger {
                 
             case .specificComponentsAndLevels(let logComponentsAndLevels):
                 return LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: message).hasElements
+                
+            case .specificAndMutedComponents(let specificLogComponents, let mutedLogComponents):
+                return specificLogComponents.hasIntersection(with: messageLogComponents)
+                && !mutedLogComponents.hasIntersection(with: messageLogComponents)
                 
             case .ignoreComponents(let logComponents):
                 return messageLogComponents.removing(contentsOf: logComponents).hasElements

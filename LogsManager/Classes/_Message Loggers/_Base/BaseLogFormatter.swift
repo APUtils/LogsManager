@@ -70,26 +70,33 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
             case .all: logComponents = messageLogComponents
                 
             // Search for intersections for clearer logs
-            case .specificComponents(let _logComponents):
-                logComponents = messageLogComponents.intersection(with: _logComponents)
+            case .specificComponents(let specificLogComponents):
+                logComponents = messageLogComponents.intersection(with: specificLogComponents)
                 
             // Search for intersection and filter out components with not enough log level
-            case .specificComponentsAndLevels(let logComponentsAndLevels): logComponents = LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: logMessage)
+            case .specificComponentsAndLevels(let logComponentsAndLevels):
+                logComponents = LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: logMessage)
                 
                 // Search for intersections for clearer logs
-            case .specificAndMutedComponents(let specific, _):
-                logComponents = messageLogComponents.intersection(with: specific)
+            case .specificAndMutedComponents(let specificLogComponents, _):
+                logComponents = messageLogComponents.intersection(with: specificLogComponents)
+                
+            case .specificAndMutedComponentsAndLevels(let specificLogComponentsAndLevels, _):
+                logComponents = LoggerMode.getIntersection(forLogComponentsAndLevels: specificLogComponentsAndLevels,
+                                                           with: logMessage)
                 
             // Filter ignored components from message components
-            case .ignoreComponents(let _logComponents):
-                logComponents = messageLogComponents.removing(contentsOf: _logComponents)
+            case .ignoreComponents(let ignoreLogComponents):
+                logComponents = messageLogComponents.removing(contentsOf: ignoreLogComponents)
                 
             // Just return the same components because we have no intersection
-            case .muteComponents: logComponents = messageLogComponents
+            case .muteComponents:
+                logComponents = messageLogComponents
                 
-                // No need to filter components if log message pass
-            case .muteComponentsBelowLevel: logComponents = messageLogComponents
+            case .muteComponentsBelowLevel:
+                logComponents = messageLogComponents
             }
+            
         } else {
             // Message doesn't have any components.
             logComponents = []

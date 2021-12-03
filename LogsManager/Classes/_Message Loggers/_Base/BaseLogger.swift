@@ -23,8 +23,11 @@ public enum LoggerMode {
     /// Log specific components with specific log levels only
     case specificComponentsAndLevels([LogComponentAndLevel])
     
-    /// Log specific components only but but if a message also contains muted component.
+    /// Log specific components only but mute a message if it also contains muted component.
     case specificAndMutedComponents(specific: [LogComponent], muted: [LogComponent])
+    
+    /// Log specific components only but mute a message if it also contains muted component.
+    case specificAndMutedComponentsAndLevels(specific: [LogComponentAndLevel], muted: [LogComponentAndLevel])
     
     /// Log everything except ignored components.
     /// If message has several log components and not all of them are ignored - message will be logged with left components.
@@ -74,9 +77,25 @@ public extension BaseLogger {
             case .specificComponentsAndLevels(let logComponentsAndLevels):
                 return LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: message).hasElements
                 
-            case .specificAndMutedComponents(let specificLogComponents, let mutedLogComponents):
-                return specificLogComponents.hasIntersection(with: messageLogComponents)
-                && !mutedLogComponents.hasIntersection(with: messageLogComponents)
+            case .specificAndMutedComponents(let specificLogComponentsAndLevels, let muteLogComponentsAndLevels):
+                return specificLogComponentsAndLevels.hasIntersection(with: messageLogComponents)
+                && !muteLogComponentsAndLevels.hasIntersection(with: messageLogComponents)
+                
+            case .specificAndMutedComponentsAndLevels(let specificLogComponentsAndLevels, let muteLogComponentsAndLevels):
+                guard LoggerMode.getIntersection(forLogComponentsAndLevels: specificLogComponentsAndLevels, with: message).hasElements else { return false }
+                
+                let messageLogLevel = message.level
+                let mutedLogComponents = muteLogComponentsAndLevels.compactMap { muteLogComponent, muteLevel -> LogComponent? in
+                    // Verbose = 31, error = 1
+                    if messageLogLevel.rawValue <= muteLevel.rawValue {
+                        return nil
+                    } else {
+                        // Mute log components that are below defined level
+                        return muteLogComponent
+                    }
+                }
+                
+                return !mutedLogComponents.hasIntersection(with: messageLogComponents)
                 
             case .ignoreComponents(let logComponents):
                 return messageLogComponents.removing(contentsOf: logComponents).hasElements

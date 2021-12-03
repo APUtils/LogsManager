@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let dataLogger = ConsoleLogger(mode: .specificAndMutedComponents(specific: [.vc], muted: [.buttonTap]), logLevel: .data, newLinesSeparation: false)
+        let dataLogger = ConsoleLogger(mode: .specificAndMutedComponentsAndLevels(specific: [(.vc, .data)], muted: [(.buttonTap, .verbose)]), logLevel: .data, newLinesSeparation: false)
         LoggersManager.shared.addLogger(dataLogger)
         
         

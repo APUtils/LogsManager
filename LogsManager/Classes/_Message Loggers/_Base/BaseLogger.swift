@@ -31,6 +31,11 @@ public enum LoggerMode {
     /// Even if log message have any other log components it won't be logged.
     case muteComponents([LogComponent])
     
+    /// Log everything that doesn't have listed components.
+    /// Even if log message have any other log components it won't be logged.
+    /// However, if log level is the same or above specified the log passes.
+    case muteComponentsBelowLevel([LogComponentAndLevel])
+    
     static func getIntersection(forLogComponentsAndLevels logComponentsAndLevels: [LogComponentAndLevel], with message: DDLogMessage) -> [LogComponent] {
         guard let messageLogComponents = message.logComponents else { return logComponentsAndLevels.map { $0.0 } }
         
@@ -71,6 +76,20 @@ public extension BaseLogger {
                 
             case .muteComponents(let logComponents):
                 return !logComponents.hasIntersection(with: messageLogComponents)
+                
+            case .muteComponentsBelowLevel(let muteLogComponentsAndLevels):
+                let messageLogLevel = message.level
+                let mutedLogComponents = muteLogComponentsAndLevels.compactMap { muteLogComponent, muteLevel -> LogComponent? in
+                    // Verbose = 31, error = 1
+                    if messageLogLevel.rawValue <= muteLevel.rawValue {
+                        return nil
+                    } else {
+                        // Mute log components that are below defined level
+                        return muteLogComponent
+                    }
+                }
+                
+                return !mutedLogComponents.hasIntersection(with: messageLogComponents)
             }
         } else {
             // Log do not belong to any component or logger doesn't have components filter. Pass it.

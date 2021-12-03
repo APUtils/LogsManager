@@ -80,6 +80,9 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
                 
             // Just return the same components because we have no intersection
             case .muteComponents: logComponents = messageLogComponents
+                
+                // No need to filter components if log message pass
+            case .muteComponentsBelowLevel: logComponents = messageLogComponents
             }
         } else {
             // Message doesn't have any components.

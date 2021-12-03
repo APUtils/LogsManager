@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,11 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYp-zf-nuZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYp-zf-nuZ">
                                 <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="onTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vd8-ER-xLI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I22-tr-DOR">
+                                <rect key="frame" x="151.5" y="364.5" width="72" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="DEBUG"/>
+                                <connections>
+                                    <action selector="onDebugTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="TQg-2H-hwG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -33,11 +38,14 @@
                         <constraints>
                             <constraint firstItem="CYp-zf-nuZ" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="6Tf-zZ-kHt"/>
                             <constraint firstItem="CYp-zf-nuZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="XBA-Cj-vlY"/>
+                            <constraint firstItem="I22-tr-DOR" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Zzj-eF-VLp"/>
+                            <constraint firstItem="I22-tr-DOR" firstAttribute="top" secondItem="CYp-zf-nuZ" secondAttribute="bottom" constant="16" id="poE-8G-0AT"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="103" y="111"/>
         </scene>
     </scenes>
 </document>

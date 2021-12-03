@@ -18,31 +18,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         var routedLog: String?
-        RoutableLogger.logInfoHandler = { message, _, _, _ in routedLog = message() }
+        RoutableLogger.logInfoHandler = { message, _, _, _, _ in routedLog = message() }
         RoutableLogger.logInfo("Log routed")
         print(routedLog!)
         
-        RoutableLogger.logErrorHandler = { message, error, data, file, function, line in
+        RoutableLogger.logErrorHandler = { message, _, error, data, file, function, line in
             logError(message(), error: error, data: data, file: file, function: function, line: line)
         }
         
-        RoutableLogger.logWarningHandler = { message, file, function, line in
+        RoutableLogger.logWarningHandler = { message, _, file, function, line in
             logWarning(message(), file: file, function: function, line: line)
         }
         
-        RoutableLogger.logInfoHandler = { message, file, function, line in
+        RoutableLogger.logInfoHandler = { message, _, file, function, line in
             logInfo(message(), file: file, function: function, line: line)
         }
         
-        RoutableLogger.logDebugHandler = { message, file, function, line in
+        RoutableLogger.logDebugHandler = { message, _, file, function, line in
             logDebug(message(), file: file, function: function, line: line)
         }
         
-        RoutableLogger.logVerboseHandler = { message, file, function, line in
+        RoutableLogger.logVerboseHandler = { message, _, file, function, line in
             logVerbose(message(), file: file, function: function, line: line)
         }
         
-        RoutableLogger.logDataHandler = { message, file, function, line in
+        RoutableLogger.logDataHandler = { message, _, file, function, line in
             logData(message(), file: file, function: function, line: line)
         }
         
@@ -229,7 +229,12 @@ extension LogComponent {
 @available(iOS 10.0, *)
 extension ViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.alert)
+        
+        if #available(iOS 14.0, *) {
+            completionHandler([.banner, .list])
+        } else {
+            completionHandler(.alert)
+        }
     }
 }
 

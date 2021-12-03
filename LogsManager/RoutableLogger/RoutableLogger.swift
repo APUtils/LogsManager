@@ -15,9 +15,11 @@ public enum RoutableLogger {
     
     /// Error once log handler.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     /// - parameter error: Error to report.
     /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
     public static var logErrorOnceHandler: (_ message: () -> (String),
+                                            _ logComponents: [String],
                                             _ error: Any?,
                                             _ data: [String : Any?]?,
                                             _ file: String,
@@ -26,9 +28,11 @@ public enum RoutableLogger {
     
     /// Error log hadnler.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     /// - parameter error: Error to report.
     /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
     public static var logErrorHandler: (_ message: () -> (String),
+                                        _ logComponents: [String],
                                         _ error: Any?,
                                         _ data: [String : Any?]?,
                                         _ file: String,
@@ -37,12 +41,14 @@ public enum RoutableLogger {
     
     /// Warning log handler.
     public static var logWarningHandler: (_ message: () -> (String),
+                                          _ logComponents: [String],
                                        _ file: String,
                                        _ function: String,
                                        _ line: UInt) -> Void = logMessageHandler
     
     /// Info log handler.
     public static var logInfoHandler: (_ message: () -> (String),
+                                       _ logComponents: [String],
                                        _ file: String,
                                        _ function: String,
                                        _ line: UInt) -> Void = logMessageHandler
@@ -50,31 +56,36 @@ public enum RoutableLogger {
     #if DEBUG
     /// Debug log handler. Outputs in debug builds
     public static var logDebugHandler: (_ message: () -> (String),
+                                        _ logComponents: [String],
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = logMessageHandler
     #else
     /// Debug log handler. No output in release builds.
     public static var logDebugHandler: (_ message: () -> (String),
+                                        _ logComponents: [String],
                                         _ file: String,
                                         _ function: String,
-                                        _ line: UInt) -> Void = { _, _, _, _ in }
+                                        _ line: UInt) -> Void = { _, _, _, _, _ in }
     #endif
     
     /// Verbose log handler. No output by default.
     public static var logVerboseHandler: (_ message: () -> (String),
+                                          _ logComponents: [String],
                                           _ file: String,
                                           _ function: String,
-                                          _ line: UInt) -> Void = { _, _, _, _ in }
+                                          _ line: UInt) -> Void = { _, _, _, _, _ in }
     
     /// Data log handler. No output by default.
     public static var logDataHandler: (_ message: () -> (String),
+                                       _ logComponents: [String],
                                        _ file: String,
                                        _ function: String,
-                                       _ line: UInt) -> Void = { _, _, _, _ in }
+                                       _ line: UInt) -> Void = { _, _, _, _, _ in }
     
     /// Warning, info and debug message logs go here if not redirected.
     public static var logMessageHandler: (_ message: () -> (String),
+                                          _ logComponents: [String],
                                           _ file: String,
                                           _ function: String,
                                           _ line: UInt) -> Void = _consoleLog
@@ -90,6 +101,7 @@ public enum RoutableLogger {
     private static var onceLoggedErrors: [OnceLogRecord] = []
     
     private static func _logErrorOnce(_ message: @autoclosure () -> String,
+                                      logComponents: [String],
                                       error: Any?,
                                       data: [String : Any?]?,
                                       file: String = #file,
@@ -103,10 +115,17 @@ public enum RoutableLogger {
             onceLoggedErrors.append(record)
         }
         
-        _logError(message(), error: error, data: data, file: file, function: function, line: line)
+        _logError(message(),
+                  logComponents: logComponents,
+                  error: error,
+                  data: data,
+                  file: file,
+                  function: function,
+                  line: line)
     }
     
     private static func _logError(_ message: @autoclosure () -> String,
+                                  logComponents: [String],
                                   error: Any?,
                                   data: [String : Any?]?,
                                   file: String = #file,
@@ -135,6 +154,7 @@ public enum RoutableLogger {
     }
     
     private static func _consoleLog(_ message: @autoclosure () -> String,
+                                    logComponents: [String],
                                     file: String = #file,
                                     function: String = #function,
                                     line: UInt = #line) {
@@ -150,9 +170,11 @@ public enum RoutableLogger {
     
     /// Error log function. Logs error only once for each file-function-line combination.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     /// - parameter error: Error to report.
     /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
     public static func logErrorOnce(_ message: @autoclosure () -> String,
+                                    logComponents: [String] = [],
                                     error: Any? = nil,
                                     data: [String: Any?]? = nil,
                                     file: String = #file,
@@ -160,6 +182,7 @@ public enum RoutableLogger {
                                     line: UInt = #line) {
         
         logErrorOnceHandler(message,
+                            logComponents,
                             error,
                             data,
                             file,
@@ -169,9 +192,11 @@ public enum RoutableLogger {
     
     /// Error log function.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     /// - parameter error: Error to report.
     /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
     public static func logError(_ message: @autoclosure () -> String,
+                                logComponents: [String] = [],
                                 error: Any? = nil,
                                 data: [String: Any?]? = nil,
                                 file: String = #file,
@@ -179,6 +204,7 @@ public enum RoutableLogger {
                                 line: UInt = #line) {
         
         logErrorHandler(message,
+                        logComponents,
                         error,
                         data,
                         file,
@@ -188,12 +214,15 @@ public enum RoutableLogger {
     
     /// Warning log function.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     public static func logWarning(_ message: @autoclosure () -> String,
+                                  logComponents: [String] = [],
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
         
         logWarningHandler(message,
+                          logComponents,
                           file,
                           function,
                           line)
@@ -201,12 +230,15 @@ public enum RoutableLogger {
     
     /// Info log function.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     public static func logInfo(_ message: @autoclosure () -> String,
+                               logComponents: [String] = [],
                                file: String = #file,
                                function: String = #function,
                                line: UInt = #line) {
         
         logInfoHandler(message,
+                       logComponents,
                        file,
                        function,
                        line)
@@ -215,12 +247,15 @@ public enum RoutableLogger {
     
     /// Debug log function.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     public static func logDebug(_ message: @autoclosure () -> String,
+                                logComponents: [String] = [],
                                 file: String = #file,
                                 function: String = #function,
                                 line: UInt = #line) {
         
         logDebugHandler(message,
+                        logComponents,
                         file,
                         function,
                         line)
@@ -229,12 +264,15 @@ public enum RoutableLogger {
     /// Verbose log function. This level of logs usually is excessive but may be helpful in some cases.
     /// Use it for repeated logs or logs that are usually not needed to understand what's going on.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message.
     public static func logVerbose(_ message: @autoclosure () -> String,
+                                  logComponents: [String] = [],
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
         
         logVerboseHandler(message,
+                          logComponents,
                           file,
                           function,
                           line)
@@ -242,12 +280,15 @@ public enum RoutableLogger {
     
     /// Data log function. This one is to log big chunks of data like network responses.
     /// - parameter message: Message to log.
+    /// - parameter logComponents: Log components that may help group a log message. 
     public static func logData(_ message: @autoclosure () -> String,
+                               logComponents: [String] = [],
                                file: String = #file,
                                function: String = #function,
                                line: UInt = #line) {
         
         logDataHandler(message,
+                       logComponents,
                        file,
                        function,
                        line)

@@ -22,7 +22,7 @@ PODS:
     - RoutableLogger
   - Nimble (9.2.1)
   - Quick (4.0.0)
-  - RoutableLogger (9.1.12)
+  - RoutableLogger (10.0.0)
 
 DEPENDENCIES:
   - APExtensions (from `https://github.com/APUtils/APExtensions.git`)
@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: bbf4277e58ab2bae95577bc90865c88b2b4b1fe7
+    :commit: 1e428a0d0a01ec22f1bee6d9ec8665d3eae18cfc
     :git: https://github.com/APUtils/APExtensions.git
 
 SPEC CHECKSUMS:
@@ -56,8 +56,8 @@ SPEC CHECKSUMS:
   LogsManager: 908bb880948a670cf33541c3fb94315d61ef587f
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  RoutableLogger: 9ad367e9a79df59c3cf5a1707ba9598ffbae8784
+  RoutableLogger: a733a32eec3d44e04812f2284a2999b310a5b736
 
-PODFILE CHECKSUM: 66d2ac7c4fa9af940bc69f218aef67c571d56686
+PODFILE CHECKSUM: 9748d9d14c3e7882bf24be965ca682e2c9e3b115
 
 COCOAPODS: 1.11.2

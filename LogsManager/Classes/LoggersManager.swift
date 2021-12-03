@@ -391,7 +391,8 @@ open class LoggersManager {
     
     // ******************************* MARK: - Private Methods
     
-    private func detectLogComponent(filePath: String, function: String, line: UInt) -> [LogComponent] {
+    /// Returns auto-detected log components
+    public func detectLogComponent(filePath: String, function: String, line: UInt) -> [LogComponent] {
         // Return hash if we have
         let key = ComponentsKey(filePath: filePath, function: function, line: line)
         let existingCachedComponents: [LogComponent]? = queue.performSync {

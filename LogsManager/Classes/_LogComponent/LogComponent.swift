@@ -48,6 +48,12 @@ public struct LogComponent {
     }
 }
 
+// ******************************* MARK: - CustomStringConvertible
+
+extension LogComponent: CustomStringConvertible {
+    public var description: String { name }
+}
+
 // ******************************* MARK: - Equatable
 
 extension LogComponent: Equatable {
@@ -59,8 +65,6 @@ extension LogComponent: Equatable {
 // ******************************* MARK: - Predefined Log Components
 
 public extension LogComponent {
-    
-
     
     /// Log component for logs in `deinit` method.
     static var deinitialize: LogComponent = LogComponent(name: "Deinitialize", logName: "D", isLogForThisComponent: { _, _, function in

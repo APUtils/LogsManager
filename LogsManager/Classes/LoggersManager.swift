@@ -39,7 +39,7 @@ open class LoggersManager {
     private var pausedLogs: [() -> Void] = []
     
     private var loggers: [BaseLogger] = []
-    private var logComponents: [LogComponent] = []
+    public private(set) var logComponents: [LogComponent] = []
     private var combinedLogLevel: DDLogLevel = .off
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager")

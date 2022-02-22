@@ -237,7 +237,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            DDLog.sharedInstance.log(asynchronous: asynchronous, message: logMessage)
+            log(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -314,7 +314,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            DDLog.sharedInstance.log(asynchronous: asynchronous, message: logMessage)
+            log(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -384,7 +384,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            DDLog.sharedInstance.log(asynchronous: asynchronous, message: logMessage)
+            log(asynchronous: asynchronous, message: logMessage)
         }
         // -------- 
     }
@@ -424,6 +424,25 @@ open class LoggersManager {
         }
         
         return components
+    }
+    
+    private func log(asynchronous: Bool, message: DDLogMessage) {
+        // We might have a deadlock if we try to log on a logger queue so let's check
+        if !asynchronous {
+            let deadlockLoggers = loggers.filter { ($0 as? DDAbstractLogger)?.isOnInternalLoggerQueue == true }
+            if deadlockLoggers.count > 0 {
+                self.logErrorOnce("Logging deadlock",
+                                  error: nil,
+                                  data: ["deadlockLoggers": deadlockLoggers,
+                                         "explanation": "this is happening when a logger trying to log a message on its inner queue while global logging queue is already blocked. Please make sure there is no logs ",
+                                         "message": message.message],
+                                  asynchronous: true)
+                DDLog.sharedInstance.log(asynchronous: true, message: message)
+                return
+            }
+        }
+        
+        DDLog.sharedInstance.log(asynchronous: asynchronous, message: message)
     }
 }
 

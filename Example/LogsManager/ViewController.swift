@@ -21,6 +21,9 @@ class ViewController: UIViewController {
         let dataLogger = ConsoleLogger(mode: .specificAndMutedComponentsAndLevels(specific: [(.vc, .data)], muted: [(.buttonTap, .verbose)]), logLevel: .data, newLinesSeparation: false)
         LoggersManager.shared.addLogger(dataLogger)
         
+        // Deadlock check
+//        LoggersManager.logMessagesAsync = false
+//        LoggersManager.shared.addLogger(DeadlockLogger(mode: .all, logLevel: .data))
         
 //        var routedLog: String?
 //        RoutableLogger.logInfoHandler = { message, _, _, _, _ in routedLog = message() }
@@ -253,5 +256,21 @@ private struct InitTester {
     
     init(with param: Int) {
         logInfo("Initialized InitTester with param: \(param)")
+    }
+}
+
+/// Abstract base class inherited from DDAbstractLogger that represents text logger.
+/// Override process(message:) in child classes
+open class DeadlockLogger: BaseAbstractTextLogger {
+    
+    open override func process(message logMessage: DDLogMessage, formattedMessage: String) {
+        let deadlockMessage = "Deadlock"
+        guard logMessage.message != deadlockMessage else { return }
+        
+        // Deadlock
+        logErrorOnce(deadlockMessage)
+        
+        // Original
+        print(formattedMessage)
     }
 }

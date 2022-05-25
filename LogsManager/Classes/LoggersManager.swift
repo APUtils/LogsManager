@@ -434,7 +434,9 @@ open class LoggersManager {
                 self.logErrorOnce("Logging deadlock",
                                   error: nil,
                                   data: ["deadlockLoggers": deadlockLoggers,
-                                         "explanation": "this is happening when a logger trying to log a message on its inner queue while global logging queue is already blocked. Please make sure there is no logs ",
+                                         "asynchronous": asynchronous,
+                                         "logMessagesAsync": Self.logMessagesAsync,
+                                         "explanation": "this is happening when a logger trying to log a message on its inner queue while global logging queue is already blocked. Please make sure there are no logs during log processing or make them async.",
                                          "message": message.message],
                                   asynchronous: true)
                 DDLog.sharedInstance.log(asynchronous: true, message: message)

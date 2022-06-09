@@ -113,7 +113,7 @@ public extension DDLogMessage.Parameters {
                 // No need to compress values if they fit in the allowed count
                 if value.count > allowedCount {
                     return value.data(using: .utf8)?
-                        .compressed(using: .lzma)
+                        .safeCompressed(using: .lzma)?
                         .base64EncodedString()
                     ?? value
                 } else {
@@ -129,22 +129,22 @@ public extension DDLogMessage.Parameters {
 @available(iOS 13.0, *)
 private extension Data {
     
-    /// - note: In rare cases for some reason compression may fail. We just return data itself in that case.
-    func compressed(using algorithm: NSData.CompressionAlgorithm) -> Data {
+    /// - note: In rare cases for some reason compression may fail
+    func safeCompressed(using algorithm: NSData.CompressionAlgorithm) -> Data? {
         do {
             return try (self as NSData).compressed(using: algorithm) as Data
         } catch {
             RoutableLogger.logError("Unable to compress data", data: ["data": asString])
-            return self
+            return nil
         }
     }
     
-    func decompressed(using algorithm: NSData.CompressionAlgorithm) -> Data {
+    func safeDecompressed(using algorithm: NSData.CompressionAlgorithm) -> Data? {
         do {
             return try (self as NSData).decompressed(using: algorithm) as Data
         } catch {
             RoutableLogger.logError("Unable to decompress data", data: ["data": asString])
-            return self
+            return nil
         }
     }
 }

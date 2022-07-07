@@ -3,6 +3,32 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [11.0.0](https://github.com/APUtils/LogsManager/releases/tag/11.0.0)
+Released on `2022-07-07`
+
+#### Added
+- Added an ability to specify string log components for RoutableLogger
+- Allow to call log components detection from outside
+- Allow to get current log components
+- DDLogMessage.Parameters .compressedNormalizedData(allowedCount:)
+- Deadlock on log from logger queue prevention
+- LogComponent: CustomStringConvertible
+- LoggerMode.muteComponentsBelowLevel
+- LoggerMode.specificAndMutedComponents(specific:muted:)
+- LoggerMode.specificAndMutedComponentsAndLevels(specific:muted:)
+
+#### Changed
+- Do not attach error's debugDescription if it equals to the localizedDescription
+- RoutableLogger dependency
+- Route all logs instead of using prints
+
+#### Improved
+- Better compression logic to prevent excessive base64 encoding
+- Better deadlock case resolve
+- Better deadlock error message
+- Capture timestamp earlier
+
+
 ## [10.0.0](https://github.com/APUtils/LogsManager/releases/tag/10.0.0)
 Released on 11/17/2021.
 

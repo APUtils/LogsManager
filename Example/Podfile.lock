@@ -2,27 +2,27 @@ PODS:
   - APExtensions (10.1.8):
     - APExtensions/Core (= 10.1.8)
     - APExtensions/Storyboard (= 10.1.8)
-    - APExtensions/ViewConfiguration (= 10.1.8)
+    - APExtensions/ViewModel (= 10.1.8)
   - APExtensions/Core (10.1.8):
     - RoutableLogger
   - APExtensions/Occupiable (10.1.8)
   - APExtensions/Storyboard (10.1.8)
-  - APExtensions/ViewConfiguration (10.1.8)
-  - CocoaLumberjack/Core (3.7.2)
-  - CocoaLumberjack/Swift (3.7.2):
+  - APExtensions/ViewModel (10.1.8)
+  - CocoaLumberjack/Core (3.7.4)
+  - CocoaLumberjack/Swift (3.7.4):
     - CocoaLumberjack/Core
-  - LogsManager (10.0.1):
+  - LogsManager (11.0.0):
     - APExtensions/Occupiable (>= 10.1.6)
     - CocoaLumberjack/Swift (>= 3.7.2)
-    - LogsManager/ExtensionUnsafe (= 10.0.1)
-    - RoutableLogger
-  - LogsManager/ExtensionUnsafe (10.0.1):
+    - LogsManager/ExtensionUnsafe (= 11.0.0)
+    - RoutableLogger (~> 11.0.0)
+  - LogsManager/ExtensionUnsafe (11.0.0):
     - APExtensions/Occupiable (>= 10.1.6)
     - CocoaLumberjack/Swift (>= 3.7.2)
-    - RoutableLogger
-  - Nimble (9.2.1)
-  - Quick (4.0.0)
-  - RoutableLogger (10.0.0)
+    - RoutableLogger (~> 11.0.0)
+  - Nimble (10.0.0)
+  - Quick (5.0.1)
+  - RoutableLogger (11.0.0)
 
 DEPENDENCIES:
   - APExtensions (from `https://github.com/APUtils/APExtensions.git`)
@@ -47,17 +47,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: 1e428a0d0a01ec22f1bee6d9ec8665d3eae18cfc
+    :commit: 852b62abd1515c8ec11dec7b2d7213dec1ec7d61
     :git: https://github.com/APUtils/APExtensions.git
 
 SPEC CHECKSUMS:
-  APExtensions: 779d37ae592fd4f4b3f7ad91aa840a634ee89adf
-  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
-  LogsManager: 908bb880948a670cf33541c3fb94315d61ef587f
-  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
-  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
-  RoutableLogger: a733a32eec3d44e04812f2284a2999b310a5b736
+  APExtensions: c67bbacc1e39e07d0ed63f24905ba1013bf13988
+  CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
+  LogsManager: 43fc64c85b8cc3a1e96463c7a73c15257d18a74c
+  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
+  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
+  RoutableLogger: 70188daca734d067967e4f464450582ca189b4d5
 
 PODFILE CHECKSUM: 9748d9d14c3e7882bf24be965ca682e2c9e3b115
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

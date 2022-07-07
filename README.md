@@ -49,12 +49,12 @@ it, simply add the following line to your Podfile:
 
 For the main app target:
 ```ruby
-pod 'LogsManager', '~> 9.1'
+pod 'LogsManager', '~> 11.0'
 ```
 
 For the app extension target:
 ```ruby
-pod 'LogsManager/Core', '~> 9.1'
+pod 'LogsManager/Core', '~> 11.0'
 ```
 
 ## Usage

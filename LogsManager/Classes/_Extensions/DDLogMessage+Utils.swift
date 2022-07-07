@@ -104,7 +104,7 @@ public extension DDLogMessage.Parameters {
     }
     
     /// Returns normalized data with compressed values if they exceed `allowedCount` limit.
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, watchOSApplicationExtension 6.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
     func compressedNormalizedData(allowedCount: Int) -> [String: String]? {
         
         // Compressing data as much as possible using LZMA. It has ~10x compression rate for JSONs.
@@ -126,7 +126,7 @@ public extension DDLogMessage.Parameters {
 
 // ******************************* MARK: - Compression
 
-@available(iOS 13.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
+@available(iOS 13.0, watchOSApplicationExtension 6.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
 private extension Data {
     
     /// - note: In rare cases for some reason compression may fail

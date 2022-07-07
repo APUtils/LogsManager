@@ -126,7 +126,7 @@ public extension DDLogMessage.Parameters {
 
 // ******************************* MARK: - Compression
 
-@available(iOS 13.0, *)
+@available(iOS 13.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
 private extension Data {
     
     /// - note: In rare cases for some reason compression may fail

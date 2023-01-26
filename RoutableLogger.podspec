@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RoutableLogger'
-  s.version          = '11.0.0'
+  s.version          = '12.0.1'
   s.summary          = 'Logger that allows logs redirection.'
 
 # This description is used to generate tags and improve search results.
@@ -28,10 +28,10 @@ Just helper framework that allows logs redirection. It is used in various framew
   s.source           = { :git => 'https://github.com/APUtils/LogsManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
-  s.osx.deployment_target = '10.10'
-  s.tvos.deployment_target = '9.0'
-  s.watchos.deployment_target = '2.0'
+  s.ios.deployment_target = '11.0'
+  s.osx.deployment_target = '10.13'
+  s.watchos.deployment_target = '4.0'
+  s.tvos.deployment_target = '11.0'
   
   s.swift_versions = ['5.1']
   s.frameworks = 'Foundation'

@@ -27,13 +27,13 @@ Just helper framework that allows logs redirection. It is used in various framew
   s.author           = { 'Anton Plebanovich' => 'anton.plebanovich@gmail.com' }
   s.source           = { :git => 'https://github.com/APUtils/LogsManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.13'
-  s.watchos.deployment_target = '4.0'
   s.tvos.deployment_target = '11.0'
+  s.watchos.deployment_target = '4.0'
   
-  s.swift_versions = ['5.1']
+  s.swift_versions = ['5.5', '5.5.1', '5.5.2', '5.6', '5.6.1', '5.7']
   s.frameworks = 'Foundation'
   s.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
 

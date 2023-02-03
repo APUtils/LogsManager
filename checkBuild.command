@@ -5,12 +5,11 @@ set -e
 base_dir=$(dirname "$0")
 cd "$base_dir"
 
-echo -e "Building Swift Package..."
-swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios14.4-simulator"
-swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk appletvsimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-tvos14.3-simulator"
-swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk watchsimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-watchos7.2-simulator"
-swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk macosx --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx11.1"
-echo ""
+echo -e "\nBuilding Swift Package for iOS..."
+swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios16.2-simulator"
+
+echo -e "\nBuilding Swift Package project..."
+set -o pipefail && xcodebuild -project "PackageExample/LogsManager-Package.xcodeproj" -sdk iphonesimulator -scheme "LogsManager-PackageExample" | xcpretty
 
 echo -e "\nBuilding Pods project..."
 set -o pipefail && xcodebuild -workspace "Example/LogsManager.xcworkspace" -scheme "LogsManager-Example" -configuration "Release" -sdk iphonesimulator | xcpretty

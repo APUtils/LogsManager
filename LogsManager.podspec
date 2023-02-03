@@ -25,8 +25,8 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.13'
-  s.watchos.deployment_target = '4.0'
   s.tvos.deployment_target = '11.0'
+  s.watchos.deployment_target = '4.0'
   
   s.dependency 'APExtensions/Occupiable', '>= 10.1.6'
   s.dependency 'CocoaLumberjack/Swift', '>= 3.7.2'

@@ -6,6 +6,9 @@
 //  Copyright © 2018 Anton Plebanovich. All rights reserved.
 //
 
+#if SPM
+import LogsManagerObjc
+#endif
 import CocoaLumberjack
 import Foundation
 

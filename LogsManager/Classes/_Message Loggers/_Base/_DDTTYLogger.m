@@ -19,7 +19,11 @@
 
 #import <sys/uio.h>
 
-#import <LogsManager/_DDTTYLogger.h>
+#ifdef SPM
+    #import "_DDTTYLogger.h"
+#else
+    #import <LogsManager/_DDTTYLogger.h>
+#endif
 
 // We probably shouldn't be using DDLog() statements within the DDLog implementation.
 // But we still want to leave our log statements for any future debugging,

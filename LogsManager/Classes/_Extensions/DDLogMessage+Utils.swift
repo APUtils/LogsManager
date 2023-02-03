@@ -6,7 +6,11 @@
 //  Copyright © 2018 Anton Plebanovich. All rights reserved.
 //
 
+#if SPM
+import APExtensionsOccupiable
+#else
 import APExtensions
+#endif
 import CocoaLumberjack
 import Foundation
 import RoutableLogger

@@ -1,6 +1,7 @@
 # LogsManager
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Version](https://img.shields.io/cocoapods/v/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
 [![License](https://img.shields.io/cocoapods/l/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
 [![Platform](https://img.shields.io/cocoapods/p/LogsManager.svg?style=flat)](http://cocoapods.org/pods/LogsManager)
@@ -13,6 +14,29 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
+
+#### Swift Package Manager
+
+- In Xcode select `File` > `Add Packages...`
+- Copy and paste the following into the search: `https://github.com/APUtils/LogsManager`
+- **‼️Make sure `Up to Next Major Version` is selected and put `12.0.3` into the lower bound. There is a bug in Xcode, it does not select versions higher than 9.0.0 by default‼️**
+- Tap `Add Package`
+- Select `LogsManager` to add everything and tap `Add Package`
+
+#### CocoaPods
+
+LogsManager is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+For the main app target:
+```ruby
+pod 'LogsManager', '~> 12.0'
+```
+
+For the app extension target:
+```ruby
+pod 'LogsManager/Core', '~> 12.0'
+```
 
 #### Carthage **DEPRECATED**
 
@@ -41,21 +65,6 @@ github "APUtils/LogsManager" "9.1.20"
 Install command: `carthage bootstrap --use-xcframeworks`
 
 Add `LogsManager` framework to the main app and app extensions if any. Add `LogsManagerExtensionUnsafe` framework for the main app only (excluding app extensions if any).
-
-#### CocoaPods
-
-LogsManager is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-For the main app target:
-```ruby
-pod 'LogsManager', '~> 11.0'
-```
-
-For the app extension target:
-```ruby
-pod 'LogsManager/Core', '~> 11.0'
-```
 
 ## Usage
 

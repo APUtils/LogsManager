@@ -180,10 +180,12 @@ open class LoggersManager {
     /// - parameter message: Message to log.
     /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
     /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
+    /// - parameter data: Data to attach to the message.
     /// - parameter asynchronous: Async or sync logs. Default is `nil` and global flag is used.
     public func logMessage(_ message: @autoclosure () -> String,
                            logComponents: [LogComponent]? = nil,
                            flag: DDLogFlag,
+                           data: [String: Any?]? = nil,
                            asynchronous: Bool? = nil,
                            timestamp: Date = Date(),
                            file: String = #file,
@@ -202,6 +204,7 @@ open class LoggersManager {
                 logMessage(message,
                            logComponents: logComponents,
                            flag: flag,
+                           data: data,
                            asynchronous: asynchronous,
                            timestamp: timestamp,
                            file: file,
@@ -223,7 +226,7 @@ open class LoggersManager {
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
         if dynamicLogLevel.rawValue & flag.rawValue != 0 {
             let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
-            let parameters = DDLogMessage.Parameters(data: nil, error: nil, logComponents: logComponents)
+            let parameters = DDLogMessage.Parameters(data: data, error: nil, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
             let logMessage = DDLogMessage(message: message(),
@@ -269,14 +272,14 @@ open class LoggersManager {
             let message = message()
             addPausedLog { [self] in
                 logErrorOnce(message,
-                           logComponents: logComponents,
-                           error: error,
-                           data: data,
-                           asynchronous: asynchronous,
-                           timestamp: timestamp,
-                           file: file,
-                           function: function,
-                           line: line)
+                             logComponents: logComponents,
+                             error: error,
+                             data: data,
+                             asynchronous: asynchronous,
+                             timestamp: timestamp,
+                             file: file,
+                             function: function,
+                             line: line)
             }
             return
         }
@@ -386,7 +389,7 @@ open class LoggersManager {
             
             log(asynchronous: asynchronous, message: logMessage)
         }
-        // -------- 
+        // --------
     }
     
     // ******************************* MARK: - Private Methods
@@ -413,7 +416,7 @@ open class LoggersManager {
                 let file = String.getFileName(filePath: path)
                 let function = String(function)
                 return logComponent.isLogForThisComponent(path, file, function)
-        }
+            }
         
         if components.isEmpty {
             components.append(.unspecified)

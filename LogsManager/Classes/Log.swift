@@ -33,64 +33,6 @@ public func logErrorOnce(_ message: @autoclosure () -> String,
                                        line: line)
 }
 
-/// Error log function. Also send error to crash tracking systems.
-/// - parameter message: Message to log.
-/// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-public func logError(_ message: @autoclosure () -> String,
-                     logComponents: [LogComponent]? = nil,
-                     file: String = #file,
-                     function: String = #function,
-                     line: UInt = #line) {
-    
-    logError(message(),
-             logComponents: logComponents,
-             error: nil,
-             data: nil,
-             file: file,
-             function: function,
-             line: line)
-}
-
-/// Error log function. Also send error to crash tracking systems.
-/// - parameter message: Message to log.
-/// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
-public func logError(_ message: @autoclosure () -> String,
-                     logComponents: [LogComponent]? = nil,
-                     data: [String: Any?]?,
-                     file: String = #file,
-                     function: String = #function,
-                     line: UInt = #line) {
-    
-    logError(message(),
-             logComponents: logComponents,
-             error: nil,
-             data: data,
-             file: file,
-             function: function,
-             line: line)
-}
-
-/// Error log function. Also send error to crash tracking systems.
-/// - parameter message: Message to log.
-/// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter error: Error to report.
-public func logError(_ message: @autoclosure () -> String,
-                     logComponents: [LogComponent]? = nil,
-                     error: Any?,
-                     file: String = #file,
-                     function: String = #function,
-                     line: UInt = #line) {
-    
-    logError(message(),
-             logComponents: logComponents,
-             error: error,
-             data: nil,
-             file: file,
-             function: function,
-             line: line)
-}
-
 /// Error log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
@@ -98,8 +40,8 @@ public func logError(_ message: @autoclosure () -> String,
 /// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logError(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
-                     error: Any?,
-                     data: [String: Any?]?,
+                     error: Any? = nil,
+                     data: [String: Any?]? = nil,
                      file: String = #file,
                      function: String = #function,
                      line: UInt = #line) {
@@ -116,8 +58,10 @@ public func logError(_ message: @autoclosure () -> String,
 /// Warning log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logWarning(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
+                       data: [String: Any?]? = nil,
                        file: String = #file,
                        function: String = #function,
                        line: UInt = #line) {
@@ -125,6 +69,7 @@ public func logWarning(_ message: @autoclosure () -> String,
     logMessage(message(),
                logComponents: logComponents,
                flag: .warning,
+               data: data,
                file: file,
                function: function,
                line: line)
@@ -133,8 +78,10 @@ public func logWarning(_ message: @autoclosure () -> String,
 /// Info log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logInfo(_ message: @autoclosure () -> String,
                     logComponents: [LogComponent]? = nil,
+                    data: [String: Any?]? = nil,
                     file: String = #file,
                     function: String = #function,
                     line: UInt = #line) {
@@ -142,6 +89,7 @@ public func logInfo(_ message: @autoclosure () -> String,
     logMessage(message(),
                logComponents: logComponents,
                flag: .info,
+               data: data,
                file: file,
                function: function,
                line: line)
@@ -150,8 +98,10 @@ public func logInfo(_ message: @autoclosure () -> String,
 /// Debug log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logDebug(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
+                     data: [String: Any?]? = nil,
                      file: String = #file,
                      function: String = #function,
                      line: UInt = #line) {
@@ -159,6 +109,7 @@ public func logDebug(_ message: @autoclosure () -> String,
     logMessage(message(),
                logComponents: logComponents,
                flag: .debug,
+               data: data,
                file: file,
                function: function,
                line: line)
@@ -168,8 +119,10 @@ public func logDebug(_ message: @autoclosure () -> String,
 /// Use it for repeated logs or logs that are usually not needed to understand what's going on.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logVerbose(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
+                       data: [String: Any?]? = nil,
                        file: String = #file,
                        function: String = #function,
                        line: UInt = #line) {
@@ -177,6 +130,7 @@ public func logVerbose(_ message: @autoclosure () -> String,
     logMessage(message(),
                logComponents: logComponents,
                flag: .verbose,
+               data: data,
                file: file,
                function: function,
                line: line)
@@ -185,8 +139,10 @@ public func logVerbose(_ message: @autoclosure () -> String,
 /// Data log function. This one is to log big chunks of data like network responses.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 public func logData(_ message: @autoclosure () -> String,
                     logComponents: [LogComponent]? = nil,
+                    data: [String: Any?]? = nil,
                     file: String = #file,
                     function: String = #function,
                     line: UInt = #line) {
@@ -194,6 +150,7 @@ public func logData(_ message: @autoclosure () -> String,
     logMessage(message(),
                logComponents: logComponents,
                flag: .data,
+               data: data,
                file: file,
                function: function,
                line: line)
@@ -202,10 +159,12 @@ public func logData(_ message: @autoclosure () -> String,
 /// Message log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
 /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
 public func logMessage(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
                        flag: DDLogFlag,
+                       data: [String: Any?]? = nil,
                        file: String = #file,
                        function: String = #function,
                        line: UInt = #line) {
@@ -213,6 +172,7 @@ public func logMessage(_ message: @autoclosure () -> String,
     LoggersManager.shared.logMessage(message(),
                                      logComponents: logComponents,
                                      flag: flag,
+                                     data: data,
                                      file: file,
                                      function: function,
                                      line: line)

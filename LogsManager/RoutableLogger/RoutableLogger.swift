@@ -42,50 +42,57 @@ public enum RoutableLogger {
     /// Warning log handler.
     public static var logWarningHandler: (_ message: () -> (String),
                                           _ logComponents: [String],
-                                       _ file: String,
-                                       _ function: String,
-                                       _ line: UInt) -> Void = logMessageHandler
+                                          _ data: [String : Any?]?,
+                                          _ file: String,
+                                          _ function: String,
+                                          _ line: UInt) -> Void = logMessageHandler
     
     /// Info log handler.
     public static var logInfoHandler: (_ message: () -> (String),
                                        _ logComponents: [String],
+                                       _ data: [String : Any?]?,
                                        _ file: String,
                                        _ function: String,
                                        _ line: UInt) -> Void = logMessageHandler
     
-    #if DEBUG
+#if DEBUG
     /// Debug log handler. Outputs in debug builds
     public static var logDebugHandler: (_ message: () -> (String),
                                         _ logComponents: [String],
+                                        _ data: [String : Any?]?,
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = logMessageHandler
-    #else
+#else
     /// Debug log handler. No output in release builds.
     public static var logDebugHandler: (_ message: () -> (String),
                                         _ logComponents: [String],
+                                        _ data: [String : Any?]?,
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = { _, _, _, _, _ in }
-    #endif
+#endif
     
     /// Verbose log handler. No output by default.
     public static var logVerboseHandler: (_ message: () -> (String),
                                           _ logComponents: [String],
+                                          _ data: [String : Any?]?,
                                           _ file: String,
                                           _ function: String,
-                                          _ line: UInt) -> Void = { _, _, _, _, _ in }
+                                          _ line: UInt) -> Void = { _, _, _, _, _, _ in }
     
     /// Data log handler. No output by default.
     public static var logDataHandler: (_ message: () -> (String),
                                        _ logComponents: [String],
+                                       _ data: [String : Any?]?,
                                        _ file: String,
                                        _ function: String,
-                                       _ line: UInt) -> Void = { _, _, _, _, _ in }
+                                       _ line: UInt) -> Void = { _, _, _, _, _, _ in }
     
     /// Warning, info and debug message logs go here if not redirected.
     public static var logMessageHandler: (_ message: () -> (String),
                                           _ logComponents: [String],
+                                          _ data: [String : Any?]?,
                                           _ file: String,
                                           _ function: String,
                                           _ line: UInt) -> Void = _consoleLog
@@ -155,15 +162,18 @@ public enum RoutableLogger {
     
     private static func _consoleLog(_ message: @autoclosure () -> String,
                                     logComponents: [String],
+                                    data: [String : Any?]?,
                                     file: String = #file,
                                     function: String = #function,
                                     line: UInt = #line) {
         
         let message = message()
         let timeString = dateFormatter.string(from: Date())
-        let logString = "\(timeString) | \(message)"
-        
-        print(logString)
+        if let data {
+            print("\(timeString) | \(message)\n\(data)")
+        } else {
+            print("\(timeString) | \(message)")
+        }
     }
     
     // ******************************* MARK: - Convenient Methods
@@ -215,14 +225,17 @@ public enum RoutableLogger {
     /// Warning log function.
     /// - parameter message: Message to log.
     /// - parameter logComponents: Log components that may help group a log message.
+    /// - parameter data: Additional data to log.
     public static func logWarning(_ message: @autoclosure () -> String,
                                   logComponents: [String] = [],
+                                  data: [String : Any?]? = nil,
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
         
         logWarningHandler(message,
                           logComponents,
+                          data,
                           file,
                           function,
                           line)
@@ -233,12 +246,14 @@ public enum RoutableLogger {
     /// - parameter logComponents: Log components that may help group a log message.
     public static func logInfo(_ message: @autoclosure () -> String,
                                logComponents: [String] = [],
+                               data: [String : Any?]? = nil,
                                file: String = #file,
                                function: String = #function,
                                line: UInt = #line) {
         
         logInfoHandler(message,
                        logComponents,
+                       data,
                        file,
                        function,
                        line)
@@ -250,12 +265,14 @@ public enum RoutableLogger {
     /// - parameter logComponents: Log components that may help group a log message.
     public static func logDebug(_ message: @autoclosure () -> String,
                                 logComponents: [String] = [],
+                                data: [String : Any?]? = nil,
                                 file: String = #file,
                                 function: String = #function,
                                 line: UInt = #line) {
         
         logDebugHandler(message,
                         logComponents,
+                        data,
                         file,
                         function,
                         line)
@@ -267,12 +284,14 @@ public enum RoutableLogger {
     /// - parameter logComponents: Log components that may help group a log message.
     public static func logVerbose(_ message: @autoclosure () -> String,
                                   logComponents: [String] = [],
+                                  data: [String : Any?]? = nil,
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
         
         logVerboseHandler(message,
                           logComponents,
+                          data,
                           file,
                           function,
                           line)
@@ -280,15 +299,17 @@ public enum RoutableLogger {
     
     /// Data log function. This one is to log big chunks of data like network responses.
     /// - parameter message: Message to log.
-    /// - parameter logComponents: Log components that may help group a log message. 
+    /// - parameter logComponents: Log components that may help group a log message.
     public static func logData(_ message: @autoclosure () -> String,
                                logComponents: [String] = [],
+                               data: [String : Any?]? = nil,
                                file: String = #file,
                                function: String = #function,
                                line: UInt = #line) {
         
         logDataHandler(message,
                        logComponents,
+                       data,
                        file,
                        function,
                        line)

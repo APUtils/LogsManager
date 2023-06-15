@@ -244,6 +244,7 @@ public enum RoutableLogger {
     /// Info log function.
     /// - parameter message: Message to log.
     /// - parameter logComponents: Log components that may help group a log message.
+    /// - parameter data: Additional data to log.
     public static func logInfo(_ message: @autoclosure () -> String,
                                logComponents: [String] = [],
                                data: [String : Any?]? = nil,
@@ -263,6 +264,7 @@ public enum RoutableLogger {
     /// Debug log function.
     /// - parameter message: Message to log.
     /// - parameter logComponents: Log components that may help group a log message.
+    /// - parameter data: Additional data to log.
     public static func logDebug(_ message: @autoclosure () -> String,
                                 logComponents: [String] = [],
                                 data: [String : Any?]? = nil,
@@ -282,6 +284,7 @@ public enum RoutableLogger {
     /// Use it for repeated logs or logs that are usually not needed to understand what's going on.
     /// - parameter message: Message to log.
     /// - parameter logComponents: Log components that may help group a log message.
+    /// - parameter data: Additional data to log.
     public static func logVerbose(_ message: @autoclosure () -> String,
                                   logComponents: [String] = [],
                                   data: [String : Any?]? = nil,
@@ -300,6 +303,7 @@ public enum RoutableLogger {
     /// Data log function. This one is to log big chunks of data like network responses.
     /// - parameter message: Message to log.
     /// - parameter logComponents: Log components that may help group a log message.
+    /// - parameter data: Additional data to log. 
     public static func logData(_ message: @autoclosure () -> String,
                                logComponents: [String] = [],
                                data: [String : Any?]? = nil,

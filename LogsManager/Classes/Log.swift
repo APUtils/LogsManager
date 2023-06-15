@@ -58,7 +58,7 @@ public func logError(_ message: @autoclosure () -> String,
 /// Warning log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+/// - parameter data: Additional data to log.
 public func logWarning(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
                        data: [String: Any?]? = nil,
@@ -78,7 +78,7 @@ public func logWarning(_ message: @autoclosure () -> String,
 /// Info log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+/// - parameter data: Additional data to log.
 public func logInfo(_ message: @autoclosure () -> String,
                     logComponents: [LogComponent]? = nil,
                     data: [String: Any?]? = nil,
@@ -98,7 +98,7 @@ public func logInfo(_ message: @autoclosure () -> String,
 /// Debug log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+/// - parameter data: Additional data to log.
 public func logDebug(_ message: @autoclosure () -> String,
                      logComponents: [LogComponent]? = nil,
                      data: [String: Any?]? = nil,
@@ -119,7 +119,7 @@ public func logDebug(_ message: @autoclosure () -> String,
 /// Use it for repeated logs or logs that are usually not needed to understand what's going on.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+/// - parameter data: Additional data to log.
 public func logVerbose(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,
                        data: [String: Any?]? = nil,
@@ -139,7 +139,7 @@ public func logVerbose(_ message: @autoclosure () -> String,
 /// Data log function. This one is to log big chunks of data like network responses.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+/// - parameter data: Additional data to log.
 public func logData(_ message: @autoclosure () -> String,
                     logComponents: [LogComponent]? = nil,
                     data: [String: Any?]? = nil,
@@ -159,7 +159,7 @@ public func logData(_ message: @autoclosure () -> String,
 /// Message log function.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
-/// - parameter data: Additional data. Pass all parameters that can help to diagnose error.
+/// - parameter data: Additional data to log.
 /// - parameter flag: Log level, e.g. `.error`, `.debug`, ...
 public func logMessage(_ message: @autoclosure () -> String,
                        logComponents: [LogComponent]? = nil,

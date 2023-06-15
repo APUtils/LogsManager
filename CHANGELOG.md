@@ -2,12 +2,19 @@
 All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
+## [12.1.0](https://github.com/APUtils/LogsManager/releases/tag/12.1.0)
+Released on `2023-06-15
+
+#### Changed
+- Allow to attach data to non-error logs
+
 
 ## [12.0.0](https://github.com/APUtils/LogsManager/releases/tag/12.0.0)
 Released on `2023-01-26
 
 #### Changed
 - Min supported OS versions rised
+
 
 ## [11.0.0](https://github.com/APUtils/LogsManager/releases/tag/11.0.0)
 Released on `2022-07-07`

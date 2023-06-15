@@ -70,7 +70,7 @@ public enum RoutableLogger {
                                         _ data: [String : Any?]?,
                                         _ file: String,
                                         _ function: String,
-                                        _ line: UInt) -> Void = { _, _, _, _, _ in }
+                                        _ line: UInt) -> Void = { _, _, _, _, _, _ in }
 #endif
     
     /// Verbose log handler. No output by default.

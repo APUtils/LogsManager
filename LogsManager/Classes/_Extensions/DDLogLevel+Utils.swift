@@ -13,6 +13,8 @@ extension DDLogLevel {
     init(flag: DDLogFlag) {
         if flag.contains(.data) {
             self = .data
+        } else if flag.contains(.trace) {
+            self = .trace
         } else if flag.contains(.verbose) {
             self = .verbose
         } else if flag.contains(.debug) {
@@ -32,5 +34,6 @@ extension DDLogLevel {
 // ******************************* MARK: - Data Log
 
 public extension DDLogLevel {
-    static let data: DDLogLevel = DDLogLevel(rawValue: DDLogLevel.verbose.rawValue | DDLogFlag.data.rawValue)!
+    static let data: DDLogLevel = DDLogLevel(rawValue: DDLogLevel.trace.rawValue | DDLogFlag.data.rawValue)!
+    static let trace: DDLogLevel = DDLogLevel(rawValue: DDLogLevel.verbose.rawValue | DDLogFlag.trace.rawValue)!
 }

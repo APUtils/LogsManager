@@ -136,6 +136,23 @@ public func logVerbose(_ message: @autoclosure () -> String,
                line: line)
 }
 
+/// Trace log function. This one is to trace execution path. Usually, the log should be placed as the first line in the method or function.
+/// - parameter message: Message to log.
+/// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+/// - parameter data: Additional data to log.
+public func logTrace(logComponents: [LogComponent]? = nil,
+                     file: String = #file,
+                     function: String = #function,
+                     line: UInt = #line) {
+    
+    logMessage("\(file):\(line) \(function)",
+               logComponents: logComponents,
+               flag: .data,
+               file: file,
+               function: function,
+               line: line)
+}
+
 /// Data log function. This one is to log big chunks of data like network responses.
 /// - parameter message: Message to log.
 /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.

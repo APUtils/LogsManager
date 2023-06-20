@@ -19,7 +19,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 - In Xcode select `File` > `Add Packages...`
 - Copy and paste the following into the search: `https://github.com/APUtils/LogsManager`
-- **‼️Make sure `Up to Next Major Version` is selected and put `12.1.3` into the lower bound. There is a bug in Xcode, it does not select versions higher than 9.0.0 by default‼️**
+- **‼️Make sure `Up to Next Major Version` is selected and put `12.2.0` into the lower bound. There is a bug in Xcode, it does not select versions higher than 9.0.0 by default‼️**
 - Tap `Add Package`
 - Select `LogsManager` to add everything and tap `Add Package`
 
@@ -30,12 +30,12 @@ it, simply add the following line to your Podfile:
 
 For the main app target:
 ```ruby
-pod 'LogsManager', '~> 12.1'
+pod 'LogsManager', '~> 12.2'
 ```
 
 For the app extension target:
 ```ruby
-pod 'LogsManager/Core', '~> 12.1'
+pod 'LogsManager/Core', '~> 12.2'
 ```
 
 #### Carthage **DEPRECATED**

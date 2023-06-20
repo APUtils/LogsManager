@@ -50,8 +50,8 @@ open class LoggersManager {
     /// and all logs are saved.
     public private(set) lazy var fileLogger: FileLogger = {
         
-        // Record all `verbose` level logs into file
-        let fileLogger = FileLogger(mode: .all, logLevel: .data)
+        // Record all logs into file
+        let fileLogger = FileLogger(mode: .all, logLevel: .all)
         
         // Each app session should correspond to one log file
         fileLogger.maximumFileSize = .max

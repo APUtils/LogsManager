@@ -13,8 +13,12 @@ import CocoaLumberjack
 // ******************************* MARK: - Data Log
 
 public extension DDLogFlag {
+    
+    /// Trace log level.
+    static let trace = DDLogFlag(rawValue: 1 << 5)
+    
     /// Data log level.
-    static let data = DDLogFlag(rawValue: 1 << 5)
+    static let data = DDLogFlag(rawValue: 1 << 6)
 }
 
 // ******************************* MARK: - CustomStringConvertible
@@ -36,6 +40,9 @@ extension DDLogFlag: CustomStringConvertible {
         }
         if contains(.verbose) {
             flagComponents.append("Verbose")
+        }
+        if contains(.trace) {
+            flagComponents.append("Trace")
         }
         if contains(.data) {
             flagComponents.append("Data")

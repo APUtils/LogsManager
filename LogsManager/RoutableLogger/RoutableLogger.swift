@@ -11,6 +11,8 @@ import Foundation
 /// Simple logger that allows redirection.
 public enum RoutableLogger {
     
+    public typealias DataClosure = () -> [String: Any?]?
+    
     private static var dateFormatter: DateFormatter = .default
     
     /// Error once log handler.
@@ -21,7 +23,7 @@ public enum RoutableLogger {
     public static var logErrorOnceHandler: (_ message: () -> (String),
                                             _ logComponents: [String],
                                             _ error: Any?,
-                                            _ data: [String : Any?]?,
+                                            _ data: @autoclosure DataClosure,
                                             _ file: String,
                                             _ function: String,
                                             _ line: UInt) -> Void = _logErrorOnce
@@ -34,7 +36,7 @@ public enum RoutableLogger {
     public static var logErrorHandler: (_ message: () -> (String),
                                         _ logComponents: [String],
                                         _ error: Any?,
-                                        _ data: [String : Any?]?,
+                                        _ data: @autoclosure DataClosure,
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = _logError
@@ -42,7 +44,7 @@ public enum RoutableLogger {
     /// Warning log handler.
     public static var logWarningHandler: (_ message: () -> (String),
                                           _ logComponents: [String],
-                                          _ data: [String : Any?]?,
+                                          _ data: @autoclosure DataClosure,
                                           _ file: String,
                                           _ function: String,
                                           _ line: UInt) -> Void = logMessageHandler
@@ -50,7 +52,7 @@ public enum RoutableLogger {
     /// Info log handler.
     public static var logInfoHandler: (_ message: () -> (String),
                                        _ logComponents: [String],
-                                       _ data: [String : Any?]?,
+                                       _ data: @autoclosure DataClosure,
                                        _ file: String,
                                        _ function: String,
                                        _ line: UInt) -> Void = logMessageHandler
@@ -59,7 +61,7 @@ public enum RoutableLogger {
     /// Debug log handler. Outputs in debug builds
     public static var logDebugHandler: (_ message: () -> (String),
                                         _ logComponents: [String],
-                                        _ data: [String : Any?]?,
+                                        _ data: @autoclosure DataClosure,
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = logMessageHandler
@@ -67,7 +69,7 @@ public enum RoutableLogger {
     /// Debug log handler. No output in release builds.
     public static var logDebugHandler: (_ message: () -> (String),
                                         _ logComponents: [String],
-                                        _ data: [String : Any?]?,
+                                        _ data: @autoclosure DataClosure,
                                         _ file: String,
                                         _ function: String,
                                         _ line: UInt) -> Void = { _, _, _, _, _, _ in }
@@ -76,7 +78,7 @@ public enum RoutableLogger {
     /// Verbose log handler. No output by default.
     public static var logVerboseHandler: (_ message: () -> (String),
                                           _ logComponents: [String],
-                                          _ data: [String : Any?]?,
+                                          _ data: @autoclosure DataClosure,
                                           _ file: String,
                                           _ function: String,
                                           _ line: UInt) -> Void = { _, _, _, _, _, _ in }
@@ -84,7 +86,7 @@ public enum RoutableLogger {
     /// Data log handler. No output by default.
     public static var logDataHandler: (_ message: () -> (String),
                                        _ logComponents: [String],
-                                       _ data: [String : Any?]?,
+                                       _ data: @autoclosure DataClosure,
                                        _ file: String,
                                        _ function: String,
                                        _ line: UInt) -> Void = { _, _, _, _, _, _ in }
@@ -92,7 +94,7 @@ public enum RoutableLogger {
     /// Warning, info and debug message logs go here if not redirected.
     public static var logMessageHandler: (_ message: () -> (String),
                                           _ logComponents: [String],
-                                          _ data: [String : Any?]?,
+                                          _ data: @autoclosure DataClosure,
                                           _ file: String,
                                           _ function: String,
                                           _ line: UInt) -> Void = _consoleLog
@@ -110,7 +112,7 @@ public enum RoutableLogger {
     private static func _logErrorOnce(_ message: @autoclosure () -> String,
                                       logComponents: [String],
                                       error: Any?,
-                                      data: [String : Any?]?,
+                                      data: @autoclosure DataClosure,
                                       file: String = #file,
                                       function: String = #function,
                                       line: UInt = #line) {
@@ -125,7 +127,7 @@ public enum RoutableLogger {
         _logError(message(),
                   logComponents: logComponents,
                   error: error,
-                  data: data,
+                  data: data(),
                   file: file,
                   function: function,
                   line: line)
@@ -134,7 +136,7 @@ public enum RoutableLogger {
     private static func _logError(_ message: @autoclosure () -> String,
                                   logComponents: [String],
                                   error: Any?,
-                                  data: [String : Any?]?,
+                                  data: @autoclosure DataClosure,
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
@@ -148,7 +150,7 @@ public enum RoutableLogger {
         }
         
         let dataString: String
-        if let normalizedData = Utils.normalizeData(data) {
+        if let normalizedData = Utils.normalizeData(data()) {
             dataString = "\n\(normalizedData)"
         } else {
             dataString = ""
@@ -162,14 +164,14 @@ public enum RoutableLogger {
     
     private static func _consoleLog(_ message: @autoclosure () -> String,
                                     logComponents: [String],
-                                    data: [String : Any?]?,
+                                    data: @autoclosure DataClosure,
                                     file: String = #file,
                                     function: String = #function,
                                     line: UInt = #line) {
         
         let message = message()
         let timeString = dateFormatter.string(from: Date())
-        if let data {
+        if let data = data() {
             print("\(timeString) | \(message)\n\(data)")
         } else {
             print("\(timeString) | \(message)")
@@ -186,7 +188,7 @@ public enum RoutableLogger {
     public static func logErrorOnce(_ message: @autoclosure () -> String,
                                     logComponents: [String] = [],
                                     error: Any? = nil,
-                                    data: [String: Any?]? = nil,
+                                    data: @autoclosure DataClosure = nil,
                                     file: String = #file,
                                     function: String = #function,
                                     line: UInt = #line) {
@@ -194,7 +196,7 @@ public enum RoutableLogger {
         logErrorOnceHandler(message,
                             logComponents,
                             error,
-                            data,
+                            data(),
                             file,
                             function,
                             line)
@@ -208,7 +210,7 @@ public enum RoutableLogger {
     public static func logError(_ message: @autoclosure () -> String,
                                 logComponents: [String] = [],
                                 error: Any? = nil,
-                                data: [String: Any?]? = nil,
+                                data: @autoclosure DataClosure = nil,
                                 file: String = #file,
                                 function: String = #function,
                                 line: UInt = #line) {
@@ -216,7 +218,7 @@ public enum RoutableLogger {
         logErrorHandler(message,
                         logComponents,
                         error,
-                        data,
+                        data(),
                         file,
                         function,
                         line)
@@ -228,14 +230,14 @@ public enum RoutableLogger {
     /// - parameter data: Additional data to log.
     public static func logWarning(_ message: @autoclosure () -> String,
                                   logComponents: [String] = [],
-                                  data: [String : Any?]? = nil,
+                                  data: @autoclosure DataClosure = nil,
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
         
         logWarningHandler(message,
                           logComponents,
-                          data,
+                          data(),
                           file,
                           function,
                           line)
@@ -247,14 +249,14 @@ public enum RoutableLogger {
     /// - parameter data: Additional data to log.
     public static func logInfo(_ message: @autoclosure () -> String,
                                logComponents: [String] = [],
-                               data: [String : Any?]? = nil,
+                               data: @autoclosure DataClosure = nil,
                                file: String = #file,
                                function: String = #function,
                                line: UInt = #line) {
         
         logInfoHandler(message,
                        logComponents,
-                       data,
+                       data(),
                        file,
                        function,
                        line)
@@ -267,14 +269,14 @@ public enum RoutableLogger {
     /// - parameter data: Additional data to log.
     public static func logDebug(_ message: @autoclosure () -> String,
                                 logComponents: [String] = [],
-                                data: [String : Any?]? = nil,
+                                data: @autoclosure DataClosure = nil,
                                 file: String = #file,
                                 function: String = #function,
                                 line: UInt = #line) {
         
         logDebugHandler(message,
                         logComponents,
-                        data,
+                        data(),
                         file,
                         function,
                         line)
@@ -287,14 +289,14 @@ public enum RoutableLogger {
     /// - parameter data: Additional data to log.
     public static func logVerbose(_ message: @autoclosure () -> String,
                                   logComponents: [String] = [],
-                                  data: [String : Any?]? = nil,
+                                  data: @autoclosure DataClosure = nil,
                                   file: String = #file,
                                   function: String = #function,
                                   line: UInt = #line) {
         
         logVerboseHandler(message,
                           logComponents,
-                          data,
+                          data(),
                           file,
                           function,
                           line)
@@ -306,14 +308,14 @@ public enum RoutableLogger {
     /// - parameter data: Additional data to log. 
     public static func logData(_ message: @autoclosure () -> String,
                                logComponents: [String] = [],
-                               data: [String : Any?]? = nil,
+                               data: @autoclosure DataClosure = nil,
                                file: String = #file,
                                function: String = #function,
                                line: UInt = #line) {
         
         logDataHandler(message,
                        logComponents,
-                       data,
+                       data(),
                        file,
                        function,
                        line)

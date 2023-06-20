@@ -20,6 +20,8 @@ import CocoaLumberjackSwift
 /// You can easily change how logs will be displayed or processed here.
 open class LoggersManager {
     
+    public typealias DataClosure = () -> [String: Any?]?
+    
     private struct OnceLogRecord: Hashable {
         let file: String
         let function: String
@@ -185,7 +187,7 @@ open class LoggersManager {
     public func logMessage(_ message: @autoclosure () -> String,
                            logComponents: [LogComponent]? = nil,
                            flag: DDLogFlag,
-                           data: [String: Any?]? = nil,
+                           data: @autoclosure DataClosure = nil,
                            asynchronous: Bool? = nil,
                            timestamp: Date = Date(),
                            file: String = #file,
@@ -200,6 +202,7 @@ open class LoggersManager {
             // We don't know if this log should be processed or not so we just process everything until we resume.
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
+            let data = data()
             addPausedLog { [self] in
                 logMessage(message,
                            logComponents: logComponents,
@@ -226,7 +229,7 @@ open class LoggersManager {
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
         if dynamicLogLevel.rawValue & flag.rawValue != 0 {
             let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
-            let parameters = DDLogMessage.Parameters(data: data, error: nil, logComponents: logComponents)
+            let parameters = DDLogMessage.Parameters(data: data(), error: nil, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
             let logMessage = DDLogMessage(message: message(),
@@ -255,7 +258,7 @@ open class LoggersManager {
     public func logErrorOnce(_ message: @autoclosure () -> String,
                              logComponents: [LogComponent]? = nil,
                              error: Any?,
-                             data: [String: Any?]?,
+                             data: @autoclosure DataClosure = nil,
                              asynchronous: Bool? = nil,
                              timestamp: Date = Date(),
                              file: String = #file,
@@ -270,6 +273,7 @@ open class LoggersManager {
             // We don't know if this log should be processed or not so we just process everything until we resume.
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
+            let data = data()
             addPausedLog { [self] in
                 logErrorOnce(message,
                              logComponents: logComponents,
@@ -303,7 +307,7 @@ open class LoggersManager {
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
         if dynamicLogLevel.rawValue & DDLogFlag.error.rawValue != 0 {
             let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
-            let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
+            let parameters = DDLogMessage.Parameters(data: data(), error: error, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
             let logMessage = DDLogMessage(message: message(),
@@ -332,7 +336,7 @@ open class LoggersManager {
     public func logError(_ message: @autoclosure () -> String,
                          logComponents: [LogComponent]? = nil,
                          error: Any?,
-                         data: [String: Any?]?,
+                         data: @autoclosure DataClosure = nil,
                          asynchronous: Bool? = nil,
                          timestamp: Date = Date(),
                          file: String = #file,
@@ -347,6 +351,7 @@ open class LoggersManager {
             // We don't know if this log should be processed or not so we just process everything until we resume.
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
+            let data = data()
             addPausedLog { [self] in
                 logError(message,
                          logComponents: logComponents,
@@ -373,7 +378,7 @@ open class LoggersManager {
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
         if dynamicLogLevel.rawValue & DDLogFlag.error.rawValue != 0 {
             let logComponents = logComponents ?? detectLogComponent(filePath: file, function: function, line: line)
-            let parameters = DDLogMessage.Parameters(data: data, error: error, logComponents: logComponents)
+            let parameters = DDLogMessage.Parameters(data: data(), error: error, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
             let logMessage = DDLogMessage(message: message(),

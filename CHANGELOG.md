@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
+## [12.3.0](https://github.com/APUtils/LogsManager/releases/tag/12.3.0)
+Released on `2023-06-20
+
+#### Changed
+- All log functions now accept `data` as `@autoclosure`
+
+
 ## [12.2.0](https://github.com/APUtils/LogsManager/releases/tag/12.2.0)
 Released on `2023-06-20
 

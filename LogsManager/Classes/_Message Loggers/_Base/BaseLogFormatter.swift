@@ -120,13 +120,7 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
             errorString = ""
         }
         
-        let dataString: String
-        if let normalizedData = logMessage.parameters?.normalizedData {
-            dataString = "\n\(normalizedData)"
-        } else {
-            dataString = ""
-        }
-        
+        let dataString = Utils.normalizedDataString(logMessage.parameters?.normalizedData)
         let prefixString = messagePrefix(flag: logMessage.flag)
         let timeString = dateFormatter?.string(from: logMessage.timestamp) ?? ""
         let logString = "\(timeString)\(componentsString) | \(prefixString)\(logMessage.message)\(errorString)\(dataString)"

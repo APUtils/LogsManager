@@ -1,5 +1,5 @@
 //
-//  RoutableRoutableLogger.swift
+//  RoutableLogger.swift
 //  LogsManager
 //
 //  Created by Anton Plebanovich on 3/20/21.
@@ -155,13 +155,7 @@ public enum RoutableLogger {
             errorString = ""
         }
         
-        let dataString: String
-        if let normalizedData = Utils.normalizeData(data()) {
-            dataString = "\n\(normalizedData)"
-        } else {
-            dataString = ""
-        }
-        
+        let dataString = Utils.normalizedDataString(Utils.normalizeData(data()))
         let timeString = dateFormatter.string(from: Date())
         let logString = "\(timeString) | \(message)\(errorString)\(dataString)"
         
@@ -177,11 +171,8 @@ public enum RoutableLogger {
         
         let message = message()
         let timeString = dateFormatter.string(from: Date())
-        if let data = data() {
-            print("\(timeString) | \(message)\n\(data)")
-        } else {
-            print("\(timeString) | \(message)")
-        }
+        let dataString = Utils.normalizedDataString(Utils.normalizeData(data()))
+        print("\(timeString) | \(message)\(dataString)")
     }
     
     // ******************************* MARK: - Convenient Methods

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LogsManager'
-  s.version          = '12.3.1'
+  s.version          = '12.3.2'
   s.summary          = 'Logs manager on top of CocoaLumberjack.'
 
   s.description      = <<-DESC

@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
+## [12.3.2](https://github.com/APUtils/LogsManager/releases/tag/12.3.2)
+Released on `2023-06-21
+
+#### Changed
+- Console data string format
+
+
 ## [12.3.1](https://github.com/APUtils/LogsManager/releases/tag/12.3.1)
 Released on `2023-06-21
 

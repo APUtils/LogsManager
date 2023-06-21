@@ -83,6 +83,12 @@ public enum RoutableLogger {
                                           _ function: String,
                                           _ line: UInt) -> Void = { _, _, _, _, _, _ in }
     
+    /// Trace log handler. No output by default.
+    public static var logTraceHandler: (_ logComponents: [String],
+                                        _ file: String,
+                                        _ function: String,
+                                        _ line: UInt) -> Void = { _, _, _, _ in }
+    
     /// Data log handler. No output by default.
     public static var logDataHandler: (_ message: () -> (String),
                                        _ logComponents: [String],
@@ -300,6 +306,19 @@ public enum RoutableLogger {
                           file,
                           function,
                           line)
+    }
+    
+    /// Trace log function. This one is to trace execution path. Usually, the log should be placed as the first line in the method or function.
+    /// - parameter logComponents: Components this log belongs to, e.g. `.network`, `.keychain`, ... . Autodetect if `nil`.
+    public static func logTrace(logComponents: [String] = [],
+                         file: String = #file,
+                         function: String = #function,
+                         line: UInt = #line) {
+        
+        logTraceHandler(logComponents,
+                        file,
+                        function,
+                        line)
     }
     
     /// Data log function. This one is to log big chunks of data like network responses.

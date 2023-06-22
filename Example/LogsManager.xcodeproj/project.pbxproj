@@ -55,6 +55,7 @@
 		C3630443A25D23FEB10C7D1E /* Pods-LogsManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LogsManager_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LogsManager_Tests/Pods-LogsManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E275E06C229FDFB600E9900C /* checkBuild.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = checkBuild.command; path = ../checkBuild.command; sourceTree = "<group>"; };
 		E275E06D229FDFEE00E9900C /* DEPLOY PROCESS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "DEPLOY PROCESS.md"; path = "../DEPLOY PROCESS.md"; sourceTree = "<group>"; };
+		E27EE6612A44919A00274963 /* packageUpdate.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = packageUpdate.command; path = ../packageUpdate.command; sourceTree = "<group>"; };
 		F4234A51A593A05ABCC020D3 /* Pods_LogsManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LogsManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B624E6F0D7F26EB275C54F /* .travis.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +164,7 @@
 				0D0A018E2721E21800493197 /* RoutableLogger.podspec */,
 				0D9389202744432200529662 /* Package.swift */,
 				E275E06C229FDFB600E9900C /* checkBuild.command */,
+				E27EE6612A44919A00274963 /* packageUpdate.command */,
 				74C613CCACCE85F3000A7B61 /* podCheck.command */,
 				0547507C77930DC89305EB84 /* podPush.command */,
 				876BDAE3571C9918D446CDC5 /* README.md */,

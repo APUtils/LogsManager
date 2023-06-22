@@ -27,7 +27,7 @@ final class Utils {
     }
     
     /// Method to normalize data.
-    static func normalizeData(_ data: [String: Any?]?) -> [String: String]? {
+    static func normalizeData(_ data: [AnyHashable: Any?]?) -> [String: String]? {
         guard let data = data else { return nil }
         
         var normalizedData = [String: String]()
@@ -41,7 +41,7 @@ final class Utils {
                 description = "nil"
             }
             
-            normalizedData[key] = description
+            normalizedData["\(key)"] = description
         }
         
         return normalizedData

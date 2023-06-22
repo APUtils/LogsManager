@@ -20,7 +20,7 @@ import CocoaLumberjackSwift
 /// You can easily change how logs will be displayed or processed here.
 open class LoggersManager {
     
-    public typealias DataClosure = () -> [String: Any?]?
+    public typealias DataClosure = () -> [AnyHashable: Any?]?
     
     private struct OnceLogRecord: Hashable {
         let file: String

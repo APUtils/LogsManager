@@ -11,7 +11,7 @@ import Foundation
 /// Simple logger that allows redirection.
 public enum RoutableLogger {
     
-    public typealias DataClosure = () -> [String: Any?]?
+    public typealias DataClosure = () -> [AnyHashable: Any?]?
     
     private static var dateFormatter: DateFormatter = .default
     

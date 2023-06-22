@@ -20,7 +20,7 @@ public extension DDLogMessage {
         return representedObject as? Parameters
     }
     
-    var data: [String: Any?]? {
+    var data: [AnyHashable: Any?]? {
         return parameters?.data
     }
     
@@ -41,7 +41,7 @@ public extension DDLogMessage {
 
 public extension DDLogMessage {
     struct Parameters {
-        public var data: [String: Any?]?
+        public var data: [AnyHashable: Any?]?
         public var error: Any?
         public var logComponents: [LogComponent]?
         public var normalizedData: [String: String]?
@@ -51,7 +51,7 @@ public extension DDLogMessage {
 
 public extension DDLogMessage.Parameters {
     
-    init(data: [String: Any?]?, error: Any?, logComponents: [LogComponent]?) {
+    init(data: [AnyHashable: Any?]?, error: Any?, logComponents: [LogComponent]?) {
         self.data = data
         self.error = error
         self.logComponents = logComponents

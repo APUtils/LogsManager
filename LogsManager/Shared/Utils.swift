@@ -13,7 +13,7 @@ final class Utils {
     /// Method to normalize error.
     static func normalizeError(_ error: Any?) -> String? {
         guard let error = error else { return nil }
-        return String(describing: error)
+        return "Error Type=\(type(of: error)) \(String(describing: error))"
     }
     
     static func localizedDescription(_ error: Any?) -> String? {

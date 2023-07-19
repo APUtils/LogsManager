@@ -51,6 +51,7 @@ final class Utils {
         guard let data else { return "" }
         
         let dataString = data.map { "- \($0): \($1)" }
+            .sorted()
             .joined(separator: "\n")
         
         return "\n\(dataString)"

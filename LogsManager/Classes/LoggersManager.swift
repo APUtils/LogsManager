@@ -45,7 +45,7 @@ open class LoggersManager {
     private var combinedLogLevel: DDLogLevel = .off
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager")
-    private var onceLoggedErrors: [OnceLogRecord] = []
+    private var onceLoggedErrors = Set<OnceLogRecord>()
     
     /// Default file logger. You can adjust its parameters if needed.
     /// By default, each app session corresponds to individual file, max logs size is 300 MB
@@ -292,7 +292,7 @@ open class LoggersManager {
         if onceLoggedErrors.contains(record) {
             return
         } else {
-            onceLoggedErrors.append(record)
+            onceLoggedErrors.insert(record)
         }
         
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.

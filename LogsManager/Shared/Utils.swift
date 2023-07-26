@@ -48,7 +48,7 @@ final class Utils {
     }
     
     static func normalizedDataString(_ data: [String: String]?) -> String {
-        guard let data else { return "" }
+        guard let data = data.nonEmpty else { return "" }
         
         let dataString = data.map { "- \($0): \($1)" }
             .sorted()

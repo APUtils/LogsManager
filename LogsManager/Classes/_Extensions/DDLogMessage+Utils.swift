@@ -110,20 +110,30 @@ public extension DDLogMessage.Parameters {
     /// Returns normalized data with compressed values if they exceed `allowedCount` limit.
     @available(iOS 13.0, watchOSApplicationExtension 6.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
     func compressedNormalizedData(allowedCount: Int) -> [String: String]? {
-        
-        // Compressing data as much as possible using LZMA. It has ~10x compression rate for JSONs.
-        normalizedData?
-            .mapValues { value in
-                // No need to compress values if they fit in the allowed count
-                if value.count > allowedCount {
-                    return value.data(using: .utf8)?
-                        .safeCompressed(using: .lzma)?
-                        .base64EncodedString()
-                    ?? value
-                } else {
-                    return value
-                }
+        normalizedData?.mapValues { Self.compressIfNeeded(string: $0, allowedCount: allowedCount) }
+    }
+    
+    /// Returns normalized data with compressed values if they exceed `allowedCount` limit.
+    @available(iOS 13.0, watchOSApplicationExtension 6.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
+    static func compressIfNeeded(string: String, allowedCount: Int) -> String {
+        // No need to compress values if they fit in the allowed count
+        if string.count > allowedCount {
+            let compressedString = string.data(using: .utf8)?
+            // Compressing data as much as possible using LZMA. It has ~10x compression rate for JSONs.
+                .safeCompressed(using: .lzma)?
+                .base64EncodedString()
+            ?? string
+            
+            // Check if compression actually makes sense
+            if compressedString.count < string.count {
+                return compressedString
+            } else {
+                return string
             }
+            
+        } else {
+            return string
+        }
     }
 }
 

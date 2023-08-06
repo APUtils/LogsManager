@@ -25,6 +25,11 @@ open class LoggersManager {
     public struct OnceLogRecord: Hashable {
         let file: String
         let line: UInt
+        
+        public init(file: String, line: UInt) {
+            self.file = file
+            self.line = line
+        }
     }
     
     // ******************************* MARK: - Singleton

@@ -22,9 +22,8 @@ open class LoggersManager {
     
     public typealias DataClosure = () -> [AnyHashable: Any?]?
     
-    private struct OnceLogRecord: Hashable {
+    public struct OnceLogRecord: Hashable {
         let file: String
-        let function: String
         let line: UInt
     }
     
@@ -288,7 +287,7 @@ open class LoggersManager {
             return
         }
         
-        let record = OnceLogRecord(file: file, function: function, line: line)
+        let record = OnceLogRecord(file: file, line: line)
         if onceLoggedErrors.contains(record) {
             return
         } else {

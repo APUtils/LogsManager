@@ -17,13 +17,8 @@ import RoutableLogger
 /// Logger that logs with alerts.
 open class AlertLogger: BaseAbstractTextLogger {
     
-    private struct OnceLogRecord: Hashable {
-        let file: String
-        let line: UInt
-    }
-    
     private let once: Bool
-    private var onceLoggedErrors = Set<OnceLogRecord>()
+    private var onceLoggedErrors = Set<LoggersManager.OnceLogRecord>()
     
     // ******************************* MARK: - Initialization and Setup
     
@@ -37,7 +32,7 @@ open class AlertLogger: BaseAbstractTextLogger {
     
     override public func process(message logMessage: DDLogMessage, formattedMessage: String) {
         // Do not spam duplicated errors to Sentry to prevent quote exceed
-        let record = OnceLogRecord(file: logMessage.file, line: logMessage.line)
+        let record = LoggersManager.OnceLogRecord(file: logMessage.file, line: logMessage.line)
         if onceLoggedErrors.contains(record) {
             return
         } else {

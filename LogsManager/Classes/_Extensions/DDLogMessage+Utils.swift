@@ -137,7 +137,6 @@ public extension DDLogMessage.Parameters {
     }
 }
 
-
 // ******************************* MARK: - Compression
 
 @available(iOS 13.0, watchOSApplicationExtension 6.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)

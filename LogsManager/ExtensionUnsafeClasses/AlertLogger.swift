@@ -17,9 +17,33 @@ import RoutableLogger
 /// Logger that logs with alerts.
 open class AlertLogger: BaseAbstractTextLogger {
     
+    private struct OnceLogRecord: Hashable {
+        let file: String
+        let line: UInt
+    }
+    
+    private let once: Bool
+    private var onceLoggedErrors = Set<OnceLogRecord>()
+    
+    // ******************************* MARK: - Initialization and Setup
+    
+    /// - parameter once: Show error aler only once per each unique error
+    public init(mode: LoggerMode, logLevel: DDLogLevel, dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter, once: Bool) {
+        self.once = once
+        super.init(mode: mode, logLevel: logLevel, dateFormatter: dateFormatter)
+    }
+    
     // ******************************* MARK: - BaseAbstractTextLogger Overrides
     
     override public func process(message logMessage: DDLogMessage, formattedMessage: String) {
+        // Do not spam duplicated errors to Sentry to prevent quote exceed
+        let record = OnceLogRecord(file: logMessage.file, line: logMessage.line)
+        if onceLoggedErrors.contains(record) {
+            return
+        } else {
+            onceLoggedErrors.insert(record)
+        }
+        
         showErrorAlert(title: logMessage.flagLogString, message: formattedMessage)
     }
     

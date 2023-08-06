@@ -21,7 +21,7 @@ open class BaseAbstractTextLogger: DDAbstractLogger, BaseLogger {
     public let mode: LoggerMode
     public let dateFormatter: DateFormatter?
     
-    required public init(mode: LoggerMode,
+    public init(mode: LoggerMode,
                          logLevel: DDLogLevel,
                          dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
         

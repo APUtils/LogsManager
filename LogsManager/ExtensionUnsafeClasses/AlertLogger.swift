@@ -31,12 +31,14 @@ open class AlertLogger: BaseAbstractTextLogger {
     // ******************************* MARK: - BaseAbstractTextLogger Overrides
     
     override public func process(message logMessage: DDLogMessage, formattedMessage: String) {
-        // Do not spam duplicated errors to Sentry to prevent quote exceed
-        let record = LoggersManager.OnceLogRecord(file: logMessage.file, line: logMessage.line)
-        if onceLoggedErrors.contains(record) {
-            return
-        } else {
-            onceLoggedErrors.insert(record)
+        if once {
+            // Show only one alert for each unique message
+            let record = LoggersManager.OnceLogRecord(file: logMessage.file, line: logMessage.line)
+            if onceLoggedErrors.contains(record) {
+                return
+            } else {
+                onceLoggedErrors.insert(record)
+            }
         }
         
         showErrorAlert(title: logMessage.flagLogString, message: formattedMessage)

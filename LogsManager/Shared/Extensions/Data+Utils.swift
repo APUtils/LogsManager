@@ -11,10 +11,6 @@ import Foundation
 // ******************************* MARK: - As
 
 extension Data {
-    /// Try to convert data to ASCII string
-    var asciiString: String? {
-        return String(data: self, encoding: String.Encoding.ascii)
-    }
     
     /// Try to convert data to UTF8 string
     var utf8String: String? {
@@ -31,6 +27,6 @@ extension Data {
     /// Try to decode as ASCII string at second.
     /// Uses hex representation if data can not be represented as UTF8 or ASCII string.
     var asString: String {
-        return utf8String ?? asciiString ?? hexString
+        return utf8String ?? hexString
     }
 }

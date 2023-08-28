@@ -109,11 +109,10 @@ public enum RoutableLogger {
     
     private struct OnceLogRecord: Hashable {
         let file: String
-        let function: String
         let line: UInt
     }
     
-    private static var onceLoggedErrors: [OnceLogRecord] = []
+    private static var onceLoggedErrors = Set<OnceLogRecord>()
     
     private static func _logErrorOnce(_ message: @autoclosure () -> String,
                                       logComponents: [String],
@@ -123,11 +122,11 @@ public enum RoutableLogger {
                                       function: String = #function,
                                       line: UInt = #line) {
         
-        let record = OnceLogRecord(file: file, function: function, line: line)
+        let record = OnceLogRecord(file: file, line: line)
         if onceLoggedErrors.contains(record) {
             return
         } else {
-            onceLoggedErrors.append(record)
+            onceLoggedErrors.insert(record)
         }
         
         _logError(message(),

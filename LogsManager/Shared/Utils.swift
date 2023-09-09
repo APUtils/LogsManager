@@ -50,7 +50,7 @@ final class Utils {
     static func normalizedDataString(_ data: [String: String]?) -> String {
         guard let data, !data.isEmpty else { return "" }
         
-        let dataString = data.map { "- \($0): \($1)" }
+        let dataString = data.map { "|- \($0): \($1)" }
             .sorted()
             .joined(separator: "\n")
         

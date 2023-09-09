@@ -200,7 +200,7 @@ class ViewController: UIViewController {
     // ******************************* MARK: - Action
     
     @IBAction private func onTap(_ sender: Any) {
-        logInfo("Button tap")
+        logInfo("Button tap", data: ["button": sender])
     }
     
     @IBAction fileprivate func onDebugTap(_ sender: Any) {

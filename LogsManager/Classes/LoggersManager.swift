@@ -21,6 +21,7 @@ import CocoaLumberjackSwift
 open class LoggersManager {
     
     public typealias DataClosure = () -> [AnyHashable: Any?]?
+    public typealias TimestampClosure = () -> Date
     
     public struct OnceLogRecord: Hashable {
         let file: String
@@ -193,7 +194,7 @@ open class LoggersManager {
                            flag: DDLogFlag,
                            data: @autoclosure DataClosure = nil,
                            asynchronous: Bool? = nil,
-                           timestamp: Date = Date(),
+                           timestamp: @autoclosure TimestampClosure = Date(),
                            file: String = #file,
                            function: String = #function,
                            line: UInt = #line) {
@@ -207,6 +208,7 @@ open class LoggersManager {
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
             let data = data()
+            let timestamp = timestamp()
             addPausedLog { [self] in
                 logMessage(message,
                            logComponents: logComponents,
@@ -245,7 +247,7 @@ open class LoggersManager {
                                           line: line,
                                           tag: parameters,
                                           options: [.dontCopyMessage],
-                                          timestamp: timestamp)
+                                          timestamp: timestamp())
             
             log(asynchronous: asynchronous, message: logMessage)
         }
@@ -264,7 +266,7 @@ open class LoggersManager {
                              error: Any?,
                              data: @autoclosure DataClosure = nil,
                              asynchronous: Bool? = nil,
-                             timestamp: Date = Date(),
+                             timestamp: @autoclosure TimestampClosure = Date(),
                              file: String = #file,
                              function: String = #function,
                              line: UInt = #line) {
@@ -278,6 +280,7 @@ open class LoggersManager {
             // Usually this shouldn't take much time and we shouldn't have much logs during that period.
             let message = message()
             let data = data()
+            let timestamp = timestamp()
             addPausedLog { [self] in
                 logErrorOnce(message,
                              logComponents: logComponents,
@@ -323,7 +326,7 @@ open class LoggersManager {
                                           line: line,
                                           tag: parameters,
                                           options: [.dontCopyMessage],
-                                          timestamp: timestamp)
+                                          timestamp: timestamp())
             
             log(asynchronous: asynchronous, message: logMessage)
         }

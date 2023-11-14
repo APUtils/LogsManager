@@ -51,11 +51,7 @@ open class FileLogger: DDFileLogger, BaseLogger {
         
         super.init(logFileManager: fileManager, completionQueue: nil)
         
-        setup()
-    }
-    
-    private func setup() {
-        logFormatter = BaseFileLogFormatter(mode: mode, dateFormatter: dateFormatter)
+        logFormatter = BaseFileLogFormatter(mode: mode, oneLine: true, dateFormatter: dateFormatter)
     }
     
     // ******************************* MARK: - DDFileLogger Overrides

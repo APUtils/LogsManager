@@ -10,6 +10,7 @@ import CocoaLumberjack
 import Foundation
 
 open class BaseFileLogFormatter: BaseLogFormatter {
+    
     open override func messagePrefix(flag: DDLogFlag) -> String {
         
         // Add log level prefixes so we can easily filter messages using stream commands
@@ -30,15 +31,5 @@ open class BaseFileLogFormatter: BaseLogFormatter {
         } else {
             return ""
         }
-    }
-    
-    open override func format(message logMessage: DDLogMessage) -> String? {
-        var formattedMessage = super.format(message: logMessage)
-        
-        // Keep message in one line so we can easily work with those messages using stream commands
-        formattedMessage = formattedMessage?.replacingOccurrences(of: "\n", with: " | ")
-        formattedMessage = formattedMessage?.replacingOccurrences(of: "\r", with: " | ")
-        
-        return formattedMessage
     }
 }

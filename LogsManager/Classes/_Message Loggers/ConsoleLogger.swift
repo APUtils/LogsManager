@@ -27,6 +27,7 @@ open class ConsoleLogger: _DDTTYLogger, BaseLogger {
     
     public required init(mode: LoggerMode,
                          logLevel: DDLogLevel,
+                         oneLine: Bool = false,
                          newLinesSeparation: Bool,
                          dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
         
@@ -37,11 +38,7 @@ open class ConsoleLogger: _DDTTYLogger, BaseLogger {
         
         super.init()
         
-        setup()
-    }
-    
-    private func setup() {
-        logFormatter = BaseLogFormatter(mode: mode, dateFormatter: dateFormatter)
+        logFormatter = BaseLogFormatter(mode: mode, oneLine: oneLine, dateFormatter: dateFormatter)
     }
     
     // ******************************* MARK: - DDLogger Overrides

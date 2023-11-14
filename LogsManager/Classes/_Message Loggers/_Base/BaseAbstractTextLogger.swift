@@ -22,8 +22,9 @@ open class BaseAbstractTextLogger: DDAbstractLogger, BaseLogger {
     public let dateFormatter: DateFormatter?
     
     public init(mode: LoggerMode,
-                         logLevel: DDLogLevel,
-                         dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
+                logLevel: DDLogLevel,
+                oneLine: Bool,
+                dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
         
         self.mode = mode
         self.logLevel = logLevel
@@ -31,11 +32,7 @@ open class BaseAbstractTextLogger: DDAbstractLogger, BaseLogger {
         
         super.init()
         
-        setup()
-    }
-    
-    private func setup() {
-        logFormatter = BaseLogFormatter(mode: mode, dateFormatter: dateFormatter)
+        logFormatter = BaseLogFormatter(mode: mode, oneLine: oneLine, dateFormatter: dateFormatter)
     }
     
     // ******************************* MARK: - DDLogger Overrides

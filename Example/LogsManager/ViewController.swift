@@ -17,8 +17,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dataLogger = ConsoleLogger(
+            mode: .specificAndMutedComponentsAndLevels(
+                specific: [(.vc, .data)],
+                muted: [(.buttonTap, .verbose)]
+            ),
+            logLevel: .data, 
+            oneLine: false,
+            newLinesSeparation: true
+        )
         
-        let dataLogger = ConsoleLogger(mode: .specificAndMutedComponentsAndLevels(specific: [(.vc, .data)], muted: [(.buttonTap, .verbose)]), logLevel: .data, newLinesSeparation: false)
         LoggersManager.shared.addLogger(dataLogger)
         
         // Deadlock check
@@ -200,6 +208,9 @@ class ViewController: UIViewController {
     // ******************************* MARK: - Action
     
     @IBAction private func onTap(_ sender: Any) {
+        logError("Button tap 1\nNew line", error: StringError("Test\nTest"), data: ["button": sender, "test": "test1\ntest2"])
+        logError("Button tap 2", error: StringError("Test"))
+        logError("Button tap 3\nNew line")
         logInfo("Button tap", data: ["button": sender])
     }
     

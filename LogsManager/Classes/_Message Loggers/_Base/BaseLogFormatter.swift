@@ -34,12 +34,17 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     // ******************************* MARK: - Private Properties
     
     private let mode: LoggerMode
+    private let oneLine: Bool
     private let dateFormatter: DateFormatter?
     
     // ******************************* MARK: - Initialization and Setup
     
-    public required init(mode: LoggerMode, dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
+    public required init(mode: LoggerMode, 
+                         oneLine: Bool,
+                         dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter) {
+        
         self.mode = mode
+        self.oneLine = oneLine
         self.dateFormatter = dateFormatter
     }
     
@@ -113,17 +118,16 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
             componentsString = " | \(logComponentLogTexts.joined(separator: " | "))"
         }
         
-        let errorString: String
-        if let normalizedError = logMessage.parameters?.normalizedError {
-            errorString = "\n\(normalizedError)"
-        } else {
-            errorString = ""
-        }
+        let normalizedError = logMessage.parameters?.normalizedError
+        let normalizedData = logMessage.parameters?.normalizedData
+        let errorString = Utils.normalizedErrorString(normalizedError, normalizedData: normalizedData, oneLine: oneLine)
         
-        let dataString = Utils.normalizedDataString(logMessage.parameters?.normalizedData)
-        let prefixString = messagePrefix(flag: logMessage.flag)
+        let dataString = Utils.normalizedDataString(normalizedData, oneLine: oneLine)
         let timeString = dateFormatter?.string(from: logMessage.timestamp) ?? ""
-        let logString = "\(timeString)\(componentsString) | \(prefixString)\(logMessage.message)\(errorString)\(dataString)"
+        let prefixString = messagePrefix(flag: logMessage.flag)
+        let messageString = Utils.normalizedMessage(logMessage.message, normalizedData: normalizedData, normalizedError: normalizedError, oneLine: oneLine)
+        
+        let logString = "\(timeString)\(componentsString) | \(prefixString)\(messageString)\(errorString)\(dataString)"
         
         return logString
     }

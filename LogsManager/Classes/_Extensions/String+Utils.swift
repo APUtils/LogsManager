@@ -9,6 +9,7 @@
 import Foundation
 
 public extension String {
+    
     /// Helper method to get filename from `file` parameter that is a file path.
     /// - parameters:
     ///   - filePath: File path that is passed through `#file` compile directrive as default parameter.

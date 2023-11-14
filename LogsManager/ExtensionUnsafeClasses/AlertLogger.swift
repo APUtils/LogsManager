@@ -23,9 +23,17 @@ open class AlertLogger: BaseAbstractTextLogger {
     // ******************************* MARK: - Initialization and Setup
     
     /// - parameter once: Show error aler only once per each unique error
-    public init(mode: LoggerMode, logLevel: DDLogLevel, dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter, once: Bool) {
+    public init(mode: LoggerMode, 
+                logLevel: DDLogLevel,
+                oneLine: Bool = false,
+                dateFormatter: DateFormatter? = BaseLogFormatter.dateFormatter,
+                once: Bool) {
+        
         self.once = once
-        super.init(mode: mode, logLevel: logLevel, dateFormatter: dateFormatter)
+        super.init(mode: mode,
+                   logLevel: logLevel,
+                   oneLine: oneLine, 
+                   dateFormatter: dateFormatter)
     }
     
     // ******************************* MARK: - BaseAbstractTextLogger Overrides

@@ -106,9 +106,9 @@ extension Utils.Constants {
     static let newLinePrefixRightWhitespace = " "
     
     // https://www.w3.org/TR/xml-entity-names/025.html
-    static let newLinePrefix = "\n\(newLinePrefixLeftWhitespace)┣\(newLinePrefixRightWhitespace)"
-    static let newLineContinuePrefix = "\n\(newLinePrefixLeftWhitespace)┃\(newLinePrefixRightWhitespace)"
-    static let newLineLastPrefix = "\n\(newLinePrefixLeftWhitespace)┗\(newLinePrefixRightWhitespace)"
+    static let newLinePrefix = "\n\(newLinePrefixLeftWhitespace)├\(newLinePrefixRightWhitespace)"
+    static let newLineContinuePrefix = "\n\(newLinePrefixLeftWhitespace)│\(newLinePrefixRightWhitespace)"
+    static let newLineLastPrefix = "\n\(newLinePrefixLeftWhitespace)└\(newLinePrefixRightWhitespace)"
     static let newLineContinueLastPrefix = "\n\(newLinePrefixLeftWhitespace) \(newLinePrefixRightWhitespace)"
 }
 

@@ -296,10 +296,12 @@ open class LoggersManager {
         }
         
         let record = OnceLogRecord(file: file, line: line)
-        if onceLoggedErrors.contains(record) {
+        if queue.performSync(execute: { onceLoggedErrors.contains(record) }) {
             return
         } else {
-            onceLoggedErrors.insert(record)
+            queue.async(flags: .barrier) {
+                self.onceLoggedErrors.insert(record)
+            }
         }
         
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.

@@ -57,7 +57,7 @@ public extension DDLogMessage.Parameters {
         self.logComponents = logComponents
         
         normalizedError = Utils.normalizeError(error)
-        normalizedData = Utils.normalizeData(data)
+        normalizedData = Utils.normalizeData(data, skipDataNormalizationKeyPrefix: Constants.skipDataNormalizationKeyPrefix)
         
         // Add localized description to data if it differs from the error
         let _localizedDescription = Utils.localizedDescription(error)
@@ -135,6 +135,13 @@ public extension DDLogMessage.Parameters {
             return string
         }
     }
+}
+
+// ******************************* MARK: - Constants
+
+public extension DDLogMessage.Parameters { enum Constants {} }
+public extension DDLogMessage.Parameters.Constants {
+    static let skipDataNormalizationKeyPrefix = "_skip_normalization_"
 }
 
 // ******************************* MARK: - Compression

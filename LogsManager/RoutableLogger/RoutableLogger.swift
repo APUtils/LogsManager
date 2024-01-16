@@ -146,7 +146,7 @@ public enum RoutableLogger {
                                   function: String = #function,
                                   line: UInt = #line) {
         
-        let normalizedData = Utils.normalizeData(data())
+        let normalizedData = Utils.normalizeData(data(), skipDataNormalizationKeyPrefix: nil)
         let normalizedError = Utils.normalizeError(error)
         let messageString = Utils.normalizedMessage(message(), normalizedData: normalizedData, normalizedError: normalizedError, oneLine: false)
         
@@ -168,7 +168,7 @@ public enum RoutableLogger {
         
         let message = message()
         let timeString = dateFormatter.string(from: Date())
-        let dataString = Utils.normalizedDataString(Utils.normalizeData(data()), oneLine: false)
+        let dataString = Utils.normalizedDataString(Utils.normalizeData(data(), skipDataNormalizationKeyPrefix: nil), oneLine: false)
         print("\(timeString) | \(message)\(dataString)")
     }
     

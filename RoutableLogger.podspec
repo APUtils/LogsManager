@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RoutableLogger'
-  s.version          = '12.3.3'
+  s.version          = '12.4.0'
   s.summary          = 'Logger that allows logs redirection.'
 
 # This description is used to generate tags and improve search results.
@@ -33,8 +33,15 @@ Just helper framework that allows logs redirection. It is used in various framew
   s.tvos.deployment_target = '11.0'
   s.watchos.deployment_target = '4.0'
   
-  s.swift_versions = ['5.5', '5.5.1', '5.5.2', '5.6', '5.6.1', '5.7']
+  s.swift_versions = ['5']
+  
+  # 1.12.0: Ensure developers won't hit CocoaPods/CocoaPods#11402 with the resource
+  # bundle for the privacy manifest.
+  # 1.13.0: visionOS is recognized as a platform.
+  s.cocoapods_version = '>= 1.13.0'
+  
   s.frameworks = 'Foundation'
   s.source_files = 'LogsManager/RoutableLogger/**/*', 'LogsManager/Shared/**/*'
+  s.resource_bundle = {"RoutableLogger.privacy"=>"LogsManager/Privacy/RoutableLogger/PrivacyInfo.xcprivacy"}
 
 end

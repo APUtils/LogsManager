@@ -238,7 +238,9 @@ open class LoggersManager {
             let parameters = DDLogMessage.Parameters(data: data(), error: nil, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
-            let logMessage = DDLogMessage(message: message(),
+            let message = message()
+            let logMessage = DDLogMessage(format: message,
+                                          formatted: message,
                                           level: DDLogLevel(flag: flag),
                                           flag: flag,
                                           context: 0,
@@ -319,7 +321,9 @@ open class LoggersManager {
             let parameters = DDLogMessage.Parameters(data: data(), error: error, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
-            let logMessage = DDLogMessage(message: message(),
+            let message = message()
+            let logMessage = DDLogMessage(format: message,
+                                          formatted: message,
                                           level: .error,
                                           flag: .error,
                                           context: 0,
@@ -390,7 +394,9 @@ open class LoggersManager {
             let parameters = DDLogMessage.Parameters(data: data(), error: error, logComponents: logComponents)
             
             // Tell the DDLogMessage constructor to copy the C strings that get passed to it.
-            let logMessage = DDLogMessage(message: message(),
+            let message = message()
+            let logMessage = DDLogMessage(format: message,
+                                          formatted: message,
                                           level: .error,
                                           flag: .error,
                                           context: 0,

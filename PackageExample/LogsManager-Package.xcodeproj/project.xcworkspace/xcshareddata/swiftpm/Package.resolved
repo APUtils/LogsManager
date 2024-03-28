@@ -1,12 +1,13 @@
 {
+  "originHash" : "dfc7997114588d770d7692342d55f3e7c9f8c51ab0b94fb177231302985cb172",
   "pins" : [
     {
       "identity" : "apextensions",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/APUtils/APExtensions.git",
       "state" : {
-        "revision" : "36f57c6992c481ca87a7cf63be23446a6f520d87",
-        "version" : "12.0.3"
+        "revision" : "7cead7483a09dcf0de15264361f809014166d995",
+        "version" : "14.2.1"
       }
     },
     {
@@ -37,5 +38,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

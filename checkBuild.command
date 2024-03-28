@@ -5,12 +5,6 @@ set -e
 base_dir=$(dirname "$0")
 cd "$base_dir"
 
-echo -e "\nBuilding Swift Package for iOS..."
-swift build -Xswiftc "-sdk" -Xswiftc "`xcrun --sdk iphonesimulator --show-sdk-path`" -Xswiftc "-target" -Xswiftc "x86_64-apple-ios16.2-simulator"
-
-echo -e "\nBuilding Swift Package project..."
-set -o pipefail && xcodebuild -project "PackageExample/LogsManager-Package.xcodeproj" -sdk iphonesimulator -scheme "LogsManager-PackageExample" | xcpretty
-
 echo -e "\nBuilding Pods project..."
 set -o pipefail && xcodebuild -workspace "Example/LogsManager.xcworkspace" -scheme "LogsManager-Example" -configuration "Release" -sdk iphonesimulator | xcpretty
 

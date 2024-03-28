@@ -1,13 +1,13 @@
-// swift-tools-version:5.7
+// swift-tools-version:5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 import PackageDescription
 
 let package = Package(
     name: "LogsManager",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v12),
         .macOS(.v10_13),
-        .tvOS(.v11),
+        .tvOS(.v12),
         .watchOS(.v4),
     ],
     products: [
@@ -21,9 +21,9 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/APUtils/APExtensions.git", .upToNextMajor(from: "12.0.3")),
+        .package(url: "https://github.com/APUtils/APExtensions.git", .upToNextMajor(from: "14.0.0")),
         .package(url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", from: "3.7.2"),
-        .package(url: "https://github.com/anton-plebanovich/RoutableLogger.git", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/anton-plebanovich/RoutableLogger", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
         .target(
@@ -31,7 +31,13 @@ let package = Package(
             dependencies: [
                 "LogsManager",
             ],
-            path: "LogsManager/ExtensionUnsafeClasses",
+            path: "LogsManager",
+            sources: [
+                "ExtensionUnsafeClasses",
+            ],
+            resources: [
+                .process("Privacy/LogsManager.Core/PrivacyInfo.xcprivacy")
+            ],
             swiftSettings: [
                 .define("SPM"),
             ]
@@ -55,6 +61,9 @@ let package = Package(
                 "Classes",
                 "Shared",
             ],
+            resources: [
+                .process("Privacy/LogsManager.Core/PrivacyInfo.xcprivacy")
+            ],
             swiftSettings: [
                 .define("SPM"),
             ]
@@ -64,10 +73,13 @@ let package = Package(
             dependencies: [
                 .product(name: "CocoaLumberjack", package: "CocoaLumberjack"),
             ],
-            path: "LogsManager/Classes/_Message Loggers/_Base",
+            path: "LogsManager",
             sources: [
-                "_DDTTYLogger.h",
-                "_DDTTYLogger.m",
+                "Classes/_Message Loggers/_Base/_DDTTYLogger.h",
+                "Classes/_Message Loggers/_Base/_DDTTYLogger.m",
+            ],
+            resources: [
+                .process("Privacy/LogsManager.Core/PrivacyInfo.xcprivacy")
             ],
             publicHeadersPath: "",
             cSettings: [

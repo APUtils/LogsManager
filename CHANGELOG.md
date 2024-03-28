@@ -2,6 +2,31 @@
 All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
+
+## [12.4.0](https://github.com/APUtils/LogsManager/releases/tag/12.4.0)
+Released on `2023-06-22
+
+#### Added
+- Reusabled `String` compression logic
+- `oneLine` parameter to control logs formatting
+- [AlertLogger] Allow to show aler once per error
+- Use `|` prefix for normalized data string to simplify console filtering
+- `DDLogMessage.Parameters.Constants.skipDataNormalizationKeyPrefix` constant to allow data entry normalization skip
+
+#### Changed
+- Output error type during error normalization
+- Sort normalized data string parameters
+- Use `Set` to track once logged errors
+- Better empty data string
+- Do not map Data to ASCII
+- Better multiline formatting
+- Better code reuse
+- Lazy timestamp parameter
+
+#### Fixed
+- Crash on `onceLoggedErrors` access fix
+
+
 ## [12.3.3](https://github.com/APUtils/LogsManager/releases/tag/12.3.3)
 Released on `2023-06-22
 

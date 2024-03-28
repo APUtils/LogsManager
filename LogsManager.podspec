@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LogsManager'
-  s.version          = '12.3.3'
+  s.version          = '12.4.0'
   s.summary          = 'Logs manager on top of CocoaLumberjack.'
 
   s.description      = <<-DESC
@@ -21,7 +21,12 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
   s.source           = { :git => 'https://github.com/APUtils/LogsManager.git', :tag => s.version.to_s }
   
   s.frameworks = 'Foundation'
-  s.swift_versions = ['5.1']
+  s.swift_versions = ['5']
+  
+  # 1.12.0: Ensure developers won't hit CocoaPods/CocoaPods#11402 with the resource
+  # bundle for the privacy manifest.
+  # 1.13.0: visionOS is recognized as a platform.
+  s.cocoapods_version = '>= 1.13.0'
   
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.13'
@@ -39,11 +44,13 @@ Logs manager on top of CocoaLumberjack. Allows to easily configure log component
       subspec.watchos.deployment_target = '4.0'
       subspec.tvos.deployment_target = '11.0'
       subspec.source_files = 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
+      subspec.resource_bundle = {"LogsManager.Core.privacy"=>"LogsManager/Privacy/LogsManager.Core/PrivacyInfo.xcprivacy"}
   end
   
   s.subspec 'ExtensionUnsafe' do |subspec|
       subspec.ios.deployment_target = '11.0'
       subspec.source_files = 'LogsManager/ExtensionUnsafeClasses/**/*', 'LogsManager/Classes/**/*', 'LogsManager/Shared/**/*'
+      subspec.resource_bundle = {"LogsManager.ExtensionUnsafe.privacy"=>"LogsManager/Privacy/LogsManager.ExtensionUnsafe/PrivacyInfo.xcprivacy"}
   end
 
 end

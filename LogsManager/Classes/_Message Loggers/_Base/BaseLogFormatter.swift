@@ -20,7 +20,8 @@ open class BaseLogFormatter: NSObject, DDLogFormatter {
     public static var dateFormatter: DateFormatter? = .default
     
     /// Message that if passed won't be formatted and will be added to logs as an empty line
-    public static let emptyLineMessage: DDLogMessage = DDLogMessage(message: "",
+    public static let emptyLineMessage: DDLogMessage = DDLogMessage(format: "",
+                                                                    formatted: "",
                                                                     level: .all,
                                                                     flag: .data,
                                                                     context: 0,

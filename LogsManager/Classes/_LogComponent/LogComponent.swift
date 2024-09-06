@@ -29,7 +29,7 @@ public struct LogComponent {
     /// Whether log is for this component?
     public let isLogForThisComponent: LogComponentDetection
     
-    /// Text that will be displayed in logs forthis component.
+    /// Text that will be displayed in logs for this component.
     /// Uses `logName` if it isn't `nil`. Otherwise uses `name`.
     /// If result is an empty string - component will be logged but not somehow indicated in logs.
     public var logText: String {

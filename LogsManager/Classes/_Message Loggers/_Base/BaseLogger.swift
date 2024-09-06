@@ -66,60 +66,60 @@ public protocol BaseLogger: DDLogger {
 
 public extension BaseLogger {
     func shouldLog(message: DDLogMessage) -> Bool {
-        if let messageLogComponents = message.logComponents {
-            switch mode {
-            case .all:
-                return true
-                
-            case .specificComponents(let logComponents):
-                return logComponents.hasIntersection(with: messageLogComponents)
-                
-            case .specificComponentsAndLevels(let logComponentsAndLevels):
-                return LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: message).hasElements
-                
-            case .specificAndMutedComponents(let specificLogComponentsAndLevels, let muteLogComponentsAndLevels):
-                return specificLogComponentsAndLevels.hasIntersection(with: messageLogComponents)
-                && !muteLogComponentsAndLevels.hasIntersection(with: messageLogComponents)
-                
-            case .specificAndMutedComponentsAndLevels(let specificLogComponentsAndLevels, let muteLogComponentsAndLevels):
-                guard LoggerMode.getIntersection(forLogComponentsAndLevels: specificLogComponentsAndLevels, with: message).hasElements else { return false }
-                
-                let messageLogLevel = message.level
-                let mutedLogComponents = muteLogComponentsAndLevels.compactMap { muteLogComponent, muteLevel -> LogComponent? in
-                    // Verbose = 31, error = 1
-                    if messageLogLevel.rawValue <= muteLevel.rawValue {
-                        return nil
-                    } else {
-                        // Mute log components that are below defined level
-                        return muteLogComponent
-                    }
-                }
-                
-                return !mutedLogComponents.hasIntersection(with: messageLogComponents)
-                
-            case .ignoreComponents(let logComponents):
-                return messageLogComponents.removing(contentsOf: logComponents).hasElements
-                
-            case .muteComponents(let logComponents):
-                return !logComponents.hasIntersection(with: messageLogComponents)
-                
-            case .muteComponentsBelowLevel(let muteLogComponentsAndLevels):
-                let messageLogLevel = message.level
-                let mutedLogComponents = muteLogComponentsAndLevels.compactMap { muteLogComponent, muteLevel -> LogComponent? in
-                    // Verbose = 31, error = 1
-                    if messageLogLevel.rawValue <= muteLevel.rawValue {
-                        return nil
-                    } else {
-                        // Mute log components that are below defined level
-                        return muteLogComponent
-                    }
-                }
-                
-                return !mutedLogComponents.hasIntersection(with: messageLogComponents)
-            }
-        } else {
-            // Log do not belong to any component or logger doesn't have components filter. Pass it.
+        guard message.level.rawValue <= logLevel.rawValue else { return false }
+        
+        // Log do not belong to any component or logger doesn't have components filter. Pass it.
+        guard let messageLogComponents = message.logComponents else { return true }
+        
+        switch mode {
+        case .all:
             return true
+            
+        case .specificComponents(let logComponents):
+            return logComponents.hasIntersection(with: messageLogComponents)
+            
+        case .specificComponentsAndLevels(let logComponentsAndLevels):
+            return LoggerMode.getIntersection(forLogComponentsAndLevels: logComponentsAndLevels, with: message).hasElements
+            
+        case .specificAndMutedComponents(let specificLogComponentsAndLevels, let muteLogComponentsAndLevels):
+            return specificLogComponentsAndLevels.hasIntersection(with: messageLogComponents)
+            && !muteLogComponentsAndLevels.hasIntersection(with: messageLogComponents)
+            
+        case .specificAndMutedComponentsAndLevels(let specificLogComponentsAndLevels, let muteLogComponentsAndLevels):
+            guard LoggerMode.getIntersection(forLogComponentsAndLevels: specificLogComponentsAndLevels, with: message).hasElements else { return false }
+            
+            let messageLogLevel = message.level
+            let mutedLogComponents = muteLogComponentsAndLevels.compactMap { muteLogComponent, muteLevel -> LogComponent? in
+                // Verbose = 31, error = 1
+                if messageLogLevel.rawValue <= muteLevel.rawValue {
+                    return nil
+                } else {
+                    // Mute log components that are below defined level
+                    return muteLogComponent
+                }
+            }
+            
+            return !mutedLogComponents.hasIntersection(with: messageLogComponents)
+            
+        case .ignoreComponents(let logComponents):
+            return messageLogComponents.removing(contentsOf: logComponents).hasElements
+            
+        case .muteComponents(let logComponents):
+            return !logComponents.hasIntersection(with: messageLogComponents)
+            
+        case .muteComponentsBelowLevel(let muteLogComponentsAndLevels):
+            let messageLogLevel = message.level
+            let mutedLogComponents = muteLogComponentsAndLevels.compactMap { muteLogComponent, muteLevel -> LogComponent? in
+                // Verbose = 31, error = 1
+                if messageLogLevel.rawValue <= muteLevel.rawValue {
+                    return nil
+                } else {
+                    // Mute log components that are below defined level
+                    return muteLogComponent
+                }
+            }
+            
+            return !mutedLogComponents.hasIntersection(with: messageLogComponents)
         }
     }
 }

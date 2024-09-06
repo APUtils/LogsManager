@@ -226,7 +226,7 @@ open class LoggersManager {
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         // Check if combined log level allows this message to pass
         let combinedLogLevel = self.combinedLogLevel
-        guard combinedLogLevel.rawValue & flag.rawValue > 0 else { return }
+        guard combinedLogLevel.rawValue & flag.rawValue != 0 else { return }
         
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
@@ -307,7 +307,7 @@ open class LoggersManager {
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         // Check if combined log level allows this error to pass
         let combinedLogLevel = self.combinedLogLevel
-        guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
+        guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue != 0 else { return }
         
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
@@ -378,7 +378,7 @@ open class LoggersManager {
         // We don't use queue here to speed up things but we need to copy value to prevent threading issues.
         // Check if combined log level allows this error to pass
         let combinedLogLevel = self.combinedLogLevel
-        guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
+        guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue != 0 else { return }
         
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).

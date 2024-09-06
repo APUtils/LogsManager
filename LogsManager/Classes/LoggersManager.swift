@@ -228,8 +228,6 @@ open class LoggersManager {
         let combinedLogLevel = self.combinedLogLevel
         guard combinedLogLevel.rawValue & flag.rawValue > 0 else { return }
         
-        // TODO: Add log components check
-        
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
@@ -251,7 +249,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp())
             
-            log(asynchronous: asynchronous, message: logMessage)
+            logIfNeeded(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -311,8 +309,6 @@ open class LoggersManager {
         let combinedLogLevel = self.combinedLogLevel
         guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
         
-        // TODO: Add log components check
-        
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
@@ -334,7 +330,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp())
             
-            log(asynchronous: asynchronous, message: logMessage)
+            logIfNeeded(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -384,8 +380,6 @@ open class LoggersManager {
         let combinedLogLevel = self.combinedLogLevel
         guard combinedLogLevel.rawValue & DDLogFlag.error.rawValue > 0 else { return }
         
-        // TODO: Add log components check
-        
         // -------- Copied from `CocoaLumberjack.swift`
         // The `dynamicLogLevel` will always be checked here (instead of being passed in).
         // We cannot "mix" it with the `DDDefaultLogLevel`, because otherwise the compiler won't strip strings that are not logged.
@@ -407,7 +401,7 @@ open class LoggersManager {
                                           options: [.dontCopyMessage],
                                           timestamp: timestamp)
             
-            log(asynchronous: asynchronous, message: logMessage)
+            logIfNeeded(asynchronous: asynchronous, message: logMessage)
         }
         // --------
     }
@@ -449,7 +443,9 @@ open class LoggersManager {
         return components
     }
     
-    private func log(asynchronous: Bool, message: DDLogMessage) {
+    private func logIfNeeded(asynchronous: Bool, message: DDLogMessage) {
+        guard loggers.contains(where: { $0.shouldLog(message: message) }) else { return }
+        
         // We might have a deadlock if we try to log on a logger queue so let's check
         if !asynchronous {
             let deadlockLoggers = loggers.filter { ($0 as? DDAbstractLogger)?.isOnInternalLoggerQueue == true }

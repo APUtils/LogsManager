@@ -26,6 +26,26 @@ final class Utils {
         return error.debugDescription
     }
     
+    static func localizedFailureReason(_ error: Any?) -> String? {
+        guard let error = error, let error = error as? NSError else { return nil }
+        return error.localizedFailureReason
+    }
+    
+    static func localizedRecoverySuggestion(_ error: Any?) -> String? {
+        guard let error = error, let error = error as? NSError else { return nil }
+        return error.localizedRecoverySuggestion
+    }
+    
+    static func localizedRecoveryOptions(_ error: Any?) -> String? {
+        guard let error = error, let error = error as? NSError else { return nil }
+        return error.localizedRecoveryOptions?.joined(separator: " | ")
+    }
+    
+    static func helpAnchor(_ error: Any?) -> String? {
+        guard let error = error, let error = error as? NSError else { return nil }
+        return error.helpAnchor
+    }
+    
     /// Method to normalize data.
     static func normalizeData(_ data: [AnyHashable: Any?]?, skipDataNormalizationKeyPrefix: String?) -> [String: String]? {
         guard let data = data else { return nil }

@@ -79,6 +79,26 @@ public extension DDLogMessage.Parameters {
             normalizedData?["debugDescription"] = debugDescription
         }
         
+        if let localizedFailureReason = Utils.localizedFailureReason(error) {
+            normalizedData = normalizedData ?? [:]
+            normalizedData?["localizedFailureReason"] = localizedFailureReason
+        }
+        
+        if let localizedRecoverySuggestion = Utils.localizedRecoverySuggestion(error) {
+            normalizedData = normalizedData ?? [:]
+            normalizedData?["localizedRecoverySuggestion"] = localizedRecoverySuggestion
+        }
+        
+        if let localizedRecoveryOptions = Utils.localizedRecoveryOptions(error) {
+            normalizedData = normalizedData ?? [:]
+            normalizedData?["localizedRecoveryOptions"] = localizedRecoveryOptions
+        }
+        
+        if let helpAnchor = Utils.helpAnchor(error) {
+            normalizedData = normalizedData ?? [:]
+            normalizedData?["helpAnchor"] = helpAnchor
+        }
+        
     userInfoIf:
         if let error = error as? Error, let userInfo = error._userInfo {
             if let occupiable = userInfo as? Occupiable, occupiable.isEmpty {

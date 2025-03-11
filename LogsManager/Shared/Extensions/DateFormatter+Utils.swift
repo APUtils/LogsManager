@@ -13,6 +13,7 @@ extension DateFormatter {
     static let `default`: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM.dd HH:mm:ss.SSS"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         return dateFormatter
     }()

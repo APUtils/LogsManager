@@ -3,8 +3,20 @@ All notable changes to this project will be documented in this file.
 `LogsManager` adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [13.0.0](https://github.com/APUtils/LogsManager/releases/tag/13.0.0)
+Released on `2025-04-03`
+
+#### Added
+- Log error's `localizedFailureReason`, `localizedRecoverySuggestion`, `localizedRecoveryOptions`, and `helpAnchor`
+
+#### Changed
+- Do not dispatch log message if there is no logger to log it
+- Check message log level in `shouldLog(message:)` logic
+- Format logs in `POSIX` locale
+
+
 ## [12.4.0](https://github.com/APUtils/LogsManager/releases/tag/12.4.0)
-Released on `2023-06-22
+Released on `2023-06-22`
 
 #### Added
 - Reusabled `String` compression logic
@@ -28,21 +40,21 @@ Released on `2023-06-22
 
 
 ## [12.3.3](https://github.com/APUtils/LogsManager/releases/tag/12.3.3)
-Released on `2023-06-22
+Released on `2023-06-22`
 
 #### Changed
 - Lowered restriction for log data. Data key type is `AnyHashable` now.
 
 
 ## [12.3.2](https://github.com/APUtils/LogsManager/releases/tag/12.3.2)
-Released on `2023-06-21
+Released on `2023-06-21`
 
 #### Changed
 - Console data string format
 
 
 ## [12.3.1](https://github.com/APUtils/LogsManager/releases/tag/12.3.1)
-Released on `2023-06-21
+Released on `2023-06-21`
 
 #### Added
 - Trace logs for `RoutableLogger`
@@ -55,28 +67,28 @@ Released on `2023-06-21
 
 
 ## [12.3.0](https://github.com/APUtils/LogsManager/releases/tag/12.3.0)
-Released on `2023-06-20
+Released on `2023-06-20`
 
 #### Changed
 - All log functions now accept `data` as `@autoclosure`
 
 
 ## [12.2.0](https://github.com/APUtils/LogsManager/releases/tag/12.2.0)
-Released on `2023-06-20
+Released on `2023-06-20`
 
 #### Added
 - Trace log level: `logTrace()`
 
 
 ## [12.1.0](https://github.com/APUtils/LogsManager/releases/tag/12.1.0)
-Released on `2023-06-15
+Released on `2023-06-15`
 
 #### Changed
 - Allow to attach data to non-error logs
 
 
 ## [12.0.0](https://github.com/APUtils/LogsManager/releases/tag/12.0.0)
-Released on `2023-01-26
+Released on `2023-01-26`
 
 #### Changed
 - Min supported OS versions rised

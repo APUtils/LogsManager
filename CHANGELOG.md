@@ -10,8 +10,8 @@ Released on `2025-04-03`
 - Log error's `localizedFailureReason`, `localizedRecoverySuggestion`, `localizedRecoveryOptions`, and `helpAnchor`
 
 #### Changed
-- Do not dispatch log message if there is no logger to log it
 - Check message log level in `shouldLog(message:)` logic
+- Do not dispatch log message if there is no logger to log it
 - Format logs in `POSIX` locale
 
 

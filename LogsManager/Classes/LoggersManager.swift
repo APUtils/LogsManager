@@ -68,9 +68,9 @@ open class LoggersManager {
         fileLogger.logFileManager.maximumNumberOfLogFiles = .max
         
         // Log logs file destination on simulators for ease access during debug sessions.
-        if TARGET_OS_SIMULATOR != 0 {
-            RoutableLogger.logInfo("Log file path: '\(fileLogger.currentLogFileInfo?.filePath ?? "nil")'")
-        }
+#if !targetEnvironment(simulator)
+        RoutableLogger.logInfo("Log file path: '\(fileLogger.currentLogFileInfo?.filePath ?? "nil")'")
+#endif
         
         return fileLogger
     }()

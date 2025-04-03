@@ -1,35 +1,35 @@
 PODS:
-  - APExtensions (14.2.0):
-    - APExtensions/Core (= 14.2.0)
-    - APExtensions/Dispatch (= 14.2.0)
-    - APExtensions/Occupiable (= 14.2.0)
-    - APExtensions/OptionalType (= 14.2.0)
-    - APExtensions/Storyboard (= 14.2.0)
-    - APExtensions/ViewModel (= 14.2.0)
-  - APExtensions/Core (14.2.0):
+  - APExtensions (15.0.0):
+    - APExtensions/Core (= 15.0.0)
+    - APExtensions/Dispatch (= 15.0.0)
+    - APExtensions/Occupiable (= 15.0.0)
+    - APExtensions/OptionalType (= 15.0.0)
+    - APExtensions/Storyboard (= 15.0.0)
+    - APExtensions/ViewModel (= 15.0.0)
+  - APExtensions/Core (15.0.0):
     - RoutableLogger
-  - APExtensions/Dispatch (14.2.0):
+  - APExtensions/Dispatch (15.0.0):
     - RoutableLogger
-  - APExtensions/Occupiable (14.2.0)
-  - APExtensions/OptionalType (14.2.0)
-  - APExtensions/Storyboard (14.2.0):
+  - APExtensions/Occupiable (15.0.0)
+  - APExtensions/OptionalType (15.0.0)
+  - APExtensions/Storyboard (15.0.0):
     - RoutableLogger
-  - APExtensions/ViewModel (14.2.0)
+  - APExtensions/ViewModel (15.0.0)
   - CocoaLumberjack/Core (3.8.5)
   - CocoaLumberjack/Swift (3.8.5):
     - CocoaLumberjack/Core
-  - LogsManager (12.4.0):
+  - LogsManager (13.0.0):
     - APExtensions/Occupiable (>= 10.1.6)
     - CocoaLumberjack/Swift (>= 3.7.2)
-    - LogsManager/ExtensionUnsafe (= 12.4.0)
+    - LogsManager/ExtensionUnsafe (= 13.0.0)
     - RoutableLogger (>= 11.0.0)
-  - LogsManager/ExtensionUnsafe (12.4.0):
+  - LogsManager/ExtensionUnsafe (13.0.0):
     - APExtensions/Occupiable (>= 10.1.6)
     - CocoaLumberjack/Swift (>= 3.7.2)
     - RoutableLogger (>= 11.0.0)
   - Nimble (10.0.0)
   - Quick (5.0.1)
-  - RoutableLogger (12.4.0)
+  - RoutableLogger (13.0.0)
 
 DEPENDENCIES:
   - APExtensions (from `https://github.com/APUtils/APExtensions.git`)
@@ -54,17 +54,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   APExtensions:
-    :commit: 7cead7483a09dcf0de15264361f809014166d995
+    :commit: 5fae820be3bdf3975faca29200e430b3c18a825d
     :git: https://github.com/APUtils/APExtensions.git
 
 SPEC CHECKSUMS:
-  APExtensions: 06c059d069034fb32db789432ee889274b453435
+  APExtensions: d0692b34c786b9282e09b9cd519c58269f847c62
   CocoaLumberjack: 6a459bc897d6d80bd1b8c78482ec7ad05dffc3f0
-  LogsManager: b2dc856b9ee8bdf4e0f74d39db45a3a0a7138c94
+  LogsManager: 8b5efebf5f80207e9ae3f407841118cfbf8ffb9e
   Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
-  RoutableLogger: 5c0d14daf01b023d1506e5a426b53418daac3f8b
+  RoutableLogger: 31ce799b16b4868c169ed68c36e25437dd0ca40e
 
 PODFILE CHECKSUM: a9c89c9dfa64d5169bf4028c9aa43c0cf6a8839b
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

@@ -23,7 +23,7 @@ public extension DDLogFlag {
 
 // ******************************* MARK: - CustomStringConvertible
 
-extension DDLogFlag: CustomStringConvertible {
+extension DDLogFlag: @retroactive CustomStringConvertible {
     public var description: String {
         var flagComponents: [String] = []
         if contains(.error) {

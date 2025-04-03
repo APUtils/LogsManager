@@ -21,9 +21,9 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/APUtils/APExtensions.git", .upToNextMajor(from: "14.0.0")),
+        .package(url: "https://github.com/APUtils/APExtensions.git", .upToNextMajor(from: "15.0.0")),
         .package(url: "https://github.com/CocoaLumberjack/CocoaLumberjack.git", from: "3.7.2"),
-        .package(url: "https://github.com/anton-plebanovich/RoutableLogger", .upToNextMajor(from: "1.0.0")),
+        .package(url: "https://github.com/anton-plebanovich/RoutableLogger", .upToNextMajor(from: "2.0.0")),
     ],
     targets: [
         .target(

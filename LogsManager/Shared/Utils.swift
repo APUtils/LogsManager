@@ -13,7 +13,17 @@ final class Utils {
     /// Method to normalize error.
     static func normalizeError(_ error: Any?) -> String? {
         guard let error = error else { return nil }
-        return "Error Type=\(type(of: error)) \(String(describing: error))"
+        
+        if let bridgedError = error as? (any _BridgedStoredNSError) {
+            // related decl 'e' for SKErrorCode
+            let systemErrorTypeDescription = String(describing: type(of: error))
+            let errorCodeType = systemErrorTypeDescription.replacingOccurrences(of: "related decl 'e' for ", with: "")
+            let errorType = errorCodeType.replacingOccurrences(of: "Code", with: "")
+            return "Error Type=\(errorType) \(bridgedError._nsError.description)"
+            
+        } else {
+            return "Error Type=\(type(of: error)) \(String(describing: error))"
+        }
     }
     
     static func localizedDescription(_ error: Any?) -> String? {

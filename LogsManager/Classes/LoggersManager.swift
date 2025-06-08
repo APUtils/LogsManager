@@ -46,7 +46,7 @@ open class LoggersManager {
     private var pausedLogs: [() -> Void] = []
     
     private var loggers: [BaseLogger] = []
-    public private(set) var logComponents: [LogComponent] = []
+    public private(set) var logComponentByName: [String: LogComponent] = [:]
     private var combinedLogLevel: DDLogLevel = .off
     private var cachedComponents: [ComponentsKey: [LogComponent]] = [:]
     private let queue = DispatchQueue(label: "LoggersManager")
@@ -122,12 +122,12 @@ open class LoggersManager {
     /// Registers log component for detection
     public func registerLogComponent(_ logComponent: LogComponent) {
         queue.performSync {
-            guard !logComponents.contains(logComponent) else {
+            guard logComponentByName[logComponent.name] == nil else {
                 RoutableLogger.logError("Log component '\(logComponent)' was already added")
                 return
             }
             
-            logComponents.append(logComponent)
+            logComponentByName[logComponent.name] = logComponent
             cachedComponents = [:]
         }
     }
@@ -135,12 +135,12 @@ open class LoggersManager {
     /// Uregisters log component from detection
     public func unregisterLogComponent(_ logComponent: LogComponent) {
         queue.performSync {
-            guard logComponents.contains(logComponent) else {
+            guard logComponentByName[logComponent.name] != nil else {
                 RoutableLogger.logError("Log component '\(logComponent)' is not added")
                 return
             }
             
-            logComponents.remove(logComponent)
+            logComponentByName[logComponent.name] = nil
             cachedComponents = [:]
         }
     }
@@ -424,13 +424,12 @@ open class LoggersManager {
             return existingCachedComponents
         }
         
-        var components: [LogComponent] = logComponents
-            .filter { logComponent in
-                let path = String(filePath)
-                let file = String.getFileName(filePath: path)
-                let function = String(function)
-                return logComponent.isLogForThisComponent(path, file, function)
-            }
+        var components: [LogComponent] = logComponentByName.values.filter { logComponent in
+            let path = String(filePath)
+            let file = String.getFileName(filePath: path)
+            let function = String(function)
+            return logComponent.isLogForThisComponent(path, file, function)
+        }
         
         if components.isEmpty {
             components.append(.unspecified)

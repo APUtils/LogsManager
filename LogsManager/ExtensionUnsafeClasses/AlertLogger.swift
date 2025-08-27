@@ -114,11 +114,16 @@ private final class AlertController: UIAlertController {
     // ******************************* MARK: - Private Properties
     
     private lazy var alertWindow: UIWindow? = {
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.windowLevel = .alert
-        alertWindow.rootViewController = AppearanceCaptureViewController()
+        let window = if #available(iOS 13.0, *), let windowScene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first {
+            UIWindow(windowScene: windowScene)
+        } else {
+            UIWindow(frame: UIScreen.main.bounds)
+        }
         
-        return alertWindow
+        window.windowLevel = .alert
+        window.rootViewController = AppearanceCaptureViewController()
+        
+        return window
     }()
     
     // ******************************* MARK: - UIViewController Methods

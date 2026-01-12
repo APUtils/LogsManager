@@ -124,6 +124,26 @@ public extension DDLogMessage.Parameters {
             } else {
                 normalizedData?["errorUserInfo"] = "\(userInfo)"
             }
+            
+            for (index, underlyingError) in error._allUnderlyingErrors.enumerated() {
+                let underlyingErrorDescription: String?
+                if underlyingError.underlyingError != nil {
+                    var userInfo = underlyingError.userInfo as? [String: Any]
+                    userInfo?[NSUnderlyingErrorKey] = nil // remove underlying error from user info to have only related description
+                    underlyingErrorDescription = NSError(domain: underlyingError._domain, code: underlyingError._code, userInfo: userInfo).description
+                    
+                } else if #available(iOS 14.5, *), underlyingError._underlyingErrors != nil {
+                    var userInfo = underlyingError.userInfo as? [String: Any]
+                    userInfo?[NSMultipleUnderlyingErrorsKey] = nil // remove underlying errors from user info to have only related description
+                    underlyingErrorDescription = NSError(domain: underlyingError._domain, code: underlyingError._code, userInfo: userInfo).description
+                    
+                } else {
+                    underlyingErrorDescription = Utils.normalizeError(underlyingError)
+                }
+                
+                let indexString = String(format: "%02d", index)
+                normalizedData?["underlyingError_\(indexString)"] = underlyingErrorDescription
+            }
         }
     }
     
@@ -140,7 +160,7 @@ public extension DDLogMessage.Parameters {
         if string.count > allowedCount {
             let compressedString = string.data(using: .utf8)?
             // Compressing data as much as possible using LZMA. It has ~10x compression rate for JSONs.
-                .safeCompressed(using: .lzma)?
+                ._safeCompressed(using: .lzma)?
                 .base64EncodedString()
             ?? string
             
@@ -164,13 +184,53 @@ public extension DDLogMessage.Parameters.Constants {
     static let skipDataNormalizationKeyPrefix = "_skip_normalization_"
 }
 
+// ******************************* MARK: - Underlying Errors
+
+private extension Error {
+    
+    /// Collects and return all underlying errors
+    var _allUnderlyingErrors: [Error] {
+        var allUnderlyingErrors: [Error] = []
+        var _underlyingError = _underlyingError
+        while let underlyingError = _underlyingError {
+            allUnderlyingErrors.append(underlyingError)
+            
+            if let underlyingError = underlyingError._underlyingError {
+                _underlyingError = underlyingError
+                
+            } else if #available(iOS 14.5, *), let underlyingErrors = underlyingError._underlyingErrors {
+                underlyingErrors.forEach { allUnderlyingErrors.append(contentsOf: $0._allUnderlyingErrors) }
+                _underlyingError = nil
+                
+            } else {
+                _underlyingError = nil
+            }
+        }
+        
+        return allUnderlyingErrors
+    }
+    
+    var _underlyingError: Error? {
+        __userInfo?[NSUnderlyingErrorKey] as? Error
+    }
+    
+    @available(iOS 14.5, *)
+    var _underlyingErrors: [Error]? {
+        __userInfo?[NSMultipleUnderlyingErrorsKey] as? [Error]
+    }
+    
+    var __userInfo: [AnyHashable: Any]? {
+        _userInfo as? [AnyHashable: Any]
+    }
+}
+
 // ******************************* MARK: - Compression
 
 @available(iOS 13.0, watchOSApplicationExtension 6.0, watchOS 6.0, tvOS 13.0, macOS 10.15, *)
 private extension Data {
     
     /// - note: In rare cases for some reason compression may fail
-    func safeCompressed(using algorithm: NSData.CompressionAlgorithm) -> Data? {
+    func _safeCompressed(using algorithm: NSData.CompressionAlgorithm) -> Data? {
         do {
             return try (self as NSData).compressed(using: algorithm) as Data
         } catch {
@@ -179,7 +239,7 @@ private extension Data {
         }
     }
     
-    func safeDecompressed(using algorithm: NSData.CompressionAlgorithm) -> Data? {
+    func _safeDecompressed(using algorithm: NSData.CompressionAlgorithm) -> Data? {
         do {
             return try (self as NSData).decompressed(using: algorithm) as Data
         } catch {

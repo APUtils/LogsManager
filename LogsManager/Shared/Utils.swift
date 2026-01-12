@@ -26,6 +26,21 @@ final class Utils {
         }
     }
     
+    static func normalizeErrorType(_ error: Any?) -> String? {
+        guard let error = error else { return nil }
+        
+        if error is (any _BridgedStoredNSError) {
+            // related decl 'e' for SKErrorCode
+            let systemErrorTypeDescription = String(describing: type(of: error))
+            let errorCodeType = systemErrorTypeDescription.replacingOccurrences(of: "related decl 'e' for ", with: "")
+            let errorType = errorCodeType.replacingOccurrences(of: "Code", with: "")
+            return "Error Type=\(errorType)"
+            
+        } else {
+            return "Error Type=\(type(of: error))"
+        }
+    }
+    
     static func localizedDescription(_ error: Any?) -> String? {
         guard let error = error as? Error else { return nil }
         return error.localizedDescription

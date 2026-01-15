@@ -127,10 +127,10 @@ public extension DDLogMessage.Parameters {
             
             for (index, underlyingError) in error._allUnderlyingErrors.enumerated() {
                 let underlyingErrorDescription: String?
-                if underlyingError.underlyingError != nil {
+                if underlyingError._underlyingError != nil {
                     let errorType = Utils.normalizeErrorType(underlyingError) ?? ""
                     
-                    var userInfo = underlyingError.userInfo as? [String: Any]
+                    var userInfo = underlyingError.__userInfo as? [String: Any]
                     userInfo?[NSUnderlyingErrorKey] = nil // remove underlying error from user info to have only related description
                     let description = NSError(domain: underlyingError._domain, code: underlyingError._code, userInfo: userInfo).description
                     
@@ -139,7 +139,7 @@ public extension DDLogMessage.Parameters {
                 } else if #available(iOS 14.5, *), underlyingError._underlyingErrors != nil {
                     let errorType = Utils.normalizeErrorType(underlyingError) ?? ""
                     
-                    var userInfo = underlyingError.userInfo as? [String: Any]
+                    var userInfo = underlyingError.__userInfo as? [String: Any]
                     userInfo?[NSMultipleUnderlyingErrorsKey] = nil // remove underlying errors from user info to have only related description
                     let description = NSError(domain: underlyingError._domain, code: underlyingError._code, userInfo: userInfo).description
                     

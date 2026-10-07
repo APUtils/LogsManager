@@ -51,6 +51,8 @@ open class FileLogger: DDFileLogger, BaseLogger {
         
         super.init(logFileManager: fileManager, completionQueue: nil)
         
+        raiseLoggerQueueQoSIfNeeded()
+        
         logFormatter = BaseFileLogFormatter(mode: mode, oneLine: true, dateFormatter: dateFormatter)
     }
     

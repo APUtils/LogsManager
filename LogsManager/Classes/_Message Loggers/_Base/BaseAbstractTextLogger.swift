@@ -32,6 +32,8 @@ open class BaseAbstractTextLogger: DDAbstractLogger, BaseLogger {
         
         super.init()
         
+        raiseLoggerQueueQoSIfNeeded()
+        
         logFormatter = BaseLogFormatter(mode: mode, oneLine: oneLine, dateFormatter: dateFormatter)
     }
     

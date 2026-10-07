@@ -52,6 +52,8 @@ let package = Package(
             ],
             path: "LogsManager",
             exclude: [
+                "Classes/_Message Loggers/_Base/DDAbstractLogger+LoggerQueue.h",
+                "Classes/_Message Loggers/_Base/DDAbstractLogger+LoggerQueue.m",
                 "Classes/_Message Loggers/_Base/_DDTTYLogger.h",
                 "Classes/_Message Loggers/_Base/_DDTTYLogger.m",
                 "RoutableLogger",
@@ -75,6 +77,8 @@ let package = Package(
             ],
             path: "LogsManager",
             sources: [
+                "Classes/_Message Loggers/_Base/DDAbstractLogger+LoggerQueue.h",
+                "Classes/_Message Loggers/_Base/DDAbstractLogger+LoggerQueue.m",
                 "Classes/_Message Loggers/_Base/_DDTTYLogger.h",
                 "Classes/_Message Loggers/_Base/_DDTTYLogger.m",
             ],

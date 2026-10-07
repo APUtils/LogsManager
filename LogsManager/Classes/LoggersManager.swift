@@ -40,6 +40,8 @@ open class LoggersManager {
     // ******************************* MARK: - Properties
     
     /// Global messages async/sync log flag. Default is `true`.
+    /// Set it before creating loggers: a logger created while it is `false` gets a `userInitiated` queue,
+    /// so a synchronous log from a background thread does not stall higher priority threads that log next.
     public static var logMessagesAsync: Bool = true
     
     private var isPaused: Bool = false

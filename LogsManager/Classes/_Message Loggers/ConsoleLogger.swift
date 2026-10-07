@@ -38,6 +38,8 @@ open class ConsoleLogger: _DDTTYLogger, BaseLogger {
         
         super.init()
         
+        raiseLoggerQueueQoSIfNeeded()
+        
         logFormatter = BaseLogFormatter(mode: mode, oneLine: oneLine, dateFormatter: dateFormatter)
     }
     
